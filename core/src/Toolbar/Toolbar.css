@@ -1,0 +1,39 @@
+body{
+    font-family: 'nanumsquare';
+  }
+
+  .tool_bar{
+    background-color: #8154A0;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    color: #EEEEEE;
+    padding: 10px;
+    font-weight: 600;
+    font-size: 25px;
+    
+  }
+
+  .text_style{
+    padding-right: 50px;
+  }
+
+  .sub_tool_bar{
+    background-color: #E0BFE6;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    height: fit-content;
+    padding: 20px;
+    color: black;
+
+  }
+
+  .sub_tool_bar_text{
+    padding: 20px;
+    font-size: 30px;
+
+  }

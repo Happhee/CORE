@@ -1,63 +1,77 @@
 /*eslint-disable */
 import './App.css';
-import React, { useState } from 'react';
+import '../src/Toolbar/Toolbar.css';
+import React, { Component } from 'react';
+import logo from './logo.svg';
+
 //내장 함수를 가져다 쓰겠습니다~
+class Teacher_Toolbar extends Component {
+  render() {
+    return (
+      <div>
+        <div className="tool_bar">
+          <span className="text_style"> My</span>
+          <span className="text_style">FeedBank</span>
+        </div>
+      </div>
 
-function App() {
-  let [title, title_modify] = useState(['Student', 'WorkBook', 'FeedBack', 'My']); // [array , fun ]
-  //state데이터, state데이터 변경 함수 
-
-
-  function Title_modify() {
-    var newArray = [...title];
-    newArray[0] = 'Not - Student ';
-    title_modify(newArray);
+    );
   }
 
-  return (
-    <div className="App">
-      <div className="black-nav">
-        CORE
+}
+class Logo_Room extends Component {
+  render() {
+    return (
+      <div>
+        <img src={logo}></img>
+        <p> 강의실 이름 </p>
+      </div>
+    );
+  }
+}
+class Subject extends Component {
+  render() {
+    return (
+      <div>
+        <span className="sub_tool_bar_text"> {this.props.title}</span>
+      </div>
+    );
+  }
+}
+
+
+class Sub_Toolbar extends Component {
+  render() {
+    return (
+      <div className="sub_tool_bar">
+        <Logo_Room />
+        <Subject title="Student"></Subject>
+        <Subject title="WorkBook"></Subject>
+        <Subject title="FeedBack"></Subject>
+      </div>
+    )
+  }
+}
+
+
+
+class App extends Component {
+  //state데이터, state데이터 변경 함수 
+  render() {
+
+    return (
+      <div className="App">
+
+        <Teacher_Toolbar />
+        <Sub_Toolbar />
+
       </div>
 
-      <div className="list" >
-        <h2 onClick={Title_modify}> {title[0]}  </h2>
-        <hr />
-      </div>
+    );
+  }
 
-      <div className="list" >
-        <h2> {title[1]}</h2>
-        <hr />
-      </div>
-
-      <div className="list" >
-        <h2> {title[2]}</h2>
-        <hr />
-      </div>
-
-      <div className="list" >
-        <h2> {title[3]}</h2>
-        <hr />
-      </div>
-
-      <Modal />
-
-    </div>
-
-  );
 
 }
 
-function Modal() {
-  return (
-    <>
-      <div className="modal">
-        <h3>제목</h3>
-        <p>날짜</p>
-        <p>상세내용</p>
-      </div>
-    </>
-  )
-}
 
 export default App;
