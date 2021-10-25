@@ -5,7 +5,6 @@ import React, { Component } from 'react';
 import '../css/Subject.css';
 import { ReactComponent as Logo } from '../css/Core.svg';
 
-import core_logo from '../css/Core.svg';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 
 import Student from '../teacher/components/Student';
@@ -17,7 +16,7 @@ class Logo_Room extends Component {
     render() {
         return (
             <div style={{ textAlign: "center" }}>
-                <img src={core_logo} style={{ width: 100, height: 100 }} ></img>
+                <Logo width="100" height="200" />
                 <p>{this.props.class_room}</p>
             </div>
         );
