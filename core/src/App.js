@@ -1,24 +1,11 @@
 /*eslint-disable */
 import './App.css';
-import '../src/Toolbar/Toolbar.css';
 import React, { Component } from 'react';
+
+import Teacher_Toolbar from './components/Toolbar';
 import logo from './logo.svg';
 
-//내장 함수를 가져다 쓰겠습니다~
-class Teacher_Toolbar extends Component {
-  render() {
-    return (
-      <div>
-        <div className="tool_bar">
-          <span className="text_style"> My</span>
-          <span className="text_style">FeedBank</span>
-        </div>
-      </div>
 
-    );
-  }
-
-}
 class Logo_Room extends Component {
   render() {
     return (
@@ -62,7 +49,7 @@ class App extends Component {
     return (
       <div className="App">
 
-        <Teacher_Toolbar />
+        <Teacher_Toolbar feed="FeedBank" />
         <Sub_Toolbar />
 
       </div>
