@@ -2,10 +2,8 @@ import React, { Component } from 'react';
 /*eslint-disable */
 
 import '../css/Subject.css';
-import core_logo from '../css/Core.svg'
-
-
-
+import core_logo from '../css/Core.svg';
+import c from '../../teacher/components/FeedBack'
 class Logo_Room extends Component {
     render() {
         return (
@@ -20,7 +18,7 @@ class Subject_Href extends Component {
     render() {
         return (
             <div>
-                <a href="/" className="subject_text"> {this.props.title}</a>
+                <a href={this.props.link} className="subject_text"> {this.props.title}</a>
             </div>
         );
     }
@@ -32,7 +30,8 @@ class Subject extends Component {
         let data = this.props.data;
 
         for (let index = 0; index < data.length; index++) {
-            span_list.push(<Subject_Href key={data[index].id} title={data[index].title}></Subject_Href>)
+            span_list.push(<Subject_Href key={data[index].id} title={data[index].title}
+                link={data[index].link}></Subject_Href>)
         }
         return (
             <div className="subject">
