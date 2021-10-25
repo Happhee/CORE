@@ -2,8 +2,8 @@
 import './App.css';
 import React, { Component } from 'react';
 
-import Toolbar from './together/components/Toolbar';
-import Subject from './together/components/Subject'
+import Toolbar from './components/Toolbar';
+import Subject from './components/Subject'
 
 
 
@@ -16,7 +16,7 @@ class App extends Component {
       student_top: { feed: 'FeedBank' },
 
       teacher_subject: [
-        { id: 1, title: 'Student' },
+        { id: 1, title: 'Student', link: 'core/src/teacher/components/Student.js' },
         { id: 2, title: 'WorkBook' },
         { id: 3, title: 'FeedBack' }
       ],

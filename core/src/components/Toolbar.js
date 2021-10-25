@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../CSS/Toolbar.css'
+import '../css/Toolbar.css'
 
 //맨 상단바 
 class Toolbar extends Component {
@@ -7,8 +7,8 @@ class Toolbar extends Component {
         return (
             <div>
                 <div className="tool_bar">
-                    <span className="text_style">My</span>
-                    <span className="text_style">{this.props.feed}</span>
+                    <a href="/" className="text_style">My</a>
+                    <a href="/" className="text_style">{this.props.feed}</a>
                 </div>
             </div>
         );

@@ -5,6 +5,7 @@ import '../css/Subject.css';
 import core_logo from '../css/Core.svg'
 
 
+
 class Logo_Room extends Component {
     render() {
         return (
@@ -15,7 +16,7 @@ class Logo_Room extends Component {
         );
     }
 }
-class Subject_Span extends Component {
+class Subject_Href extends Component {
     render() {
         return (
             <div>
@@ -31,7 +32,7 @@ class Subject extends Component {
         let data = this.props.data;
 
         for (let index = 0; index < data.length; index++) {
-            span_list.push(<Subject_Span key={data[index].id} title={data[index].title}></Subject_Span>)
+            span_list.push(<Subject_Href key={data[index].id} title={data[index].title}></Subject_Href>)
         }
         return (
             <div className="subject">
