@@ -1,25 +1,64 @@
-import logo from './logo.svg';
+/*eslint-disable */
 import './App.css';
+import React, { Component } from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import Teacher_Toolbar from './components/Toolbar';
+import logo from './logo.svg';
+
+
+class Logo_Room extends Component {
+  render() {
+    return (
+      <div>
+        <img src={logo}></img>
+        <p> 강의실 이름 </p>
+      </div>
+    );
+  }
 }
+class Subject extends Component {
+  render() {
+    return (
+      <div>
+        <span className="sub_tool_bar_text"> {this.props.title}</span>
+      </div>
+    );
+  }
+}
+
+
+class Sub_Toolbar extends Component {
+  render() {
+    return (
+      <div className="sub_tool_bar">
+        <Logo_Room />
+        <Subject title="Student"></Subject>
+        <Subject title="WorkBook"></Subject>
+        <Subject title="FeedBack"></Subject>
+      </div>
+    )
+  }
+}
+
+
+
+class App extends Component {
+  //state데이터, state데이터 변경 함수 
+  render() {
+
+    return (
+      <div className="App">
+
+        <Teacher_Toolbar feed="FeedBank" />
+        <Sub_Toolbar />
+
+      </div>
+
+    );
+  }
+
+
+}
+
 
 export default App;
