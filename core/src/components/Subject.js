@@ -3,6 +3,8 @@
 import React, { Component } from 'react';
 
 import '../css/Subject.css';
+import { ReactComponent as Logo } from '../css/Core.svg';
+
 import core_logo from '../css/Core.svg';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 
