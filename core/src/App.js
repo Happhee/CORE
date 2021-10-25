@@ -1,9 +1,12 @@
 /*eslint-disable */
 import './App.css';
 import React, { Component } from 'react';
+// import {Route, Switch, useHistory} from 'react-router-dom';
 
-import Toolbar from './together/components/Toolbar';
-import Subject from './together/components/Subject'
+import Toolbar from './components/Toolbar';
+import Subject from './components/Subject'
+
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 
 
 
@@ -16,13 +19,13 @@ class App extends Component {
       student_top: { feed: 'FeedBank' },
 
       teacher_subject: [
-        { id: 1, title: 'Student', link: '../../teacher/components/Student.js' },
-        { id: 2, title: 'WorkBook', link: '../../teacher/components/WorkBook.js' },
-        { id: 3, title: 'FeedBack', link: '../../teacher/components/FeedBack.js' }
+        { id: 1, title: 'Student' },
+        { id: 2, title: 'WorkBook' },
+        { id: 3, title: 'FeedBack' }
       ],
 
       student_subject: [
-        { id: 1, title: 'WorkBook', link: '../../student/components/WorkBook.js' }
+        { id: 1, title: 'WorkBook' }
       ],
     }
   }
@@ -31,6 +34,8 @@ class App extends Component {
 
     let _feed = null;
     let _subject = [];
+    let route = [];
+
     if (this.state.mode == 'teacher') {
       _feed = this.state.teacher_top.feed;
       _subject = this.state.teacher_subject;
@@ -41,12 +46,14 @@ class App extends Component {
     }
 
     return (
-      <div className="App">
+      <Router className="App">
+        <div>
+          <Toolbar feed={_feed} />
+          <Subject mode={this.state.mode} data={_subject} />
 
-        <Toolbar feed={_feed} />
-        <Subject data={_subject} />
+        </div>
 
-      </div>
+      </Router>
 
     );
   }

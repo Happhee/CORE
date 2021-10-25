@@ -5,7 +5,7 @@ class Student extends Component {
     render() {
         return (
             <div>
-                <p>여기인가?</p>
+                <p>학생관리</p>
             </div>
         );
     }
