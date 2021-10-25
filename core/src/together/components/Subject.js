@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 /*eslint-disable */
 
-import '../CSS/Subject.css';
-import core_logo from '../CSS/Core.svg'
+import '../css/Subject.css';
+import core_logo from '../css/Core.svg'
 
 
 class Logo_Room extends Component {
@@ -19,27 +19,24 @@ class Subject_Span extends Component {
     render() {
         return (
             <div>
-                <span className="subject_text"> {this.props.title}</span>
+                <a href="/" className="subject_text"> {this.props.title}</a>
             </div>
         );
     }
 }
 class Subject extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            mode: 'teacher',
-            teacher_top: { feed: 'WorkBank' },
-            student_top: { feed: 'FeedBank' }
-        }
-    }
+
     render() {
+        let span_list = [];
+        let data = this.props.data;
+
+        for (let index = 0; index < data.length; index++) {
+            span_list.push(<Subject_Span key={data[index].id} title={data[index].title}></Subject_Span>)
+        }
         return (
             <div className="subject">
                 <Logo_Room class_room="C프로그래밍 및 실습" />
-                <Subject_Span title="Student"></Subject_Span>
-                <Subject_Span title="WorkBook"></Subject_Span>
-                <Subject_Span title="FeedBack"></Subject_Span>
+                {span_list}
             </div>
         );
     }
