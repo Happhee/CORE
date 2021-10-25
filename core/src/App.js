@@ -14,6 +14,10 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      init: [
+        { id: 1, title: 'Login' },
+        { id: 2, title: 'Sign Up' },
+      ],
       mode: 'teacher',
       teacher_top: { feed: 'WorkBank' },
       student_top: { feed: 'FeedBank' },
@@ -48,7 +52,7 @@ class App extends Component {
     return (
       <Router className="App">
         <div>
-          <Toolbar feed={_feed} />
+          <Toolbar data={this.state.init} />
           <Subject mode={this.state.mode} data={_subject} />
 
         </div>
