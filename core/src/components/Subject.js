@@ -1,10 +1,15 @@
-import React, { Component } from 'react';
 /*eslint-disable */
 
+import React, { Component } from 'react';
+
 import '../css/Subject.css';
-import core_logo from '../css/Core.svg'
+import core_logo from '../css/Core.svg';
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 
-
+import Student from '../teacher/components/Student';
+import Teacher_WorkBook from '../teacher/components/WorkBook';
+import FeedBack from '../teacher/components/FeedBack';
+import Student_WorkBook from '../student/components/WorkBook';
 
 class Logo_Room extends Component {
     render() {
@@ -16,11 +21,11 @@ class Logo_Room extends Component {
         );
     }
 }
-class Subject_Href extends Component {
+class Subject_Link extends Component {
     render() {
         return (
             <div>
-                <a href="/" className="subject_text"> {this.props.title}</a>
+                <Link to={this.props.link} className="subject_text" > {this.props.title}</Link>
             </div>
         );
     }
@@ -28,17 +33,43 @@ class Subject_Href extends Component {
 class Subject extends Component {
 
     render() {
-        let span_list = [];
         let data = this.props.data;
+        let mode = this.props.mode;
+        let class_room = this.props.class_room;
 
-        for (let index = 0; index < data.length; index++) {
-            span_list.push(<Subject_Href key={data[index].id} title={data[index].title}></Subject_Href>)
+        let list = [];
+        let route = []
+
+        if (data.length == 3) {
+
+            list.push(<Subject_Link key={data[0].id} title={data[0].title}
+                link='/' />);
+            list.push(<Subject_Link key={data[1].id} title={data[1].title}
+                link='/teacher/workbook' />);
+            list.push(<Subject_Link key={data[2].id} title={data[2].title}
+                link='/teacher/feedback' />);
+
+
+            route.push(<Route path='/' component={Student} exact={true} />)
+            route.push(<Route path='/teacher/workbook' component={Teacher_WorkBook} />)
+            route.push(<Route path='/teacher/feedback' component={FeedBack} />)
         }
+        else {
+            list.push(<Subject_Link key={data[0].id} title={data[0].title}
+                link='/' />);
+            route.push(<Route path='/' component={Student_WorkBook} exact={true} />)
+
+        }
+
+
         return (
-            <div className="subject">
-                <Logo_Room class_room="C프로그래밍 및 실습" />
-                {span_list}
-            </div>
+            <div>
+                <div className={mode + "_subject"}>
+                    <Logo_Room class_room={class_room} />
+                    {list}
+                </div>
+                {route}
+            </div >
         );
     }
 }
