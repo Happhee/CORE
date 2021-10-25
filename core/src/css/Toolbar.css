@@ -17,23 +17,6 @@ body{
 
   .text_style{
     padding-right: 50px;
+    text-decoration: none;
   }
 
-  .sub_tool_bar{
-    background-color: #E0BFE6;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
-    height: fit-content;
-    padding: 20px;
-    color: black;
-
-  }
-
-  .sub_tool_bar_text{
-    padding: 20px;
-    font-size: 30px;
-
-  }

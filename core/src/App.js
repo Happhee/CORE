@@ -2,55 +2,49 @@
 import './App.css';
 import React, { Component } from 'react';
 
-import Teacher_Toolbar from './components/Toolbar';
-import logo from './logo.svg';
-
-
-class Logo_Room extends Component {
-  render() {
-    return (
-      <div>
-        <img src={logo}></img>
-        <p> 강의실 이름 </p>
-      </div>
-    );
-  }
-}
-class Subject extends Component {
-  render() {
-    return (
-      <div>
-        <span className="sub_tool_bar_text"> {this.props.title}</span>
-      </div>
-    );
-  }
-}
-
-
-class Sub_Toolbar extends Component {
-  render() {
-    return (
-      <div className="sub_tool_bar">
-        <Logo_Room />
-        <Subject title="Student"></Subject>
-        <Subject title="WorkBook"></Subject>
-        <Subject title="FeedBack"></Subject>
-      </div>
-    )
-  }
-}
+import Toolbar from './components/Toolbar';
+import Subject from './components/Subject'
 
 
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      mode: 'teacher',
+      teacher_top: { feed: 'WorkBank' },
+      student_top: { feed: 'FeedBank' },
+
+      teacher_subject: [
+        { id: 1, title: 'Student', link: 'core/src/teacher/components/Student.js' },
+        { id: 2, title: 'WorkBook' },
+        { id: 3, title: 'FeedBack' }
+      ],
+
+      student_subject: [
+        { id: 1, title: 'WorkBook' }
+      ],
+    }
+  }
   //state데이터, state데이터 변경 함수 
   render() {
+
+    let _feed = null;
+    let _subject = [];
+    if (this.state.mode == 'teacher') {
+      _feed = this.state.teacher_top.feed;
+      _subject = this.state.teacher_subject;
+    }
+    else {
+      _feed = this.state.student_top.feed;
+      _subject = this.state.student_subject;
+    }
 
     return (
       <div className="App">
 
-        <Teacher_Toolbar feed="FeedBank" />
-        <Sub_Toolbar />
+        <Toolbar feed={_feed} />
+        <Subject data={_subject} />
 
       </div>
 
