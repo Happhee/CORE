@@ -25,6 +25,14 @@ class Subject_Span extends Component {
     }
 }
 class Subject extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            mode: 'teacher',
+            teacher_top: { feed: 'WorkBank' },
+            student_top: { feed: 'FeedBank' }
+        }
+    }
     render() {
         return (
             <div className="subject">
