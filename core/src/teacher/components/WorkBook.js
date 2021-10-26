@@ -36,14 +36,14 @@ class WorkBook extends Component {
         return (
             <div>
                 <h1>
-                    "WorkBook-Chapter List"
+                    WorkBook-Chapter List
                 </h1>
                 <table border="1">
                     <tbody>
                     <tr align="center">
-                        <td width="50">No.</td>
-                        <td width="300">Title</td>
-                        <td width="100">Name</td>
+                        <td width="200">NO</td>
+                        <td width="800">단원</td>
+                        <td width="400">문항수</td>
                     </tr>
                     {
                         boards.map(row =>
