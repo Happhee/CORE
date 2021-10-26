@@ -6,7 +6,7 @@ class SignUp extends Component {
     render() {
         return (
             <div>
-
+                <p>회원가입</p>
             </div>
         );
     }

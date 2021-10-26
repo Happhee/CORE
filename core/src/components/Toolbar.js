@@ -6,7 +6,7 @@ import '../css/Toolbar.css'
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import Login from './Login';
 import SignUp from './SignUp'
-//맨 상단바 
+//맨 상단바 (로그인, 회원가입)
 const Toolbar_Link = props => {
     return (
         <div>
@@ -17,6 +17,7 @@ const Toolbar_Link = props => {
     );
 
 }
+//상단바 구성하고, 맨처음은 로그인 띄워주기
 const Toolbar = props => {
     let data = props.data;
     let list = [];
@@ -31,6 +32,7 @@ const Toolbar = props => {
             <div className="tool_bar">
                 {list}
             </div>
+            {/*실질적인 랜더링장소 */}
             {route}
         </div>
     );

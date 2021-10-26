@@ -33,12 +33,13 @@ span {
     text-align: start;
 }
 
+
 .check_box {
     display: grid;
     grid-template-columns:10% 25% 10% 25%;
     margin-top: 20px;
     margin-bottom: 20px;
-    font-size: 18px;
+    font-size: 20px;
     justify-content: left;
 }
 

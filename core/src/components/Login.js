@@ -3,8 +3,21 @@ import React, { useState } from 'react';
 import '../css/Login.css';
 import { ReactComponent as Core_Logo } from '../css/Core.svg';
 
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import Login_Success from './Login_Success';
+import SignUp from './SignUp';
+
+
 
 function Login() {
+    function Login_Click() {
+        <Route path='/login_success' component={Login_Success} />
+    }
+
+    function SignUp_Click() {
+        <Route path='/login_success' component={Login_Success} />
+    }
+
     let [data, setData] = useState([
         { id: 1, value: "선생님", checked: "false" },
         { id: 2, value: "학생", checked: "false" }])
@@ -40,9 +53,11 @@ function Login() {
                         <span>{data[1].value}</span>
                     </div>
 
-                    <div className="link_box" style={{ gridColumn: "2 / 4" }}>
-                        <span> LOGIN </span>
-                        <span> SIGN UP </span>
+                    <div className="link_box" style={{ gridColumn: "3 / 4" }}>
+                        <Link to="/login_success" onClick={Login_Click()} >LOGIN </Link>
+                        <Link to="/signup" onClick={SignUp_Click()} >SIGN UP </Link>
+                        {/* <span> LOGIN </span>
+                        <span> SIGN UP </span> */}
                     </div>
                 </div>
             </div>
