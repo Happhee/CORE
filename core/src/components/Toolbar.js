@@ -6,6 +6,8 @@ import '../css/Toolbar.css'
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import Login from './Login';
 import SignUp from './SignUp'
+import Login_Success from './Login_Success';
+
 //맨 상단바 (로그인, 회원가입)
 const Toolbar_Link = props => {
     return (
@@ -25,8 +27,10 @@ const Toolbar = props => {
     list.push(<Toolbar_Link key={data[0].id} title={data[0].title} link='/' />);
     list.push(<Toolbar_Link key={data[1].id} title={data[1].title} link='/signup' />);
 
+
     route.push(<Route exact path='/' component={Login} key={data[0].title} />);
     route.push(<Route path='/signup' component={SignUp} key={data[1].title} />);
+
     return (
         <div>
             <div className="tool_bar">

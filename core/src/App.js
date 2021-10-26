@@ -3,8 +3,6 @@ import './App.css';
 import React, { useState } from 'react';
 
 import Toolbar from './components/Toolbar';
-import Login_Success from './components/Login_Success';
-
 
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 
@@ -33,8 +31,6 @@ function App() {
     <Router className="App">
       <div className="App">
         <Toolbar data={init} />
-        {/* <Login_Success mode={mode} /> */}
-
       </div>
 
     </Router>

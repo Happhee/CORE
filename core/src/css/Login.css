@@ -9,7 +9,7 @@ body{
     justify-content: center;
     flex-direction: column;
 }
-.content{
+.input_content{
     box-sizing: border-box;
     width: 50%;
     border: solid #692498 5px;
@@ -24,6 +24,8 @@ body{
 .input_box{
     display: grid;
     grid-template-columns: 15% 45%;
+    grid-column: 1/4;
+
     margin-top: 20px;
     margin-bottom: 20px;
     font-size: 25px;
@@ -37,6 +39,7 @@ span {
 .check_box {
     display: grid;
     grid-template-columns:10% 25% 10% 25%;
+    grid-column: 2/4;
     margin-top: 20px;
     margin-bottom: 20px;
     font-size: 20px;
@@ -46,6 +49,7 @@ span {
 .link_box{
     display: grid;
     grid-template-columns:50% 50%;
+    grid-column: 3/4;
     margin-top: 20px;
     margin-bottom: 20px;
     font-size: 20px;
