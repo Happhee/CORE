@@ -6,18 +6,18 @@ class WorkBook extends Component {
         boards: [
             {
                 brdno: 1,
-                brdwriter: 'Lee SunSin',
-                brdtitle: 'If you intend to live then you die',
+                brdtitle: '조건문 이용하기',
+                brdnum: '20',
             },
             {
                 brdno: 2,
-                brdwriter: 'So SiNo',
-                brdtitle: 'Founder for two countries',
+                brdtitle: '포인터와 구조체',
+                brdnum: '12',
             },
             {
                 brdno: 3,
-                brdwriter: 'So SiNo',
-                brdtitle: 'Founder for two countries',
+                brdtitle: '반복문 활용하기',
+                brdnum: '8',
             }
         ]
     }
@@ -30,7 +30,7 @@ class WorkBook extends Component {
     render() {
         const { boards } = this.state;
         const list = boards.map(function(row){ 
-            return row.brdno + row.brdwriter ;
+            return row.brdno + row.brdtitle ;
         });
         
         return (
@@ -69,7 +69,7 @@ class BoardItem extends React.Component {
             <tr>
                 <td>{this.props.row.brdno}</td>
                 <td><a onClick={this.handleSelectRow}>{this.props.row.brdtitle}</a></td>
-                <td>{this.props.row.brdwriter}</td>
+                <td>{this.props.row.brdnum}</td>
             </tr>
         );
     }
