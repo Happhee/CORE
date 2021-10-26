@@ -1,42 +1,35 @@
 /*eslint-disable */
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import '../css/Login_Success.css';
 
 import Subject from './Subject';
 
 //로그인 성공 후 페이지 -> 서버로부터 모드를 가져와야함 
-class Login_Success extends Component {
-    constructor(props) {
-        super(props);
+const Login_Success = props => {
+    let [teacher_subject, setTeacher] = useState([{ id: 1, title: 'Student' },
+    { id: 2, title: 'WorkBook' },
+    { id: 3, title: 'FeedBack' }])
 
-        this.state = {
-            teacher_subject: [
-                { id: 1, title: 'Student' },
-                { id: 2, title: 'WorkBook' },
-                { id: 3, title: 'FeedBack' }
-            ],
+    let [student_subject, setStudent] = useState([
+        { id: 1, title: 'WorkBook' }
+    ])
 
-            student_subject: [
-                { id: 1, title: 'WorkBook' }
-            ],
-        }
+
+    let subject = [];
+    let route = [];
+    //선생님 모드 일때, 
+    if (props.mode == 'teacher') {
+        subject = teacher_subject;
+    }//학생모드 일때
+    else {
+        subject = student_subject;
     }
-    render() {
-        let subject = [];
-        let route = [];
-        //선생님 모드 일때, 
-        if (this.props.mode == 'teacher') {
-            subject = this.state.teacher_subject;
-        }//학생모드 일때
-        else {
-            subject = this.state.student_subject;
-        }
-        return (
-            <div>
-                <Subject mode={this.props.mode} data={subject} />
-            </div>
-        );
-    }
+    return (
+        <div>
+            <Subject mode={props.mode} data={subject} />
+        </div>
+    );
+
 }
 
 export default Login_Success;
