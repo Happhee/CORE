@@ -3,6 +3,7 @@ import './App.css';
 import React, { useState } from 'react';
 
 import Toolbar from './components/Toolbar';
+import Subject from './components/Subject';
 
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 
@@ -25,12 +26,21 @@ function App() {
   else {
     _feed = top[1].feed;
   }
+  let [teacher_subject, setTeacher] = useState([
+    { id: 1, title: 'Student' },
+    { id: 2, title: 'WorkBook' },
+    { id: 3, title: 'FeedBack' }])
+
+  let [student_subject, setStudent] = useState([
+    { id: 1, title: 'WorkBook' }
+  ])
 
 
   return (
     <Router className="App">
       <div className="App">
-        <Toolbar data={init} />
+        {/* <Toolbar data={init} /> */}
+        <Subject data={teacher_subject} mode={mode} />
       </div>
 
     </Router>

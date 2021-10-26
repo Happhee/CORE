@@ -33,7 +33,6 @@ const Subject_Link = props => {
 }
 const Subject = props => {
 
-
     let data = props.data;
     let mode = props.mode;
     let class_room = props.class_room;
@@ -44,14 +43,14 @@ const Subject = props => {
     if (data.length == 3) {
 
         list.push(<Subject_Link key={data[0].id} title={data[0].title}
-            link='/' />);
+            link='/teacher/student' />);
         list.push(<Subject_Link key={data[1].id} title={data[1].title}
             link='/teacher/workbook' />);
         list.push(<Subject_Link key={data[2].id} title={data[2].title}
             link='/teacher/feedback' />);
 
 
-        route.push(<Route path='/' component={Student} exact={true} key={data[0].id} />)
+        route.push(<Route path='/teacher/student' component={Student} exact={true} key={data[0].id} />)
         route.push(<Route path='/teacher/workbook' component={Teacher_WorkBook} key={data[1].id} />)
         route.push(<Route path='/teacher/feedback' component={FeedBack} key={data[2].id} />)
     }
