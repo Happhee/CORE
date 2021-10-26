@@ -1,0 +1,58 @@
+body{
+    background-color: #E0BFE6;
+
+}
+.login_box{
+    background-color: #E0BFE6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.input_content{
+    box-sizing: border-box;
+    width: 50%;
+    border: solid #692498 5px;
+    text-align: center;
+    padding: 5px;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    grid-template-rows: repeat(4, 1fr);
+}
+
+.input_box{
+    display: grid;
+    grid-template-columns: 15% 45%;
+    grid-column: 1/4;
+
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 25px;
+    justify-content: center;
+}
+span {
+    text-align: start;
+}
+
+
+.check_box {
+    display: grid;
+    grid-template-columns:10% 25% 10% 25%;
+    grid-column: 2/4;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    justify-content: left;
+}
+
+.link_box{
+    display: grid;
+    grid-template-columns:50% 50%;
+    grid-column: 3/4;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    justify-content: center;
+}
+

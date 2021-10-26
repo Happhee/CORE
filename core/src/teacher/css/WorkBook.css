@@ -1,3 +1,7 @@
+
+body{
+    background-color: white;
+}
   table {
     width: 100%;
     border-top: 2px solid #222;
@@ -7,3 +11,4 @@
     border: 0.5px solid #8154A0;
     padding: 10px;
   }
+
