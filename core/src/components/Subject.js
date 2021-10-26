@@ -51,14 +51,14 @@ class Subject extends Component {
                 link='/teacher/feedback' />);
 
 
-            route.push(<Route path='/' component={Student} exact={true} />)
-            route.push(<Route path='/teacher/workbook' component={Teacher_WorkBook} />)
-            route.push(<Route path='/teacher/feedback' component={FeedBack} />)
+            route.push(<Route path='/' component={Student} exact={true} key={data[0].id} />)
+            route.push(<Route path='/teacher/workbook' component={Teacher_WorkBook} key={data[1].id} />)
+            route.push(<Route path='/teacher/feedback' component={FeedBack} key={data[2].id} />)
         }
         else {
             list.push(<Subject_Link key={data[0].id} title={data[0].title}
                 link='/' />);
-            route.push(<Route path='/' component={Student_WorkBook} exact={true} />)
+            route.push(<Route path='/' component={Student_WorkBook} exact={true} key={data[0].id} />)
 
         }
 

@@ -12,7 +12,6 @@ class Toolbar_Link extends Component {
         return (
             <div>
                 <p className="text_style">
-                    <img src={this.props.img_src} style={{ width: 40, height: 40 }} />
                     <Link to={this.props.link} className="subject_text" > {this.props.title}</Link>
                 </p>
             </div>
@@ -28,8 +27,8 @@ class Toolbar extends Component {
         list.push(<Toolbar_Link key={data[0].id} title={data[0].title} link='/login' />);
         list.push(<Toolbar_Link key={data[1].id} title={data[1].title} link='/signup' />);
 
-        route.push(<Route exact path='/login' component={Login} />);
-        route.push(<Route exact path='/signup' component={SignUp} />);
+        route.push(<Route exact path='/login' component={Login} key={data[0].title} />);
+        route.push(<Route path='/signup' component={SignUp} key={data[1].title} />);
         return (
             <div>
                 <div className="tool_bar">
