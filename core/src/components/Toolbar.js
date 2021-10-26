@@ -21,10 +21,10 @@ const Toolbar = props => {
     let data = props.data;
     let list = [];
     let route = [];
-    list.push(<Toolbar_Link key={data[0].id} title={data[0].title} link='/login' />);
+    list.push(<Toolbar_Link key={data[0].id} title={data[0].title} link='/' />);
     list.push(<Toolbar_Link key={data[1].id} title={data[1].title} link='/signup' />);
 
-    route.push(<Route exact path='/login' component={Login} key={data[0].title} />);
+    route.push(<Route exact path='/' component={Login} key={data[0].title} />);
     route.push(<Route path='/signup' component={SignUp} key={data[1].title} />);
     return (
         <div>

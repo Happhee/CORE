@@ -1,6 +1,14 @@
 
 body{
+  background-color: #E0BFE6;
+  width: 100%;
+  height: 100vh;
   font-family: 'nanumsquare';
+}
+.App{
+  background-color: #E0BFE6;
+  width: 100%;
+  height: 100vh;
 }
 
 

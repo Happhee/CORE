@@ -31,7 +31,7 @@ function App() {
 
   return (
     <Router className="App">
-      <div>
+      <div className="App">
         <Toolbar data={init} />
         {/* <Login_Success mode={mode} /> */}
 
