@@ -1,0 +1,60 @@
+body{
+    background-color: #E0BFE6;
+
+}
+.classroom_box{
+    background-color: #E0BFE6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding-bottom: 20%;
+}
+.content{
+    box-sizing: border-box;
+    width: 50%;
+    border: solid #692498 5px;
+    text-align: center;
+    padding: 5px;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    grid-template-rows: repeat(8, 1fr);
+}
+.title_box{
+    display: grid;
+    grid-column: 1/4;
+    margin-top: 20px;
+    padding-bottom: 20px;
+    font-size: 30px;
+    border-bottom:  solid #692498 5px;
+    justify-content: center;
+    
+    
+}
+.input_box{
+    display: grid;
+    grid-template-columns: 15% 45%;
+    grid-column: 1/4;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    justify-content: center;
+    
+}
+span {
+    text-align: start;
+}
+
+
+.link_box{
+    display: grid;
+    grid-template-columns:50% 50%;
+    grid-column: 2/4;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    justify-content: center;
+    
+}
+

@@ -11,19 +11,26 @@ import ClassRoom from './ClassRoom';
 
 
 function Login({ history }) {
+    console.log('로그인렌더');
+
     let [mode, setMode] = useState('teacher');
+
     let [data, setData] = useState([
         { id: 1, value: "선생님", checked: false },
         { id: 2, value: "학생", checked: false }]);
 
+
+
     //모드에 따른 분류
     function ClassRoom_Click() {
-        history.push(`/classroom/:${mode}`);
+        history.push(`/classroom/${mode}`);
+
     }
 
     //회원가입 
     function SignUp_Click() {
         history.push(`/signup`);
+
     }
 
 
@@ -76,8 +83,8 @@ function Login({ history }) {
                     </div>
 
                     <div className="link_box" >
-                        <button onClick={ClassRoom_Click}  >LOGIN </button>
-                        <button onClick={SignUp_Click}  >SIGN UP </button>
+                        <button onClick={ClassRoom_Click} >LOGIN </button>
+                        <button onClick={SignUp_Click} >SIGN UP </button>
                     </div>
 
 

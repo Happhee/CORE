@@ -1,14 +1,16 @@
 import '../css/FeedBack.css'
-import React, { Component } from 'react';
+import React from 'react';
 
-class FeedBack extends Component {
-    render() {
-        return (
-            <div>
-                <h1>피드백관리</h1>
-            </div>
-        );
-    }
+function FeedBack() {
+    console.log('피드백렌더');
+
+
+    return (
+        <div>
+            <h1>피드백관리</h1>
+        </div>
+    );
+
 }
 
 export default FeedBack;
