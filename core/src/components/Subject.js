@@ -16,8 +16,7 @@ const Logo_Room = props => {
 
     return (
         <div style={{ textAlign: "center" }}>
-            <Logo width="100" height="200" />
-            <p>{props.class_room}</p>
+            <Logo width="100" />
         </div>
     );
 
@@ -32,6 +31,8 @@ const Subject_Link = props => {
 
 }
 const Subject = props => {
+    console.log('서브젝트렌더');
+
 
     let data = props.data;
     let mode = props.mode;
@@ -43,21 +44,21 @@ const Subject = props => {
     if (data.length == 3) {
 
         list.push(<Subject_Link key={data[0].id} title={data[0].title}
-            link='/teacher/student' />);
+            link='/mainpage/teacher' />);
         list.push(<Subject_Link key={data[1].id} title={data[1].title}
-            link='/teacher/workbook' />);
+            link='/mainpage/teacher/workbook' />);
         list.push(<Subject_Link key={data[2].id} title={data[2].title}
-            link='/teacher/feedback' />);
+            link='/mainpage/teacher/feedback' />);
 
 
-        route.push(<Route path='/teacher/student' component={Student} exact={true} key={data[0].id} />)
-        route.push(<Route path='/teacher/workbook' component={Teacher_WorkBook} key={data[1].id} />)
-        route.push(<Route path='/teacher/feedback' component={FeedBack} key={data[2].id} />)
+        route.push(<Route exact path='/mainpage/teacher' render={() => <Student />} exact={true} key={data[0].id} />)
+        route.push(<Route exact path='/mainpage/teacher/workbook' render={() => <Teacher_WorkBook />} key={data[1].id} />)
+        route.push(<Route exact path='/mainpage/teacher/feedback' render={() => <FeedBack />} key={data[2].id} />)
     }
     else {
         list.push(<Subject_Link key={data[0].id} title={data[0].title}
-            link='/' />);
-        route.push(<Route path='/' component={Student_WorkBook} exact={true} key={data[0].id} />)
+            link='/mainpage/student' />);
+        route.push(<Route path='/mainpage/student' component={Student_WorkBook} exact={true} key={data[0].id} />)
 
     }
 
@@ -68,7 +69,10 @@ const Subject = props => {
                 <Logo_Room class_room={class_room} />
                 {list}
             </div>
-            {route}
+            <Switch>
+                {route}
+
+            </Switch>
         </div >
     );
 

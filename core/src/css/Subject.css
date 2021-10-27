@@ -6,7 +6,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-    height: fit-content;
+    height:10vh;
     padding: 20px;
     color: black;
 
@@ -18,7 +18,8 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    height: fit-content;
+    height:10vh;
+
     padding: 20px;
     color: black;
 

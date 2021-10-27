@@ -3,47 +3,41 @@ import './App.css';
 import React, { useState } from 'react';
 
 import Toolbar from './components/Toolbar';
-import Subject from './components/Subject';
+import Login from './components/Login';
+import SignUp from './components/SignUp'
+import ClassRoom from './components/ClassRoom';
+import MainPage from './components/MainPage';
+
 
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 
 
 
-function App() {
-  let [init, setInit] = useState([{ id: 1, title: 'Login' }, { id: 2, title: 'Sign Up' }])
+function App(props) {
+  //최상단 툴바 및 모드 설정 
+  let [toolbar, setToolBar] = useState([{ id: 1, title: 'Login' }, { id: 2, title: 'Sign Up' }])
   let [mode, setMode] = useState('teacher');
-  let [top, setTop] = useState([{ feed: 'WorkBank' }, { feed: 'FeedBank' }])
 
   //state데이터, state데이터 변경 함수 
 
-  let _feed = null;
-  let _subject = [];
-  let route = [];
-
-  if (mode == 'teacher') {
-    _feed = top[0].feed;
-  }
-  else {
-    _feed = top[1].feed;
-  }
-  let [teacher_subject, setTeacher] = useState([
-    { id: 1, title: 'Student' },
-    { id: 2, title: 'WorkBook' },
-    { id: 3, title: 'FeedBack' }])
-
-  let [student_subject, setStudent] = useState([
-    { id: 1, title: 'WorkBook' }
-  ])
-
 
   return (
-    <Router className="App">
+    <Router>
       <div className="App">
-        {/* <Toolbar data={init} /> */}
-        <Subject data={teacher_subject} mode={mode} />
-      </div>
 
+        <Toolbar data={toolbar} />
+
+        <Switch>
+          <Route exact={true} path='/' render={(props) => <Login {...props} />} />
+          <Route path='/signup' render={(props) => <SignUp {...props} />} />
+          <Route exact path='/classroom/:mode' render={(props) => <ClassRoom {...props} />} />
+          <Route exact path='/mainpage/:mode' render={(props) => <MainPage {...props} />} />
+        </Switch>
+      </div>
     </Router>
+
+
+
 
   );
 
