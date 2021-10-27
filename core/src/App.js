@@ -20,11 +20,17 @@ function App(props) {
 
   //state데이터, state데이터 변경 함수 
 
+  let [teacher_subject, setTeacher] = useState([
+    { id: 1, title: 'Student' },
+    { id: 2, title: 'WorkBook' },
+    { id: 3, title: 'FeedBack' }])
+
 
   return (
     <Router>
+      {/* 서히 시작 */}
       <div className="App">
-
+        {/* 
         <Toolbar data={toolbar} />
 
         <Switch>
@@ -32,7 +38,10 @@ function App(props) {
           <Route path='/signup' render={(props) => <SignUp {...props} />} />
           <Route exact path='/classroom/:mode' render={(props) => <ClassRoom {...props} />} />
           <Route exact path='/mainpage/:mode' render={(props) => <MainPage {...props} />} />
-        </Switch>
+        </Switch> */}
+
+        {/* 온니 시작 */}
+        <Subject data={teacher_subject} mode={mode} />
       </div>
     </Router>
 
