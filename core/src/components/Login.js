@@ -1,59 +1,45 @@
 /*eslint-disable */
-import React, { useState } from 'react';
+import React, { useReducer, useState } from 'react';
 import '../css/Login.css';
 import { ReactComponent as Core_Logo } from '../css/Core.svg';
 
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 
 import SignUp from './SignUp';
-import Login_Success from './Login_Success';
+import ClassRoom from './ClassRoom';
 
 
 
-function Login() {
+function Login({ history }) {
     let [mode, setMode] = useState('teacher');
     let [data, setData] = useState([
         { id: 1, value: "선생님", checked: false },
         { id: 2, value: "학생", checked: false }]);
 
-    let route = [];
-
-    function Login_Click() {
-        var current_mode = [...data];
-
-        //    회원인지 검증하는 서버 필요!!!
-
-        if (current_mode[0].checked == true) {
-            setMode('teacher');
-        }
-        else if (current_mode[1].checked == true) {
-            setMode('student');
-        }
-        console.log(1);
-
-        route.push(<Route path="/loginSuccess" component={Login_Success} />);
-        console.log(2);
-
+    //모드에 따른 분류
+    function ClassRoom_Click() {
+        history.push(`/classroom/:${mode}`);
     }
 
+    //회원가입 
     function SignUp_Click() {
-        route.push(<Route path='/signup' component={SignUp} />);
+        history.push(`/signup`);
     }
 
 
     //체크박스 하나만 선택할수 있게 만들기
     function onChange(e) {
-        console.log(data);
-
         var newData = [...data];
         if (e.target.value == '선생님') {
-
+            setMode('teacher');
 
             newData[0].checked = true;
             newData[1].checked = false;
             setData(newData);
 
         } else {
+            setMode('student');
+
             newData[0].checked = false;
             newData[1].checked = true;
             setData(newData);
@@ -90,10 +76,11 @@ function Login() {
                     </div>
 
                     <div className="link_box" >
-                        <Link to="/loginSuccess" onClick={Login_Click} >LOGIN </Link>
-                        <Link to="/signup" onClick={SignUp_Click} >SIGN UP </Link>
+                        <button onClick={ClassRoom_Click}  >LOGIN </button>
+                        <button onClick={SignUp_Click}  >SIGN UP </button>
                     </div>
-                    {route}
+
+
                 </div>
             </div>
         </div >

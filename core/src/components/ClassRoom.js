@@ -1,20 +1,23 @@
 /*eslint-disable */
 import React, { useState } from 'react';
 import { ReactComponent as Core_Logo } from '../css/Core.svg';
-import '../css/Login_Success.css';
+import '../css/ClassRoom.css';
 
 import Subject from './Subject';
 
 //로그인 성공 후 페이지 -> 서버로부터 모드를 가져와야함 
-function Login_Success() {
-    // let [teacher_subject, setTeacher] = useState([{ id: 1, title: 'Student' },
-    // { id: 2, title: 'WorkBook' },
-    // { id: 3, title: 'FeedBack' }])
+function ClassRoom({ match }) {
+    let [teacher_subject, setTeacher] = useState([{ id: 1, title: 'Student' },
+    { id: 2, title: 'WorkBook' },
+    { id: 3, title: 'FeedBack' }])
 
-    // let [student_subject, setStudent] = useState([
-    //     { id: 1, title: 'WorkBook' }
-    // ])
-    // console.log(props.mode);
+    let [student_subject, setStudent] = useState([
+        { id: 1, title: 'WorkBook' }
+    ])
+
+    const { mode } = match.params;
+    console.log(mode);
+
 
     // let subject = [];
     // let route = [];
@@ -29,6 +32,7 @@ function Login_Success() {
 
     // }
     return (
+
         <div>
             <div className="signup_box">
                 <Core_Logo />
@@ -39,6 +43,6 @@ function Login_Success() {
         </div>
     );
 
-}
+};
 
-export default Login_Success;
+export default ClassRoom;

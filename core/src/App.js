@@ -37,13 +37,13 @@ function App() {
 
 
   return (
-    <Router className="App">
-      <div className="App">
-        {/* <Toolbar data={init} /> */}
-        <Subject data={teacher_subject} mode={mode} />
-      </div>
 
-    </Router>
+    <div className="App">
+      <Toolbar data={init} />
+      {/* <Subject data={teacher_subject} mode={mode} /> */}
+    </div>
+
+
 
   );
 
