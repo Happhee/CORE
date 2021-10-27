@@ -9,7 +9,7 @@ import ClassRoom from './components/ClassRoom';
 import MainPage from './components/MainPage';
 
 
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Link, Redirect } from 'react-router-dom';
 
 
 
@@ -30,7 +30,7 @@ function App(props) {
     <Router>
       {/* 서히 시작 */}
       <div className="App">
-        {/* 
+
         <Toolbar data={toolbar} />
 
         <Switch>
@@ -38,10 +38,11 @@ function App(props) {
           <Route path='/signup' render={(props) => <SignUp {...props} />} />
           <Route exact path='/classroom/:mode' render={(props) => <ClassRoom {...props} />} />
           <Route exact path='/mainpage/:mode' render={(props) => <MainPage {...props} />} />
-        </Switch> */}
+        </Switch>
+
 
         {/* 온니 시작 */}
-        <Subject data={teacher_subject} mode={mode} />
+        {/* <Subject data={teacher_subject} mode={mode} /> */}
       </div>
     </Router>
 

@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { ReactComponent as Core_Logo } from '../css/Core.svg';
 import '../css/ClassRoom.css';
+import { useHistory } from 'react-router';
 
 //로그인 성공 후 페이지 -> 서버로부터 강의실리스트를 가져와야함 
 function ClassRoom({ match, history }) {
@@ -15,7 +16,7 @@ function ClassRoom({ match, history }) {
 
     const { mode } = match.params;
 
-
+    console.log('강의실렌더링');
 
     function ClassRoom_Click(e) {
 

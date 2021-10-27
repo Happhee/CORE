@@ -3,14 +3,16 @@ import React, { useReducer, useState } from 'react';
 import '../css/Login.css';
 import { ReactComponent as Core_Logo } from '../css/Core.svg';
 
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Link, useHistory } from 'react-router-dom';
 
 import SignUp from './SignUp';
 import ClassRoom from './ClassRoom';
 
 
 
-function Login({ history }) {
+function Login() {
+    let history = useHistory();
+    console.log(history);
     console.log('로그인렌더');
 
     let [mode, setMode] = useState('teacher');

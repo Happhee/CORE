@@ -30,6 +30,8 @@ class WorkBook extends Component {
     }
 
     render() {
+        console.log('문제 목차 렌더링');
+
         const { boards } = this.state;
         const list = boards.map(function (row) {
             return row.brdno + row.brdtitle;
