@@ -7,6 +7,9 @@ import Login from './components/Login';
 import SignUp from './components/SignUp'
 import ClassRoom from './components/ClassRoom';
 import MainPage from './components/MainPage';
+import My from './components/My';
+import WorkBank from './teacher/components/WorkBank';
+import FeedBank from './student/components/FeedBank';
 
 
 import { BrowserRouter as Router, Route, Switch, Link, Redirect } from 'react-router-dom';
@@ -38,6 +41,9 @@ function App(props) {
           <Route path='/signup' render={(props) => <SignUp {...props} />} />
           <Route exact path='/classroom/:mode' render={(props) => <ClassRoom {...props} />} />
           <Route exact path='/mainpage/:mode/:page' render={(props) => <MainPage {...props} />} />
+          <Route exact path='/:mode/my' render={(props) => <My {...props} />} />
+          <Route exact path='/:mode/workbank' render={(props) => <WorkBank {...props} />} />
+          <Route exact path='/:mode/feedbank' render={(props) => <FeedBank {...props} />} />
         </Switch>
 
         {/* 온니 시작 */}

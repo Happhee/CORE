@@ -11,6 +11,7 @@ body{
     padding-bottom: 20%;
 }
 .content{
+    background-color: white;
     box-sizing: border-box;
     width: 50%;
     border: solid #692498 5px;
@@ -32,15 +33,15 @@ body{
     
     
 }
-.input_box{
+.click_box{
     display: grid;
-    grid-template-columns: 15% 45%;
     grid-column: 1/4;
     margin-top: 20px;
-    margin-bottom: 20px;
-    font-size: 20px;
+    padding-bottom: 20px;
+    font-size: 30px;
+    border-bottom:  solid #787878 3px;
     justify-content: center;
-    
+     
 }
 span {
     text-align: start;
