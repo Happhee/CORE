@@ -43,11 +43,11 @@ function ClassRoom({ match, history }) {
                     </div>
                     <div className="click_box">
 
-                        <Link to={`../../mainpage/${mode}/${startpage}`}>C 프로그래밍 및 실습</Link>
+                        <Link to={`../../mainpage/${mode}/${startpage}`} className="link">C 프로그래밍 및 실습</Link>
                     </div>
                     <div className="click_box">
 
-                        <Link to={`../../mainpage/${mode}/${startpage}`}>C 프로그래밍 및 실습</Link>
+                        <Link to={`../../mainpage/${mode}/${startpage}`} className="link">C 프로그래밍 및 실습</Link>
                     </div>
 
                 </div>
