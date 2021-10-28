@@ -2,35 +2,51 @@ body{
     background-color: #E0BFE6;
 
 }
-.signup_box{
+.top_box{
     background-color: #E0BFE6;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    padding-bottom: 20%;
 }
-.content{
+.information_content{
     background-color: white;
     box-sizing: border-box;
     width: 50%;
     border: solid #692498 5px;
     text-align: center;
     padding: 5px;
-
     display: grid;
-    grid-template-columns: repeat(3, 1fr); 
-    grid-template-rows: repeat(8, 1fr);
+    grid-template-columns: repeat(2, 1fr); 
+    grid-template-rows: repeat(6, 1fr);
 }
-.title_box{
+.informaion_box{
     display: grid;
     grid-column: 1/4;
-    margin-top: 20px;
-    padding-bottom: 20px;
     font-size: 30px;
     border-bottom:  solid #692498 5px;
     justify-content: center;
+}
+.left_div{
+    display: grid;
+    grid-template-columns: 15% 45%;
+    grid-column: 1;
+    grid-row: 2/5;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    justify-content: center;
     
+}
+.right_div{
+    display: grid;
+    grid-template-columns: 15% 45%;
+    grid-column: 2;
+    grid-row: 2/5;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    justify-content: center;
     
 }
 .input_box{
@@ -68,10 +84,11 @@ span {
     
 }
 
-.signup_success_box{
+.modify_success_box{
     display: grid;
     grid-template-columns:25%;
     grid-column: 1/4;
+    grid-row : 6;
     margin-top: 20px;
     margin-bottom: 20px;
     font-size: 20px;

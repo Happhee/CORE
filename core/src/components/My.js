@@ -43,7 +43,7 @@ function My({ match, history }) {
                     </div>
                     <div className="click_box">
 
-                        <Link to={`../../mainpage/${mode}/${startpage}`} className="link">내 정보</Link>
+                        <Link to={`../../${mode}/my/information`} className="link">내 정보</Link>
                     </div>
                     <div className="click_box">
 

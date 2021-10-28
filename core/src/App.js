@@ -10,6 +10,7 @@ import MainPage from './components/MainPage';
 import My from './components/My';
 import WorkBank from './teacher/components/WorkBank';
 import FeedBank from './student/components/FeedBank';
+import Information from './components/Information';
 
 
 import { BrowserRouter as Router, Route, Switch, Link, Redirect } from 'react-router-dom';
@@ -44,6 +45,7 @@ function App(props) {
           <Route exact path='/:mode/my' render={(props) => <My {...props} />} />
           <Route exact path='/:mode/workbank' render={(props) => <WorkBank {...props} />} />
           <Route exact path='/:mode/feedbank' render={(props) => <FeedBank {...props} />} />
+          <Route exact path='/:mode/my/information' render={(props) => <Information {...props} />} />
         </Switch>
 
         {/* 온니 시작 */}
