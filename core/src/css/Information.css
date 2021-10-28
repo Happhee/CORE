@@ -12,13 +12,13 @@ body{
 .information_content{
     background-color: white;
     box-sizing: border-box;
-    width: 50%;
+    width: 80%;
     border: solid #692498 5px;
     text-align: center;
     padding: 5px;
     display: grid;
     grid-template-columns: repeat(2, 1fr); 
-    grid-template-rows: repeat(6, 1fr);
+    grid-template-rows: repeat(5, 1fr);
 }
 .informaion_box{
     display: grid;
@@ -50,13 +50,12 @@ body{
     
 }
 .input_box{
-    display: grid;
-    grid-template-columns: 15% 45%;
-    grid-column: 1/4;
+    display: block;
+    
     margin-top: 20px;
     margin-bottom: 20px;
     font-size: 20px;
-    justify-content: center;
+    justify-content: left;
     
 }
 span {
@@ -88,7 +87,7 @@ span {
     display: grid;
     grid-template-columns:25%;
     grid-column: 1/4;
-    grid-row : 6;
+    grid-row : 5;
     margin-top: 20px;
     margin-bottom: 20px;
     font-size: 20px;

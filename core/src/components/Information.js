@@ -45,25 +45,25 @@ function My({ match }) {
                     <div className="left_div">
                         {/* 아이디 */}
                         <div className="input_box">
-                            <p className="text"> ID </p>
+                            <div className="text"> ID </div>
                             <input />
                         </div>
                         {/* 예전 비밀번호 */}
                         <div className="input_box">
 
-                            <span className="text"> Old PW </span>
+                            <div className="text"> Old PW </div>
                             <input />
                         </div>
                         {/* 새로운 비밀번호 */}
                         <div className="input_box">
 
-                            <span className="text">New PW </span>
+                            <div className="text">New PW </div>
                             <input />
                         </div>
                         {/* 새 비밀번호 확인 */}
                         <div className="input_box">
 
-                            <span className="text">Confrim New PW </span>
+                            <div className="text">Confrim New PW </div>
                             <input />
                         </div>
                     </div>
@@ -71,17 +71,17 @@ function My({ match }) {
                     <div className="right_div">
                         {/* 이름 */}
                         <div className="input_box">
-                            <span className="text"> 이름 </span>
+                            <div className="text"> 이름 </div>
                             <input />
                             {/* 전화번호 */}
                             <div className="input_box">
-                                <span className="text"> 전화번호 </span>
+                                <div className="text"> 전화번호 </div>
                                 <input />
                             </div>
 
                             {/* 소속 */}
                             <div className="input_box">
-                                <span className="text"> 소속 </span>
+                                <div className="text"> 소속 </div>
                                 <input />
                             </div>
 
@@ -92,12 +92,13 @@ function My({ match }) {
                             </div>
 
                         </div>
-                    </div>
 
+                    </div>
 
                     <div className="modify_success_box">
                         <input type="submit" value="수정하기" />
                     </div>
+
 
                 </div>
             </div>
