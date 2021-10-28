@@ -47,15 +47,15 @@ function My({ match, history }) {
                     </div>
                     <div className="click_box">
 
-                        <Link to={`../../mainpage/${mode}/${startpage}`} className="link">내 강의실</Link>
+                        <Link to={`../../classroom/${mode}`} className="link">내 강의실</Link>
                     </div>
                     <div className="click_box">
 
-                        <Link to={`../../mainpage/${mode}/${startpage}`} className="link">로그아웃</Link>
+                        <Link to={`/`} className="link">로그아웃</Link>
                     </div>
                     <div className="click_last_box">
 
-                        <Link to={`../../mainpage/${mode}/${startpage}`} className="link">탈퇴하기</Link>
+                        <Link to={`/`} className="link">탈퇴하기</Link>
                     </div>
 
                 </div>
