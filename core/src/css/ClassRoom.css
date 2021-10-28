@@ -2,6 +2,7 @@ body{
     background-color: #E0BFE6;
 
 }
+
 .classroom_box{
     background-color: #E0BFE6;
     display: flex;
@@ -11,6 +12,7 @@ body{
     padding-bottom: 20%;
 }
 .content{
+    background-color: white;
     box-sizing: border-box;
     width: 50%;
     border: solid #692498 5px;
@@ -19,7 +21,7 @@ body{
 
     display: grid;
     grid-template-columns: repeat(3, 1fr); 
-    grid-template-rows: repeat(8, 1fr);
+    grid-template-rows: repeat(5, 1fr);
 }
 .title_box{
     display: grid;
@@ -32,19 +34,30 @@ body{
     
     
 }
-.input_box{
+.click_box{
     display: grid;
-    grid-template-columns: 15% 45%;
     grid-column: 1/4;
     margin-top: 20px;
-    margin-bottom: 20px;
-    font-size: 20px;
+    padding-bottom: 20px;
+    font-size: 30px;
+    border-bottom:  solid #787878 3px;
     justify-content: center;
-    
+   
+     
 }
-span {
-    text-align: start;
+
+.link {
+    text-decoration: none;
 }
+.click_last_box{
+    display: grid;
+    grid-column: 1/4;
+    margin-top: 20px;
+    padding-bottom: 20px;
+    font-size: 30px;
+    justify-content: center;
+}
+
 
 
 .link_box{

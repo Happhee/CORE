@@ -2,10 +2,14 @@
 import React, { useState } from 'react';
 import { ReactComponent as Core_Logo } from '../css/Core.svg';
 import '../css/SignUp.css';
+import Toolbar from './Toolbar';
 
 function SignUp() {
     console.log('회원가입렌더');
 
+    let toolbar = [
+        { id: 1, title: 'Login', link: '/' },
+        { id: 2, title: 'Sign Up', link: '/signup' }];
     let [data, setData] = useState([
         { id: 1, value: "선생님", checked: "false" },
         { id: 2, value: "학생", checked: "false" }])
@@ -14,6 +18,8 @@ function SignUp() {
 
     return (
         <div>
+            <Toolbar data={toolbar} />
+
             <div className="signup_box">
                 <Core_Logo />
                 <div className="content">
