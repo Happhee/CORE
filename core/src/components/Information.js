@@ -1,7 +1,7 @@
 /*eslint-disable */
 import React, { useState } from 'react';
 import { ReactComponent as Core_Logo } from '../css/Core.svg';
-import '../css/Information.css';
+
 import { Link } from 'react-router-dom';
 import Toolbar from './Toolbar';
 

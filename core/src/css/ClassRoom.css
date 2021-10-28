@@ -2,9 +2,6 @@ body{
     background-color: #E0BFE6;
 
 }
-span {
-    text-align: start;
-}
 
 .classroom_box{
     background-color: #E0BFE6;
@@ -62,4 +59,15 @@ span {
 }
 
 
+
+.link_box{
+    display: grid;
+    grid-template-columns:50% 50%;
+    grid-column: 2/4;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    justify-content: center;
+    
+}
 
