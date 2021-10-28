@@ -34,6 +34,10 @@ function ClassRoom({ match, history }) {
 
                         <Link to={`../../mainpage/${mode}/student`}>C 프로그래밍 및 실습</Link>
                     </div>
+                    <div className="title_box">
+
+                        <Link to={`../../mainpage/${mode}/student`}>C 프로그래밍 및 실습</Link>
+                    </div>
 
                 </div>
             </div>
