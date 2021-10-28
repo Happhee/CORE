@@ -8,7 +8,9 @@ import Toolbar from './Toolbar';
 
 function Login() {
     let history = useHistory();
-    let [toolbar, setToolBar] = useState([{ id: 1, title: 'Login' }, { id: 2, title: 'Sign Up' }])
+    let toolbar = [
+        { id: 1, title: 'Login', link: '/' },
+        { id: 2, title: 'Sign Up', link: '/signup' }];
 
     console.log('로그인렌더');
 

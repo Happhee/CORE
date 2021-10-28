@@ -7,7 +7,9 @@ import Toolbar from './Toolbar';
 
 //로그인 성공 후 페이지 -> 서버로부터 강의실리스트를 가져와야함 
 function ClassRoom({ match, history }) {
-    let toolbar = [{ id: 1, title: 'My' }, { id: 2, title: 'WorkBank' }];
+    let toolbar = [
+        { id: 1, title: 'My', link: '/teacher/my' },
+        { id: 2, title: 'WorkBank', link: '/teacher/workbank' }];
 
     const { mode } = match.params;
     let startpage = null;
@@ -21,6 +23,8 @@ function ClassRoom({ match, history }) {
     else if (mode == 'student') {
         startpage = 'workbook';
         toolbar[1].title = 'FeedBank';
+        toolbar[0].link = '/student/my';
+        toolbar[1].link = '/student/feedbank';
 
     }
     console.log('강의실렌더링');

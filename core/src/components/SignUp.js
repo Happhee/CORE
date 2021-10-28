@@ -7,7 +7,9 @@ import Toolbar from './Toolbar';
 function SignUp() {
     console.log('회원가입렌더');
 
-    let [toolbar, setToolBar] = useState([{ id: 1, title: 'Login' }, { id: 2, title: 'Sign Up' }])
+    let toolbar = [
+        { id: 1, title: 'Login', link: '/' },
+        { id: 2, title: 'Sign Up', link: '/signup' }];
     let [data, setData] = useState([
         { id: 1, value: "선생님", checked: "false" },
         { id: 2, value: "학생", checked: "false" }])

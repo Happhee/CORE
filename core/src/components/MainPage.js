@@ -1,8 +1,12 @@
 /*eslint-disable */
 import React, { useState } from 'react';
 import Subject from './Subject';
+import Toolbar from './Toolbar';
 
 function MainPage({ match }) {
+    let toolbar = [
+        { id: 1, title: 'My', link: '/teacher/my' },
+        { id: 2, title: 'WorkBank', link: '/teacher/workbank' }];
 
     let [teacher_subject, setTeacher] = useState([{ id: 1, title: 'Student' },
     { id: 2, title: 'WorkBook' },
@@ -20,6 +24,10 @@ function MainPage({ match }) {
     }
     else if (mode == 'student') {
         subject = [...student_subject];
+        toolbar[1].title = 'FeedBank';
+        toolbar[0].link = '/student/my';
+        toolbar[1].link = '/student/feedbank';
+
     }
 
     console.log(mode);
@@ -28,6 +36,7 @@ function MainPage({ match }) {
 
     return (
         <div>
+            <Toolbar data={toolbar} />
             <div>
                 <Subject data={subject} mode={mode} />
             </div>
