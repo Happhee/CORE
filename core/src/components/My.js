@@ -33,7 +33,6 @@ function My({ match, history }) {
     return (
         <div>
             <Toolbar data={toolbar} />
-
             <div className="classroom_box">
                 <Core_Logo />
                 <div className="content">
