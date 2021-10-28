@@ -31,7 +31,7 @@ function App(props) {
       {/* 서히 시작 */}
       <div className="App">
 
-        <Toolbar data={toolbar} />
+        {/* <Toolbar data={toolbar} /> */}
 
         <Switch>
           <Route exact={true} path='/' render={(props) => <Login {...props} />} />

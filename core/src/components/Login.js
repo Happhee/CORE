@@ -4,15 +4,12 @@ import '../css/Login.css';
 import { ReactComponent as Core_Logo } from '../css/Core.svg';
 
 import { BrowserRouter as Router, Route, Switch, Link, useHistory } from 'react-router-dom';
-
-import SignUp from './SignUp';
-import ClassRoom from './ClassRoom';
-
-
+import Toolbar from './Toolbar';
 
 function Login() {
     let history = useHistory();
-    console.log(history);
+    let [toolbar, setToolBar] = useState([{ id: 1, title: 'Login' }, { id: 2, title: 'Sign Up' }])
+
     console.log('로그인렌더');
 
     let [mode, setMode] = useState('teacher');
@@ -26,13 +23,11 @@ function Login() {
     //모드에 따른 분류
     function ClassRoom_Click() {
         history.push(`/classroom/${mode}`);
-
     }
 
     //회원가입 
     function SignUp_Click() {
         history.push(`/signup`);
-
     }
 
 
@@ -59,6 +54,8 @@ function Login() {
 
     return (
         <div>
+            <Toolbar data={toolbar} />
+
             <div className="login_box">
                 <Core_Logo />
 
