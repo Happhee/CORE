@@ -6,19 +6,17 @@ import { Link } from 'react-router-dom';
 
 //로그인 성공 후 페이지 -> 서버로부터 강의실리스트를 가져와야함 
 function ClassRoom({ match, history }) {
-    let [teacher_subject, setTeacher] = useState([{ id: 1, title: 'Student' },
-    { id: 2, title: 'WorkBook' },
-    { id: 3, title: 'FeedBack' }])
-
-    let [student_subject, setStudent] = useState([
-        { id: 1, title: 'WorkBook' }
-    ])
 
     const { mode } = match.params;
-
-
-
+    let startpage = null;
+    if (mode == 'teacher') {
+        startpage = 'student';
+    }
+    else {
+        startpage = 'workbook';
+    }
     console.log('강의실렌더링');
+
 
     return (
 
@@ -32,11 +30,11 @@ function ClassRoom({ match, history }) {
                     </div>
                     <div className="title_box">
 
-                        <Link to={`../../mainpage/${mode}/student`}>C 프로그래밍 및 실습</Link>
+                        <Link to={`../../mainpage/${mode}/${startpage}`}>C 프로그래밍 및 실습</Link>
                     </div>
                     <div className="title_box">
 
-                        <Link to={`../../mainpage/${mode}/student`}>C 프로그래밍 및 실습</Link>
+                        <Link to={`../../mainpage/${mode}/${startpage}`}>C 프로그래밍 및 실습</Link>
                     </div>
 
                 </div>

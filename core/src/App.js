@@ -40,13 +40,10 @@ function App(props) {
           <Route exact path='/mainpage/:mode/:page' render={(props) => <MainPage {...props} />} />
         </Switch>
 
-
         {/* 온니 시작 */}
         {/* <Subject data={teacher_subject} mode={mode} /> */}
       </div>
     </Router>
-
-
 
 
   );

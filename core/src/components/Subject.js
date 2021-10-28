@@ -56,8 +56,8 @@ const Subject = props => {
     }
     else {
         list.push(<Subject_Link key={data[0].id} title={data[0].title}
-            link='/mainpage/student' />);
-        route.push(<Route path='/mainpage/student' component={Student_WorkBook} exact={true} key={data[0].id} />)
+            link='/mainpage/student/workbook' />);
+        route.push(<Route path='/mainpage/student/workbook' component={Student_WorkBook} exact={true} key={data[0].id} />)
 
     }
 
