@@ -1,4 +1,3 @@
-
 import React from 'react'
 import { post } from 'axios';
 import Dialog from '@material-ui/core/Dialog';
@@ -9,183 +8,186 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
 
+
 const styles = theme => ({
 
-hidden: {
-display: 'none'
-}
+    hidden: {
+        display: 'none'
+    }
 });
 
 
 
 class Student extends React.Component {
-constructor(props) {
-super(props);
-this.state = {
-file: null,
-userName: '',
-birthday: '',
-gender: '',
-job: '',
-fileName: '',
-open: false
-}
+    constructor(props) {
+        super(props);
+        this.state = {
+            file: null,
+            userName: '',
+            birthday: '',
+            gender: '',
+            job: '',
+            fileName: '',
+            open: false
+        }
 
-this.handleFormSubmit = this.handleFormSubmit.bind(this)
-this.handleFileChange = this.handleFileChange.bind(this)
-this.handleValueChange = this.handleValueChange.bind(this)
-this.addCustomer = this.addCustomer.bind(this)
-this.handleClickOpen = this.handleClickOpen.bind(this)
-this.handleClose = this.handleClose.bind(this);
-}
+        this.handleFormSubmit = this.handleFormSubmit.bind(this)
+        this.handleFileChange = this.handleFileChange.bind(this)
+        this.handleValueChange = this.handleValueChange.bind(this)
+        this.addCustomer = this.addCustomer.bind(this)
+        this.handleClickOpen = this.handleClickOpen.bind(this)
+        this.handleClose = this.handleClose.bind(this);
+    }
 
-handleFormSubmit(e) {
-e.preventDefault()
-this.addCustomer()
-.then((response) => {
-console.log(response.data);
-this.props.stateRefresh();
-})
+    handleFormSubmit(e) {
+        e.preventDefault()
+        this.addCustomer()
+            .then((response) => {
+                console.log(response.data);
+                this.props.stateRefresh();
+            })
 
-this.setState({
-file: null,
-userName: '',
-birthday: '',
-gender: '',
-job: '',
-fileName: '',
-open: false
-})
-}
+        this.setState({
+            file: null,
+            userName: '',
+            birthday: '',
+            gender: '',
+            job: '',
+            fileName: '',
+            open: false
+        })
+    }
 
-handleFileChange(e) {
-this.setState({
-file: e.target.files[0],
-fileName: e.target.value
-});
-}
-
-
-handleValueChange(e) {
-let nextState = {};
-nextState[e.target.name] = e.target.value;
-this.setState(nextState);
-}
+    handleFileChange(e) {
+        this.setState({
+            file: e.target.files[0],
+            fileName: e.target.value
+        });
+    }
 
 
-addCustomer(){
-const url = '/api/customers';
-const formData = new FormData();
-formData.append('image', this.state.file)
-formData.append('name', this.state.userName)
-formData.append('birthday', this.state.birthday)
-formData.append('gender', this.state.gender)
-formData.append('job', this.state.job)
-const config = {
-headers: {
-'content-type': 'multipart/form-data'
-}
-}
-
-return post(url, formData, config)
-
-}
+    handleValueChange(e) {
+        let nextState = {};
+        nextState[e.target.name] = e.target.value;
+        this.setState(nextState);
+    }
 
 
+    addCustomer() {
+        const url = '/api/customers';
+        const formData = new FormData();
+        formData.append('image', this.state.file)
+        formData.append('name', this.state.userName)
+        formData.append('birthday', this.state.birthday)
+        formData.append('gender', this.state.gender)
+        formData.append('job', this.state.job)
+        const config = {
+            headers: {
+                'content-type': 'multipart/form-data'
+            }
+        }
 
-handleClickOpen() {
+        return post(url, formData, config)
 
-this.setState({
-
-open: true
-
-});
-
-}
+    }
 
 
 
-handleClose() {
+    handleClickOpen() {
 
-this.setState({
+        this.setState({
 
-file: null,
+            open: true
 
-userName: '',
+        });
 
-birthday: '',
-
-gender: '',
-
-job: '',
-
-fileName: '',
-
-open: false
-
-})
-
-}
+    }
 
 
 
-render() {
+    handleClose() {
 
-const { classes } = this.props;
+        this.setState({
 
-return (
+            file: null,
 
-<div>
+            userName: '',
 
-<Button variant="contained" color="primary" onClick={this.handleClickOpen}>
+            birthday: '',
 
-고객 추가하기
+            gender: '',
 
-</Button>
+            job: '',
 
-<Dialog open={this.state.open} onClose={this.handleClose}>
+            fileName: '',
 
-<DialogTitle>고객 추가</DialogTitle>
+            open: false
 
-<DialogContent>
+        })
 
-<input className={classes.hidden} accept="image/*" id="raised-button-file" type="file" file={this.state.file} value={this.state.fileName} onChange={this.handleFileChange} />
+    }
 
-<label htmlFor="raised-button-file">
 
-<Button variant="contained" color="primary" component="span" name="file">
 
-{this.state.fileName === ''? "프로필 이미지 선택" : this.state.fileName}
+    render() {
 
-</Button>
+        // const { history } = this.props;
+        const { classes } = this.props;
+        console.log('학생 목록 렌더링');
+        // console.log(history);
+        return (
 
-</label><br/>
+            <div>
 
-<TextField label="이름" type="text" name="userName" value={this.state.userName} onChange={this.handleValueChange} /><br/>
+                <Button variant="contained" color="primary" onClick={this.handleClickOpen}>
 
-<TextField label="생년월일" type="text" name="birthday" value={this.state.birthday} onChange={this.handleValueChange} /><br/>
+                    고객 추가하기
 
-<TextField label="성별" type="text" name="gender" value={this.state.gender} onChange={this.handleValueChange} /><br/>
+                </Button>
 
-<TextField label="직업" type="text" name="job" value={this.state.job} onChange={this.handleValueChange} /><br/>
+                <Dialog open={this.state.open} onClose={this.handleClose}>
 
-</DialogContent>
+                    <DialogTitle>고객 추가</DialogTitle>
 
-<DialogActions>
+                    <DialogContent>
 
-<Button variant="contained" color="primary" onClick={this.handleFormSubmit}>추가</Button>
+                        <input className={classes.hidden} accept="image/*" id="raised-button-file" type="file" file={this.state.file} value={this.state.fileName} onChange={this.handleFileChange} />
 
-<Button variant="outlined" color="primary" onClick={this.handleClose}>닫기</Button>
+                        <label htmlFor="raised-button-file">
 
-</DialogActions>
+                            <Button variant="contained" color="primary" component="span" name="file">
 
-</Dialog>
+                                {this.state.fileName === '' ? "프로필 이미지 선택" : this.state.fileName}
 
-</div>
+                            </Button>
 
-)
+                        </label><br />
 
-}
+                        <TextField label="이름" type="text" name="userName" value={this.state.userName} onChange={this.handleValueChange} /><br />
+
+                        <TextField label="생년월일" type="text" name="birthday" value={this.state.birthday} onChange={this.handleValueChange} /><br />
+
+                        <TextField label="성별" type="text" name="gender" value={this.state.gender} onChange={this.handleValueChange} /><br />
+
+                        <TextField label="직업" type="text" name="job" value={this.state.job} onChange={this.handleValueChange} /><br />
+
+                    </DialogContent>
+
+                    <DialogActions>
+
+                        <Button variant="contained" color="primary" onClick={this.handleFormSubmit}>추가</Button>
+
+                        <Button variant="outlined" color="primary" onClick={this.handleClose}>닫기</Button>
+
+                    </DialogActions>
+
+                </Dialog>
+
+            </div>
+
+        )
+
+    }
 
 }
 

@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { ReactComponent as Core_Logo } from '../css/Core.svg';
 import '../css/ClassRoom.css';
+import { Link } from 'react-router-dom';
 
 //로그인 성공 후 페이지 -> 서버로부터 강의실리스트를 가져와야함 
 function ClassRoom({ match, history }) {
@@ -17,11 +18,8 @@ function ClassRoom({ match, history }) {
 
 
 
-    function ClassRoom_Click(e) {
+    console.log('강의실렌더링');
 
-        history.push(`../../mainpage/${mode}`);
-
-    }
     return (
 
         <div>
@@ -34,7 +32,11 @@ function ClassRoom({ match, history }) {
                     </div>
                     <div className="title_box">
 
-                        <button onClick={ClassRoom_Click} >C 프로그래밍 및 실습</button>
+                        <Link to={`../../mainpage/${mode}/student`}>C 프로그래밍 및 실습</Link>
+                    </div>
+                    <div className="title_box">
+
+                        <Link to={`../../mainpage/${mode}/student`}>C 프로그래밍 및 실습</Link>
                     </div>
 
                 </div>

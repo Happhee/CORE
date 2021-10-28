@@ -4,6 +4,8 @@ import { ReactComponent as Core_Logo } from '../css/Core.svg';
 import '../css/SignUp.css';
 
 function SignUp() {
+    console.log('회원가입렌더');
+
     let [data, setData] = useState([
         { id: 1, value: "선생님", checked: "false" },
         { id: 2, value: "학생", checked: "false" }])
