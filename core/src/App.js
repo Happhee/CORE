@@ -11,6 +11,7 @@ import My from './components/My';
 import WorkBank from './teacher/components/WorkBank';
 import FeedBank from './student/components/FeedBank';
 import Information from './components/Information';
+import Subject from './components/Subject';
 
 
 import { BrowserRouter as Router, Route, Switch, Link, Redirect } from 'react-router-dom';
@@ -36,7 +37,7 @@ function App(props) {
       <div className="App">
 
         {/* <Toolbar data={toolbar} /> */}
-
+        {/* 
         <Switch>
           <Route exact={true} path='/' render={(props) => <Login {...props} />} />
           <Route path='/signup' render={(props) => <SignUp {...props} />} />
@@ -46,10 +47,10 @@ function App(props) {
           <Route exact path='/:mode/workbank' render={(props) => <WorkBank {...props} />} />
           <Route exact path='/:mode/feedbank' render={(props) => <FeedBank {...props} />} />
           <Route exact path='/:mode/my/information' render={(props) => <Information {...props} />} />
-        </Switch>
+        </Switch> */}
 
         {/* 온니 시작 */}
-        {/* <Subject data={teacher_subject} mode={mode} /> */}
+        <Subject data={teacher_subject} mode={mode} />
       </div>
     </Router>
 
