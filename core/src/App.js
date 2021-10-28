@@ -37,7 +37,7 @@ function App(props) {
           <Route exact={true} path='/' render={(props) => <Login {...props} />} />
           <Route path='/signup' render={(props) => <SignUp {...props} />} />
           <Route exact path='/classroom/:mode' render={(props) => <ClassRoom {...props} />} />
-          <Route exact path='/mainpage/:mode' render={(props) => <MainPage {...props} />} />
+          <Route exact path='/mainpage/:mode/:page' render={(props) => <MainPage {...props} />} />
         </Switch>
 
 

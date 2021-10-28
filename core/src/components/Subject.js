@@ -33,7 +33,6 @@ const Subject_Link = props => {
 const Subject = props => {
     console.log('서브젝트렌더');
 
-
     let data = props.data;
     let mode = props.mode;
     let class_room = props.class_room;
@@ -44,14 +43,14 @@ const Subject = props => {
     if (data.length == 3) {
 
         list.push(<Subject_Link key={data[0].id} title={data[0].title}
-            link='/mainpage/teacher' />);
+            link='/mainpage/teacher/student' />);
         list.push(<Subject_Link key={data[1].id} title={data[1].title}
             link='/mainpage/teacher/workbook' />);
         list.push(<Subject_Link key={data[2].id} title={data[2].title}
             link='/mainpage/teacher/feedback' />);
 
 
-        route.push(<Route exact path='/mainpage/teacher' render={() => <Student />} exact={true} key={data[0].id} />)
+        route.push(<Route exact path='/mainpage/teacher/student' render={() => <Student />} key={data[0].id} />)
         route.push(<Route exact path='/mainpage/teacher/workbook' render={() => <Teacher_WorkBook />} key={data[1].id} />)
         route.push(<Route exact path='/mainpage/teacher/feedback' render={() => <FeedBack />} key={data[2].id} />)
     }
@@ -63,16 +62,15 @@ const Subject = props => {
     }
 
 
+
+
     return (
         <div>
             <div className={mode + "_subject"}>
                 <Logo_Room class_room={class_room} />
                 {list}
             </div>
-            <Switch>
-                {route}
-
-            </Switch>
+            {route}
         </div >
     );
 

@@ -8,6 +8,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
 
+
 const styles = theme => ({
 
     hidden: {
@@ -130,8 +131,10 @@ class Student extends React.Component {
 
     render() {
 
+        // const { history } = this.props;
         const { classes } = this.props;
         console.log('학생 목록 렌더링');
+        // console.log(history);
         return (
 
             <div>
