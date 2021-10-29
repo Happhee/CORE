@@ -14,59 +14,70 @@ function SignUp() {
         { id: 1, value: "선생님", checked: false },
         { id: 2, value: "학생", checked: false }]);
 
+    //체크박스 하나만 선택할수 있게 만들기
+    function onChange(e) {
+        var newData = [...data];
+        if (e.target.value == '선생님') {
 
+            newData[0].checked = true;
+            newData[1].checked = false;
+            setData(newData);
+
+        } else {
+
+
+            newData[0].checked = false;
+            newData[1].checked = true;
+            setData(newData);
+
+        }
+    }
     return (
         <div>
             <Toolbar data={toolbar} />
 
             <div className="signup_box">
                 <Core_Logo />
-                <div className="content">
+                <div className="signup_content">
                     {/* 회원가입 타이틀  */}
                     <div className="title_box">
                         <span>회원가입</span>
                     </div>
 
                     {/* 아이디 */}
-                    <div className="input_box">
-                        <span className="text"> ID </span>
-                        <input />
-                    </div>
+
+                    <span className="signup_text"> ID </span>
+                    <input className="signup_input_box" />
+
+
+
 
                     {/* 비밀번호 */}
-                    <div className="input_box">
 
-                        <span className="text"> PW </span>
-                        <input />
-                    </div>
+                    <span className="signup_text"> PW </span>
+                    <input className="signup_input_box" />
 
                     {/* 이름 */}
-                    <div className="input_box">
-                        <span className="text"> 이름 </span>
-                        <input />
-                    </div>
+                    <span className="signup_text"> 이름 </span>
+                    <input className="signup_input_box" />
 
                     {/* 전화번호 */}
-                    <div className="input_box">
-                        <span className="text"> 전화번호 </span>
-                        <input />
-                    </div>
+                    <span className="signup_text"> 전화번호 </span>
+                    <input className="signup_input_box" />
 
                     {/* 소속 */}
-                    <div className="input_box">
-                        <span className="text"> 소속 </span>
-                        <input />
-                    </div>
+                    <span className="signup_text"> 소속 </span>
+                    <input className="signup_input_box" />
 
                     {/* 선생님/학생 */}
                     <div className="check_box">
 
-                        <input type="checkbox" cheked={data[0].checked}
-                            value={data[0].value} />
+                        <input type="checkbox" checked={data[0].checked}
+                            value={data[0].value} onChange={onChange} />
                         <span>{data[0].value}</span>
 
-                        <input type="checkbox" cheked={data[1].checked}
-                            value={data[1].value} />
+                        <input type="checkbox" checked={data[1].checked}
+                            value={data[1].value} onChange={onChange} />
                         <span>{data[1].value}</span>
                     </div>
 
