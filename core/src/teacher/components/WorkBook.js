@@ -1,82 +1,71 @@
 /*eslint-disable */
-
-import '../css/WorkBook.css'
 import React, { Component } from 'react';
+import '../css/WorkBook.css'
+import Unit from '../../components/Unit'
+import Paper from '@material-ui/core/Paper';
+import Table from '@material-ui/core/Table';
+import TableHead from '@material-ui/core/TableHead';
+import TableBody from '@material-ui/core/TableBody';
+import TableRow from '@material-ui/core/TableRow';
+import TableCell from '@material-ui/core/TableCell';
+import { withStyles } from '@material-ui/core/styles';
+import UnitAdd from '../../components/UnitAdd';
 
-class WorkBook extends Component {
-    state = {
-        boards: [
-            {
-                brdno: 1,
-                brdtitle: '조건문 이용하기',
-                brdnum: '20',
-            },
-            {
-                brdno: 2,
-                brdtitle: '포인터와 구조체',
-                brdnum: '12',
-            },
-            {
-                brdno: 3,
-                brdtitle: '반복문 활용하기',
-                brdnum: '8',
-            }
-        ]
+const styles = theme => ({
+    root: {
+      width: "100%",
+      marginTop: theme.spacing.unit * 3,
+      overflowX: "auto"
+    },
+    table: {
+      minWidth: 1080
     }
-    handleRemove = (brdno) => {
-        this.setState({
-            boards: this.state.boards.filter(row => row.brdno !== brdno)
-        })
-    }
+  });
 
+
+  const unit = [
+    {
+      'id': 1,
+      'name': '조건문 활용하기',
+      'count': 10
+    },
+    {
+      'id': 2,
+      'name': '포인터와 구조체',
+      'count': 15
+    },
+    {
+      'id': 3,
+      'name': '반복문 사용하기',
+      'count': 20
+    }
+  ]
+
+  class WorkBook extends Component {
     render() {
-        console.log('문제 목차 렌더링');
-
-        const { boards } = this.state;
-        const list = boards.map(function (row) {
-            return row.brdno + row.brdtitle;
-        });
-
-        return (
-            <div>
-                <h1>
-                    WorkBook-Chapter List
-                </h1>
-                <table border="1">
-                    <tbody>
-                        <tr align="center">
-                            <td width="200">NO</td>
-                            <td width="800">단원</td>
-                            <td width="400">문항수</td>
-                        </tr>
-                        {
-                            boards.map(row =>
-                                (<BoardItem key={row.brdno} row={row} />)
-                            )
-                        }
-                    </tbody>
-                </table>
-            </div>
-        );
-
+      const { classes } = this.props;
+      return (
+        <div>
+        <Paper className={classes.root}>
+          <Table className={classes.table}>
+            <TableHead>
+              <TableRow>
+                <TableCell>NO</TableCell>
+                <TableCell>단원명</TableCell>
+                <TableCell>문항수</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {unit.map(c => {
+                return <Unit id={c.id} name={c.name} count={c.count} />
+              })}
+            </TableBody>
+          </Table>
+        </Paper>
+        <UnitAdd/>
+        </div>
+      );
     }
-}
-
-class BoardItem extends React.Component {
-    handleRemove = () => {
-        const { row, onRemove } = this.props;
-        onRemove(row.brdno);
-    }
-    render() {
-        console.log(this.props.row.brdno);
-        return (
-            <tr>
-                <td>{this.props.row.brdno}</td>
-                <td><a onClick={this.handleSelectRow}>{this.props.row.brdtitle}</a></td>
-                <td>{this.props.row.brdnum}</td>
-            </tr>
-        );
-    }
-}
-
-export default WorkBook;
+  }
+  
+  export default withStyles(styles)(WorkBook);
