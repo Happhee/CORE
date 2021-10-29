@@ -11,9 +11,8 @@ function SignUp() {
         { id: 1, title: 'Login', link: '/' },
         { id: 2, title: 'Sign Up', link: '/signup' }];
     let [data, setData] = useState([
-        { id: 1, value: "선생님", checked: "false" },
-        { id: 2, value: "학생", checked: "false" }])
-
+        { id: 1, value: "선생님", checked: false },
+        { id: 2, value: "학생", checked: false }]);
 
 
     return (
