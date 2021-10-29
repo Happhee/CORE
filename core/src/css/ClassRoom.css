@@ -59,6 +59,16 @@ body{
     
 
 }
+.click_last_box{
+    display: grid;
+    grid-column: 1/4;
+    margin-top: 20px;
+    padding-bottom: 10px;
+    font-size: 30px;
+    justify-content: center;
+   
+     
+}
 
 
 
