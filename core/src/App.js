@@ -20,7 +20,10 @@ import { BrowserRouter as Router, Route, Switch, Link, Redirect } from 'react-ro
 
 function App(props) {
   //최상단 툴바 및 모드 설정 
-  let [toolbar, setToolBar] = useState([{ id: 1, title: 'Login' }, { id: 2, title: 'Sign Up' }])
+
+  let toolbar = [
+    { id: 1, title: 'Login', link: '/' },
+    { id: 2, title: 'Sign Up', link: '/signup' }];
   let [mode, setMode] = useState('teacher');
 
   //state데이터, state데이터 변경 함수 
@@ -36,8 +39,8 @@ function App(props) {
       {/* 서히 시작 */}
       <div className="App">
 
-        {/* <Toolbar data={toolbar} /> */}
-        {/* 
+        <Toolbar data={toolbar} />
+
         <Switch>
           <Route exact={true} path='/' render={(props) => <Login {...props} />} />
           <Route path='/signup' render={(props) => <SignUp {...props} />} />
@@ -47,10 +50,10 @@ function App(props) {
           <Route exact path='/:mode/workbank' render={(props) => <WorkBank {...props} />} />
           <Route exact path='/:mode/feedbank' render={(props) => <FeedBank {...props} />} />
           <Route exact path='/:mode/my/information' render={(props) => <Information {...props} />} />
-        </Switch> */}
+        </Switch>
 
         {/* 온니 시작 */}
-        <Subject data={teacher_subject} mode={mode} />
+        {/* <Subject data={teacher_subject} mode={mode} /> */}
       </div>
     </Router>
 
