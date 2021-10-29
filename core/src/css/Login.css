@@ -9,33 +9,39 @@ body{
     justify-content: center;
     flex-direction: column;
 }
-.input_content{
-    background-color: white;
-
+.login_content{
     box-sizing: border-box;
     width: 50%;
     border: solid #692498 5px;
     text-align: center;
     padding: 5px;
-
+background-color: white;
     display: grid;
     grid-template-columns: repeat(3, 1fr); 
     grid-template-rows: repeat(4, 1fr);
 }
 
-.input_box{
-    display: grid;
-    grid-template-columns: 15% 45%;
-    grid-column: 1/4;
-
+.login_input_box{
+    
+    grid-column: 2/3;
+    
     margin-top: 20px;
     margin-bottom: 20px;
+    
     font-size: 25px;
-    justify-content: center;
+    justify-content: left;
+
+
 }
-span {
-    text-align: start;
+.login_text{
+    grid-column: 1/2;
+    font-size: 25px;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    
 }
+
 
 
 .check_box {
@@ -51,7 +57,7 @@ span {
 .link_box{
     display: grid;
     grid-template-columns:50% 50%;
-    grid-column: 3/4;
+    
     margin-top: 20px;
     margin-bottom: 20px;
     font-size: 20px;
