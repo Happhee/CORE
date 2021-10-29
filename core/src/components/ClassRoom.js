@@ -23,22 +23,15 @@ function ClassRoom({ match, history }) {
     let startpage = null;
     let add_button = null;
     let dialog = null;
+    let [classroom, setClassroom] = useState('');
 
     //서버로 부터 강의실 목록 가져오기 
     let [classrooms, setClassrooms] = useState(
         ['C프로그래밍 및 실습',
             '자료구조 및 실습',
-            '알고리즘 및 실습',
-            '고급 C프로그래밍 및 실습',
             '컴퓨터구조',
             '운영체제']
     )
-    let [classroom, setClassroom] = useState('');
-
-    const class_list = classrooms.map((classroom, index) =>
-        <div className="click_box" key={index}>
-            <Link to={`../../mainpage/${mode}/${startpage}`} className="link" key={index}>{classroom}</Link>
-        </div>);
 
     if (mode == 'teacher') {
         startpage = 'student';
@@ -56,6 +49,11 @@ function ClassRoom({ match, history }) {
         toolbar[1].link = '/student/feedbank';
 
     }
+
+    const class_list = classrooms.map((classroom, index) =>
+        <div className="click_box" key={index}>
+            <Link to={`../../mainpage/${mode}/${startpage}`} className="link" key={index}>{classroom}</Link>
+        </div>);
 
 
 
