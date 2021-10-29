@@ -33,6 +33,7 @@ function ClassRoom({ match, history }) {
             '컴퓨터구조',
             '운영체제']
     )
+    let [classroom, setClassroom] = useState('');
 
     const class_list = classrooms.map((classroom, index) =>
         <div className="click_box" key={index}>
@@ -73,14 +74,12 @@ function ClassRoom({ match, history }) {
     function handleClose() {
         setDialog_data({ file: null, fileName: '', open: false });
     }
+
     function handleFormSubmit() {
 
-        setClassrooms(
-            [...classrooms],
-
-        )
+        setClassrooms([...classrooms, classroom])
+        setDialog_data({ open: false })
     }
-    let [classroom, setClassroom] = useState('');
 
     const handleValueChange = (e) => {
         const { value } = e.target;
