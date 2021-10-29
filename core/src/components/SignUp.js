@@ -15,8 +15,6 @@ function SignUp() {
         { id: 2, value: "학생", checked: false }]);
 
 
-
-
     return (
         <div>
             <Toolbar data={toolbar} />
