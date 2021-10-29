@@ -13,11 +13,27 @@ function ClassRoom({ match, history }) {
 
     const { mode } = match.params;
     let startpage = null;
+    let add_button = null;
+
+    //서버로 부터 강의실 목록 가져오기 
+    let [classrooms, setClassrooms] = useState(
+        ['C프로그래밍 및 실습',
+            '자료구조 및 실습',
+            '알고리즘 및 실습',
+            '고급 C프로그래밍 및 실습',
+            '컴퓨터구조',
+            '운영체제']
+    )
 
 
 
     if (mode == 'teacher') {
         startpage = 'student';
+        add_button = [
+            <div className="add_class_box" key="add">
+                <button className="add_button" key="add" >+</button>
+            </div>
+        ]
     }
     // 툴바 모드 바꿔주기 
     else if (mode == 'student') {
@@ -29,6 +45,11 @@ function ClassRoom({ match, history }) {
     }
     console.log('강의실렌더링');
 
+    const class_list = classrooms.map((classroom, index) =>
+        <div className="click_box" key={index}>
+            <Link to={`../../mainpage/${mode}/${startpage}`} className="link" key={index}>{classroom}</Link>
+        </div>
+    );
 
     return (
         <div>
@@ -37,19 +58,13 @@ function ClassRoom({ match, history }) {
             <div className="classroom_box">
                 <Core_Logo />
                 <div className="content">
-                    {/* 회원가입 타이틀  */}
+
                     <div className="title_box">
                         <span>나의 강의실</span>
                     </div>
-                    <div className="click_box">
+                    {class_list}
 
-                        <Link to={`../../mainpage/${mode}/${startpage}`} className="link">C 프로그래밍 및 실습</Link>
-                    </div>
-                    <div className="click_box">
-
-                        <Link to={`../../mainpage/${mode}/${startpage}`} className="link">C 프로그래밍 및 실습</Link>
-                    </div>
-
+                    {add_button}
                 </div>
             </div>
         </div>

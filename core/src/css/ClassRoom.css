@@ -49,25 +49,26 @@ body{
 .link {
     text-decoration: none;
 }
-.click_last_box{
+.add_class_box{
     display: grid;
-    grid-column: 1/4;
-    margin-top: 20px;
-    padding-bottom: 20px;
-    font-size: 30px;
-    justify-content: center;
+    grid-column: 3;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 50;
+    justify-content: right;
+    
+
 }
 
 
 
-.link_box{
+.add_button{
     display: grid;
-    grid-template-columns:50% 50%;
-    grid-column: 2/4;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    font-size: 20px;
+    grid-column: 3;
+    font-size: 30px;
     justify-content: center;
+     border-radius: 50%;
+     margin-right: 10px;
     
 }
 
