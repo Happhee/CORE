@@ -4,11 +4,15 @@ import Toolbar from '../../components/Toolbar';
 import { ReactComponent as Core_Logo } from '../../css/Core.svg'
 import CoreTable from '../../components/CoreTable';
 
+
 function WorkBank() {
     console.log('워크뱅크렌더');
     let toolbar = [
         { id: 1, title: 'My', link: '/teacher/my' },
         { id: 2, title: 'WorkBank', link: '/teacher/workbank' }];
+
+    let table_cells = ['NO', '단원명', '문항수', '편집']
+    let edit = true;
 
     let unit = [
         {
@@ -39,7 +43,7 @@ function WorkBank() {
                         <span>WorkBank</span>
                     </div>
                     <div className="coretable_workbank">
-                        <CoreTable unit={unit} />
+                        <CoreTable table_cells={table_cells} unit={unit} edit={edit} />
                     </div>
 
                 </div>

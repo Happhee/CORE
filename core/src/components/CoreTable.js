@@ -9,14 +9,13 @@ import TableBody from '@material-ui/core/TableBody';
 import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
 import { withStyles } from '@material-ui/core/styles';
-import UnitAdd from '../components/UnitAdd';
 
 
 
 const styles = theme => ({
     root: {
         width: "100%",
-        marginTop: theme.spacing.unit,
+        marginTop: theme.spacing(4),
         overflowX: "auto"
     },
     table: {
@@ -25,7 +24,8 @@ const styles = theme => ({
 });
 function CoreTable(props) {
     let [unit, setUnit] = useState(props.unit);
-
+    let table_cells = props.table_cells;
+    let edit = props.edit;
 
     return (
         <div >
@@ -33,14 +33,14 @@ function CoreTable(props) {
                 <Table className={styles.table}>
                     <TableHead>
                         <TableRow>
-                            <TableCell>NO</TableCell>
-                            <TableCell>단원명</TableCell>
-                            <TableCell>문항수</TableCell>
+                            {table_cells.map((cell, index) => {
+                                return <TableCell key={index}>{cell}</TableCell>
+                            })}
                         </TableRow>
                     </TableHead>
                     <TableBody>
                         {unit.map(c => {
-                            return <Unit id={c.id} name={c.name} count={c.count} />
+                            return <Unit key={c.id} id={c.id} name={c.name} count={c.count} edit={edit} />
                         })}
                     </TableBody>
                 </Table>
