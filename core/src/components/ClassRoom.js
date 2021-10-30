@@ -1,5 +1,5 @@
 /*eslint-disable */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ReactComponent as Core_Logo } from '../css/Core.svg';
 import '../css/ClassRoom.css';
 import { Link } from 'react-router-dom';
@@ -60,6 +60,8 @@ function ClassRoom({ match, history }) {
 
 
     console.log('강의실렌더링');
+
+
 
     return (
         <div>
