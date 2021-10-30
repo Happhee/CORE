@@ -1,4 +1,4 @@
-import '../css/FeedBack.css'
+import '../css/WorkBank.css'
 import React from 'react';
 
 function WorkBank() {
@@ -6,7 +6,7 @@ function WorkBank() {
 
 
     return (
-        <div>
+        <div className="main_div">
             <h1>WorkBank</h1>
         </div>
     );

@@ -11,8 +11,8 @@ const Toolbar = props => {
     return (
         <div>
             <div className="tool_bar">
-                <Link to={data[0].link} className="text_style"> {data[0].title}</Link>
                 <Link to={data[1].link} className="text_style">{data[1].title}</Link>
+                <Link to={data[0].link} className="text_style"> {data[0].title}</Link>
             </div>
         </div>
     );

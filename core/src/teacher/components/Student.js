@@ -6,7 +6,7 @@ function Student() {
 
 
     return (
-        <div>
+        <div className="main_div">
             <h1>학생관리</h1>
         </div>
     );
