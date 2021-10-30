@@ -12,40 +12,40 @@ import { withStyles } from '@material-ui/core/styles';
 import UnitAdd from '../../components/UnitAdd';
 
 const styles = theme => ({
-    root: {
-      width: "100%",
-      marginTop: theme.spacing.unit * 3,
-      overflowX: "auto"
-    },
-    table: {
-      minWidth: 1080
-    }
-  });
+  root: {
+    width: "100%",
+    marginTop: theme.spacing.unit * 3,
+    overflowX: "auto"
+  },
+  table: {
+    minWidth: 1080
+  }
+});
 
 
-  const unit = [
-    {
-      'id': 1,
-      'name': '조건문 활용하기',
-      'count': 10
-    },
-    {
-      'id': 2,
-      'name': '포인터와 구조체',
-      'count': 15
-    },
-    {
-      'id': 3,
-      'name': '반복문 사용하기',
-      'count': 20
-    }
-  ]
+const unit = [
+  {
+    'id': 1,
+    'name': '조건문 활용하기',
+    'count': 10
+  },
+  {
+    'id': 2,
+    'name': '포인터와 구조체',
+    'count': 15
+  },
+  {
+    'id': 3,
+    'name': '반복문 사용하기',
+    'count': 20
+  }
+]
 
-  class WorkBook extends Component {
-    render() {
-      const { classes } = this.props;
-      return (
-        <div>
+class WorkBook extends Component {
+  render() {
+    const { classes } = this.props;
+    return (
+      <div className="main_div">
         <Paper className={classes.root}>
           <Table className={classes.table}>
             <TableHead>
@@ -62,10 +62,10 @@ const styles = theme => ({
             </TableBody>
           </Table>
         </Paper>
-        <UnitAdd/>
-        </div>
-      );
-    }
+        <UnitAdd />
+      </div>
+    );
   }
-  
-  export default withStyles(styles)(WorkBook);
+}
+
+export default withStyles(styles)(WorkBook);

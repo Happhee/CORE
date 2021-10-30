@@ -1,7 +1,7 @@
-import '../css/WorkBook.css'
+import '../css/ProblemAdd.css'
 import React from 'react';
 
-function WorkBook() {
+function ProblemAdd() {
 
     return (
         <div className="main_div">
@@ -11,4 +11,4 @@ function WorkBook() {
 
 }
 
-export default WorkBook;
+export default ProblemAdd;

@@ -6,7 +6,7 @@ function FeedBack() {
 
 
     return (
-        <div>
+        <div className="main_div">
             <h1>피드백관리</h1>
         </div>
     );
