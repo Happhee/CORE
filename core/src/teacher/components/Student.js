@@ -78,6 +78,7 @@ class QuizList extends Component {
                         }
                     </tbody>
                 </table>
+                <button onClick={this.handleRemove}>학생초대</button>
             </div>
         );
     }
