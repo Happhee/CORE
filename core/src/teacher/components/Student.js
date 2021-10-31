@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import Button from '@material-ui/core/Button';
 
-class Student extends Component {
+class QuizList extends Component {
     constructor(props) {
         super(props);
         this.child = React.createRef();
@@ -10,18 +9,24 @@ class Student extends Component {
         boards: [
             {
                 brdno: 1,
-                brdtitle: '별탑 쌓기',
-                brdwriter: '80'
+                id:'aaa',
+                name:'김기기',
+                phone:'010-1111-1111',
+                school: '세종초등학교'
             },
             {
                 brdno: 2,
-                brdtitle: '1부터 100더하기',
-                brdwriter: '30'
+                id:'bbb',
+                name:'김니니',
+                phone:'010-2222-2222',
+                school: '세종초등학교'
             },
             {
                 brdno: 3,
-                brdtitle: '모래시계 만들기',
-                brdwriter: '20'
+                id:'ccc',
+                name:'김디디',
+                phone:'010-3333-3333',
+                school: '세종초등학교'
             }
         ]
     }
@@ -51,6 +56,7 @@ class Student extends Component {
     handleSelectRow = (row) => {
         this.child.current.handleSelectRow(row);
     }
+
     render() {
         const { boards } = this.state;
 
@@ -59,10 +65,11 @@ class Student extends Component {
                 <table border="1">
                     <tbody>
                         <tr align="center">
-                            <td width="50">No</td>
-                            <td width="300">문제명</td>
-                            <td width="100">정답률</td>
-                            <td width="100">편집</td>
+                            <td width="100">No</td>
+                            <td width="200">아이디</td>
+                            <td width="200">이름</td>
+                            <td width="400">전화번호</td>
+                            <td width="200">소속</td>
                         </tr>
                         {
                             boards.map(row =>
@@ -71,13 +78,11 @@ class Student extends Component {
                         }
                     </tbody>
                 </table>
-                <Button >단원 삭제</Button>
-                <Button >문제 추가</Button>
             </div>
         );
     }
 }
-export default Student;
+export default QuizList;
 
 class BoardItem extends React.Component {
     handleSelectRow = () => {
@@ -88,10 +93,11 @@ class BoardItem extends React.Component {
         return (
             <tr>
                 <td>{this.props.row.brdno}</td>
-                <td>{this.props.row.brdtitle}</td>
-                <td>{this.props.row.brdwriter}</td>
-                <td><button onClick={this.handleEdit}>수정</button>
-                <button onClick={this.handleRemove}>삭제</button></td>
+                <td>{this.props.row.id}</td>
+                <td>{this.props.row.name}</td>
+                <td>{this.props.row.phone}</td>
+                <td>{this.props.row.school}</td>
+                <td><button onClick={this.handleRemove}>삭제</button></td>
             </tr>
         );
     }
