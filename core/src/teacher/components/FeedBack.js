@@ -71,8 +71,8 @@ class FeedBack extends Component {
                         }
                     </tbody>
                 </table>
-                <Button >단원 삭제</Button>
-                <Button >문제 추가</Button>
+                <Button variant="contained" color="primary">단원 삭제</Button>
+                <Button variant="contained" color="primary">문제 추가</Button>
             </div>
         );
     }

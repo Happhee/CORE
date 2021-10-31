@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-
+import Button from '@material-ui/core/Button';
+import { makeStyles } from '@material-ui/core/styles';
 class QuizList extends Component {
     constructor(props) {
         super(props);
@@ -78,7 +79,7 @@ class QuizList extends Component {
                         }
                     </tbody>
                 </table>
-                <button onClick={this.handleRemove}>학생초대</button>
+                <Button variant="contained" color="primary" onClick={this.handleRemove}>학생초대</Button>
             </div>
         );
     }
@@ -103,3 +104,13 @@ class BoardItem extends React.Component {
         );
     }
 }
+
+const useStyles = makeStyles(() => ({
+    container:{                          // container이름의 객체에 스타일링 해주기
+        backgroundColor:'black',
+        marginTop:'100px'
+    },
+    buttons:{                            // buttons 이름의 객체에 스타일링 해주기
+        paddingLeft:'20px'
+    }
+}));

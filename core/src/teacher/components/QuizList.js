@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Button from '@material-ui/core/Button';
 
 class QuizList extends Component {
     constructor(props) {
@@ -89,7 +90,7 @@ class BoardItem extends React.Component {
                 <td>{this.props.row.brdtitle}</td>
                 <td>{this.props.row.brdwriter}</td>
                 <td><button onClick={this.handleEdit}>수정</button>
-                <button onClick={this.handleRemove}>삭제</button></td>
+                <Button variant="contained" color="primary"  onClick={this.handleRemove}>삭제</Button></td>
             </tr>
         );
     }
