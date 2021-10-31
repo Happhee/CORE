@@ -40,12 +40,7 @@ function App(props) {
         {/* <Subject data={teacher_subject} mode={mode} /> */}
       </div>
     </Router>
-
-
   );
-
-
-
 }
 
 
