@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Button from '@material-ui/core/Button';
 
 class Student extends Component {
     constructor(props) {
@@ -70,6 +71,8 @@ class Student extends Component {
                         }
                     </tbody>
                 </table>
+                <Button >단원 삭제</Button>
+                <Button >문제 추가</Button>
             </div>
         );
     }

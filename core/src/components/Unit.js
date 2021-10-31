@@ -7,7 +7,7 @@ class Unit extends React.Component {
         return (
             <TableRow>
                 <TableCell>{this.props.id}</TableCell>
-                <TableCell>{this.props.name}</TableCell>
+                <TableCell><button>{this.props.name}</button></TableCell>
                 <TableCell>{this.props.count}</TableCell>
             </TableRow>
         )
