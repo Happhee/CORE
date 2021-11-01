@@ -40,8 +40,9 @@ const CoreDialog = props => {
     //강의실 리스트
     let select_listbox = null;
     let [listbox_datas, setListbox_datas] = useState(props.listbox_datas)
-    let [select_class_id, setSelect_class_id] = useState(listbox_datas[0].id);
+    let [select_class_id, setSelect_class_id] = useState('1');
     if (listbox_datas != null) {
+
         select_listbox = <CoreListbox listbox_datas={listbox_datas}
             handleClickListItem={function (id) {
                 setSelect_class_id(id);
