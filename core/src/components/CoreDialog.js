@@ -1,3 +1,5 @@
+/*eslint-disable */
+
 import React, { useState } from 'react';
 import '../css/ClassRoom.css'
 import Dialog from '@material-ui/core/Dialog';
@@ -10,6 +12,18 @@ import Button from '@material-ui/core/Button';
 
 import { withStyles } from '@material-ui/core/styles';
 import CoreListbox from './CoreListbox';
+
+const styles = theme => ({
+    root: {
+        position: 'fixed',
+        zIndex: '0 !important'
+
+    },
+    hidden: {
+        display: 'none'
+    }
+});
+
 
 const CoreDialog = props => {
 
@@ -103,4 +117,4 @@ const CoreDialog = props => {
 
 }
 
-export default CoreDialog;
+export default withStyles(styles)(CoreDialog);

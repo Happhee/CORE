@@ -1,9 +1,12 @@
+/*eslint-disable */
+
 import '../css/WorkBank.css'
 import React from 'react';
 import Toolbar from '../../components/Toolbar';
 import { ReactComponent as Core_Logo } from '../../css/Core.svg'
 import CoreTable from '../../components/CoreTable';
 
+import '../../css/CoreListbox.css'
 
 function WorkBank() {
     console.log('워크뱅크렌더');
@@ -31,7 +34,12 @@ function WorkBank() {
             'count': 20
         }
     ]
-
+    let listbox_datas = [
+        { id: 1, value: "C프로그래밍 및 실습" },
+        { id: 2, value: "자료구조 및 실습" },
+        { id: 3, value: "컴퓨터구조" },
+        { id: 4, value: "운영체제" }
+    ]
     return (
         <div >
             <Toolbar data={toolbar} />
