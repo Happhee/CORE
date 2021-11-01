@@ -13,11 +13,11 @@ class Customer extends React.Component {
         ]
         if (this.props.edit) {
             console.log(this.props.edit);
-            edit = [<TableCell>
+            edit = [<TableCell key="edit">
                 <CoreDialog key="add" button_box_div="add_problem_class_box" button_box="add_problem_class_box" button_value="등록"
                     dialog_title="문제 등록하기" listbox_datas={listbox_datas} />
-                <button >수정</button>
-                <button >삭제</button>
+                <button key="modify">수정</button>
+                <button key="delete">삭제</button>
             </TableCell>];
 
 
@@ -25,9 +25,9 @@ class Customer extends React.Component {
 
         return (
             <TableRow>
-                <TableCell>{this.props.id}</TableCell>
-                <TableCell>{this.props.name}</TableCell>
-                <TableCell>{this.props.count}</TableCell>
+                <TableCell key="id">{this.props.id}</TableCell>
+                <TableCell key="name">{this.props.name}</TableCell>
+                <TableCell key="count">{this.props.count}</TableCell>
                 {edit}
             </TableRow>
         )

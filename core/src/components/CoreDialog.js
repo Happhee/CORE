@@ -1,3 +1,5 @@
+/*eslint-disable */
+
 import React, { useState } from 'react';
 import '../css/ClassRoom.css'
 import Dialog from '@material-ui/core/Dialog';

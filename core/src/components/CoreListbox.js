@@ -1,3 +1,5 @@
+/*eslint-disable */
+
 import React, { useState } from 'react'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem';
@@ -5,15 +7,6 @@ import ListItemText from '@material-ui/core/ListItemText';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 
-import {
-    Listbox,
-    ListboxInput,
-    ListboxButton,
-    ListboxPopover,
-    ListboxList,
-    ListboxOption,
-} from "@reach/listbox";
-import "@reach/listbox/styles.css";
 
 
 function CoreListbox(props) {

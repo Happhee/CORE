@@ -1,3 +1,5 @@
+/*eslint-disable */
+
 import '../css/WorkBank.css'
 import React from 'react';
 import Toolbar from '../../components/Toolbar';
