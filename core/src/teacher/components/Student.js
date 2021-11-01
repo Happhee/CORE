@@ -10,23 +10,23 @@ class QuizList extends Component {
         boards: [
             {
                 brdno: 1,
-                id:'aaa',
-                name:'김기기',
-                phone:'010-1111-1111',
+                id: 'aaa',
+                name: '김기기',
+                phone: '010-1111-1111',
                 school: '세종초등학교'
             },
             {
                 brdno: 2,
-                id:'bbb',
-                name:'김니니',
-                phone:'010-2222-2222',
+                id: 'bbb',
+                name: '김니니',
+                phone: '010-2222-2222',
                 school: '세종초등학교'
             },
             {
                 brdno: 3,
-                id:'ccc',
-                name:'김디디',
-                phone:'010-3333-3333',
+                id: 'ccc',
+                name: '김디디',
+                phone: '010-3333-3333',
                 school: '세종초등학교'
             }
         ]
@@ -62,8 +62,8 @@ class QuizList extends Component {
         const { boards } = this.state;
 
         return (
-            <div>
-                <table border="1">
+            <div className="main_div">
+                < table border="1" >
                     <tbody>
                         <tr align="center">
                             <td width="100">No</td>
@@ -74,13 +74,13 @@ class QuizList extends Component {
                         </tr>
                         {
                             boards.map(row =>
-                                (<BoardItem key={row.brdno} row={row} onRemove={this.handleRemove} onSelectRow={this.handleSelectRow}  />)
+                                (<BoardItem key={row.brdno} row={row} onRemove={this.handleRemove} onSelectRow={this.handleSelectRow} />)
                             )
                         }
                     </tbody>
-                </table>
+                </table >
                 <Button variant="contained" color="primary" onClick={this.handleRemove}>학생초대</Button>
-            </div>
+            </div >
         );
     }
 }
@@ -106,11 +106,11 @@ class BoardItem extends React.Component {
 }
 
 const useStyles = makeStyles(() => ({
-    container:{                          // container이름의 객체에 스타일링 해주기
-        backgroundColor:'black',
-        marginTop:'100px'
+    container: {                          // container이름의 객체에 스타일링 해주기
+        backgroundColor: 'black',
+        marginTop: '100px'
     },
-    buttons:{                            // buttons 이름의 객체에 스타일링 해주기
-        paddingLeft:'20px'
+    buttons: {                            // buttons 이름의 객체에 스타일링 해주기
+        paddingLeft: '20px'
     }
 }));

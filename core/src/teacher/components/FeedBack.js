@@ -56,7 +56,8 @@ class FeedBack extends Component {
 
 
         return (
-            <div>
+            <div className="main_div">
+
                 <table border="1">
                     <tbody>
                         <tr align="center">
@@ -67,7 +68,7 @@ class FeedBack extends Component {
                         </tr>
                         {
                             boards.map(row =>
-                                (<BoardItem key={row.brdno} row={row} onRemove={this.handleRemove} onSelectRow={this.handleSelectRow}  />)
+                                (<BoardItem key={row.brdno} row={row} onRemove={this.handleRemove} onSelectRow={this.handleSelectRow} />)
                             )
                         }
                     </tbody>
@@ -92,7 +93,7 @@ class BoardItem extends React.Component {
                 <td>{this.props.row.brdtitle}</td>
                 <td>{this.props.row.brdwriter}</td>
                 <td><button onClick={this.handleEdit}>수정</button>
-                <button onClick={this.handleRemove}>삭제</button></td>
+                    <button onClick={this.handleRemove}>삭제</button></td>
             </tr>
         );
     }
