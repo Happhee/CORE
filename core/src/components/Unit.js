@@ -1,6 +1,8 @@
 import React from 'react';
 import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
+import { Link } from 'react-router-dom';
+
 import CoreDialog from './CoreDialog';
 class Customer extends React.Component {
     render() {
@@ -27,11 +29,12 @@ class Customer extends React.Component {
 
 
         }
-
         return (
             <TableRow>
                 <TableCell key="id">{this.props.id}</TableCell>
-                <TableCell key="name">{this.props.name}</TableCell>
+                <TableCell key="name">
+                    <Link key="link" to={`../../mainpage/teacher/${this.props.startpage}/quizlist`} >{this.props.name}</Link>
+                </TableCell>
                 <TableCell key="count">{this.props.count}</TableCell>
                 {edit}
             </TableRow>

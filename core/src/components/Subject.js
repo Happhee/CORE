@@ -11,6 +11,7 @@ import Student from '../teacher/components/Student';
 import Teacher_WorkBook from '../teacher/components/WorkBook';
 import FeedBack from '../teacher/components/FeedBack';
 import Student_WorkBook from '../student/components/WorkBook';
+import QuizList from '../teacher/components/QuizList';
 
 const Logo_Room = props => {
 
@@ -52,7 +53,8 @@ const Subject = props => {
 
         route.push(<Route exact path='/mainpage/teacher/student' render={() => <Student />} key={data[0].id} />)
         route.push(<Route exact path='/mainpage/teacher/workbook' render={() => <Teacher_WorkBook />} key={data[1].id} />)
-        route.push(<Route exact path='/mainpage/teacher/feedback' render={() => <FeedBack />} key={data[2].id} />)
+        route.push(<Route exact path='/mainpage/teacher/feedback' render={() => <FeedBack />} key={data[2].id} />);
+        route.push(<Route exact path='/mainpage/teacher/workbook/quizlist' render={() => <QuizList />} key="4" />)
     }
     else {
         list.push(<Subject_Link key={data[0].id} title={data[0].title}

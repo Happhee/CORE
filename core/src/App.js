@@ -10,7 +10,6 @@ import My from './components/My';
 import WorkBank from './teacher/components/WorkBank';
 import FeedBank from './student/components/FeedBank';
 import Information from './components/Information';
-import QuizList from './teacher/components/QuizList';
 
 
 import { BrowserRouter as Router, Route, Switch, Link, Redirect } from 'react-router-dom';
@@ -29,17 +28,15 @@ function App(props) {
           <Route exact={true} path='/' render={(props) => <Login {...props} />} />
           <Route path='/signup' render={(props) => <SignUp {...props} />} />
           <Route exact path='/classroom/:mode' render={(props) => <ClassRoom {...props} />} />
-          <Route exact path='/mainpage/:mode/:page' render={(props) => <MainPage {...props} />} />
+          <Route path='/mainpage/:mode/:page' render={(props) => <MainPage {...props} />} />
           <Route exact path='/:mode/my' render={(props) => <My {...props} />} />
           <Route exact path='/:mode/workbank' render={(props) => <WorkBank {...props} />} />
           <Route exact path='/:mode/feedbank' render={(props) => <FeedBank {...props} />} />
           <Route exact path='/:mode/my/information' render={(props) => <Information {...props} />} />
-          <Route exact path='/:mode/workbank/quizlist' render={(props) => <QuizList {...props} />} />
 
         </Switch>
 
-        {/* 온니 시작 */}
-        {/* <Subject data={teacher_subject} mode={mode} /> */}
+
       </div>
     </Router>
   );

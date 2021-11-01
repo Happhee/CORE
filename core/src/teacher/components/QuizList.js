@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
-
+import '../css/ProblemAdd.css'
 class QuizList extends Component {
     constructor(props) {
         super(props);
         this.child = React.createRef();
     }
+
     state = {
         boards: [
             {
@@ -54,9 +55,11 @@ class QuizList extends Component {
 
     render() {
         const { boards } = this.state;
+        console.log('퀴즈렌더링');
 
         return (
-            <div>
+            <div className="main_div">
+
                 <table border="1">
                     <tbody>
                         <tr align="center">
@@ -67,7 +70,7 @@ class QuizList extends Component {
                         </tr>
                         {
                             boards.map(row =>
-                                (<BoardItem key={row.brdno} row={row} onRemove={this.handleRemove} onSelectRow={this.handleSelectRow}  />)
+                                (<BoardItem key={row.brdno} row={row} onRemove={this.handleRemove} onSelectRow={this.handleSelectRow} />)
                             )
                         }
                     </tbody>
@@ -90,7 +93,7 @@ class BoardItem extends React.Component {
                 <td>{this.props.row.brdtitle}</td>
                 <td>{this.props.row.brdwriter}</td>
                 <td><button onClick={this.handleEdit}>수정</button>
-                <Button variant="contained" color="primary"  onClick={this.handleRemove}>삭제</Button></td>
+                    <Button variant="contained" color="primary" onClick={this.handleRemove}>삭제</Button></td>
             </tr>
         );
     }

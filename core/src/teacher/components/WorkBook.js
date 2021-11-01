@@ -15,7 +15,7 @@ import { Button } from '@material-ui/core';
 const styles = theme => ({
   root: {
     width: "100%",
-    marginTop: theme.spacing.unit * 3,
+    marginTop: theme.spacing(3),
     overflowX: "auto"
   },
   table: {
@@ -58,7 +58,7 @@ class WorkBook extends Component {
             </TableHead>
             <TableBody>
               {unit.map(c => {
-                return <Unit id={c.id} name={c.name} count={c.count} />
+                return <Unit id={c.id} name={c.name} count={c.count} startpage="workbook" key={c.id} />
               })}
             </TableBody>
           </Table>
