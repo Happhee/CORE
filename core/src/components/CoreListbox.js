@@ -25,6 +25,8 @@ function CoreListbox(props) {
     const handleMenuItemClick = (event, index) => {
         setSelectedData(listbox_datas[index].value);
         setAnchorEl(null);
+
+        console.log(selectedData);
     }
     const handleClose = () => {
         setAnchorEl(null);
