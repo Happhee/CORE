@@ -42,6 +42,8 @@ function WorkBank() {
     ]
     //선택된 과목 아이디!!!!!!!!!!!!!!!1
     let [register_data, setRegister_data] = useState(listbox_datas[0].id);
+    console.log("등록강의실  -> " + listbox_datas[register_data].value);
+
     //서버로 과목 등록하는 코드 필요함!!!!!!!!!!!
     //서버로 과목 등록하는 코드 필요함!!!!!!!!!!!
     //서버로 과목 등록하는 코드 필요함!!!!!!!!!!!
