@@ -103,6 +103,7 @@ const CoreDialog = props => {
                     <Button variant="contained" color="primary" onClick={function (e) {
 
                         props.handleFormSubmit(text_datas);
+                        props.handleFormSubmit(listbox_datas);
                         setDialog_data({ open: false })
                     }} >추가</Button>
 
