@@ -28,7 +28,8 @@ function CoreListbox(props) {
         setAnchorEl(null);
 
         //선택된 아이템 
-        console.log(selectedData + ": " + index);
+        props.handleClickListItem(listbox_datas[index].id);
+
     }
     const handleClose = () => {
         setAnchorEl(null);

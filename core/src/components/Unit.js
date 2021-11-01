@@ -12,7 +12,7 @@ class Customer extends React.Component {
             { id: 3, value: "컴퓨터구조" },
             { id: 4, value: "운영체제" }
         ]
-        let handleFormSubmit = this.props.handleFormSubmit;
+
 
 
         if (this.props.edit) {
@@ -20,7 +20,7 @@ class Customer extends React.Component {
 
             edit = [<TableCell key="edit">
                 <CoreDialog key="add" button_box_div="add_problem_class_box" button_box="add_problem_class_box" button_value="등록"
-                    dialog_title="문제 등록하기" listbox_datas={listbox_datas} handleFormSubmit={handleFormSubmit} />
+                    dialog_title="문제 등록하기" listbox_datas={listbox_datas} handleFormSubmit={this.props.handleFormSubmit} />
                 <button key="modify">수정</button>
                 <button key="delete">삭제</button>
             </TableCell>];
