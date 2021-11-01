@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
+import { Link } from 'react-router-dom';
+
 import '../css/ProblemAdd.css'
 class QuizList extends Component {
     constructor(props) {
@@ -75,6 +77,8 @@ class QuizList extends Component {
                         }
                     </tbody>
                 </table>
+                <Link to={`/mainpage/teacher/workbook/problemadd`} id="problem_add">문제등록</Link>
+
             </div>
         );
     }
