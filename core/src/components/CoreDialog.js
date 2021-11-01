@@ -40,8 +40,13 @@ const CoreDialog = props => {
     //강의실 리스트
     let select_listbox = null;
     let [listbox_datas, setListbox_datas] = useState(props.listbox_datas)
+    let [select_class_id, setSelect_class_id] = useState('1');
     if (listbox_datas != null) {
-        select_listbox = <CoreListbox listbox_datas={listbox_datas} />
+
+        select_listbox = <CoreListbox listbox_datas={listbox_datas}
+            handleClickListItem={function (id) {
+                setSelect_class_id(id);
+            }} />
     }
     function handleClickOpen() {
         setDialog_data({ open: true });
@@ -82,6 +87,7 @@ const CoreDialog = props => {
     }
 
 
+
     return (
         <div className={props.button_box_div}>
             <div className={props.button_box}>
@@ -103,6 +109,7 @@ const CoreDialog = props => {
                     <Button variant="contained" color="primary" onClick={function (e) {
 
                         props.handleFormSubmit(text_datas);
+                        props.handleFormSubmit(select_class_id);
                         setDialog_data({ open: false })
                     }} >추가</Button>
 

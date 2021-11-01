@@ -23,10 +23,13 @@ function CoreListbox(props) {
         setAnchorEl(event.currentTarget);
     }
     const handleMenuItemClick = (event, index) => {
+        //메뉴 ui바꿔주고!
         setSelectedData(listbox_datas[index].value);
         setAnchorEl(null);
 
-        console.log(selectedData);
+        //선택된 아이템 
+        props.handleClickListItem(listbox_datas[index].id);
+
     }
     const handleClose = () => {
         setAnchorEl(null);

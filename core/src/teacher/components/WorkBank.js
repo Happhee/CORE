@@ -1,7 +1,7 @@
 /*eslint-disable */
 
 import '../css/WorkBank.css'
-import React from 'react';
+import React, { useState } from 'react';
 import Toolbar from '../../components/Toolbar';
 import { ReactComponent as Core_Logo } from '../../css/Core.svg'
 import CoreTable from '../../components/CoreTable';
@@ -40,6 +40,21 @@ function WorkBank() {
         { id: 3, value: "컴퓨터구조" },
         { id: 4, value: "운영체제" }
     ]
+    //선택된 과목 아이디!!!!!!!!!!!!!!!1
+    let [register_data, setRegister_data] = useState(listbox_datas[0].id);
+    //서버로 과목 등록하는 코드 필요함!!!!!!!!!!!
+    //서버로 과목 등록하는 코드 필요함!!!!!!!!!!!
+    //서버로 과목 등록하는 코드 필요함!!!!!!!!!!!
+    //서버로 과목 등록하는 코드 필요함!!!!!!!!!!!
+    //서버로 과목 등록하는 코드 필요함!!!!!!!!!!!
+    //서버로 과목 등록하는 코드 필요함!!!!!!!!!!!
+    //서버로 과목 등록하는 코드 필요함!!!!!!!!!!!
+    //서버로 과목 등록하는 코드 필요함!!!!!!!!!!!
+    //서버로 과목 등록하는 코드 필요함!!!!!!!!!!!
+    //서버로 과목 등록하는 코드 필요함!!!!!!!!!!!
+    //서버로 과목 등록하는 코드 필요함!!!!!!!!!!!
+    //서버로 과목 등록하는 코드 필요함!!!!!!!!!!!
+
     return (
         <div >
             <Toolbar data={toolbar} />
@@ -51,7 +66,10 @@ function WorkBank() {
                         <span>WorkBank</span>
                     </div>
                     <div className="coretable_workbank">
-                        <CoreTable table_cells={table_cells} unit={unit} edit={edit} />
+                        <CoreTable table_cells={table_cells} unit={unit} edit={edit}
+                            handleFormSubmit={function (register_data) {
+                                setRegister_data(register_data);
+                            }} />
                     </div>
 
                 </div>
