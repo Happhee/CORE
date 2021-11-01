@@ -31,7 +31,6 @@ function CoreListbox(props) {
     const handleClose = () => {
         setAnchorEl(null);
     }
-
     return (
         <div>
             <List component="nav" aria-label="class">
