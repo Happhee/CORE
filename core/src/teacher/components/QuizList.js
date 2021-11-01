@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
 
-class FeedBack extends Component {
+class QuizList extends Component {
     constructor(props) {
         super(props);
         this.child = React.createRef();
@@ -51,9 +51,9 @@ class FeedBack extends Component {
     handleSelectRow = (row) => {
         this.child.current.handleSelectRow(row);
     }
+
     render() {
         const { boards } = this.state;
-
 
         return (
             <div>
@@ -72,13 +72,11 @@ class FeedBack extends Component {
                         }
                     </tbody>
                 </table>
-                <Button variant="contained" color="primary">단원 삭제</Button>
-                <Button variant="contained" color="primary">문제 추가</Button>
             </div>
         );
     }
 }
-export default FeedBack;
+export default QuizList;
 
 class BoardItem extends React.Component {
     handleSelectRow = () => {
@@ -92,7 +90,7 @@ class BoardItem extends React.Component {
                 <td>{this.props.row.brdtitle}</td>
                 <td>{this.props.row.brdwriter}</td>
                 <td><button onClick={this.handleEdit}>수정</button>
-                <button onClick={this.handleRemove}>삭제</button></td>
+                <Button variant="contained" color="primary"  onClick={this.handleRemove}>삭제</Button></td>
             </tr>
         );
     }
