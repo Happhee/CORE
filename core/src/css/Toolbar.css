@@ -6,8 +6,8 @@ body{
     background-color: #8154A0;
     width: 100%;
     display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
+    flex-direction: row-reverse;
+    justify-content: flex-start;
     color: #EEEEEE;
     padding: 10px;
     font-weight: 600;

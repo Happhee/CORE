@@ -61,16 +61,16 @@ function Login() {
             <div className="login_box">
                 <Core_Logo />
 
-                <div className="input_content">
-                    <div className="input_box" >
-                        <span className="text"> ID </span>
-                        <input />
-                    </div>
+                <div className="login_content">
 
-                    <div className="input_box" >
-                        <span> PW </span>
-                        <input />
-                    </div>
+                    <span className="login_text"> ID </span>
+                    <input className="login_input_box" />
+
+
+
+                    <span className="login_text"> PW </span>
+                    <input className="login_input_box" />
+
 
                     <div className="check_box" >
 

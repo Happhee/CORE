@@ -54,6 +54,7 @@ class FeedBack extends Component {
     render() {
         const { boards } = this.state;
 
+
         return (
             <div>
                 <table border="1">
