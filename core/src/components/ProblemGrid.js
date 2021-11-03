@@ -64,8 +64,8 @@ function ProblemGrid(props) {
                 </Grid>
             </Grid>
 
-            <Grid container spacing={2}>
-                <Grid item xs={12}>
+            <Grid container spacing={2} columns={12}>
+                <Grid item xs={12} >
                     <Item>
                         <p className="grid_data_title">{grid_data[2].title}</p>
                         <CssTextField label={grid_data[2].input} variant="outlined" id="custom-css-outlined-input" />
