@@ -8,7 +8,7 @@ import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
-
+import '../css/ProblemGrid.css';
 
 
 //그리드 박스 스타일 속성 적용
@@ -62,13 +62,13 @@ function ProblemGrid(props) {
                 <Grid item xs={2}>
                     <Item>
                         <p className="grid_data_title">{grid_data[0].title}</p>
-                        <CssTextField label={grid_data[0].input} variant="outlined" id="custom-css-outlined-input" />
+                        <p className="grid_data">{grid_data[0].input}</p>
                     </Item>
                 </Grid>
                 <Grid item xs={2}>
                     <Item>
                         <p className="grid_data_title">{grid_data[1].title}</p>
-                        <CssTextField label={grid_data[1].input} variant="outlined" id="custom-css-outlined-input" />
+                        <p className="grid_data">{grid_data[1].input}</p>
                     </Item>
                 </Grid>
             </Grid>
