@@ -1,6 +1,6 @@
 /*eslint-disable */
 
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
@@ -9,7 +9,10 @@ import TextField from '@mui/material/TextField';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import '../css/ProblemGrid.css';
-
+import { FormControl, FormHelperText, useFormControl } from '@mui/material';
+import { InputLabel } from '@mui/material';
+import { Input } from '@mui/material';
+import { Controller } from 'react-hook-form'
 
 //그리드 박스 스타일 속성 적용
 const Item = styled(Paper)(({ theme }) => ({
@@ -49,11 +52,37 @@ const CssTextField = styled(TextField)({
         },
     },
 });
+function FilledCheck() {
+    const { filled } = useFormControl() || {};
 
+    return <FormHelperText>{filled}</FormHelperText>
+}
 function ProblemGrid(props) {
     let [grid_data, setGrid_data] = useState(props.grid_data);
+    let textfield = useRef(null);
+
     const [dense, setDense] = useState(false);
     const [secondary, setSecondary] = useState(false);
+
+    // const TextFieldOne = ({ setValue, control, getValues, triggerValidation }) => {
+    //     const [validationValue, setValidationValue] = useState("");
+
+    //     const value = getValues("TextFieldOne");
+    //     const defaultValue = value ? value : "";
+
+    //     const handleChange = e => {
+    //         const length = e.target.value.length;
+    //         triggerValidation("TextFieldOne");
+
+    //         if (length >= 8) {
+    //             setValue("TextFieldTwo", `${length} Characters`, true);
+    //         } else {
+    //             setValue("TextFieldTwo", ``);
+    //         }
+    //         return e.target.value;
+    //     };
+
+
     return (
         <Box sx={{ flexGrow: 1 }}>
             <Grid container spacing={2}>
@@ -113,13 +142,20 @@ function ProblemGrid(props) {
                         <List dense={dense}>
                             {generate(
                                 <ListItem>
-                                    <CssTextField fullWidth label={grid_data[6].input} variant="outlined" id="custom-css-outlined-input" maxRows={1} />
-                                </ListItem>,
+
+                                    <CssTextField fullWidth label={grid_data[6].input} variant="outlined" id="custom-css-outlined-input" maxRows={1}
+                                        ref={textfield} onClick={(event) => {
+                                            console.log(textfield)
+                                        }} />
+
+
+                                </ListItem>
                             )}
                         </List>
                     </Item>
 
                 </Grid>
+
             </Grid>
 
         </Box>
