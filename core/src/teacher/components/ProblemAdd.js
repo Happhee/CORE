@@ -1,3 +1,5 @@
+/*eslint-disable */
+
 import '../css/ProblemAdd.css'
 import React, { useState } from 'react';
 import ProblemGrid from '../../components/ProblemGrid';

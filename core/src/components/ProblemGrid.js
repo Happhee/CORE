@@ -52,39 +52,51 @@ const CssTextField = styled(TextField)({
         },
     },
 });
-function FilledCheck() {
-    const { filled } = useFormControl() || {};
 
-    return <FormHelperText>{filled}</FormHelperText>
-}
 function ProblemGrid(props) {
     let [grid_data, setGrid_data] = useState(props.grid_data);
     let textfield = useRef(null);
 
     const [dense, setDense] = useState(false);
-    const [secondary, setSecondary] = useState(false);
 
-    // const TextFieldOne = ({ setValue, control, getValues, triggerValidation }) => {
-    //     const [validationValue, setValidationValue] = useState("");
+    // 입력값, 출력값 초기세팅
+    let [input_data, setInput_data] = useState([
+        { id: 1, value: '' },
+        { id: 2, value: '' },
+        { id: 3, value: '' },
+        { id: 4, value: '' },
+        { id: 5, value: '' },
+        { id: 6, value: '' },
+        { id: 7, value: '' },
+        { id: 8, value: '' },
+        { id: 9, value: '' },
+        { id: 10, value: '' },
+    ])
+    let [output_data, setOutput_data] = useState([
+        { id: 1, value: '' },
+        { id: 2, value: '' },
+        { id: 3, value: '' },
+        { id: 4, value: '' },
+        { id: 5, value: '' },
+        { id: 6, value: '' },
+        { id: 7, value: '' },
+        { id: 8, value: '' },
+        { id: 9, value: '' },
+        { id: 10, value: '' },
+    ])
 
-    //     const value = getValues("TextFieldOne");
-    //     const defaultValue = value ? value : "";
 
-    //     const handleChange = e => {
-    //         const length = e.target.value.length;
-    //         triggerValidation("TextFieldOne");
+    const handleChange = (event) => {
 
-    //         if (length >= 8) {
-    //             setValue("TextFieldTwo", `${length} Characters`, true);
-    //         } else {
-    //             setValue("TextFieldTwo", ``);
-    //         }
-    //         return e.target.value;
-    //     };
+
+        setName(event.target.value);
+    }
 
 
     return (
-        <Box sx={{ flexGrow: 1 }}>
+        <Box component="form"
+            noValidate
+            autoComplete="off" sx={{ flexGrow: 1 }}>
             <Grid container spacing={2}>
 
                 {/* 상단 문제 챕터 및 단원 */}
@@ -144,9 +156,7 @@ function ProblemGrid(props) {
                                 <ListItem>
 
                                     <CssTextField fullWidth label={grid_data[6].input} variant="outlined" id="custom-css-outlined-input" maxRows={1}
-                                        onClick={(event) => {
-                                            console.log(textfield)
-                                        }} />
+                                        type="text" value={name} onChange={handleChange} />
 
 
                                 </ListItem>
