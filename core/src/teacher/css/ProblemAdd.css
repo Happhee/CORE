@@ -5,7 +5,10 @@
   }
 
   .sub_div{
+    background-color:  white;
+
     padding: 10px;
+    height: fit-content;
   }
 
   .problem_top_div{

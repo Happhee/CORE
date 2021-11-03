@@ -6,6 +6,9 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+
 
 
 //그리드 박스 스타일 속성 적용
@@ -18,7 +21,13 @@ const Item = styled(Paper)(({ theme }) => ({
     boxShadow: 'none'
 }));
 
-
+function generate(element) {
+    return [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((value) =>
+        React.cloneElement(element, {
+            key: value,
+        }),
+    );
+}
 //텍스트 필드 속성 적용
 const CssTextField = styled(TextField)({
 
@@ -43,8 +52,8 @@ const CssTextField = styled(TextField)({
 
 function ProblemGrid(props) {
     let [grid_data, setGrid_data] = useState(props.grid_data);
-
-
+    const [dense, setDense] = useState(false);
+    const [secondary, setSecondary] = useState(false);
     return (
         <Box sx={{ flexGrow: 1 }}>
             <Grid container spacing={2}>
@@ -68,13 +77,13 @@ function ProblemGrid(props) {
                 <Grid item xs={12} >
                     <Item>
                         <p className="grid_data_title">{grid_data[2].title}</p>
-                        <CssTextField label={grid_data[2].input} variant="outlined" id="custom-css-outlined-input" />
+                        <CssTextField fullWidth label={grid_data[2].input} variant="outlined" id="custom-css-outlined-input" maxRows={1} />
                     </Item>
                 </Grid>
                 <Grid item xs={12}>
                     <Item>
                         <p className="grid_data_title">{grid_data[3].title}</p>
-                        <CssTextField label={grid_data[3].input} variant="outlined" id="custom-css-outlined-input" />
+                        <CssTextField fullWidth label={grid_data[3].input} variant="outlined" id="custom-css-outlined-input" multiline rows={5} />
                     </Item>
 
                 </Grid>
@@ -82,24 +91,37 @@ function ProblemGrid(props) {
 
                     <Item>
                         <p className="grid_data_title">{grid_data[4].title}</p>
-                        <CssTextField label={grid_data[4].input} variant="outlined" id="custom-css-outlined-input" />
+                        <CssTextField fullWidth label={grid_data[4].input} variant="outlined" id="custom-css-outlined-input" multiline rows={10} />
                     </Item>
                 </Grid>
-                <Grid item xs={6}>
-
+                <Grid item xs={6} md={6}>
                     <Item>
                         <p className="grid_data_title">{grid_data[5].title}</p>
-                        <CssTextField label={grid_data[5].input} variant="outlined" id="custom-css-outlined-input" />
+                        <List dense={dense}>
+                            {generate(
+                                <ListItem>
+                                    <CssTextField fullWidth label={grid_data[5].input} variant="outlined" id="custom-css-outlined-input" maxRows={1} />
+                                </ListItem>,
+                            )}
+                        </List>
                     </Item>
-                </Grid>
-                <Grid item xs={6}>
 
+                </Grid>
+                <Grid item xs={6} md={6}>
                     <Item>
                         <p className="grid_data_title">{grid_data[6].title}</p>
-                        <CssTextField label={grid_data[6].input} variant="outlined" id="custom-css-outlined-input" />
+                        <List dense={dense}>
+                            {generate(
+                                <ListItem>
+                                    <CssTextField fullWidth label={grid_data[6].input} variant="outlined" id="custom-css-outlined-input" maxRows={1} />
+                                </ListItem>,
+                            )}
+                        </List>
                     </Item>
+
                 </Grid>
             </Grid>
+
         </Box>
 
 
