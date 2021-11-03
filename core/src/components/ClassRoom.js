@@ -7,7 +7,7 @@ import Toolbar from './Toolbar';
 import CoreDialog from './CoreDialog';
 
 //로그인 성공 후 페이지 -> 서버로부터 강의실리스트를 가져와야함 
-function ClassRoom({ match, history }) {
+function ClassRoom({ match }) {
     let toolbar = [
         { id: 1, title: 'My', link: '/teacher/my' },
         { id: 2, title: 'WorkBank', link: '/teacher/workbank' }];

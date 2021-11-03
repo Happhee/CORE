@@ -9,9 +9,10 @@ import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 
 import Student from '../teacher/components/Student';
 import Teacher_WorkBook from '../teacher/components/WorkBook';
+import QuizList from '../teacher/components/QuizList';
+import ProblemAdd from '../teacher/components/ProblemAdd'
 import FeedBack from '../teacher/components/FeedBack';
 import Student_WorkBook from '../student/components/WorkBook';
-import QuizList from '../teacher/components/QuizList';
 
 const Logo_Room = props => {
 
@@ -51,10 +52,14 @@ const Subject = props => {
             link='/mainpage/teacher/feedback' />);
 
 
+        //상단 라우트
         route.push(<Route exact path='/mainpage/teacher/student' render={() => <Student />} key={data[0].id} />)
         route.push(<Route exact path='/mainpage/teacher/workbook' render={() => <Teacher_WorkBook />} key={data[1].id} />)
         route.push(<Route exact path='/mainpage/teacher/feedback' render={() => <FeedBack />} key={data[2].id} />);
-        route.push(<Route exact path='/mainpage/teacher/workbook/quizlist' render={() => <QuizList />} key="4" />)
+
+        //워크북 상세 라우트
+        route.push(<Route exact path='/mainpage/teacher/workbook/quizlist' render={() => <QuizList />} key="quizlist" />);
+        route.push(<Route exact path='/mainpage/teacher/workbook/problemadd' render={() => <ProblemAdd />} key="problemadd" />);
     }
     else {
         list.push(<Subject_Link key={data[0].id} title={data[0].title}
