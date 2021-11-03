@@ -17,13 +17,13 @@ function ProblemAdd() {
 
     }
     let [grid_data, setGrid_data] = useState([
-        { id: 1, title: "Problem - Chapter", input: "1단원" },
-        { id: 2, title: "Problem - Number", input: "2번" },
-        { id: 3, title: "Problem Title", input: "문제명" },
-        { id: 4, title: "Problem Description", input: "문제 상세 설명" },
-        { id: 5, title: "Answer Code", input: "정답 코드" },
-        { id: 6, title: "Input", input: "입력값" },
-        { id: 7, title: "Output", input: "결과값" }]
+        { id: 1, title: "Problem - Chapter", input: "1단원", value: "" },
+        { id: 2, title: "Problem - Number", input: "2번", value: "" },
+        { id: 3, title: "Problem Title", input: "문제명", value: "" },
+        { id: 4, title: "Problem Description", input: "문제 상세 설명", value: "" },
+        { id: 5, title: "Answer Code", input: "정답 코드", value: "" },
+        { id: 6, title: "Input", input: "입력값", value: "" },
+        { id: 7, title: "Output", input: "결과값", value: "" }]
     )
     return (
         <div className="main_div">
