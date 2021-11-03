@@ -144,7 +144,7 @@ function ProblemGrid(props) {
                                 <ListItem>
 
                                     <CssTextField fullWidth label={grid_data[6].input} variant="outlined" id="custom-css-outlined-input" maxRows={1}
-                                        ref={textfield} onClick={(event) => {
+                                        onClick={(event) => {
                                             console.log(textfield)
                                         }} />
 
