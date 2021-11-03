@@ -1,9 +1,21 @@
 import '../css/ProblemAdd.css'
 import React, { useState } from 'react';
 import ProblemGrid from '../../components/ProblemGrid';
+import { useHistory, withRouter } from 'react-router-dom';
+import { Button } from '@mui/material';
+import Box from '@mui/material/Box'
 
 function ProblemAdd() {
 
+    let history = useHistory();
+
+    function temporarySave() {
+
+    }
+    function goList() {
+        history.push("/mainpage/teacher/workbook/quizlist");
+
+    }
     let [grid_data, setGrid_data] = useState([
         { id: 1, title: "Problem - Chapter", input: "1단원" },
         { id: 2, title: "Problem - Number", input: "2번" },
@@ -18,10 +30,14 @@ function ProblemAdd() {
             <div className="sub_div">
                 <div className="problem_top_div">
                     <span className="problem_title">Problem</span>
-                    <div>
-                        <button className="problem_button">임시저장</button>
-                        <button className="problem_button">목록으로</button>
-                    </div>
+                    <Box sx={{ '& button': { m: 0.5 } }}>
+
+                        <div>
+
+                            <Button variant="contained" color="secondary" className="problem_button" onClick={temporarySave}>임시저장</Button>
+                            <Button variant="contained" color="secondary" onClick={goList}>목록으로</Button>
+                        </div>                    </Box>
+
 
                 </div>
                 <hr />
@@ -29,8 +45,9 @@ function ProblemAdd() {
                     grid_data={grid_data} />
                 <hr />
                 <div className="problem_bottom_div">
-                    <button className="problem_button">문제등록</button>
-
+                    <Box sx={{ '& button': { m: 0.5 } }}>
+                        <Button variant="contained" color="secondary" className="problem_button">문제등록</Button>
+                    </Box>
                 </div>
 
             </div>
@@ -40,4 +57,4 @@ function ProblemAdd() {
 
 }
 
-export default ProblemAdd;
+export default withRouter(ProblemAdd);

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import Button from '@material-ui/core/Button';
-import { Link } from 'react-router-dom';
+
+import { Link, useHistory } from 'react-router-dom';
+import { Button } from '@mui/material';
 
 import '../css/ProblemAdd.css'
 class QuizList extends Component {
@@ -77,8 +78,7 @@ class QuizList extends Component {
                         }
                     </tbody>
                 </table>
-                <Link to={`/mainpage/teacher/workbook/problemadd`} id="problem_add">문제등록</Link>
-
+                <ProblemAdd_Button />
             </div>
         );
     }
@@ -101,4 +101,13 @@ class BoardItem extends React.Component {
             </tr>
         );
     }
+}
+
+function ProblemAdd_Button() {
+    let history = useHistory();
+    return (
+        <div>
+            <Button marginleft="300px" variant="contained" color="primary" onClick={() => { history.push("/mainpage/teacher/workbook/problemadd") }} id="problem_add">문제등록</Button>
+        </div>
+    )
 }
