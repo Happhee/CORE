@@ -4,3 +4,26 @@
     height: 100vh;
   }
 
+  .sub_div{
+    padding: 10px;
+  }
+
+  .problem_top_div{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 25px;
+    margin: 10px;
+    
+  }
+
+  .problem_button {
+    margin-right: 10px;
+    font-size: 15px;
+  }
+  .problem_bottom_div{
+    display: flex;
+    justify-content: flex-end;
+    margin: 10px;
+
+  }
