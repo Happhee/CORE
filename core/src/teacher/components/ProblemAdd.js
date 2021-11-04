@@ -77,7 +77,6 @@ function ProblemAdd() {
         { id: "output8", value: '', title: "Output", input: "결과값" },
         { id: "output9", value: '', title: "Output", input: "결과값" },
         { id: "output10", value: '', title: "Output", input: "결과값" }
-
     ])
 
     return (

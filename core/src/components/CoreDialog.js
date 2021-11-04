@@ -7,9 +7,9 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
 
 
+import { Button, styled } from '@mui/material';
 import { withStyles } from '@material-ui/core/styles';
 import CoreListbox from './CoreListbox';
 
@@ -96,7 +96,7 @@ const CoreDialog = props => {
     return (
         <div className={props.button_box_div}>
             <div className={props.button_box}>
-                <button className={props.button_type} onClick={handleClickOpen}>{props.button_value}</button>
+                <Button variant="contained" color="secondary" className={props.button_type} onClick={handleClickOpen}>{props.button_value}</Button>
             </div>
             <Dialog open={dialog_data.open} onClose={handleClose}>
 

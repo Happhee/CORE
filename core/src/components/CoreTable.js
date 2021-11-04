@@ -34,7 +34,7 @@ function CoreTable(props) {
                     <TableHead>
                         <TableRow>
                             {table_cells.map((cell, index) => {
-                                return <TableCell key={index}>{cell}</TableCell>
+                                return <TableCell align="center" key={index}>{cell}</TableCell>
                             })}
                         </TableRow>
                     </TableHead>
