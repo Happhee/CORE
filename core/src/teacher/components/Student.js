@@ -38,7 +38,15 @@ class Student extends Component {
             window.Kakao.init('d1a90c494e1cdb68196c4145544ffac1');
 
         }
+<<<<<<< Updated upstream
         window.Kakao.init('d1a90c494e1cdb68196c4145544ffac1');
+=======
+<<<<<<< HEAD
+
+=======
+        window.Kakao.init('d1a90c494e1cdb68196c4145544ffac1');
+>>>>>>> [add]위에 헤드 달았어유
+>>>>>>> Stashed changes
 
         window.Kakao.Link.createDefaultButton({
             container: '#kakao-link-btn',
