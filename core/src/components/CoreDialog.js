@@ -48,6 +48,9 @@ const CoreDialog = props => {
                 setSelect_class_id(id);
             }} />
     }
+
+    let textfield_state = props.textfield_state;
+
     function handleClickOpen() {
         setDialog_data({ open: true });
     }
@@ -104,6 +107,7 @@ const CoreDialog = props => {
                 <DialogContent>
                     {select_listbox}
                     {textfield_list}
+                    {textfield_state}
                 </DialogContent>
 
                 <DialogActions>
