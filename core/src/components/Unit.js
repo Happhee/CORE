@@ -1,45 +1,67 @@
 import React from 'react';
 import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
-import { Link } from 'react-router-dom';
+import { Button, styled } from '@mui/material';
+import { Link, useHistory } from 'react-router-dom';
 
 import CoreDialog from './CoreDialog';
-class Customer extends React.Component {
-    render() {
+const CssButton = styled(Button)({
+    marginLeft: '10px'
+});
 
-        let edit = null;
-        let listbox_datas = [
-            { id: 1, value: "C프로그래밍 및 실습" },
-            { id: 2, value: "자료구조 및 실습" },
-            { id: 3, value: "컴퓨터구조" },
-            { id: 4, value: "운영체제" }
-        ]
+function Customer(props) {
 
 
+    let edit = null;
+    let link = null;
+    let listbox_datas = [
+        { id: 1, value: "C프로그래밍 및 실습" },
+        { id: 2, value: "자료구조 및 실습" },
+        { id: 3, value: "컴퓨터구조" },
+        { id: 4, value: "운영체제" }
+    ]
+    let history = useHistory();
 
-        if (this.props.edit) {
-            console.log(this.props.edit);
+    console.log(history);
+    if (props.editType === "MainList") {
+        console.log(props.editType);
 
-            edit = [<TableCell key="edit">
-                <CoreDialog key="add" button_box_div="add_problem_class_box" button_box="add_problem_class_box" button_value="등록"
-                    dialog_title="문제 등록하기" listbox_datas={listbox_datas} handleFormSubmit={this.props.handleFormSubmit} />
-                <button key="modify">수정</button>
-                <button key="delete">삭제</button>
-            </TableCell>];
+        edit = [<TableCell align="center" key="edit">
+            <CoreDialog key="add" button_box_div="add_problem_class_box" button_box="add_problem_class_box" button_value="등록"
+                dialog_title="문제 등록하기" listbox_datas={listbox_datas} handleFormSubmit={props.handleFormSubmit} />
+            <CssButton key="modify" variant="contained" color="secondary">수정</CssButton>
+            <CssButton key="delete" variant="contained" color="secondary">삭제</CssButton>
+        </TableCell>];
 
-
-        }
-        return (
-            <TableRow>
-                <TableCell key="id">{this.props.id}</TableCell>
-                <TableCell key="name">
-                    <Link key="link" to={`../../mainpage/teacher/${this.props.startpage}/quizlist`} >{this.props.name}</Link>
-                </TableCell>
-                <TableCell key="count">{this.props.count}</TableCell>
-                {edit}
-            </TableRow>
-        )
+        link = [<Link key="link" to={`../../teacher/workbank_quizlist?mainunit=${props.id}`} >{props.name}</Link>]
     }
+    else if (props.editType === "QuizList") {
+        edit = [<TableCell align="center" key="edit">
+            <CoreDialog key="add" button_box_div="add_problem_class_box" button_box="add_problem_class_box" button_value="등록"
+                dialog_title="문제 등록하기" listbox_datas={listbox_datas} handleFormSubmit={props.handleFormSubmit} />
+            <CssButton key="modify" variant="contained" color="secondary" onClick={() => {
+                history.push(`/teacher/workbank_quizlist/problemmodify?mainunit=${props.mainunit}&subunit=${props.id}`)
+            }}>수정</CssButton>
+            <CssButton key="delete" variant="contained" color="secondary">삭제</CssButton>
+        </TableCell>];
+        link = [<p key="p" >{props.name}</p>]
+
+    }
+    else {
+        link = [<Link key="link" to={`../../mainpage/teacher/${props.startpage}/quizlist?mainunit=${props.id}`} >{props.name}</Link>]
+    }
+    return (
+        <TableRow >
+            <TableCell align="center" key="id">{props.id}</TableCell>
+            <TableCell align="center" key="name">
+                {link}
+
+            </TableCell>
+            <TableCell align="center" key="count">{props.count}</TableCell>
+            {edit}
+        </TableRow>
+    )
+
 }
 
 export default Customer;

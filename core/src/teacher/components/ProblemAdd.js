@@ -4,7 +4,7 @@ import '../css/ProblemAdd.css'
 import React, { useEffect, useState } from 'react';
 import ProblemGrid from '../../components/ProblemGrid';
 import { useHistory, withRouter, useParams, useLocation } from 'react-router-dom';
-import { Button } from '@mui/material';
+import { Button, useThemeProps } from '@mui/material';
 import Box from '@mui/material/Box'
 import * as InputValidation from '../../components/InputValidation';
 import CoreDialog from '../../components/CoreDialog';
@@ -14,7 +14,6 @@ import queryString from 'query-string'
 
 function ProblemAdd() {
 
-    const params = useParams();
     const { search } = useLocation();
     const queryObj = queryString.parse(search);
     const { mainunit, subunit } = queryObj;
@@ -26,7 +25,8 @@ function ProblemAdd() {
 
     }
     function goList() {
-        history.push("/mainpage/teacher/workbook/quizlist");
+
+        history.goBack()
 
     }
 
@@ -77,7 +77,6 @@ function ProblemAdd() {
         { id: "output8", value: '', title: "Output", input: "결과값" },
         { id: "output9", value: '', title: "Output", input: "결과값" },
         { id: "output10", value: '', title: "Output", input: "결과값" }
-
     ])
 
     return (
