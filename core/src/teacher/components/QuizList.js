@@ -98,7 +98,7 @@ function BoardItem(props) {
             <td >
                 <CssButton variant="contained" color="secondary" onClick={
                     () => {
-                        history.push(`/mainpage/teacher/workbook/problemadd?mainunit=${mainunit}&subunit=${props.row.brdno}`)
+                        history.push(`/mainpage/teacher/workbook/quizlist/problemadd?mainunit=${mainunit}&subunit=${props.row.brdno}`)
                     }}>수정</CssButton>
                 <CssButton variant="contained" color="secondary" >삭제</CssButton></td>
         </tr>

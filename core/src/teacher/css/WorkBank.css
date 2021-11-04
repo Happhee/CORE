@@ -41,6 +41,7 @@
   .add_problem_class_box{
       display: inline;
   }
-  .main_div{
+ 
+  .main_problem_div{
     height: fit-content;
   }

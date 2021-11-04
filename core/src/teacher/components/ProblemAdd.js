@@ -80,7 +80,7 @@ function ProblemAdd() {
     ])
 
     return (
-        <div className="main_div">
+        <div className="main_problem_div">
             <div className="sub_div">
                 <div className="problem_top_div">
                     <span className="problem_title">Problem</span>
