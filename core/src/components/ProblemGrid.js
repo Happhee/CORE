@@ -126,13 +126,13 @@ function ProblemGrid(props) {
                 <Grid item xs={2}>
                     <Item>
                         <p className="grid_data_title">{grid_data[1].title}</p>
-                        <p className="grid_data">{grid_data[1].value}</p>
+                        <p className="grid_data">{props.mainunit}단원</p>
                     </Item>
                 </Grid>
                 <Grid item xs={2}>
                     <Item>
                         <p className="grid_data_title">{grid_data[2].title}</p>
-                        <p className="grid_data">{grid_data[2].value}</p>
+                        <p className="grid_data">{props.subunit}번</p>
                     </Item>
                 </Grid>
             </Grid>

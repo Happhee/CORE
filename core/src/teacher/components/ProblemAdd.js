@@ -1,16 +1,23 @@
 /*eslint-disable */
 
 import '../css/ProblemAdd.css'
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ProblemGrid from '../../components/ProblemGrid';
-import { useHistory, withRouter } from 'react-router-dom';
+import { useHistory, withRouter, useParams, useLocation } from 'react-router-dom';
 import { Button } from '@mui/material';
 import Box from '@mui/material/Box'
 import * as InputValidation from '../../components/InputValidation';
 import CoreDialog from '../../components/CoreDialog';
 import AlertDialog from '../../components/AlertDialog';
+import queryString from 'query-string'
+
 
 function ProblemAdd() {
+
+    const params = useParams();
+    const { search } = useLocation();
+    const queryObj = queryString.parse(search);
+    const { mainunit, subunit } = queryObj;
 
     let [textfield_state, setTextfield_state] = useState('');
     let history = useHistory();
@@ -35,14 +42,17 @@ function ProblemAdd() {
 
     }
     console.log("문제추가렌더링")
+
     let [grid_data, setGrid_data] = useState([
         { id: 0, value: "problemAdd" },
-        { id: 1, title: "Problem - Chapter", value: "1단원" },
-        { id: 2, title: "Problem - Number", value: "2번" },
+        { id: 1, title: "Problem - Chapter", value: "단원" },
+        { id: 2, title: "Problem - Number", value: "소문제번호" },
         { id: 3, title: "Problem Title", input: "문제명", value: "" },
         { id: 4, title: "Problem Description", input: "문제 상세 설명", value: "" },
         { id: 5, title: "Answer Code", input: "정답 코드", value: "" }]
     )
+
+
     let [input_data, setInput_data] = useState([
         { id: "input1", value: '', title: "Input", input: "입력값" },
         { id: "input2", value: '', title: "Input", input: "입력값" },
@@ -69,6 +79,7 @@ function ProblemAdd() {
         { id: "output10", value: '', title: "Output", input: "결과값" }
 
     ])
+
     return (
         <div className="main_div">
             <div className="sub_div">
@@ -86,6 +97,7 @@ function ProblemAdd() {
                 </div>
                 <hr />
                 <ProblemGrid title_text_item="Problem" temporary_save_button="임시저장"
+                    mainunit={mainunit} subunit={subunit}
                     grid_data={grid_data} input_data={input_data} output_data={output_data} />
                 <hr />
                 <div className="problem_bottom_div">

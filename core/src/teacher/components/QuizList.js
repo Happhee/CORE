@@ -10,6 +10,7 @@ class QuizList extends Component {
     constructor(props) {
         super(props);
         this.child = React.createRef();
+
     }
 
     state = {
@@ -31,16 +32,7 @@ class QuizList extends Component {
             }
         ]
     }
-    handleRemove = (brdno) => {
-        this.setState({
-            boards: this.state.boards.filter(row => row.brdno !== brdno)
-        })
-    }
-    handleEdit = (brdno) => {
-        this.setState({
-            boards: this.state.boards.filter(row => row.brdno !== brdno)
-        })
-    }
+
     handleSaveData = (data) => {
         let boards = this.state.boards;
         if (data.brdno === null || data.brdno === '' || data.brdno === undefined) {    // new : Insert
@@ -75,12 +67,13 @@ class QuizList extends Component {
                         </tr>
                         {
                             boards.map(row =>
-                                (<BoardItem key={row.brdno} row={row} onRemove={this.handleRemove} onSelectRow={this.handleSelectRow} />)
+                            (<BoardItem key={row.brdno} row={row} onRemove={this.handleRemove} onSelectRow={this.handleSelectRow}
+                                mainunit="1" />)
                             )
                         }
                     </tbody>
                 </table>
-                <ProblemAdd_Button />
+                <ProblemAdd_Button mainunit="1" subunit={boards.length + 1} />
             </div>
         );
     }
@@ -90,30 +83,30 @@ export default QuizList;
 const CssButton = styled(Button)({
     marginLeft: '10px'
 });
-class BoardItem extends React.Component {
-    handleSelectRow = () => {
-        const { row, onSelectRow } = this.props;
-        onSelectRow(row);
-    }
-    render() {
-        return (
-            <tr align="center">
-                <td>{this.props.row.brdno}</td>
-                <td>{this.props.row.brdtitle}</td>
-                <td>{this.props.row.brdwriter}</td>
-                <td >
-                    <CssButton variant="contained" color="secondary" onClick={this.handleEdit}>수정</CssButton>
-                    <CssButton variant="contained" color="secondary" onClick={this.handleRemove}>삭제</CssButton></td>
-            </tr>
-        );
-    }
+
+function BoardItem(props) {
+    let history = useHistory();
+    return (
+        <tr align="center">
+            <td>{props.row.brdno}</td>
+            <td>{props.row.brdtitle}</td>
+            <td>{props.row.brdwriter}</td>
+            <td >
+                <CssButton variant="contained" color="secondary" onClick={
+                    () => {
+                        history.push(`/mainpage/teacher/workbook/problemadd?mainunit=${props.mainunit}&subunit=${props.row.brdno}`)
+                    }}>수정</CssButton>
+                <CssButton variant="contained" color="secondary" >삭제</CssButton></td>
+        </tr>
+    );
+
 }
 
-function ProblemAdd_Button() {
+function ProblemAdd_Button(props) {
     let history = useHistory();
     return (
         <div className="problem_bottom_div">
-            <Button marginleft="300px" variant="contained" color="secondary" onClick={() => { history.push("/mainpage/teacher/workbook/problemadd") }} id="problem_add">문제등록</Button>
+            <Button marginleft="300px" variant="contained" color="secondary" onClick={() => { history.push(`/mainpage/teacher/workbook/problemadd?mainunit=${props.mainunit}&subunit=${props.subunit}`) }} id="problem_add">문제등록</Button>
         </div>
     )
 }
