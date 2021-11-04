@@ -89,6 +89,7 @@ function BoardItem(props) {
     let { search } = useLocation();
     const queryObj = queryString.parse(search);
     const { mainunit } = queryObj;
+
     return (
         <tr align="center">
             <td>{props.row.brdno}</td>
