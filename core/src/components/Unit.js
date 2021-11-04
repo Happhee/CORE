@@ -33,7 +33,7 @@ class Customer extends React.Component {
             <TableRow>
                 <TableCell key="id">{this.props.id}</TableCell>
                 <TableCell key="name">
-                    <Link key="link" to={`../../mainpage/teacher/${this.props.startpage}/quizlist`} >{this.props.name}</Link>
+                    <Link key="link" to={`../../mainpage/teacher/${this.props.startpage}/quizlist?mainunit=${this.props.id}`} >{this.props.name}</Link>
                 </TableCell>
                 <TableCell key="count">{this.props.count}</TableCell>
                 {edit}

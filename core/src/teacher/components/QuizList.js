@@ -2,9 +2,9 @@
 
 import React, { Component } from 'react';
 
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import { Button, styled } from '@mui/material';
-
+import queryString from 'query-string'
 import '../css/ProblemAdd.css'
 class QuizList extends Component {
     constructor(props) {
@@ -86,6 +86,9 @@ const CssButton = styled(Button)({
 
 function BoardItem(props) {
     let history = useHistory();
+    let { search } = useLocation();
+    const queryObj = queryString.parse(search);
+    const { mainunit } = queryObj;
     return (
         <tr align="center">
             <td>{props.row.brdno}</td>
@@ -94,7 +97,7 @@ function BoardItem(props) {
             <td >
                 <CssButton variant="contained" color="secondary" onClick={
                     () => {
-                        history.push(`/mainpage/teacher/workbook/problemadd?mainunit=${props.mainunit}&subunit=${props.row.brdno}`)
+                        history.push(`/mainpage/teacher/workbook/problemadd?mainunit=${mainunit}&subunit=${props.row.brdno}`)
                     }}>수정</CssButton>
                 <CssButton variant="contained" color="secondary" >삭제</CssButton></td>
         </tr>
@@ -104,9 +107,12 @@ function BoardItem(props) {
 
 function ProblemAdd_Button(props) {
     let history = useHistory();
+    let { search } = useLocation();
+    const queryObj = queryString.parse(search);
+    const { mainunit } = queryObj;
     return (
         <div className="problem_bottom_div">
-            <Button marginleft="300px" variant="contained" color="secondary" onClick={() => { history.push(`/mainpage/teacher/workbook/problemadd?mainunit=${props.mainunit}&subunit=${props.subunit}`) }} id="problem_add">문제등록</Button>
+            <Button marginleft="300px" variant="contained" color="secondary" onClick={() => { history.push(`/mainpage/teacher/workbook/problemadd?mainunit=${mainunit}&subunit=${props.subunit}`) }} id="problem_add">문제등록</Button>
         </div>
     )
 }
