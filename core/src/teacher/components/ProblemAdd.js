@@ -31,6 +31,8 @@ function ProblemAdd() {
     function handleRegisterClose() {
         console.log("등록해주세요")
         // 서버로 값 보내줘야함!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        goList();
+
     }
     console.log("문제추가렌더링")
     let [grid_data, setGrid_data] = useState([
