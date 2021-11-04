@@ -1,7 +1,9 @@
+/*eslint-disable */
+
 import React, { Component } from 'react';
 
 import { Link, useHistory } from 'react-router-dom';
-import { Button } from '@mui/material';
+import { Button, styled } from '@mui/material';
 
 import '../css/ProblemAdd.css'
 class QuizList extends Component {
@@ -85,6 +87,9 @@ class QuizList extends Component {
 }
 export default QuizList;
 
+const CssButton = styled(Button)({
+    marginLeft: '10px'
+});
 class BoardItem extends React.Component {
     handleSelectRow = () => {
         const { row, onSelectRow } = this.props;
@@ -92,12 +97,13 @@ class BoardItem extends React.Component {
     }
     render() {
         return (
-            <tr>
+            <tr align="center">
                 <td>{this.props.row.brdno}</td>
                 <td>{this.props.row.brdtitle}</td>
                 <td>{this.props.row.brdwriter}</td>
-                <td><button onClick={this.handleEdit}>수정</button>
-                    <Button variant="contained" color="primary" onClick={this.handleRemove}>삭제</Button></td>
+                <td >
+                    <CssButton variant="contained" color="secondary" onClick={this.handleEdit}>수정</CssButton>
+                    <CssButton variant="contained" color="secondary" onClick={this.handleRemove}>삭제</CssButton></td>
             </tr>
         );
     }
@@ -106,8 +112,8 @@ class BoardItem extends React.Component {
 function ProblemAdd_Button() {
     let history = useHistory();
     return (
-        <div>
-            <Button marginleft="300px" variant="contained" color="primary" onClick={() => { history.push("/mainpage/teacher/workbook/problemadd") }} id="problem_add">문제등록</Button>
+        <div className="problem_bottom_div">
+            <Button marginleft="300px" variant="contained" color="secondary" onClick={() => { history.push("/mainpage/teacher/workbook/problemadd") }} id="problem_add">문제등록</Button>
         </div>
     )
 }
