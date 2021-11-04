@@ -94,12 +94,12 @@ function ProblemGrid(props) {
         setOutput_data(newOutput_data);
     }
     //문제추가되는 곳이라면 담아줘야함!
-    if (grid_data[0].mode == "problemAdd") {
+    if (grid_data[0].value == "problemAdd") {
 
         for (let index = 0; index < input_data.length; index++) {
             input_textfield.push(
                 <Item key={index}>
-                    <CssTextField key={grid_data[6].input} fullWidth label={grid_data[6].input} variant="outlined" id="custom-css-outlined-input" maxRows={1}
+                    <CssTextField key={input_data[6].input} fullWidth label={input_data[6].input} variant="outlined" id="custom-css-outlined-input" maxRows={1}
                         name={input_data[index].id} value={input_data[index].value} onChange={handleInputChange} />
                 </Item>
             )
@@ -107,7 +107,7 @@ function ProblemGrid(props) {
         for (let index = 0; index < input_data.length; index++) {
             output_textfield.push(
                 <Item key={index}>
-                    <CssTextField key={grid_data[7].input} fullWidth label={grid_data[7].input} variant="outlined" id="custom-css-outlined-input" maxRows={1}
+                    <CssTextField key={output_data[7].input} fullWidth label={output_data[7].input} variant="outlined" id="custom-css-outlined-input" maxRows={1}
                         name={output_data[index].id} value={output_data[index].value} onChange={handleOutputChange} />
                 </Item>
             )
@@ -126,13 +126,13 @@ function ProblemGrid(props) {
                 <Grid item xs={2}>
                     <Item>
                         <p className="grid_data_title">{grid_data[1].title}</p>
-                        <p className="grid_data">{grid_data[1].input}</p>
+                        <p className="grid_data">{grid_data[1].value}</p>
                     </Item>
                 </Grid>
                 <Grid item xs={2}>
                     <Item>
                         <p className="grid_data_title">{grid_data[2].title}</p>
-                        <p className="grid_data">{grid_data[2].input}</p>
+                        <p className="grid_data">{grid_data[2].value}</p>
                     </Item>
                 </Grid>
             </Grid>
@@ -163,7 +163,7 @@ function ProblemGrid(props) {
                 </Grid>
                 <Grid item xs={6} md={6}>
                     <Item>
-                        <p className="grid_data_title">{grid_data[6].title}</p>
+                        <p className="grid_data_title">{input_data[0].title}</p>
 
                     </Item>
 
@@ -173,7 +173,7 @@ function ProblemGrid(props) {
                 </Grid>
                 <Grid item xs={6} md={6}>
                     <Item>
-                        <p className="grid_data_title">{grid_data[7].title}</p>
+                        <p className="grid_data_title">{output_data[0].title}</p>
                     </Item>
                     {output_textfield}
 
