@@ -22,9 +22,8 @@ class Customer extends React.Component {
         ]
 
 
-
-        if (this.props.edit) {
-            console.log(this.props.edit);
+        if (this.props.editType == "MainList" || this.props.editType == "QuizList") {
+            console.log(this.props.editType);
 
             edit = [<TableCell align="center" key="edit">
                 <CoreDialog key="add" button_box_div="add_problem_class_box" button_box="add_problem_class_box" button_value="등록"
@@ -32,7 +31,13 @@ class Customer extends React.Component {
                 <CssButton key="modify" variant="contained" color="secondary">수정</CssButton>
                 <CssButton key="delete" variant="contained" color="secondary">삭제</CssButton>
             </TableCell>];
-            link = [<Link key="link" to={`../../teacher/workbank_quizlist?mainunit=${this.props.id}`} >{this.props.name}</Link>]
+            if (this.props.editType == "MainList") {
+                link = [<Link key="link" to={`../../teacher/workbank_quizlist?mainunit=${this.props.id}`} >{this.props.name}</Link>]
+
+            }
+            else {
+                link = [<p key="p" >{this.props.name}</p>]
+            }
 
 
         } else {

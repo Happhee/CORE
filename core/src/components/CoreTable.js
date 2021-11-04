@@ -25,7 +25,6 @@ const styles = theme => ({
 function CoreTable(props) {
     let [unit, setUnit] = useState(props.unit);
     let table_cells = props.table_cells;
-    let edit = props.edit;
     let handleFormSubmit = props.handleFormSubmit;
     return (
         <div >
@@ -40,7 +39,7 @@ function CoreTable(props) {
                     </TableHead>
                     <TableBody>
                         {unit.map(c => {
-                            return <Unit key={c.id} id={c.id} name={c.name} count={c.count} edit={edit}
+                            return <Unit key={c.id} id={c.id} name={c.name} count={c.count} editType={props.editType}
                                 handleFormSubmit={handleFormSubmit} />
                         })}
                     </TableBody>

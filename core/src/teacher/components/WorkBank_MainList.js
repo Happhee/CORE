@@ -12,7 +12,6 @@ function WorkBank_MainList() {
     console.log('워크뱅크렌더');
 
     let table_cells = ['NO', '단원명', '문항수', '편집']
-    let edit = true;
 
     let unit = [
         {
@@ -58,7 +57,7 @@ function WorkBank_MainList() {
 
 
         <div className="coretable_workbank">
-            <CoreTable table_cells={table_cells} unit={unit} edit={edit}
+            <CoreTable table_cells={table_cells} unit={unit} editType="MainList"
                 handleFormSubmit={function (register_data) {
                     setRegister_data(register_data);
                 }} />
