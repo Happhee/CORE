@@ -22,10 +22,15 @@ function ProblemAdd() {
         history.push("/mainpage/teacher/workbook/quizlist");
 
     }
-    function registerProblem() {
+
+    function checkRegisterProblem() {
 
         return (InputValidation.checkTextfieldValue(input_data) &&
             InputValidation.checkTextfieldValue(output_data) && InputValidation.checkTextfieldValue(grid_data))
+    }
+    function handleRegisterClose() {
+        console.log("등록해주세요")
+        // 서버로 값 보내줘야함!!!!!!!!!!!!!!!!!!!!!!!!!!!
     }
     console.log("문제추가렌더링")
     let [grid_data, setGrid_data] = useState([
@@ -83,10 +88,8 @@ function ProblemAdd() {
                 <hr />
                 <div className="problem_bottom_div">
                     <Box sx={{ '& button': { m: 0.5 } }}>
-                        <AlertDialog alertDialog_title="문제등록" textfield_state={textfield_state} registerProblem={registerProblem}
-                        />
-                        {/* <Button variant="contained" color="secondary" className="problem_button"
-                            onClick={registerProblem}>문제등록</Button> */}
+                        <AlertDialog alertDialog_title="문제등록" textfield_state={textfield_state} checkRegisterProblem={checkRegisterProblem}
+                            handleRegisterClose={handleRegisterClose} />
                     </Box>
 
                 </div>

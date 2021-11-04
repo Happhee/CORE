@@ -1,3 +1,5 @@
+/*eslint-disable */
+
 import React, { useState } from 'react';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
@@ -5,7 +7,6 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import { useThemeProps } from '@mui/material';
 
 function AlertDialog(props) {
     const [open, setOpen] = useState(false);
@@ -13,12 +14,11 @@ function AlertDialog(props) {
 
     const [button, setButton] = useState();
     const handleClickOpen = () => {
-        if (props.registerProblem()) {
+        if (props.checkRegisterProblem()) {
             setButton(
                 <div>
                     <Button onClick={handleClose}>취소</Button>
-                    <Button onClick={handleClose} autoFocus>등록
-                    </Button>
+                    <Button onClick={handleClose} autoFocus>등록</Button>
                 </div>
             )
             setTextfield_state("문제를 등록하시겠습니까??");
@@ -34,7 +34,10 @@ function AlertDialog(props) {
         setOpen(true);
     };
 
-    const handleClose = () => {
+    const handleClose = (event) => {
+        if (event.target.innerText === '등록') {
+            props.handleRegisterClose();
+        }
         setOpen(false);
     };
 
