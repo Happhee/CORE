@@ -54,32 +54,8 @@ function ProblemGrid(props) {
     // 입력값, 출력값 초기세팅 
     let input_textfield = [];
     let output_textfield = [];
-    let [input_data, setInput_data] = useState([
-        { id: "input1", value: '' },
-        { id: "input2", value: '' },
-        { id: "input3", value: '' },
-        { id: "input4", value: '' },
-        { id: "input5", value: '' },
-        { id: "input6", value: '' },
-        { id: "input7", value: '' },
-        { id: "input8", value: '' },
-        { id: "input9", value: '' },
-        { id: "input10", value: '' },
-
-    ])
-    let [output_data, setOutput_data] = useState([
-        { id: "output1", value: '' },
-        { id: "output2", value: '' },
-        { id: "output3", value: '' },
-        { id: "output4", value: '' },
-        { id: "output5", value: '' },
-        { id: "output6", value: '' },
-        { id: "output7", value: '' },
-        { id: "output8", value: '' },
-        { id: "output9", value: '' },
-        { id: "output10", value: '' }
-
-    ])
+    let [input_data, setInput_data] = useState(props.input_data)
+    let [output_data, setOutput_data] = useState(props.output_data)
     // 텍스트 필드 값 바꾸기 
     const handleGridChange = (event) => {
         const { value, name } = event.target;
