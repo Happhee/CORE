@@ -43,6 +43,7 @@ class Customer extends React.Component {
                 <TableCell align="center" key="id">{this.props.id}</TableCell>
                 <TableCell align="center" key="name">
                     {link}
+
                 </TableCell>
                 <TableCell align="center" key="count">{this.props.count}</TableCell>
                 {edit}

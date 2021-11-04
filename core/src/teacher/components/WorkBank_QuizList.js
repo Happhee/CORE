@@ -10,7 +10,7 @@ function WorkBank_QuizList() {
     console.log("워크뱅크 퀴즈리스트 렌더");
     return (
         <div>
-
+            제발 ㅠㅠㅠㅠ
         </div>
     )
 }
