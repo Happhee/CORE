@@ -40,7 +40,7 @@ function CoreTable(props) {
                     <TableBody>
                         {unit.map(c => {
                             return <Unit key={c.id} id={c.id} name={c.name} count={c.count} editType={props.editType}
-                                handleFormSubmit={handleFormSubmit} />
+                                mainunit={props.mainunit} handleFormSubmit={handleFormSubmit} />
                         })}
                     </TableBody>
                 </Table>

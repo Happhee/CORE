@@ -45,7 +45,7 @@ function WorkBank_QuizList(props) {
     return (
         <div className="coretable_workbank">
             <CoreTable table_cells={table_cells} unit={unit} editType="QuizList"
-                handleFormSubmit={function (register_data) {
+                mainunit={mainunit} handleFormSubmit={function (register_data) {
                     setRegister_data(register_data);
                 }} />
         </div>
