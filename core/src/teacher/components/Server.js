@@ -14,6 +14,9 @@ export function handleFormSubmit(register_data) {
     //서버로 과목 등록하는 코드 필요함!!!!!!!!!!!
 }
 
+export function handleFormModify(modify_data) {
+    console.log(modify_data[0].value);
+}
 export function handleRemoveClose(id) {
     console.log(id);
     //삭제 서버코드!!!!!!!!!!!!!!!!!!!!!!!!!!!!

@@ -46,7 +46,7 @@ function WorkBank_MainList() {
     return (
         <div className="coretable_workbank">
             <CoreTable table_cells={table_cells} unit={unit} editType="MainList"
-                handleFormSubmit={Server.handleFormSubmit} handleRemoveClose={Server.handleRemoveClose} />
+                handleFormSubmit={Server.handleFormSubmit} handleFormModify={Server.handleFormModify} handleRemoveClose={Server.handleRemoveClose} />
         </div>
 
 
