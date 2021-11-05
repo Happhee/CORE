@@ -6,15 +6,18 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+  
   }
 .workbank_content{
     background-color: white;
     box-sizing: border-box;
-    width: 70%;
+    width: fit-content;
+    height: fit-content;
     border: solid #692498 5px;
     text-align: justify;
     padding: 5px;
     display: grid;
+    margin-bottom: 10%;
 }
   .title_workbank{
     display: grid;
@@ -37,4 +40,8 @@
 
   .add_problem_class_box{
       display: inline;
+  }
+ 
+  .main_problem_div{
+    height: fit-content;
   }

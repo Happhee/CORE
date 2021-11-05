@@ -24,13 +24,6 @@ const Item = styled(Paper)(({ theme }) => ({
     boxShadow: 'none'
 }));
 
-function generate(element) {
-    return [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((value) =>
-        React.cloneElement(element, {
-            key: value,
-        }),
-    );
-}
 //텍스트 필드 속성 적용
 const CssTextField = styled(TextField)({
 
@@ -52,52 +45,99 @@ const CssTextField = styled(TextField)({
         },
     },
 });
-function FilledCheck() {
-    const { filled } = useFormControl() || {};
 
-    return <FormHelperText>{filled}</FormHelperText>
-}
+
+
+
 function ProblemGrid(props) {
     let [grid_data, setGrid_data] = useState(props.grid_data);
-    let textfield = useRef(null);
+    // 입력값, 출력값 초기세팅 
+    let input_textfield = [];
+    let output_textfield = [];
+    let [input_data, setInput_data] = useState(props.input_data)
+    let [output_data, setOutput_data] = useState(props.output_data)
+    //피드백 세팅
+    let feedback_textfield = [];
 
-    const [dense, setDense] = useState(false);
-    const [secondary, setSecondary] = useState(false);
+    // 텍스트 필드 값 바꾸기 
+    const handleGridChange = (event) => {
+        const { value, name } = event.target;
+        const newGrid_data = [...grid_data];
 
-    // const TextFieldOne = ({ setValue, control, getValues, triggerValidation }) => {
-    //     const [validationValue, setValidationValue] = useState("");
+        let index = 0
+        for (index = 0; index < grid_data.length; index++) {
+            if (grid_data[index].title == name)
+                break;
+        }
+        newGrid_data[index].value = value;
+        setGrid_data(newGrid_data);
+    }
+    const handleInputChange = (event) => {
+        const { value, name } = event.target;
+        const newInput_data = [...input_data];
 
-    //     const value = getValues("TextFieldOne");
-    //     const defaultValue = value ? value : "";
+        let index = 0
+        for (index = 0; index < input_data.length; index++) {
+            if (input_data[index].id == name)
+                break;
+        }
+        newInput_data[index].value = value;
+        setInput_data(newInput_data);
+    }
+    const handleOutputChange = (event) => {
+        const { value, name } = event.target;
+        const newOutput_data = [...output_data];
 
-    //     const handleChange = e => {
-    //         const length = e.target.value.length;
-    //         triggerValidation("TextFieldOne");
+        let index = 0
+        for (index = 0; index < output_data.length; index++) {
+            if (output_data[index].id == name)
+                break;
+        }
+        newOutput_data[index].value = value;
+        setOutput_data(newOutput_data);
+    }
+    //문제추가되는 곳이라면 담아줘야함!
+    if (grid_data[0].value == "problemAdd") {
 
-    //         if (length >= 8) {
-    //             setValue("TextFieldTwo", `${length} Characters`, true);
-    //         } else {
-    //             setValue("TextFieldTwo", ``);
-    //         }
-    //         return e.target.value;
-    //     };
+        for (let index = 0; index < input_data.length; index++) {
+            input_textfield.push(
+                <Item key={index}>
+                    <CssTextField key={input_data[6].input} fullWidth label={input_data[6].input} variant="outlined" id="custom-css-outlined-input" maxRows={1}
+                        name={input_data[index].id} value={input_data[index].value} onChange={handleInputChange} />
+                </Item>
+            )
+        }
+        for (let index = 0; index < input_data.length; index++) {
+            output_textfield.push(
+                <Item key={index}>
+                    <CssTextField key={output_data[7].input} fullWidth label={output_data[7].input} variant="outlined" id="custom-css-outlined-input" maxRows={1}
+                        name={output_data[index].id} value={output_data[index].value} onChange={handleOutputChange} />
+                </Item>
+            )
+        }
+    }
+    if (props.type === 'feedback') {
+
+    }
 
 
     return (
-        <Box sx={{ flexGrow: 1 }}>
+        <Box component="form"
+            noValidate
+            autoComplete="off" sx={{ flexGrow: 1 }}>
             <Grid container spacing={2}>
 
                 {/* 상단 문제 챕터 및 단원 */}
                 <Grid item xs={2}>
                     <Item>
-                        <p className="grid_data_title">{grid_data[0].title}</p>
-                        <p className="grid_data">{grid_data[0].input}</p>
+                        <p className="grid_data_title">{grid_data[1].title}</p>
+                        <p className="grid_data">{props.mainunit}단원</p>
                     </Item>
                 </Grid>
                 <Grid item xs={2}>
                     <Item>
-                        <p className="grid_data_title">{grid_data[1].title}</p>
-                        <p className="grid_data">{grid_data[1].input}</p>
+                        <p className="grid_data_title">{grid_data[2].title}</p>
+                        <p className="grid_data">{props.subunit}번</p>
                     </Item>
                 </Grid>
             </Grid>
@@ -105,55 +145,42 @@ function ProblemGrid(props) {
             <Grid container spacing={2} columns={12}>
                 <Grid item xs={12} >
                     <Item>
-                        <p className="grid_data_title">{grid_data[2].title}</p>
-                        <CssTextField fullWidth label={grid_data[2].input} variant="outlined" id="custom-css-outlined-input" maxRows={1} />
-                    </Item>
-                </Grid>
-                <Grid item xs={12}>
-                    <Item>
                         <p className="grid_data_title">{grid_data[3].title}</p>
-                        <CssTextField fullWidth label={grid_data[3].input} variant="outlined" id="custom-css-outlined-input" multiline rows={5} />
+                        <CssTextField fullWidth label={grid_data[3].input} variant="outlined" id="custom-css-outlined-input" maxRows={1}
+                            name={grid_data[3].title} value={grid_data[3].value} onChange={handleGridChange} />
                     </Item>
-
                 </Grid>
                 <Grid item xs={12}>
-
                     <Item>
                         <p className="grid_data_title">{grid_data[4].title}</p>
-                        <CssTextField fullWidth label={grid_data[4].input} variant="outlined" id="custom-css-outlined-input" multiline rows={10} />
+                        <CssTextField fullWidth label={grid_data[4].input} variant="outlined" id="custom-css-outlined-input" multiline rows={5}
+                            name={grid_data[4].title} value={grid_data[4].value} onChange={handleGridChange} />
                     </Item>
+
                 </Grid>
-                <Grid item xs={6} md={6}>
+                <Grid item xs={12}>
+
                     <Item>
                         <p className="grid_data_title">{grid_data[5].title}</p>
-                        <List dense={dense}>
-                            {generate(
-                                <ListItem>
-                                    <CssTextField fullWidth label={grid_data[5].input} variant="outlined" id="custom-css-outlined-input" maxRows={1} />
-                                </ListItem>,
-                            )}
-                        </List>
+                        <CssTextField fullWidth label={grid_data[5].input} variant="outlined" id="custom-css-outlined-input" multiline rows={10}
+                            name={grid_data[5].title} value={grid_data[5].value} onChange={handleGridChange} />
                     </Item>
+                </Grid>
+                <Grid item xs={6} md={6}>
+                    <Item>
+                        <p className="grid_data_title">{input_data[0].title}</p>
+
+                    </Item>
+
+                    {input_textfield}
+
 
                 </Grid>
                 <Grid item xs={6} md={6}>
                     <Item>
-                        <p className="grid_data_title">{grid_data[6].title}</p>
-                        <List dense={dense}>
-                            {generate(
-                                <ListItem>
-
-                                    <CssTextField fullWidth label={grid_data[6].input} variant="outlined" id="custom-css-outlined-input" maxRows={1}
-                                        onClick={(event) => {
-                                            console.log(textfield)
-                                        }} />
-
-
-                                </ListItem>
-                            )}
-                        </List>
+                        <p className="grid_data_title">{output_data[0].title}</p>
                     </Item>
-
+                    {output_textfield}
                 </Grid>
 
             </Grid>

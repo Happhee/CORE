@@ -8,6 +8,7 @@ import ClassRoom from './components/ClassRoom';
 import MainPage from './components/MainPage';
 import My from './components/My';
 import WorkBank from './teacher/components/WorkBank';
+import WorkBank_QuizList from './teacher/components/WorkBank_QuizList'
 import FeedBank from './student/components/FeedBank';
 import Information from './components/Information';
 
@@ -30,7 +31,7 @@ function App(props) {
           <Route exact path='/classroom/:mode' render={(props) => <ClassRoom {...props} />} />
           <Route path='/mainpage/:mode/:page' render={(props) => <MainPage {...props} />} />
           <Route exact path='/:mode/my' render={(props) => <My {...props} />} />
-          <Route exact path='/:mode/workbank' render={(props) => <WorkBank {...props} />} />
+          <Route exact path={['/:mode/:workbank', '/:mode/workbank_quizlist/:problemmodify']} render={(props) => <WorkBank {...props} />} />
           <Route exact path='/:mode/feedbank' render={(props) => <FeedBank {...props} />} />
           <Route exact path='/:mode/my/information' render={(props) => <Information {...props} />} />
 

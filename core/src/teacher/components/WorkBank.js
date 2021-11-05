@@ -5,14 +5,18 @@ import React, { useState } from 'react';
 import Toolbar from '../../components/Toolbar';
 import { ReactComponent as Core_Logo } from '../../css/Core.svg'
 import CoreTable from '../../components/CoreTable';
-
+import WorkBank_MainList from './WorkBank_MainList';
+import WorkBank_QuizList from './WorkBank_QuizList';
+import ProblemMain from './ProblemMain';
 import '../../css/CoreListbox.css'
+import { Route, Switch } from 'react-router-dom';
 
 function WorkBank() {
     console.log('워크뱅크렌더');
     let toolbar = [
         { id: 1, title: 'My', link: '/teacher/my' },
         { id: 2, title: 'WorkBank', link: '/teacher/workbank' }];
+
 
     let table_cells = ['NO', '단원명', '문항수', '편집']
     let edit = true;
@@ -67,12 +71,11 @@ function WorkBank() {
                     <div className="title_workbank">
                         <span>WorkBank</span>
                     </div>
-                    <div className="coretable_workbank">
-                        <CoreTable table_cells={table_cells} unit={unit} edit={edit}
-                            handleFormSubmit={function (register_data) {
-                                setRegister_data(register_data);
-                            }} />
-                    </div>
+                    <Switch>
+                        <Route exact path='/:mode/workbank' render={() => <WorkBank_MainList />} />
+                        <Route exact path='/:mode/workbank_quizlist' render={() => <WorkBank_QuizList />} />
+                        <Route exact path="/:mode/workbank_quizlist/:problemmodify" render={() => <ProblemMain />} />
+                    </Switch>
 
                 </div>
             </div>

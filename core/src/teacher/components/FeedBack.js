@@ -103,6 +103,12 @@ const feedBack = [
     }
 ]
 
+//function FeedBack(){
+
+//     return(
+
+//     )
+// }
 class FeedBack extends Component {
     handleValueChange(e) {
         let nextState = {};
@@ -126,6 +132,7 @@ class FeedBack extends Component {
                             root: classes.inputRoot,
                             input: classes.inputInput,
                         }}
+
                     />
                 </div>
 

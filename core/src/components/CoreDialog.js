@@ -7,9 +7,9 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
 
 
+import { Button, styled } from '@mui/material';
 import { withStyles } from '@material-ui/core/styles';
 import CoreListbox from './CoreListbox';
 
@@ -48,6 +48,9 @@ const CoreDialog = props => {
                 setSelect_class_id(id);
             }} />
     }
+
+    let textfield_state = props.textfield_state;
+
     function handleClickOpen() {
         setDialog_data({ open: true });
     }
@@ -68,6 +71,8 @@ const CoreDialog = props => {
     const handleValueChange = (e) => {
         const { value, name } = e.target;
         const newText_data = [...text_datas];
+        console.log(e.target);
+
         let index = 0
         for (index = 0; index < text_datas.length; index++) {
             if (text_datas[index].name == name)
@@ -91,7 +96,7 @@ const CoreDialog = props => {
     return (
         <div className={props.button_box_div}>
             <div className={props.button_box}>
-                <button className={props.button_type} onClick={handleClickOpen}>{props.button_value}</button>
+                <Button variant="contained" color="secondary" className={props.button_type} onClick={handleClickOpen}>{props.button_value}</Button>
             </div>
             <Dialog open={dialog_data.open} onClose={handleClose}>
 
@@ -102,16 +107,23 @@ const CoreDialog = props => {
                 <DialogContent>
                     {select_listbox}
                     {textfield_list}
+                    {textfield_state}
                 </DialogContent>
 
                 <DialogActions>
 
                     <Button variant="contained" color="primary" onClick={function (e) {
 
-                        props.handleFormSubmit(text_datas);
-                        props.handleFormSubmit(select_class_id);
+                        if (props.button_value === '수정') {
+                            props.handleFormModify(text_datas)
+                        }
+                        else {
+
+                            props.handleFormSubmit(text_datas);
+                            props.handleFormSubmit(select_class_id);
+                        }
                         setDialog_data({ open: false })
-                    }} >추가</Button>
+                    }} >{props.button_value}</Button>
 
                     <Button variant="outlined" color="primary" onClick={handleClose}>닫기</Button>
 
