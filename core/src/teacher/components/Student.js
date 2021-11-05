@@ -104,6 +104,8 @@ class Student extends Component {
 
         return (
             <div className="main_div">
+                        <h1>Student</h1>
+
                 < table border="1" >
                     <tbody>
                         <tr align="center">
