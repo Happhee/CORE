@@ -104,23 +104,21 @@ const feedBack = [
 ]
 
 class FeedBack extends Component {
-
     handleValueChange(e) {
         let nextState = {};
         nextState[e.target.name] = e.target.value;
         this.setState(nextState);
     }
 
-
-
     render() {
         const { classes } = this.props;
         return (
             <div className="main_div">
+                <h1>FeedBack</h1>
                 <div className={classes.grow} />
                 <div className={classes.search}>
                     <div className={classes.searchIcon}>
-                        <SearchIcon/>
+                        <SearchIcon />
                     </div>
                     <InputBase
                         placeholder="검색하기"
@@ -128,7 +126,6 @@ class FeedBack extends Component {
                             root: classes.inputRoot,
                             input: classes.inputInput,
                         }}
-                       
                     />
                 </div>
 

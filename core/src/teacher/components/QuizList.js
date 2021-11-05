@@ -56,6 +56,7 @@ class QuizList extends Component {
 
         return (
             <div className="main_div">
+                <h1>WorkBook - QuizList</h1>
 
                 <table border="1">
                     <tbody>
