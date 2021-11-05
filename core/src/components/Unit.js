@@ -7,7 +7,8 @@ import AlertDialog from './AlertDialog';
 
 import CoreDialog from './CoreDialog';
 const CssButton = styled(Button)({
-    marginLeft: '10px'
+    marginLeft: '10px',
+    marginRight: '10px'
 });
 
 function Customer(props) {

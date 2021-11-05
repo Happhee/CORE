@@ -57,7 +57,7 @@ function AlertDialog(props) {
     };
 
     return (
-        <div>
+        <>
             <Button variant="contained" color="secondary" className="problem_button" onClick={handleClickOpen}>
                 {props.alertDialog_title}
             </Button>
@@ -79,7 +79,7 @@ function AlertDialog(props) {
                     {button}
                 </DialogActions>
             </Dialog>
-        </div>
+        </>
     );
 }
 
