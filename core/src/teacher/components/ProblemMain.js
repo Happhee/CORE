@@ -16,10 +16,24 @@ function ProblemAdd() {
 
     const { search } = useLocation();
     const queryObj = queryString.parse(search);
-    const { mainunit, subunit } = queryObj;
+    const { mainunit, subunit, type } = queryObj;
+
+    console.log(type);
 
     let [textfield_state, setTextfield_state] = useState('');
+    let problem_bottom_title = null;
     let history = useHistory();
+
+
+    if (type === 'register') {
+        problem_bottom_title = '문제등록'
+    }
+    else if (type === 'modify') {
+        problem_bottom_title = '수정하기'
+    }
+    else if (type === 'feedback') {
+        problem_bottom_title = '답변하기'
+    }
 
     function temporarySave() {
 
@@ -101,7 +115,7 @@ function ProblemAdd() {
                 <hr />
                 <div className="problem_bottom_div">
                     <Box sx={{ '& button': { m: 0.5 } }}>
-                        <AlertDialog alertDialog_title="문제등록" textfield_state={textfield_state} checkRegisterProblem={checkRegisterProblem}
+                        <AlertDialog alertDialog_title={problem_bottom_title} textfield_state={textfield_state} checkRegisterProblem={checkRegisterProblem}
                             handleRegisterClose={handleRegisterClose} />
                     </Box>
 

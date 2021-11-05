@@ -103,6 +103,12 @@ const feedBack = [
     }
 ]
 
+//function FeedBack(){
+
+//     return(
+
+//     )
+// }
 class FeedBack extends Component {
 
     handleValueChange(e) {
@@ -120,7 +126,7 @@ class FeedBack extends Component {
                 <div className={classes.grow} />
                 <div className={classes.search}>
                     <div className={classes.searchIcon}>
-                        <SearchIcon/>
+                        <SearchIcon />
                     </div>
                     <InputBase
                         placeholder="검색하기"
@@ -128,7 +134,7 @@ class FeedBack extends Component {
                             root: classes.inputRoot,
                             input: classes.inputInput,
                         }}
-                       
+
                     />
                 </div>
 

@@ -7,7 +7,7 @@ import { ReactComponent as Core_Logo } from '../../css/Core.svg'
 import CoreTable from '../../components/CoreTable';
 import WorkBank_MainList from './WorkBank_MainList';
 import WorkBank_QuizList from './WorkBank_QuizList';
-import ProblemAdd from './ProblemAdd';
+import ProblemMain from './ProblemMain';
 import '../../css/CoreListbox.css'
 import { Route, Switch } from 'react-router-dom';
 
@@ -74,7 +74,7 @@ function WorkBank() {
                     <Switch>
                         <Route exact path='/:mode/workbank' render={() => <WorkBank_MainList />} />
                         <Route exact path='/:mode/workbank_quizlist' render={() => <WorkBank_QuizList />} />
-                        <Route exact path="/:mode/workbank_quizlist/:problemmodify" render={() => <ProblemAdd />} />
+                        <Route exact path="/:mode/workbank_quizlist/:problemmodify" render={() => <ProblemMain />} />
                     </Switch>
 
                 </div>
