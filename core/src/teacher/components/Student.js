@@ -40,14 +40,13 @@ class Student extends Component {
             window.Kakao.init('d1a90c494e1cdb68196c4145544ffac1');
 
         }
-        window.Kakao.init('d1a90c494e1cdb68196c4145544ffac1');
 
 
         window.Kakao.Link.createDefaultButton({
             container: '#kakao-link-btn',
             objectType: 'feed',
             content: {
-                title: '딸기 치즈 케익',
+                title: '학생 초대',
                 description: '여기 링크~!~!',
                 imageUrl: 'http://mud-kage.kakao.co.kr/dn/Q2iNx/btqgeRgV54P/VLdBs9cvyn8BJXB3o7N8UK/kakaolink40_original.png',
                 link: {
@@ -77,6 +76,32 @@ class Student extends Component {
                 }
             ]
         });
+    }
+    handleRemove = (brdno) => {
+        this.setState({
+            boards: this.state.boards.filter(row => row.brdno !== brdno)
+        })
+    }
+    handleEdit = (brdno) => {
+        this.setState({
+            boards: this.state.boards.filter(row => row.brdno !== brdno)
+        })
+    }
+    handleSaveData = (data) => {
+        let boards = this.state.boards;
+        if (data.brdno === null || data.brdno === '' || data.brdno === undefined) {    // new : Insert
+            this.setState({
+                maxNo: this.state.maxNo + 1,
+                boards: boards.concat({ brdno: this.state.maxNo, brdwriter: data.brdwriter, brdtitle: data.brdtitle })
+            });
+        } else {                                                        // Update
+            this.setState({
+                boards: boards.map(row => data.brdno === row.brdno ? { ...data } : row)
+            })
+        }
+    }
+    handleSelectRow = (row) => {
+        this.child.current.handleSelectRow(row);
     }
 
     render() {
