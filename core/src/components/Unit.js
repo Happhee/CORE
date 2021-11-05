@@ -33,7 +33,8 @@ function Customer(props) {
             <CoreDialog key="add" button_box_div="add_problem_class_box" button_box="add_problem_class_box" button_value="등록"
                 dialog_title="문제 등록하기" listbox_datas={listbox_datas} handleFormSubmit={props.handleFormSubmit} />
             <CssButton key="modify" variant="contained" color="secondary">수정</CssButton>
-            <CssButton key="delete" variant="contained" color="secondary">삭제</CssButton>
+            <AlertDialog key="delete" alertDialog_title="삭제" textfield_state={textfield_state} handleRemoveClose={props.handleRemoveClose}
+                subunit={props.id} />
         </TableCell>];
 
         link = [<Link key="link" to={`../../teacher/workbank_quizlist?mainunit=${props.id}`} >{props.name}</Link>]
