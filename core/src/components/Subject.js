@@ -59,7 +59,7 @@ const Subject = props => {
 
         //워크북 상세 라우트
         route.push(<Route exact path='/mainpage/teacher/workbook/quizlist' render={() => <QuizList />} key="quizlist" />);
-        route.push(<Route exact path={'/mainpage/teacher/workbook/quizlist/:problemmain', '/mainpage/teacher/feedback/quizlist/:problemmain'} render={() => <ProblemMain />} key="problemadd" />);
+        route.push(<Route path={['/mainpage/teacher/workbook/quizlist/:problemmain', '/mainpage/teacher/feedback/quizlist/:problemmain']} render={() => <ProblemMain />} key="problemadd" />);
     }
     else {
         list.push(<Subject_Link key={data[0].id} title={data[0].title}

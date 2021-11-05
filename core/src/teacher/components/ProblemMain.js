@@ -10,6 +10,7 @@ import * as InputValidation from '../../components/InputValidation';
 import CoreDialog from '../../components/CoreDialog';
 import AlertDialog from '../../components/AlertDialog';
 import queryString from 'query-string'
+import ProblemServer from './ProblemServer';
 
 
 function ProblemAdd() {
@@ -21,50 +22,8 @@ function ProblemAdd() {
     console.log(type);
 
     let [textfield_state, setTextfield_state] = useState('');
-    let problem_bottom_title = null;
-    let history = useHistory();
 
-
-    if (type === 'register') {
-        problem_bottom_title = '문제등록'
-    }
-    else if (type === 'modify') {
-        problem_bottom_title = '수정하기'
-    }
-    else if (type === 'feedback') {
-        problem_bottom_title = '답변하기'
-    }
-
-    function temporarySave() {
-
-    }
-    function goList() {
-
-        history.goBack()
-
-    }
-
-    function checkRegisterProblem() {
-
-        return (InputValidation.checkTextfieldValue(input_data) &&
-            InputValidation.checkTextfieldValue(output_data) && InputValidation.checkTextfieldValue(grid_data))
-    }
-    function handleRegisterClose() {
-        console.log("등록해주세요")
-        // 서버로 값 보내줘야함!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        goList();
-
-    }
-    console.log("문제추가렌더링")
-
-    let [grid_data, setGrid_data] = useState([
-        { id: 0, value: "problemAdd" },
-        { id: 1, title: "Problem - Chapter", value: "단원" },
-        { id: 2, title: "Problem - Number", value: "소문제번호" },
-        { id: 3, title: "Problem Title", input: "문제명", value: "" },
-        { id: 4, title: "Problem Description", input: "문제 상세 설명", value: "" },
-        { id: 5, title: "Answer Code", input: "정답 코드", value: "" }]
-    )
+    console.log
 
 
     let [input_data, setInput_data] = useState([
@@ -93,6 +52,90 @@ function ProblemAdd() {
         { id: "output10", value: '', title: "Output", input: "결과값" }
     ])
 
+    let problem_bottom_title = null;
+    let history = useHistory();
+
+    let [grid_data, setGrid_data] = useState([
+        { id: 0, value: "problemAdd" },
+        { id: 1, title: "Problem - Chapter", value: "단원" },
+        { id: 2, title: "Problem - Number", value: "소문제번호" },
+        { id: 3, title: "Problem Title", input: "문제명", value: "" },
+        { id: 4, title: "Problem Description", input: "문제 상세 설명", value: "" },
+        { id: 5, title: "Answer Code", input: "정답 코드", value: "" }]);
+
+    if (type === 'register') {
+        problem_bottom_title = '문제등록'
+        let [grid_data, setGrid_data] = useState([
+            { id: 0, value: "problemAdd" },
+            { id: 1, title: "Problem - Chapter", value: "단원" },
+            { id: 2, title: "Problem - Number", value: "소문제번호" },
+            { id: 3, title: "Problem Title", input: "문제명", value: "" },
+            { id: 4, title: "Problem Description", input: "문제 상세 설명", value: "" },
+            { id: 5, title: "Answer Code", input: "정답 코드", value: "" }]);
+
+    }
+    else if (type === 'modify') {
+        problem_bottom_title = '수정하기'
+        let [grid_data, setGrid_data] = useState([
+            { id: 0, value: "problemAdd" },
+            { id: 1, title: "Problem - Chapter", value: "단원" },
+            { id: 2, title: "Problem - Number", value: "소문제번호" },
+            { id: 3, title: "Problem Title", input: "문제명", value: "" },
+            { id: 4, title: "Problem Description", input: "문제 상세 설명", value: "" },
+            { id: 5, title: "Answer Code", input: "정답 코드", value: "" }]);
+    }
+    else {
+        problem_bottom_title = '답변하기'
+        let [grid_data, setGrid_data] = useState([
+            { id: 0, value: "problemAdd" },
+            { id: 1, title: "Problem - Chapter", value: "단원" },
+            { id: 2, title: "Problem - Number", value: "소문제번호" },
+            { id: 3, title: "Problem Title", input: "문제명", value: "" },
+            { id: 4, title: "Problem Description", input: "문제 상세 설명", value: "" },
+            { id: 5, title: "Student - ID", input: "학생 아이디", value: "" },
+            { id: 6, title: "Student - Name", input: "학생 이름", value: "" },
+            { id: 7, title: "Student - Code", input: "학생 제출 코드", value: "" }])
+
+        useEffect(() => {
+
+            setGrid_data([
+                { id: 0, value: "problemAdd" },
+                { id: 1, title: "Problem - Chapter", value: "단원" },
+                { id: 2, title: "Problem - Number", value: "소문제번호" },
+                { id: 3, title: "Problem Title", input: "문제명", value: "" },
+                { id: 4, title: "Problem Description", input: "문제 상세 설명", value: "" },
+                { id: 5, title: "Student - ID", input: "학생 아이디", value: "" },
+                { id: 6, title: "Student - Name", input: "학생 이름", value: "" },
+                { id: 7, title: "Student - Code", input: "학생 제출 코드", value: "" }])
+            console.log('답변')
+
+        }, [])
+
+    }
+
+    function temporarySave() {
+
+    }
+    function goList() {
+
+        history.goBack()
+
+    }
+
+    function checkRegisterProblem() {
+
+        return (InputValidation.checkTextfieldValue(input_data) &&
+            InputValidation.checkTextfieldValue(output_data) && InputValidation.checkTextfieldValue(grid_data))
+    }
+    function handleRegisterClose() {
+        console.log("등록해주세요")
+        // 서버로 값 보내줘야함!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        goList();
+
+    }
+    console.log("문제추가렌더링")
+    console.log(grid_data);
+
     return (
         <div className="main_problem_div">
             <div className="sub_div">
@@ -111,7 +154,12 @@ function ProblemAdd() {
                 <hr />
                 <ProblemGrid title_text_item="Problem" temporary_save_button="임시저장"
                     mainunit={mainunit} subunit={subunit}
+                    type={type}
                     grid_data={grid_data} input_data={input_data} output_data={output_data} />
+                {/* <ProblemServer title_text_item="Problem" temporary_save_button="임시저장"
+                    mainunit={mainunit} subunit={subunit}
+                    type={type}
+                    grid_data={grid_data} input_data={input_data} output_data={output_data} /> */}
                 <hr />
                 <div className="problem_bottom_div">
                     <Box sx={{ '& button': { m: 0.5 } }}>

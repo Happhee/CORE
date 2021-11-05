@@ -56,6 +56,9 @@ function ProblemGrid(props) {
     let output_textfield = [];
     let [input_data, setInput_data] = useState(props.input_data)
     let [output_data, setOutput_data] = useState(props.output_data)
+    //피드백 세팅
+    let feedback_textfield = [];
+
     // 텍스트 필드 값 바꾸기 
     const handleGridChange = (event) => {
         const { value, name } = event.target;
@@ -113,7 +116,9 @@ function ProblemGrid(props) {
             )
         }
     }
+    if (props.type === 'feedback') {
 
+    }
 
 
     return (
@@ -176,8 +181,6 @@ function ProblemGrid(props) {
                         <p className="grid_data_title">{output_data[0].title}</p>
                     </Item>
                     {output_textfield}
-
-
                 </Grid>
 
             </Grid>
