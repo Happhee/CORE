@@ -47,6 +47,8 @@ class WorkBook extends Component {
     const { classes } = this.props;
     return (
       <div className="main_div">
+        <h1>WorkBook - Chapter List</h1>
+
         <Paper className={classes.root}>
           <Table className={classes.table}>
             <TableHead>
