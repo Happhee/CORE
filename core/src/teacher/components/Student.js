@@ -33,10 +33,10 @@ class Student extends Component {
             }
         ]
     }
+
     componentDidMount() {
         window.Kakao.init('d1a90c494e1cdb68196c4145544ffac1');
-    }
-    componentDidMount() {
+
         window.Kakao.Link.createDefaultButton({
             container: '#kakao-link-btn',
             objectType: 'feed',
