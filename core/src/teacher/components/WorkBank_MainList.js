@@ -5,6 +5,7 @@ import React, { useState } from 'react';
 import Toolbar from '../../components/Toolbar';
 import { ReactComponent as Core_Logo } from '../../css/Core.svg'
 import CoreTable from '../../components/CoreTable';
+import * as Server from './Server';
 
 import '../../css/CoreListbox.css'
 
@@ -40,42 +41,12 @@ function WorkBank_MainList() {
     let [register_data, setRegister_data] = useState(listbox_datas[0].id);
     console.log("등록강의실  -> " + listbox_datas[register_data].value);
 
-    function handleFormSubmit(register_data) {
-        setRegister_data(register_data - 1);
-        //서버로 과목 등록하는 코드 필요함!!!!!!!!!!!
-        //서버로 과목 등록하는 코드 필요함!!!!!!!!!!!
-        //서버로 과목 등록하는 코드 필요함!!!!!!!!!!!
-        //서버로 과목 등록하는 코드 필요함!!!!!!!!!!!
-        //서버로 과목 등록하는 코드 필요함!!!!!!!!!!!
-        //서버로 과목 등록하는 코드 필요함!!!!!!!!!!!
-        //서버로 과목 등록하는 코드 필요함!!!!!!!!!!!
-        //서버로 과목 등록하는 코드 필요함!!!!!!!!!!!
-        //서버로 과목 등록하는 코드 필요함!!!!!!!!!!!
-        //서버로 과목 등록하는 코드 필요함!!!!!!!!!!!
-        //서버로 과목 등록하는 코드 필요함!!!!!!!!!!!
-        //서버로 과목 등록하는 코드 필요함!!!!!!!!!!!
-    }
-    function handleRemoveClose(id) {
-        console.log(id);
-        //삭제 서버코드!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        //삭제 서버코드!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        //삭제 서버코드!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        //삭제 서버코드!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        //삭제 서버코드!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        //삭제 서버코드!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        //삭제 서버코드!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        //삭제 서버코드!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        //삭제 서버코드!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        //삭제 서버코드!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        //삭제 서버코드!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        //삭제 서버코드!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        //삭제 서버코드!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        //삭제 서버코드!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    }
+
+
     return (
         <div className="coretable_workbank">
             <CoreTable table_cells={table_cells} unit={unit} editType="MainList"
-                handleFormSubmit={handleFormSubmit} handleRemoveClose={handleRemoveClose} />
+                handleFormSubmit={Server.handleFormSubmit} handleRemoveClose={Server.handleRemoveClose} />
         </div>
 
 
