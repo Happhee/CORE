@@ -14,7 +14,7 @@ class FeedBackInfo extends React.Component {
                 <TableCell key="quizNumber">{this.props.quizNumber}</TableCell>
                 <TableCell key="set">{this.props.set}</TableCell>
                 <TableCell key="score">
-                    <Link key="link" to={`../../mainpage/teacher/${this.props.startpage}/quizlist`} >{this.props.score}</Link>
+                    <Link key="link" to={`../../mainpage/teacher/${this.props.startpage}/quizlist/problemmain?mainunit=${this.props.unit}&subunit=${this.props.quizNumber}&type=feedback`} >{this.props.score}</Link>
                 </TableCell>
             </TableRow>
         )

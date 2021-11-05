@@ -99,7 +99,7 @@ function BoardItem(props) {
             <td >
                 <CssButton variant="contained" color="secondary" onClick={
                     () => {
-                        history.push(`/mainpage/teacher/workbook/problemadd?mainunit=${mainunit}&subunit=${props.row.brdno}`)
+                        history.push(`/mainpage/teacher/workbook/quizlist/problemmain?mainunit=${mainunit}&subunit=${props.row.brdno}&type=modify`)
                     }}>수정</CssButton>
                 <CssButton variant="contained" color="secondary" >삭제</CssButton></td>
         </tr>
@@ -114,7 +114,7 @@ function ProblemAdd_Button(props) {
     const { mainunit } = queryObj;
     return (
         <div className="problem_bottom_div">
-            <Button marginleft="300px" variant="contained" color="secondary" onClick={() => { history.push(`/mainpage/teacher/workbook/problemadd?mainunit=${mainunit}&subunit=${props.subunit}`) }} id="problem_add">문제등록</Button>
+            <Button marginleft="300px" variant="contained" color="secondary" onClick={() => { history.push(`/mainpage/teacher/workbook/quizlist/problemmain?mainunit=${mainunit}&subunit=${props.subunit}&type=register`) }} id="problem_add">문제등록</Button>
         </div>
     )
 }

@@ -114,10 +114,16 @@ const CoreDialog = props => {
 
                     <Button variant="contained" color="primary" onClick={function (e) {
 
-                        props.handleFormSubmit(text_datas);
-                        props.handleFormSubmit(select_class_id);
+                        if (props.button_value === '수정') {
+                            props.handleFormModify(text_datas)
+                        }
+                        else {
+
+                            props.handleFormSubmit(text_datas);
+                            props.handleFormSubmit(select_class_id);
+                        }
                         setDialog_data({ open: false })
-                    }} >추가</Button>
+                    }} >{props.button_value}</Button>
 
                     <Button variant="outlined" color="primary" onClick={handleClose}>닫기</Button>
 

@@ -1,11 +1,12 @@
 /*eslint-disable */
-import React, { useReducer, useState } from 'react';
+import React, { useReducer, useState, useEffect } from 'react';
 import '../css/Login.css';
 import { ReactComponent as Core_Logo } from '../css/Core.svg';
 
 import { BrowserRouter as Router, Route, Switch, Link, useHistory } from 'react-router-dom';
 import Toolbar from './Toolbar';
-
+import axios from 'axios';
+import UserList from './UserList';
 function Login() {
     let history = useHistory();
     let toolbar = [
@@ -53,9 +54,21 @@ function Login() {
         }
     }
 
+    let [user, setUser] = useState([])
+    useEffect(() => {
+        axios.get('https://jsonplaceholder.typicode.com/users')
+            .then(response => {
+                setUser(response.data);
+            })
+    }, [])
 
+    useEffect(() => {
+        console.log(user);
+    }, [user])
     return (
         <div>
+            {/* <UserList user={user} /> */}
+
             <Toolbar data={toolbar} />
 
             <div className="login_box">
