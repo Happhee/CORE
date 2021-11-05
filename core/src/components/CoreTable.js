@@ -25,7 +25,7 @@ const styles = theme => ({
 function CoreTable(props) {
     let [unit, setUnit] = useState(props.unit);
     let table_cells = props.table_cells;
-    let handleFormSubmit = props.handleFormSubmit;
+
     return (
         <div >
             <Paper className={styles.root}>
@@ -40,7 +40,7 @@ function CoreTable(props) {
                     <TableBody>
                         {unit.map(c => {
                             return <Unit key={c.id} id={c.id} name={c.name} count={c.count} editType={props.editType}
-                                mainunit={props.mainunit} handleFormSubmit={handleFormSubmit} />
+                                mainunit={props.mainunit} handleFormSubmit={props.handleFormSubmit} handleRemoveClose={props.handleRemoveClose} />
                         })}
                     </TableBody>
                 </Table>

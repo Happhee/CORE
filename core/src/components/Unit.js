@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
 import { Button, styled } from '@mui/material';
@@ -23,6 +23,9 @@ function Customer(props) {
     ]
     let history = useHistory();
 
+    // 문제 삭제 하는 서버코드 필요!!!!
+    let [textfield_state, setTextfield_state] = useState('');
+
     if (props.editType === "MainList") {
         console.log(props.editType);
 
@@ -45,7 +48,8 @@ function Customer(props) {
                     history.push(`/teacher/workbank_quizlist/problemmodify?mainunit=${props.mainunit}&subunit=${props.id}`)
                 }}>수정</CssButton>
 
-                <AlertDialog key="delete" alertDialog_title="삭제" />
+                <AlertDialog key="delete" alertDialog_title="삭제" textfield_state={textfield_state} handleRemoveClose={props.handleRemoveClose}
+                    subunit={props.id} />
             </TableCell>];
         link = [<p key="p" >{props.name}</p>]
 

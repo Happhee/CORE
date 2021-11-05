@@ -41,10 +41,13 @@ function WorkBank_QuizList(props) {
     ]
     //선택된 과목 아이디!!!!!!!!!!!!!!!1
     let [register_data, setRegister_data] = useState(listbox_datas[0].id);
+    function handleRemoveClose(event) {
+        console.log(event);
+    }
     console.log("등록강의실  -> " + listbox_datas[register_data].value);
     return (
         <div className="coretable_workbank">
-            <CoreTable table_cells={table_cells} unit={unit} editType="QuizList"
+            <CoreTable table_cells={table_cells} unit={unit} editType="QuizList" handleRemoveClose={handleRemoveClose}
                 mainunit={mainunit} handleFormSubmit={function (register_data) {
                     setRegister_data(register_data);
                 }} />

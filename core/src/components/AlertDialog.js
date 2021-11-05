@@ -14,29 +14,44 @@ function AlertDialog(props) {
 
     const [button, setButton] = useState();
     const handleClickOpen = () => {
-        if (props.checkRegisterProblem()) {
+        if (props.alertDialog_title === '문제등록') {
+            if (props.checkRegisterProblem()) {
+                setButton(
+                    <div>
+                        <Button onClick={handleClose}>취소</Button>
+                        <Button onClick={handleClose} autoFocus>등록</Button>
+                    </div>
+                )
+                setTextfield_state("문제를 등록하시겠습니까??");
+            }
+            else {
+                setButton(
+                    <div>
+                        <Button onClick={handleClose}>취소</Button>
+                    </div>
+                )
+                setTextfield_state('입력되지 않은 정보가 있습니다!!! 모든 정보를 입력해주세요');
+            }
+        }
+        else if (props.alertDialog_title === '삭제') {
             setButton(
                 <div>
                     <Button onClick={handleClose}>취소</Button>
-                    <Button onClick={handleClose} autoFocus>등록</Button>
+                    <Button onClick={handleClose} autoFocus>삭제</Button>
                 </div>
             )
-            setTextfield_state("문제를 등록하시겠습니까??");
+            setTextfield_state("문제를 정말로 삭제하시겠습니까??");
         }
-        else {
-            setButton(
-                <div>
-                    <Button onClick={handleClose}>취소</Button>
-                </div>
-            )
-            setTextfield_state('입력되지 않은 정보가 있습니다!!! 모든 정보를 입력해주세요');
-        }
+
         setOpen(true);
     };
 
     const handleClose = (event) => {
         if (event.target.innerText === '등록') {
             props.handleRegisterClose();
+        }
+        else if (event.target.innerText === '삭제') {
+            props.handleRemoveClose(props.subunit);
         }
         setOpen(false);
     };
