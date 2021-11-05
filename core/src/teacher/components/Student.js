@@ -3,7 +3,7 @@
 import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
-class QuizList extends Component {
+class Student extends Component {
     constructor(props) {
         super(props);
         this.child = React.createRef();
@@ -32,6 +32,45 @@ class QuizList extends Component {
                 school: '세종초등학교'
             }
         ]
+    }
+
+    componentDidMount() {
+        window.Kakao.init('d1a90c494e1cdb68196c4145544ffac1');
+
+        window.Kakao.Link.createDefaultButton({
+            container: '#kakao-link-btn',
+            objectType: 'feed',
+            content: {
+                title: '학생 초대',
+                description: '여기 링크~!~!',
+                imageUrl: 'http://mud-kage.kakao.co.kr/dn/Q2iNx/btqgeRgV54P/VLdBs9cvyn8BJXB3o7N8UK/kakaolink40_original.png',
+                link: {
+                    mobileWebUrl: 'https://cheonmro.github.io/',
+                    webUrl: 'https://cheonmro.github.io/'
+                }
+            },
+            social: {
+                likeCount: 286,
+                commentCount: 45,
+                sharedCount: 845
+            },
+            buttons: [
+                {
+                    title: '웹으로 보기',
+                    link: {
+                        mobileWebUrl: 'https://cheonmro.github.io/',
+                        webUrl: 'https://cheonmro.github.io/'
+                    }
+                },
+                {
+                    title: '앱으로 보기',
+                    link: {
+                        mobileWebUrl: 'https://cheonmro.github.io/',
+                        webUrl: 'https://cheonmro.github.io/'
+                    }
+                }
+            ]
+        });
     }
     handleRemove = (brdno) => {
         this.setState({
@@ -81,12 +120,16 @@ class QuizList extends Component {
                         }
                     </tbody>
                 </table >
-                <Button variant="contained" color="primary" onClick={this.handleRemove}>학생초대</Button>
-            </div >
+                <div className="Kakao">
+                    <p></p>
+                    <a id="kakao-link-btn" href="javascript:;">
+                        <img src="//developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png" />
+                    </a>
+                </div>            </div >
         );
     }
 }
-export default QuizList;
+export default Student;
 
 class BoardItem extends React.Component {
     handleSelectRow = () => {
