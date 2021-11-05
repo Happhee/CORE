@@ -1,6 +1,6 @@
 /*eslint-disable */
 
-import React, { Component } from 'react';
+import React, { Component, useEffect } from 'react';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 class Student extends Component {
@@ -34,8 +34,13 @@ class Student extends Component {
         ]
     }
 
+
     componentDidMount() {
-        window.Kakao.init('d1a90c494e1cdb68196c4145544ffac1');
+        if (!window.Kakao.isInitialized()) {
+            window.Kakao.init('d1a90c494e1cdb68196c4145544ffac1');
+
+        }
+
 
         window.Kakao.Link.createDefaultButton({
             container: '#kakao-link-btn',
