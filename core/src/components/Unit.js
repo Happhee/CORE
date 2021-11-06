@@ -6,8 +6,9 @@ import TableCell from '@material-ui/core/TableCell';
 import { Button, styled } from '@mui/material';
 import { Link, useHistory } from 'react-router-dom';
 import AlertDialog from './AlertDialog';
-
 import CoreDialog from './CoreDialog';
+import * as ProblemServer from '../teacher/server/ProblemServer';
+
 const CssButton = styled(Button)({
     marginLeft: '10px',
     marginRight: '10px'
@@ -54,9 +55,18 @@ function Customer(props) {
                 <CoreDialog key="add" button_box_div="add_problem_class_box" button_box="add_problem_class_box" button_value="등록"
                     dialog_title="문제 등록하기" listbox_datas={listbox_datas} handleFormSubmit={props.handleFormSubmit} />
 
-                <CssButton key="modify" variant="contained" color="secondary" onClick={() => {
-                    history.push(`/teacher/workbank_quizlist/problemmodify?mainunit=${props.mainunit}&subunit=${props.id}`)
-                }}>수정</CssButton>
+                <CssButton key="modify" variant="contained" color="secondary" onClick={
+                    () => {
+                        history.push({
+                            pathname: "/teacher/workbank_quizlist/problemmodify?mainunit=" + props.mainunit + "&subunit=" + props.subunit,
+                            state: {
+                                problem_bottom_title: "수정하기",
+                                grid_data: ProblemServer.getGrid_data("modify"),
+                                input_data: ProblemServer.getInput_data("modify"),
+                                output_data: ProblemServer.getOutput_data("modify")
+                            }
+                        })
+                    }}>수정</CssButton>
 
                 <AlertDialog key="delete" alertDialog_title="삭제" textfield_state={textfield_state} handleRemoveClose={props.handleRemoveClose}
                     subunit={props.id} />
