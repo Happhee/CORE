@@ -6,6 +6,8 @@ import { Link, useHistory, useLocation } from 'react-router-dom';
 import { Button, styled } from '@mui/material';
 import queryString from 'query-string'
 import '../css/ProblemAdd.css'
+import * as ProblemServer from '../server/ProblemServer'
+
 class QuizList extends Component {
     constructor(props) {
         super(props);
@@ -99,7 +101,13 @@ function BoardItem(props) {
             <td >
                 <CssButton variant="contained" color="secondary" onClick={
                     () => {
-                        history.push(`/mainpage/teacher/workbook/quizlist/problemmain?mainunit=${mainunit}&subunit=${props.row.brdno}&type=modify`)
+                        history.push({
+                            pathname: "/mainpage/teacher/workbook/quizlist/problemmain?mainunit=" + mainunit + "&subunit=" + props.subunit,
+                            state: {
+                                problem_bottom_title: "수정하기",
+                                grid_data: ProblemServer.getGrid_data("modify")
+                            }
+                        })
                     }}>수정</CssButton>
                 <CssButton variant="contained" color="secondary" >삭제</CssButton></td>
         </tr>
@@ -114,7 +122,16 @@ function ProblemAdd_Button(props) {
     const { mainunit } = queryObj;
     return (
         <div className="problem_bottom_div">
-            <Button marginleft="300px" variant="contained" color="secondary" onClick={() => { history.push(`/mainpage/teacher/workbook/quizlist/problemmain?mainunit=${mainunit}&subunit=${props.subunit}&type=register`) }} id="problem_add">문제등록</Button>
-        </div>
+            <Button marginleft="300px" variant="contained" color="secondary" id="problem_add"
+                onClick={() => {
+                    history.push({
+                        pathname: "/mainpage/teacher/workbook/quizlist/problemmain?mainunit=" + mainunit + "&subunit=" + props.subunit,
+                        state: {
+                            problem_bottom_title: "문제등록",
+                            grid_data: ProblemServer.getGrid_data("register")
+                        }
+                    })
+                }}>문제등록</Button>
+        </div >
     )
 }
