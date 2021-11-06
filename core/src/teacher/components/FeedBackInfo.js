@@ -23,7 +23,9 @@ function FeedBackInfo(props) {
                             pathname: "/mainpage/teacher/workbook/quizlist/problemmain?mainunit=" + props.unit + "&subunit=" + props.quizNumber,
                             state: {
                                 problem_bottom_title: "답변하기",
-                                grid_data: ProblemServer.getGrid_data("feedback")
+                                grid_data: ProblemServer.getGrid_data("feedback"),
+                                input_data: ProblemServer.getInput_data("feedback"),
+                                output_data: ProblemServer.getOutput_data("feedback")
                             }
                         })
                     }}>{props.score}</Button>
