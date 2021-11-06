@@ -92,16 +92,18 @@ function ProblemGrid(props) {
     }
     //등록 수정
     if (grid_data[0].value === "register_modify") {
-        sub_list.push(
-            <Grid key={grid_data[0].value} item xs={12}>
+        for (let index = 3; index < 6; index++) {
+            sub_list.push(
+                <Grid key={index} item xs={12}>
+                    <Item key={grid_data[index].id}>
+                        <p key={grid_data[index].title} className="grid_data_title">{grid_data[index].title}</p>
+                        <CssTextField key={grid_data[index].input} fullWidth label={grid_data[index].input} variant="outlined" id="custom-css-outlined-input" multiline rows={10}
+                            name={grid_data[index].title} value={grid_data[index].value} onChange={handleGridChange} />
+                    </Item>
+                </Grid>
+            )
+        }
 
-                <Item key={grid_data[0].id}>
-                    <p key={grid_data[5].title} className="grid_data_title">{grid_data[5].title}</p>
-                    <CssTextField key={grid_data[5].input} fullWidth label={grid_data[5].input} variant="outlined" id="custom-css-outlined-input" multiline rows={10}
-                        name={grid_data[5].title} value={grid_data[5].value} onChange={handleGridChange} />
-                </Item>
-            </Grid>
-        )
         input_data.map((input, index) => {
             input_list.push(
                 <Item key={index}>
@@ -137,12 +139,12 @@ function ProblemGrid(props) {
             )
         })
 
-        for (let index = 5; index < 8; index++) {
+        for (let index = 3; index < 8; index++) {
             let xs = 6;
 
-            if (index == 7) {
-                xs = 12
-            }
+
+            if (index == 3 || index == 4 || index == 7)
+                xs = 12;
             sub_list.push(
                 <Grid key={grid_data[index].id} item xs={xs} >
                     <Item key={grid_data[index].title}>
@@ -186,7 +188,7 @@ function ProblemGrid(props) {
             </Grid>
 
             <Grid container spacing={2} columns={12}>
-                <Grid item xs={12} >
+                {/* <Grid item xs={12} >
                     <Item>
                         <p className="grid_data_title">{grid_data[3].title}</p>
                         <CssTextField fullWidth label={grid_data[3].input} variant="outlined" id="custom-css-outlined-input" maxRows={1}
@@ -200,7 +202,7 @@ function ProblemGrid(props) {
                             name={grid_data[4].title} value={grid_data[4].value} onChange={handleGridChange} />
                     </Item>
 
-                </Grid>
+                </Grid> */}
                 {/* 여기까지 등록, 수정, 피드백 그리드 동일 !!! */}
 
                 {sub_list}

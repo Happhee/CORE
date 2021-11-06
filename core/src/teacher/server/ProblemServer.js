@@ -4,7 +4,7 @@ export function getGrid_data(type) {
     if (type === 'register') {
 
         return [
-            { id: 0, value: "register_modify" },
+            { id: 0, title: "Problem - Register", value: "register_modify" },
             { id: 1, title: "Problem - Chapter", value: "단원" },
             { id: 2, title: "Problem - Number", value: "소문제번호" },
             { id: 3, title: "Problem Title", input: "문제명", value: "" },
@@ -14,7 +14,7 @@ export function getGrid_data(type) {
     }
     else if (type === 'modify') {
         return [
-            { id: 0, value: "register_modify" },
+            { id: 0, title: "Problem - Modify", value: "register_modify" },
             { id: 1, title: "Problem - Chapter", value: "단원" },
             { id: 2, title: "Problem - Number", value: "소문제번호" },
             { id: 3, title: "Problem Title", input: "문제명", value: "" },
@@ -23,11 +23,11 @@ export function getGrid_data(type) {
     }
     else {
         return [
-            { id: 0, value: "teacher - feedBack" },
+            { id: 0, title: "FeedBack", value: "teacher - feedBack" },
             { id: 1, title: "Problem - Chapter", value: "단원" },
             { id: 2, title: "Problem - Number", value: "소문제번호" },
-            { id: 3, title: "Problem Title", input: "문제명", value: "" },
-            { id: 4, title: "Problem Description", input: "문제 상세 설명", value: "" },
+            { id: 3, title: "Problem Title", input: "문제명", value: "제목 받아오기" },
+            { id: 4, title: "Problem Description", input: "문제 상세 설명", value: "문제설명받아오기" },
             { id: 5, title: "Student - ID", input: "학생 아이디", value: "apple123" },
             { id: 6, title: "Student - Name", input: "학생 이름", value: "김철수" },
             {

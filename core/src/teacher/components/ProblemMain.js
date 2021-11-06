@@ -48,7 +48,7 @@ function ProblemAdd() {
         <div className="main_problem_div">
             <div className="sub_div">
                 <div className="problem_top_div">
-                    <span className="problem_title">Problem</span>
+                    <span className="problem_title">{grid_data[0].title}</span>
                     <Box sx={{ '& button': { m: 0.5 } }}>
 
                         <div>
@@ -58,7 +58,7 @@ function ProblemAdd() {
 
                 </div>
                 <hr />
-                <ProblemGrid title_text_item="Problem" temporary_save_button="임시저장"
+                <ProblemGrid
                     mainunit={mainunit} subunit={subunit}
                     grid_data={grid_data} input_data={input_data} output_data={output_data} />
                 <hr />
