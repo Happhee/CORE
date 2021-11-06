@@ -1,18 +1,13 @@
 /*eslint-disable */
 
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
 import '../css/ProblemGrid.css';
-import { FormControl, FormHelperText, useFormControl } from '@mui/material';
-import { InputLabel } from '@mui/material';
-import { Input } from '@mui/material';
-import { Controller } from 'react-hook-form'
+
 
 //그리드 박스 스타일 속성 적용
 const Item = styled(Paper)(({ theme }) => ({
