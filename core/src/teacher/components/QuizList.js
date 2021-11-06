@@ -105,7 +105,9 @@ function BoardItem(props) {
                             pathname: "/mainpage/teacher/workbook/quizlist/problemmain?mainunit=" + mainunit + "&subunit=" + props.subunit,
                             state: {
                                 problem_bottom_title: "수정하기",
-                                grid_data: ProblemServer.getGrid_data("modify")
+                                grid_data: ProblemServer.getGrid_data("modify"),
+                                input_data: ProblemServer.getInput_data("modify"),
+                                output_data: ProblemServer.getOutput_data("modify")
                             }
                         })
                     }}>수정</CssButton>
@@ -128,7 +130,9 @@ function ProblemAdd_Button(props) {
                         pathname: "/mainpage/teacher/workbook/quizlist/problemmain?mainunit=" + mainunit + "&subunit=" + props.subunit,
                         state: {
                             problem_bottom_title: "문제등록",
-                            grid_data: ProblemServer.getGrid_data("register")
+                            grid_data: ProblemServer.getGrid_data("register"),
+                            input_data: ProblemServer.getInput_data("register"),
+                            output_data: ProblemServer.getOutput_data("register")
                         }
                     })
                 }}>문제등록</Button>

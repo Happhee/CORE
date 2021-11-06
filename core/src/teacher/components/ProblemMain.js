@@ -21,47 +21,11 @@ function ProblemAdd() {
 
     let problem_bottom_title = location.state.problem_bottom_title;
     let [grid_data, setGrid_data] = useState(location.state.grid_data);
+    let [input_data, setInput_data] = useState(location.state.input_data);
+    let [output_data, setOutput_data] = useState(location.state.output_data);
 
     let [textfield_state, setTextfield_state] = useState('');
 
-
-
-
-    let [input_data, setInput_data] = useState([
-        { id: "input1", value: '', title: "Input", input: "입력값" },
-        { id: "input2", value: '', title: "Input", input: "입력값" },
-        { id: "input3", value: '', title: "Input", input: "입력값" },
-        { id: "input4", value: '', title: "Input", input: "입력값" },
-        { id: "input5", value: '', title: "Input", input: "입력값" },
-        { id: "input6", value: '', title: "Input", input: "입력값" },
-        { id: "input7", value: '', title: "Input", input: "입력값" },
-        { id: "input8", value: '', title: "Input", input: "입력값" },
-        { id: "input9", value: '', title: "Input", input: "입력값" },
-        { id: "input10", value: '', title: "Input", input: "입력값" },
-
-    ])
-    let [output_data, setOutput_data] = useState([
-        { id: "output1", value: '', title: "Output", input: "결과값" },
-        { id: "output2", value: '', title: "Output", input: "결과값" },
-        { id: "output3", value: '', title: "Output", input: "결과값" },
-        { id: "output4", value: '', title: "Output", input: "결과값" },
-        { id: "output5", value: '', title: "Output", input: "결과값" },
-        { id: "output6", value: '', title: "Output", input: "결과값" },
-        { id: "output7", value: '', title: "Output", input: "결과값" },
-        { id: "output8", value: '', title: "Output", input: "결과값" },
-        { id: "output9", value: '', title: "Output", input: "결과값" },
-        { id: "output10", value: '', title: "Output", input: "결과값" }
-    ])
-
-
-
-
-
-
-
-    function temporarySave() {
-
-    }
     function goList() {
 
         history.goBack()
@@ -77,10 +41,8 @@ function ProblemAdd() {
         console.log("등록해주세요")
         // 서버로 값 보내줘야함!!!!!!!!!!!!!!!!!!!!!!!!!!!
         goList();
-
     }
     console.log("문제추가렌더링")
-    console.log(grid_data);
 
     return (
         <div className="main_problem_div">
@@ -90,8 +52,6 @@ function ProblemAdd() {
                     <Box sx={{ '& button': { m: 0.5 } }}>
 
                         <div>
-
-                            <Button variant="contained" color="secondary" className="problem_button" onClick={temporarySave}>임시저장</Button>
                             <Button variant="contained" color="secondary" onClick={goList}>목록으로</Button>
                         </div>                    </Box>
 

@@ -1,9 +1,10 @@
+/*eslint-disable */
 
 export function getGrid_data(type) {
     if (type === 'register') {
 
         return [
-            { id: 0, value: "problemAdd" },
+            { id: 0, value: "register_modify" },
             { id: 1, title: "Problem - Chapter", value: "단원" },
             { id: 2, title: "Problem - Number", value: "소문제번호" },
             { id: 3, title: "Problem Title", input: "문제명", value: "" },
@@ -13,7 +14,7 @@ export function getGrid_data(type) {
     }
     else if (type === 'modify') {
         return [
-            { id: 0, value: "problemAdd" },
+            { id: 0, value: "register_modify" },
             { id: 1, title: "Problem - Chapter", value: "단원" },
             { id: 2, title: "Problem - Number", value: "소문제번호" },
             { id: 3, title: "Problem Title", input: "문제명", value: "" },
@@ -22,14 +23,23 @@ export function getGrid_data(type) {
     }
     else {
         return [
-            { id: 0, value: "problemFeedBack" },
+            { id: 0, value: "teacher - feedBack" },
             { id: 1, title: "Problem - Chapter", value: "단원" },
             { id: 2, title: "Problem - Number", value: "소문제번호" },
             { id: 3, title: "Problem Title", input: "문제명", value: "" },
             { id: 4, title: "Problem Description", input: "문제 상세 설명", value: "" },
-            { id: 5, title: "Student - ID", input: "학생 아이디", value: "" },
-            { id: 6, title: "Student - Name", input: "학생 이름", value: "" },
-            { id: 7, title: "Student - Code", input: "학생 제출 코드", value: "" }];
+            { id: 5, title: "Student - ID", input: "학생 아이디", value: "apple123" },
+            { id: 6, title: "Student - Name", input: "학생 이름", value: "김철수" },
+            {
+                id: 7, title: "Student - Code", input: "학생 제출 코드",
+                value: "int a,b,sum=0;" +
+                    "scanf(a,b,&a,&b);" +
+                    "for(int i=a;i<=b;i++){" +
+                    "sum+=sum+i; " +
+                    "} " +
+                    "printf(sum); "
+            },
+            { id: 8, title: "My FeedBack", input: "나의 피드백", value: "" }];
     }
 }
 

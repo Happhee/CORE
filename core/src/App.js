@@ -8,7 +8,6 @@ import ClassRoom from './components/ClassRoom';
 import MainPage from './components/MainPage';
 import My from './components/My';
 import WorkBank from './teacher/components/WorkBank';
-import WorkBank_QuizList from './teacher/components/WorkBank_QuizList'
 import FeedBank from './student/components/FeedBank';
 import Information from './components/Information';
 
