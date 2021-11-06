@@ -5,6 +5,14 @@ import { ReactComponent as Core_Logo } from '../css/Core.svg';
 
 import { BrowserRouter as Router, Route, Switch, Link, useHistory } from 'react-router-dom';
 import Toolbar from './Toolbar';
+import { Button, styled } from '@mui/material';
+
+
+const CssButton = styled(Button)({
+    marginLeft: '10px',
+    marginRight: '10px'
+});
+
 function Login() {
     let history = useHistory();
     let toolbar = [
@@ -93,11 +101,9 @@ function Login() {
                     </div>
 
                     <div className="link_box" >
-                        <button onClick={ClassRoom_Click} >LOGIN </button>
-                        <button onClick={SignUp_Click} >SIGN UP </button>
+                        <CssButton variant="contained" color="secondary" onClick={ClassRoom_Click} >LOGIN </CssButton>
+                        <CssButton variant="contained" color="secondary" onClick={SignUp_Click} >SIGN UP </CssButton>
                     </div>
-
-
                 </div>
             </div>
         </div >

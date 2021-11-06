@@ -2,8 +2,6 @@
 
 import '../css/WorkBank.css'
 import React, { useState } from 'react';
-import Toolbar from '../../components/Toolbar';
-import { ReactComponent as Core_Logo } from '../../css/Core.svg'
 import CoreTable from '../../components/CoreTable';
 import { useLocation } from 'react-router';
 import queryString from 'query-string'
