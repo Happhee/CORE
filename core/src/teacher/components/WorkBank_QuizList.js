@@ -7,7 +7,7 @@ import { ReactComponent as Core_Logo } from '../../css/Core.svg'
 import CoreTable from '../../components/CoreTable';
 import { useLocation } from 'react-router';
 import queryString from 'query-string'
-import * as Server from './Server';
+import * as Server from '../server/Server';
 
 function WorkBank_QuizList(props) {
     let { search } = useLocation();

@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 import Toolbar from '../../components/Toolbar';
 import { ReactComponent as Core_Logo } from '../../css/Core.svg'
 import CoreTable from '../../components/CoreTable';
-import * as Server from './Server';
+import * as Server from '../server/Server';
 
 import '../../css/CoreListbox.css'
 

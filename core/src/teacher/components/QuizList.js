@@ -6,7 +6,8 @@ import { Link, useHistory, useLocation } from 'react-router-dom';
 import { Button, styled } from '@mui/material';
 import queryString from 'query-string'
 import '../css/ProblemAdd.css'
-import * as ProblemServer from './ProblemServer'
+import * as ProblemServer from '../server/ProblemServer'
+
 class QuizList extends Component {
     constructor(props) {
         super(props);

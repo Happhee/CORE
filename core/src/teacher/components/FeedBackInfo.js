@@ -3,7 +3,7 @@ import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
 import { Link, useHistory } from 'react-router-dom';
 import Button from '@mui/material/Button'
-import * as ProblemServer from './ProblemServer'
+import * as ProblemServer from '../server/ProblemServer'
 
 
 function FeedBackInfo(props) {
