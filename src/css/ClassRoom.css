@@ -1,0 +1,84 @@
+body{
+    background-color: #E0BFE6;
+
+}
+
+.classroom_box{
+    background-color: #E0BFE6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding-bottom: 20%;
+}
+.content{
+    background-color: white;
+    box-sizing: border-box;
+    width: 50%;
+    border: solid #692498 5px;
+    text-align: center;
+    padding: 5px;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    grid-template-rows: repeat(5, 1fr);
+}
+.title_box{
+    display: grid;
+    grid-column: 1/4;
+    margin-top: 20px;
+    padding-bottom: 20px;
+    font-size: 30px;
+    border-bottom:  solid #692498 5px;
+    justify-content: center;
+    
+    
+}
+.click_box{
+    display: grid;
+    grid-column: 1/4;
+    margin-top: 20px;
+    padding-bottom: 20px;
+    font-size: 30px;
+    border-bottom:  solid #787878 3px;
+    justify-content: center;
+   
+     
+}
+
+.link {
+    text-decoration: none;
+}
+.add_class_box{
+    display: grid;
+  grid-column: 3;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 20%;
+    height: 50;
+    justify-content: right;
+    
+
+}
+.click_last_box{
+    display: grid;
+    grid-column: 1/4;
+    margin-top: 20px;
+    padding-bottom: 10px;
+    font-size: 30px;
+    justify-content: center;
+   
+     
+}
+
+
+
+.add_button{
+   
+    font-size: 30px;
+    justify-content: center;
+     border-radius: 50%;
+     margin-right: 10px;
+   
+}
+
