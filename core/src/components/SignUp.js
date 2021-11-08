@@ -3,6 +3,10 @@ import React, { useState } from 'react';
 import { ReactComponent as Core_Logo } from '../css/Core.svg';
 import '../css/SignUp.css';
 import Toolbar from './Toolbar';
+import CssTextField from '../css/CssTextField';
+import Checkbox from '@mui/material/Checkbox';
+
+const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
 function SignUp() {
     console.log('회원가입렌더');
@@ -40,6 +44,9 @@ function SignUp() {
                 <Core_Logo />
                 <div className="signup_content">
                     {/* 회원가입 타이틀  */}
+                    {/* <div className="signup_sub_div">
+
+                    </div> */}
                     <div className="title_box">
                         <span>회원가입</span>
                     </div>
@@ -47,7 +54,7 @@ function SignUp() {
                     {/* 아이디 */}
 
                     <span className="signup_text"> ID </span>
-                    <input className="signup_input_box" />
+                    <CssTextField className="signup_input_box" size="small" variant="outlined" id="custom-css-outlined-input" maxRows={1} />
 
 
 
@@ -55,34 +62,37 @@ function SignUp() {
                     {/* 비밀번호 */}
 
                     <span className="signup_text"> PW </span>
-                    <input className="signup_input_box" />
+                    <CssTextField className="signup_input_box" size="small" variant="outlined" id="custom-css-outlined-input" maxRows={1} />
 
                     {/* 이름 */}
                     <span className="signup_text"> 이름 </span>
-                    <input className="signup_input_box" />
+                    <CssTextField className="signup_input_box" size="small" variant="outlined" id="custom-css-outlined-input" maxRows={1} />
 
                     {/* 전화번호 */}
                     <span className="signup_text"> 전화번호 </span>
-                    <input className="signup_input_box" />
+                    <CssTextField className="signup_input_box" size="small" variant="outlined" id="custom-css-outlined-input" maxRows={1} />
 
                     {/* 소속 */}
                     <span className="signup_text"> 소속 </span>
-                    <input className="signup_input_box" />
+                    <CssTextField className="signup_input_box" size="small" variant="outlined" id="custom-css-outlined-input" maxRows={1} />
 
                     {/* 선생님/학생 */}
                     <div className="check_box">
-
-                        <input type="checkbox" checked={data[0].checked}
+                        <Checkbox {...label} checked={data[0].checked}
                             value={data[0].value} onChange={onChange} />
-                        <span>{data[0].value}</span>
+                        {/* <input type="checkbox" checked={data[0].checked}
+                            value={data[0].value} onChange={onChange} /> */}
+                        <span className="check_box_span">{data[0].value}</span>
 
-                        <input type="checkbox" checked={data[1].checked}
+                        <Checkbox {...label} checked={data[1].checked}
                             value={data[1].value} onChange={onChange} />
+                        {/* <input type="checkbox" checked={data[1].checked}
+                            value={data[1].value} onChange={onChange} /> */}
                         <span>{data[1].value}</span>
                     </div>
 
                     <div className="signup_success_box">
-                        <input type="submit" value="SIGN UP" />
+                        <input type="submit" value="SIGN UP" onClick={() => { }} />
                     </div>
                 </div>
             </div>

@@ -17,7 +17,7 @@ body{
     text-align: justify;
     padding: 5px;
     display: grid;
-    grid-template-columns: repeat(3, 1fr); 
+    grid-template-columns: 1fr 2fr 0.5fr;
     grid-template-rows: repeat(8, 1fr);
 }
 .title_box{
@@ -40,9 +40,10 @@ body{
 .signup_input_box{
     grid-column: 2/3;
     margin-top: 20px;
-    margin-bottom: 20px;
+   
     font-size: 20px;
     justify-content:left;
+
     
 }
 
@@ -54,6 +55,7 @@ body{
     margin-bottom: 20px;
     font-size: 20px;
     justify-content: left;
+    align-items: center;
 }
 
 .link_box{

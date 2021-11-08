@@ -6,8 +6,12 @@ import { ReactComponent as Core_Logo } from '../css/Core.svg';
 import { BrowserRouter as Router, Route, Switch, Link, useHistory } from 'react-router-dom';
 import Toolbar from './Toolbar';
 import { Button, styled } from '@mui/material';
-
-
+import CssTextField from '../css/CssTextField';
+import Checkbox from '@mui/material/Checkbox';
+const CssCheckbox = styled(Checkbox)({
+    marginLeft: '10px',
+    marginRight: '10px'
+});
 const CssButton = styled(Button)({
     marginLeft: '10px',
     marginRight: '10px'
@@ -81,21 +85,21 @@ function Login() {
                 <div className="login_content">
 
                     <span className="login_text"> ID </span>
-                    <input className="login_input_box" />
+                    <CssTextField className="login_input_box" size="small" variant="outlined" id="custom-css-outlined-input" maxRows={1} />
 
 
 
                     <span className="login_text"> PW </span>
-                    <input className="login_input_box" />
+                    <CssTextField className="login_input_box" size="small" variant="outlined" id="custom-css-outlined-input" maxRows={1} />
 
 
                     <div className="check_box" >
 
-                        <input type="checkbox" checked={data[0].checked}
+                        <CssCheckbox type="checkbox" checked={data[0].checked}
                             value={data[0].value} onChange={onChange} />
                         <span>{data[0].value}</span>
 
-                        <input type="checkbox" checked={data[1].checked}
+                        <CssCheckbox type="checkbox" checked={data[1].checked}
                             value={data[1].value} onChange={onChange} />
                         <span>{data[1].value}</span>
                     </div>
