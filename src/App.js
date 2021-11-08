@@ -11,6 +11,8 @@ import WorkBank from './teacher/components/WorkBank';
 import WorkBank_QuizList from './teacher/components/WorkBank_QuizList'
 import FeedBank from './student/components/FeedBank';
 import Information from './components/Information';
+import Student from './teacher/components/Student';
+
 
 
 import { BrowserRouter as Router, Route, Switch, Link, Redirect } from 'react-router-dom';

@@ -14,12 +14,12 @@ const styles = theme => ({
     }
 });
 
-
 class KakaoShare extends React.Component {
+
     constructor(props) {
         super(props);
         this.state = {
-            id: '',
+            id:'',
             userName: '',
             open: false
         }
@@ -29,16 +29,20 @@ class KakaoShare extends React.Component {
         this.handleClickOpen = this.handleClickOpen.bind(this)
         this.handleClose = this.handleClose.bind(this);
     }
+
     componentDidMount() {
-        window.Kakao.init('YOUR APP KEY');
-    }
-    componentDidMount() {
+        if (!window.Kakao.isInitialized()) {
+            window.Kakao.init('d1a90c494e1cdb68196c4145544ffac1');
+
+        }
+
+
         window.Kakao.Link.createDefaultButton({
             container: '#kakao-link-btn',
             objectType: 'feed',
             content: {
-                title: '딸기 치즈 케익',
-                description: '#케익 #딸기 #삼평동 #카페 #분위기 #소개팅',
+                title: '학생 초대',
+                description: '여기 링크~!~!',
                 imageUrl: 'http://mud-kage.kakao.co.kr/dn/Q2iNx/btqgeRgV54P/VLdBs9cvyn8BJXB3o7N8UK/kakaolink40_original.png',
                 link: {
                     mobileWebUrl: 'https://cheonmro.github.io/',
@@ -76,7 +80,7 @@ class KakaoShare extends React.Component {
                 this.props.stateRefresh();
             })
         this.setState({
-            id: '',
+            id:'',
             userName: '',
             open: false
         })
@@ -88,19 +92,19 @@ class KakaoShare extends React.Component {
         this.setState(nextState);
     }
 
-    /* addCustomer() {
-         const url = '/api/KakaoShare';
-         const formData = new FormData();
-         formData.append('id', this.state.id)
-         formData.append('name', this.state.userName)
-         formData.append('count', this.state.count)
-         const config = {
-             headers: {
-                 'content-type': 'multipart/form-data'
-             }
-         }
-         return post(url, formData, config)
-     }*/
+    addCustomer() {
+        const url = '/api/units';
+        const formData = new FormData();
+        formData.append('id', this.state.id)
+        formData.append('name', this.state.userName)
+        formData.append('count', this.state.count)
+        const config = {
+            headers: {
+                'content-type': 'multipart/form-data'
+            }
+        }
+        return post(url, formData, config)
+    }
 
     handleClickOpen() {
         this.setState({
@@ -110,7 +114,7 @@ class KakaoShare extends React.Component {
 
     handleClose() {
         this.setState({
-            id: '',
+            id:'',
             userName: '',
             count: '',
             open: false
@@ -125,18 +129,19 @@ class KakaoShare extends React.Component {
                     학생 초대
                 </Button>
                 <Dialog open={this.state.open} onClose={this.handleClose}>
-                    <DialogTitle>학생 초대</DialogTitle>
+                    <DialogTitle >학생 초대</DialogTitle>
                     <DialogContent>
-                        <input className={classes.hidden} accept="image/*" id="raised-button-file" type="file" file={this.state.file} value={this.state.fileName} onChange={this.handleFileChange} />
-                        <TextField label="단원명" type="text" name="userName" value={this.state.userName} onChange={this.handleValueChange} /><br />
+                        <TextField label="www.core.com" type="text" name="userName" value={this.state.userName} color="black" /><br />
                     </DialogContent>
+
                     <div className="Kakao">
-                        <a id="kakao-link-btn" href="javascript:;">
-                            <img src="//developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png" />
-                        </a>
-                    </div>
+                    <p></p>
+                    <a id="kakao-link-btn" href="javascript:;">
+                        <img src="//developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png" />
+                    </a>
+                </div>
+
                     <DialogActions>
-                        <Button variant="contained" color="primary" onClick={this.handleFormSubmit}>추가</Button>
                         <Button variant="outlined" color="primary" onClick={this.handleClose}>닫기</Button>
                     </DialogActions>
                 </Dialog>
