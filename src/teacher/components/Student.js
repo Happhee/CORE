@@ -3,6 +3,7 @@
 import React, { Component, useEffect } from 'react';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
+import KakaoShare from './KakaoShare';
 class Student extends Component {
     constructor(props) {
         super(props);
@@ -109,6 +110,7 @@ class Student extends Component {
 
         return (
             <div className="main_div">
+                <h1>Student</h1>
                 < table border="1" >
                     <tbody>
                         <tr align="center">
@@ -128,9 +130,10 @@ class Student extends Component {
                 <div className="Kakao">
                     <p></p>
                     <a id="kakao-link-btn" href="javascript:;">
-                        <img src="//developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png" />
+                        <p>학생초대</p>
                     </a>
-                </div>            </div >
+                </div>
+            </div >
         );
     }
 }
