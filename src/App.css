@@ -13,7 +13,11 @@ html, body{
 }
 @font-face {
   font-family:'esamanru';
-  src: url('../src/font/esamanru\ Medium.ttf');
+  src: url('../src/font/esamanruMedium.ttf');
+}
+@font-face {
+  font-family:'esamanruLight';
+  src: url('../src/font/esamanruLight.ttf');
 }
 
 

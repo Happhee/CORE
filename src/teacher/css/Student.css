@@ -20,6 +20,7 @@ table {
     align-content:center;
   }
   th, td {
+    font-family: 'esamanruLight';
     border: 0.5px solid #8154A0;
     padding: 10px;
     align-items:center;

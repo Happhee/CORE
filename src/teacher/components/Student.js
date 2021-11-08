@@ -132,7 +132,7 @@ class Student extends Component {
                 <div style={{width: '85%', margin: '20px auto'}}>
                 <table border="1" >
                     <tbody>
-                        <tr align="center" >
+                        <tr style={{fontFamily:'esamanru',fontWeight:'bold'}} align="center" >
                             <td width="100">No</td>
                             <td width="200">아이디</td>
                             <td width="200">이름</td>
