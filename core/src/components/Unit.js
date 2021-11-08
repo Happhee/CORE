@@ -6,6 +6,7 @@ import TableCell from '@material-ui/core/TableCell';
 import { Button, styled } from '@mui/material';
 import { Link, useHistory } from 'react-router-dom';
 import AlertDialog from './AlertDialog';
+
 import CoreDialog from './CoreDialog';
 import * as ProblemServer from '../teacher/server/ProblemServer';
 
@@ -26,6 +27,8 @@ function Customer(props) {
         { id: 4, value: "운영체제" }
     ]
     let history = useHistory();
+
+
 
     let text_data = [
         { id: 1, label: "강의실명", name: "classroom", value: props.name }
