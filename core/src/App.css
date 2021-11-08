@@ -1,14 +1,23 @@
 
 html, body{
-
   width: 100%;
   height: 100vh;
-  font-family: 'nanumsquare';
+  font-family: 'esamanru';
 }
 .App{
   background-color: #E0BFE6;
+  font-family: 'esamanru';
+
   width: 100%;
   height: 100vh;
+}
+@font-face {
+  font-family:'esamanru';
+  src: url('../src/font/esamanruMedium.ttf');
+}
+@font-face {
+  font-family:'esamanruLight';
+  src: url('../src/font/esamanruLight.ttf');
 }
 
 
