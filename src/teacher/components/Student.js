@@ -6,7 +6,7 @@ import KakaoShare from './KakaoShare';
 import { Button, styled } from '@mui/material';
 import '../css/Student.css'
 import { RoundedCorner } from '@material-ui/icons';
-import { fontWeight } from '@mui/system';
+import { color, fontWeight } from '@mui/system';
 
 const CssButton1 = styled(Button)({
     marginLeft: '0px',
@@ -146,11 +146,11 @@ class Student extends Component {
                         }
                     </tbody>
                 </table >
+
                 </div>
                 <div className="Kakao">
-                    <p></p>
-                    <a id="kakao-link-btn" href="javascript:;">
-                        <p>학생초대</p>
+                    <a id="kakao-link-btn" href="javascript:;"style={{ textDecoration: 'none' ,color:'white',fontWeight:'bold' }}>
+                        <p> 학생초대 </p>
                     </a>
                 </div>
             </div >

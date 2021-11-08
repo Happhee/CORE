@@ -14,6 +14,7 @@ const styles = theme => ({
     }
 });
 
+
 class KakaoShare extends React.Component {
 
     constructor(props) {
@@ -125,7 +126,7 @@ class KakaoShare extends React.Component {
         const { classes } = this.props;
         return (
             <div>
-                <Button marginleft="300px" variant="contained" color="primary" onClick={this.handleClickOpen}>
+                <Button marginleft="300px" variant="contained" color="#692498" onClick={this.handleClickOpen}>
                     학생 초대
                 </Button>
                 <Dialog open={this.state.open} onClose={this.handleClose}>
