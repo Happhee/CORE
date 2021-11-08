@@ -1,9 +1,27 @@
 /*eslint-disable */
 
 import React, { Component, useEffect } from 'react';
-import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import KakaoShare from './KakaoShare';
+import { Button, styled } from '@mui/material';
+import '../css/Student.css'
+import { RoundedCorner } from '@material-ui/icons';
+import { fontWeight } from '@mui/system';
+
+const CssButton1 = styled(Button)({
+    marginLeft: '0px',
+    textAlign:'center',
+    backgroundColor:'#E0BFE6',
+    borderRadius:'30px',
+    color:'#8154A0',
+    fontWeight:'bold',
+    '&:hover': {
+        background: "#8154A0",
+        color:"#FFF"
+     }
+});
+
+
 class Student extends Component {
     constructor(props) {
         super(props);
@@ -110,10 +128,11 @@ class Student extends Component {
 
         return (
             <div className="main_div">
-                <h1>Student</h1>
-                < table border="1" >
+                <h1 style={{width: '85%', margin: '20px auto', marginTop:'0px'}}>Student</h1>
+                <div style={{width: '85%', margin: '20px auto'}}>
+                <table border="1" >
                     <tbody>
-                        <tr align="center">
+                        <tr align="center" >
                             <td width="100">No</td>
                             <td width="200">아이디</td>
                             <td width="200">이름</td>
@@ -127,6 +146,7 @@ class Student extends Component {
                         }
                     </tbody>
                 </table >
+                </div>
                 <div className="Kakao">
                     <p></p>
                     <a id="kakao-link-btn" href="javascript:;">
@@ -146,13 +166,13 @@ class BoardItem extends React.Component {
     }
     render() {
         return (
-            <tr>
+            <tr align="center">
                 <td>{this.props.row.brdno}</td>
                 <td>{this.props.row.id}</td>
                 <td>{this.props.row.name}</td>
                 <td>{this.props.row.phone}</td>
                 <td>{this.props.row.school}</td>
-                <td><button onClick={this.handleRemove}>삭제</button></td>
+                <td  align-items="center"><CssButton1 variant="contained" >삭제</CssButton1></td>
             </tr>
         );
     }
