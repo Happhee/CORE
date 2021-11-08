@@ -128,7 +128,7 @@ class Student extends Component {
 
         return (
             <div className="main_div">
-                <h1 style={{width: '85%', margin: '20px auto', marginTop:'0px'}}>Student</h1>
+                <h2 style={{width: '85%', margin: '20px auto', marginTop:'0px'}}>Student</h2>
                 <div style={{width: '85%', margin: '20px auto'}}>
                 <table border="1" >
                     <tbody>
@@ -149,7 +149,7 @@ class Student extends Component {
 
                 </div>
                 <div className="Kakao">
-                    <a id="kakao-link-btn" href="javascript:;"style={{ textDecoration: 'none' ,color:'white',fontWeight:'bold' }}>
+                    <a id="kakao-link-btn" href="javascript:;"style={{ textDecoration: 'none' ,color:'white',fontWeight:'normal' }}>
                         <p> 학생초대 </p>
                     </a>
                 </div>
