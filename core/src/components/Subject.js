@@ -74,7 +74,10 @@ const Subject = props => {
     return (
         <div>
             <div className={mode + "_subject"}>
-                <Logo_Room class_room={class_room} />
+                <div style={{textAlign:'center', alignContent:'center' ,alignItems:'center'}}>
+                <img style={{ marginTop:'5px',width: '80px' }} src={require('../image/iconBiglogo.png').default} />
+                <p style={{marginTop:0,marginBottom:'5px',textAlign:'center',fontFamily:'esamanruLight'}}>C프로그래밍및실습</p>
+                </div>
                 {list}
             </div>
             {route}
