@@ -22,21 +22,17 @@ function App(props) {
 
   return (
     <Router>
-      {/* 서히 시작 */}
       <div className="App">
         <Switch>
           <Route exact={true} path='/' render={(props) => <Login {...props} />} />
-          <Route path='/signup' render={(props) => <SignUp {...props} />} />
+          <Route exact path='/signup' render={(props) => <SignUp {...props} />} />
           <Route exact path='/classroom/:mode' render={(props) => <ClassRoom {...props} />} />
           <Route path='/mainpage/:mode/:page' render={(props) => <MainPage {...props} />} />
           <Route exact path='/:mode/my' render={(props) => <My {...props} />} />
           <Route exact path={['/:mode/:workbank', '/:mode/workbank_quizlist/:problemmodify']} render={(props) => <WorkBank {...props} />} />
           <Route exact path='/:mode/feedbank' render={(props) => <FeedBank {...props} />} />
           <Route exact path='/:mode/my/information' render={(props) => <Information {...props} />} />
-
         </Switch>
-
-
       </div>
     </Router>
   );
