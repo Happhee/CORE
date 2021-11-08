@@ -12,11 +12,12 @@ body{
     padding: 10px;
     font-weight: 600;
     font-size: 25px;
-    
   }
 
   .text_style{
     padding-right: 50px;
     text-decoration: none;
+    color: #EEEEEE;
+    font-weight: normal;
   }
 
