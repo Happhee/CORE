@@ -59,8 +59,6 @@ class Student extends Component {
             window.Kakao.init('d1a90c494e1cdb68196c4145544ffac1');
 
         }
-
-
         window.Kakao.Link.createDefaultButton({
             container: '#kakao-link-btn',
             objectType: 'feed',
@@ -122,7 +120,6 @@ class Student extends Component {
     handleSelectRow = (row) => {
         this.child.current.handleSelectRow(row);
     }
-
     render() {
         const { boards } = this.state;
 

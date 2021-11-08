@@ -5,10 +5,10 @@ import Toolbar from './Toolbar';
 
 function MainPage({ match }) {
     let toolbar = [
-        { id: 1, title: 'My', link: '/teacher/my' },
+        { id: 1, title: 'My', link: '/teacher/my'},
         { id: 2, title: 'WorkBank', link: '/teacher/workbank' }];
 
-    let [teacher_subject, setTeacher] = useState([{ id: 1, title: 'Student' },
+    let [teacher_subject, setTeacher] = useState([{ id: 1, title: 'Student'},
     { id: 2, title: 'WorkBook' },
     { id: 3, title: 'FeedBack' }])
 
