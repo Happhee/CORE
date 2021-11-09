@@ -28,7 +28,18 @@ const AddBtn = styled(Button)({
         color:"#8154A0"
      }
 });
-
+const BasicBtn = styled(Button)({
+    marginLeft: '0px',
+    textAlign:'center',
+    backgroundColor:'#692498',
+    borderRadius:'30px',
+    color:'#fff',
+    fontWeight:'bold',
+    '&:hover': {
+        background: "#E0BFE6",
+        color:"#FFF"
+     }
+});
 class UnitAdd extends React.Component {
 
     constructor(props) {
@@ -108,8 +119,8 @@ class UnitAdd extends React.Component {
                         <TextField label="단원명" type="text" name="userName" value={this.state.userName} onChange={this.handleValueChange} /><br />
                     </DialogContent>
                     <DialogActions>
-                        <Button variant="contained" color="primary" onClick={this.handleFormSubmit}>추가</Button>
-                        <Button variant="outlined" color="primary" onClick={this.handleClose}>닫기</Button>
+                        <BasicBtn variant="contained" onClick={this.handleFormSubmit}>확인</BasicBtn>
+                        <BasicBtn variant="outlined" onClick={this.handleClose}>취소</BasicBtn>
                     </DialogActions>
                 </Dialog>
             </div>

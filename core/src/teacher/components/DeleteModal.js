@@ -8,6 +8,7 @@ import TextField from '@material-ui/core/TextField';
 import { withStyles } from '@material-ui/core/styles';
 
 import { Button, styled } from '@mui/material';
+import { border } from '@mui/system';
 
 const styles = theme => ({
     hidden: {
@@ -30,14 +31,14 @@ const DeleteBtn = styled(Button)({
 const BasicBtn = styled(Button)({
     marginLeft: '0px',
     textAlign:'center',
-    backgroundColor:'#8154A0',
+    backgroundColor:'#692498',
     borderRadius:'30px',
     color:'#fff',
     fontWeight:'bold',
     '&:hover': {
         background: "#E0BFE6",
         color:"#FFF"
-     }
+         }
 });
 class DeleteModal extends React.Component {
 

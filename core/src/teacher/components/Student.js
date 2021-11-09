@@ -146,7 +146,7 @@ class Student extends Component {
 
                 </div>
                 <div className="Kakao">
-                    <a id="kakao-link-btn" href="javascript:;">
+                    <a id="kakao-link-btn" href="javascript:;" style={{textDecoration:'none'}}>
                     <AddStudent>학생 초대</AddStudent>
                     </a>
                 </div>
