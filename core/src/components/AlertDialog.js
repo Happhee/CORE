@@ -32,6 +32,8 @@ function AlertDialog(props) {
                 )
                 setTextfield_state('입력되지 않은 정보가 있습니다!!! 모든 정보를 입력해주세요');
             }
+            setOpen(true);
+
         }
         else if (props.alertDialog_title === '삭제') {
             setButton(
@@ -41,9 +43,24 @@ function AlertDialog(props) {
                 </div>
             )
             setTextfield_state("문제를 정말로 삭제하시겠습니까??");
-        }
+            setOpen(true);
 
-        setOpen(true);
+        }
+        else if (props.alertDialog_title === 'LOGIN') {
+
+            if (!props.handleLogin()) {
+                setButton(
+                    <div>
+                        <Button onClick={handleClose}>취소</Button>
+                    </div>
+                )
+                setTextfield_state('입력되지 않은 정보가 있습니다!!! 모든 정보를 입력해주세요');
+            } else {
+                props.goClassroom();
+            }
+
+            setOpen(!props.handleLogin());
+        }
     };
 
     const handleClose = (event) => {

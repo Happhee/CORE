@@ -7,9 +7,11 @@ import { BrowserRouter as Router, Route, Switch, Link, useHistory } from 'react-
 import Toolbar from './Toolbar';
 import { Checkbox, styled } from '@mui/material';
 
-
+import AlertDialog from './AlertDialog';
 import CssTextField from '../css/CssTextField';
 import CssButton from '../css/CssButton';
+import * as InputVaildation from './InputValidation'
+import * as User from '../server/User';
 
 
 const CssCheckbox = styled(Checkbox)({
@@ -31,20 +33,34 @@ function Login() {
     let [data, setData] = useState([
         { id: 1, value: "선생님", checked: false },
         { id: 2, value: "학생", checked: false }]);
+    let [login_data, setLogin_data] = useState([
+        { id: "1", title: "ID", value: "" },
+        { id: "2", title: "PW", value: "" },
+    ])
 
-
+    let [login_state, setLogin_state] = useState();
+    let [alertdialog_state, setAlertdialog_state] = useState(false);
 
     //모드에 따른 분류
-    function ClassRoom_Click() {
+    function handleLogin() {
+        return InputVaildation.checkTextfieldValue(login_data) &&
+            InputVaildation.checkBoxChecked(data);
+
+    }
+    function goClassroom() {
+        console.log("여기")
+
         history.push(`/classroom/${mode}`);
     }
-
     //회원가입 
     function SignUp_Click() {
         history.push(`/signup`);
     }
 
-
+    const handleInputChange = (event) => {
+        const { value, name } = event.target;
+        setLogin_data(InputVaildation.newTextfieldValue(login_data, value, name));
+    }
     //체크박스 하나만 선택할수 있게 만들기
     function onChange(e) {
         var newData = [...data];
@@ -86,14 +102,16 @@ function Login() {
                 <div className="login_content">
 
                     <div className="content_sub_div">
-                        <span className="login_text"> ID </span>
-                        <CssTextField className="login_input_box" size="small" variant="outlined" id="custom-css-outlined-input" maxRows={1} />
+                        <span className="login_text"> {login_data[0].title} </span>
+                        <CssTextField className="login_input_box" size="small" variant="outlined" id="custom-css-outlined-input" maxRows={1}
+                            name={login_data[0].id} value={login_data[0].value} onChange={handleInputChange} />
 
                     </div>
 
                     <div className="content_sub_div">
-                        <span className="login_text"> PW </span>
-                        <CssTextField className="login_input_box" size="small" variant="outlined" id="custom-css-outlined-input" maxRows={1} />
+                        <span className="login_text">{login_data[1].title}  </span>
+                        <CssTextField className="login_input_box" size="small" variant="outlined" id="custom-css-outlined-input" maxRows={1}
+                            name={login_data[1].id} value={login_data[1].value} onChange={handleInputChange} />
                     </div>
 
 
@@ -109,8 +127,9 @@ function Login() {
                     </div>
 
                     <div className="link_box" >
-                        <CssButton variant="contained" color="secondary" onClick={ClassRoom_Click} >LOGIN </CssButton>
+                        <AlertDialog alertDialog_title="LOGIN" textfield_state={login_state} handleLogin={handleLogin} goClassroom={goClassroom} />
                         <CssButton variant="contained" color="secondary" onClick={SignUp_Click} >SIGN UP </CssButton>
+
                     </div>
                 </div>
             </div>

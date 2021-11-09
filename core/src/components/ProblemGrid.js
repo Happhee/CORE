@@ -8,7 +8,7 @@ import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
 import '../css/ProblemGrid.css';
 
-
+import * as InputVaildtion from './InputValidation'
 //그리드 박스 스타일 속성 적용
 const Item = styled(Paper)(({ theme }) => ({
     ...theme.typography.body2,
@@ -56,39 +56,17 @@ function ProblemGrid(props) {
     // 텍스트 필드 값 바꾸기 
     const handleGridChange = (event) => {
         const { value, name } = event.target;
-        const newGrid_data = [...grid_data];
-
-        let index = 0
-        for (index = 0; index < grid_data.length; index++) {
-            if (grid_data[index].title == name)
-                break;
-        }
-        newGrid_data[index].value = value;
-        setGrid_data(newGrid_data);
+        console.log(value);
+        console.log(name);
+        setGrid_data(InputVaildtion.newTextfieldValue(grid_data, value, name));
     }
     const handleInputChange = (event) => {
         const { value, name } = event.target;
-        const newInput_data = [...input_data];
-
-        let index = 0
-        for (index = 0; index < input_data.length; index++) {
-            if (input_data[index].id == name)
-                break;
-        }
-        newInput_data[index].value = value;
-        setInput_data(newInput_data);
+        setInput_data(InputVaildtion.newTextfieldValue(input_data, value, name));
     }
     const handleOutputChange = (event) => {
         const { value, name } = event.target;
-        const newOutput_data = [...output_data];
-
-        let index = 0
-        for (index = 0; index < output_data.length; index++) {
-            if (output_data[index].id == name)
-                break;
-        }
-        newOutput_data[index].value = value;
-        setOutput_data(newOutput_data);
+        setOutput_data(InputVaildtion.newTextfieldValue(output_data, value, name));
     }
     //등록 수정
     if (grid_data[0].value === "register_modify") {
@@ -188,21 +166,6 @@ function ProblemGrid(props) {
             </Grid>
 
             <Grid container spacing={2} columns={12}>
-                {/* <Grid item xs={12} >
-                    <Item>
-                        <p className="grid_data_title">{grid_data[3].title}</p>
-                        <CssTextField fullWidth label={grid_data[3].input} variant="outlined" id="custom-css-outlined-input" maxRows={1}
-                            name={grid_data[3].title} value={grid_data[3].value} onChange={handleGridChange} />
-                    </Item>
-                </Grid>
-                <Grid item xs={12}>
-                    <Item>
-                        <p className="grid_data_title">{grid_data[4].title}</p>
-                        <CssTextField fullWidth label={grid_data[4].input} variant="outlined" id="custom-css-outlined-input" multiline rows={5}
-                            name={grid_data[4].title} value={grid_data[4].value} onChange={handleGridChange} />
-                    </Item>
-
-                </Grid> */}
                 {/* 여기까지 등록, 수정, 피드백 그리드 동일 !!! */}
 
                 {sub_list}
