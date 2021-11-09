@@ -5,17 +5,18 @@ import { ReactComponent as Core_Logo } from '../css/Core.svg';
 
 import { BrowserRouter as Router, Route, Switch, Link, useHistory } from 'react-router-dom';
 import Toolbar from './Toolbar';
-import { Button, styled } from '@mui/material';
+import { Checkbox, styled } from '@mui/material';
+
+
 import CssTextField from '../css/CssTextField';
-import Checkbox from '@mui/material/Checkbox';
+import CssButton from '../css/CssButton';
+
+
 const CssCheckbox = styled(Checkbox)({
     marginLeft: '10px',
     marginRight: '10px'
 });
-const CssButton = styled(Button)({
-    marginLeft: '10px',
-    marginRight: '10px'
-});
+
 
 function Login() {
     let history = useHistory();
@@ -84,13 +85,16 @@ function Login() {
 
                 <div className="login_content">
 
-                    <span className="login_text"> ID </span>
-                    <CssTextField className="login_input_box" size="small" variant="outlined" id="custom-css-outlined-input" maxRows={1} />
+                    <div className="content_sub_div">
+                        <span className="login_text"> ID </span>
+                        <CssTextField className="login_input_box" size="small" variant="outlined" id="custom-css-outlined-input" maxRows={1} />
 
+                    </div>
 
-
-                    <span className="login_text"> PW </span>
-                    <CssTextField className="login_input_box" size="small" variant="outlined" id="custom-css-outlined-input" maxRows={1} />
+                    <div className="content_sub_div">
+                        <span className="login_text"> PW </span>
+                        <CssTextField className="login_input_box" size="small" variant="outlined" id="custom-css-outlined-input" maxRows={1} />
+                    </div>
 
 
                     <div className="check_box" >

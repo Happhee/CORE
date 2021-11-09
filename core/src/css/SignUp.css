@@ -8,6 +8,7 @@ body{
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    padding-bottom: 30%;
 }
 .signup_content{
     background-color: white;
@@ -17,7 +18,9 @@ body{
     text-align: justify;
     padding: 5px;
     display: grid;
-    grid-template-columns: 1fr 2fr 0.5fr;
+    align-items: center;
+
+    grid-template-columns: 1fr 1.5fr 1fr;
     grid-template-rows: repeat(8, 1fr);
 }
 .title_box{
@@ -71,7 +74,7 @@ body{
 
 .signup_success_box{
     display: grid;
-    grid-template-columns:25%;
+    grid-template-columns:50%;
     grid-column: 1/4;
     margin-top: 20px;
     margin-bottom: 20px;

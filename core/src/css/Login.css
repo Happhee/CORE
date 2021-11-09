@@ -18,28 +18,40 @@ body{
     padding: 5px;
 background-color: white;
     display: grid;
-    grid-template-columns: 1fr 2fr 0.5fr;
+    grid-template-columns:1fr 2fr 0.5fr;
     grid-template-rows: repeat(4, 1fr);
 }
 
+
+.content_sub_div{
+    display: grid;
+    grid-template-columns:30% 50%;
+    grid-column: 1/4;
+    margin-top: 20px;
+    font-size: 20px;
+    justify-content: left;
+    align-items: center;
+    text-align: center;
+}
 .login_text{
-    grid-column: 1/2;
-    font-size: 25px;
+    /* grid-column: 1/2; */
+    /* font-size: 25px;
     text-align: center;
     margin-top: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 20px; */
+    text-align: center;
+
     
 }
-
 .login_input_box{
     
-    grid-column: 2/3;
-    
+    /* grid-column: 2/3; */
+/*     
     margin-top: 20px;
     margin-bottom: 20px;
     
     font-size: 25px;
-    justify-content: left;
+    justify-content: left; */
 
 
 }

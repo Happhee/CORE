@@ -5,7 +5,7 @@ import '../css/SignUp.css';
 import Toolbar from './Toolbar';
 import CssTextField from '../css/CssTextField';
 import Checkbox from '@mui/material/Checkbox';
-
+import CssButton from '../css/CssButton';
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
 function SignUp() {
@@ -92,7 +92,7 @@ function SignUp() {
                     </div>
 
                     <div className="signup_success_box">
-                        <input type="submit" value="SIGN UP" onClick={() => { }} />
+                        <CssButton variant="contained" color="secondary" onClick={() => { }} >SIGN UP</CssButton>
                     </div>
                 </div>
             </div>
