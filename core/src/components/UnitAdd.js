@@ -5,8 +5,8 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
+import { autocompleteClasses, Button, styled } from '@mui/material';
 
 const styles = theme => ({
     hidden: {
@@ -14,7 +14,32 @@ const styles = theme => ({
     }
 });
 
-
+const AddBtn = styled(Button)({
+    marginLeft:'87%',
+    padding:'0.8%',
+    textAlign:'center',
+    backgroundColor:'#692498',
+    borderRadius:'10px',
+    color:'#fff',
+    fontFamily:'esamanruLight' ,
+    fontWeight:'normal',
+    '&:hover': {
+        background: "#E0BFE6",
+        color:"#8154A0"
+     }
+});
+const BasicBtn = styled(Button)({
+    marginLeft: '0px',
+    textAlign:'center',
+    backgroundColor:'#692498',
+    borderRadius:'30px',
+    color:'#fff',
+    fontWeight:'bold',
+    '&:hover': {
+        background: "#E0BFE6",
+        color:"#FFF"
+     }
+});
 class UnitAdd extends React.Component {
 
     constructor(props) {
@@ -84,9 +109,9 @@ class UnitAdd extends React.Component {
         const { classes } = this.props;
         return (
             <div>
-                <Button marginleft="300px" variant="contained" color="primary" onClick={this.handleClickOpen}>
+                <AddBtn  variant="contained"onClick={this.handleClickOpen}>
                     단원 추가
-                </Button>
+                </AddBtn>
                 <Dialog open={this.state.open} onClose={this.handleClose}>
                     <DialogTitle>단원 추가</DialogTitle>
                     <DialogContent>
@@ -94,8 +119,8 @@ class UnitAdd extends React.Component {
                         <TextField label="단원명" type="text" name="userName" value={this.state.userName} onChange={this.handleValueChange} /><br />
                     </DialogContent>
                     <DialogActions>
-                        <Button variant="contained" color="primary" onClick={this.handleFormSubmit}>추가</Button>
-                        <Button variant="outlined" color="primary" onClick={this.handleClose}>닫기</Button>
+                        <BasicBtn variant="contained" onClick={this.handleFormSubmit}>확인</BasicBtn>
+                        <BasicBtn variant="outlined" onClick={this.handleClose}>취소</BasicBtn>
                     </DialogActions>
                 </Dialog>
             </div>

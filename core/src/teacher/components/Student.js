@@ -9,7 +9,20 @@ import { RoundedCorner } from '@material-ui/icons';
 import { color, fontWeight } from '@mui/system';
 import DeleteModal from './DeleteModal';
 
-
+const AddStudent = styled(Button)({
+    marginLeft:'87%',
+    padding:'0.8%',
+    textAlign:'center',
+    backgroundColor:'#692498',
+    borderRadius:'10px',
+    color:'#fff',
+    fontFamily:'esamanruLight' ,
+    fontWeight:'normal',
+    '&:hover': {
+        background: "#E0BFE6",
+        color:"#8154A0"
+     }
+});
 class Student extends Component {
     constructor(props) {
         super(props);
@@ -133,8 +146,8 @@ class Student extends Component {
 
                 </div>
                 <div className="Kakao">
-                    <a id="kakao-link-btn" href="javascript:;" style={{ textDecoration: 'none', color: 'white', fontWeight: 'normal' }}>
-                        <p> 학생초대 </p>
+                    <a id="kakao-link-btn" href="javascript:;" style={{textDecoration:'none'}}>
+                    <AddStudent>학생 초대</AddStudent>
                     </a>
                 </div>
             </div >
