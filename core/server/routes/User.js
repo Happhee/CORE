@@ -22,3 +22,14 @@ module.exports = function (app, User) {
         });
     });
 }
+//READ
+module.exports = function (app, User) {
+    //userId로 해당 유저 찾기
+    app.get('/find/:id', function (req, res) {
+        User.findOne({ id: req.params.id }, function (err, user) {
+            if (err) return res.status(500).json({ error: err });
+            if (!user) return res.status(404).json({ error: '해당 아이디가 존재하지 않습니다.' });
+            res.json(user);
+        })
+    });
+}

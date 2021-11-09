@@ -16,6 +16,30 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 
 const User = require('./models/User');
+const newUser = new User({
+    id: 'seohee',
+    pw: '000112',
+    name: '서히',
+    phone: '01012345678',
+    part: true,
+    class: []
+})
+
+newUser.save(function (error, data) {
+    if (error) {
+        console.log(error);
+    } else {
+        console.log('Saved!')
+    }
+});
+User.find(function (error, students) {
+    console.log('--- Read all ---');
+    if (error) {
+        console.log(error);
+    } else {
+        console.log(students);
+    }
+})
 const router = require('./routes/User')(app, User);
 
 
