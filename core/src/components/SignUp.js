@@ -5,7 +5,8 @@ import '../css/SignUp.css';
 import Toolbar from './Toolbar';
 import CssTextField from '../css/CssTextField';
 import Checkbox from '@mui/material/Checkbox';
-import CssButton from '../css/CssButton';
+import AlertDialog from './AlertDialog';
+import *as InputVaildation from './InputValidation'
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
 function SignUp() {
@@ -17,7 +18,28 @@ function SignUp() {
     let [data, setData] = useState([
         { id: 1, value: "선생님", checked: false },
         { id: 2, value: "학생", checked: false }]);
+    let [signup_state, setSignup_state] = useState();
+    let [signup_data, setSignup_data] = useState([
+        { id: "1", title: "ID", value: "" },
+        { id: "2", title: "PW", value: "" },
+        { id: "3", title: "이름", value: "" },
+        { id: "4", title: "전화번호", value: "" },
+        { id: "5", title: "소속", value: "" }
+    ])
+    //모드에 따른 분류
+    function handleSignup() {
+        return InputVaildation.checkTextfieldValue(signup_data) &&
+            InputVaildation.checkBoxChecked(data);
 
+    }
+    function goLogin() {
+        console.log("여기")
+        history.back();
+    }
+    const handleInputChange = (event) => {
+        const { value, name } = event.target;
+        setLogin_data(InputVaildation.newTextfieldValue(login_data, value, name));
+    }
     //체크박스 하나만 선택할수 있게 만들기
     function onChange(e) {
         var newData = [...data];
@@ -50,49 +72,33 @@ function SignUp() {
                     <div className="title_box">
                         <span>회원가입</span>
                     </div>
-
-                    {/* 아이디 */}
-
-                    <span className="signup_text"> ID </span>
-                    <CssTextField className="signup_input_box" size="small" variant="outlined" id="custom-css-outlined-input" maxRows={1} />
-
-
-
-
-                    {/* 비밀번호 */}
-
-                    <span className="signup_text"> PW </span>
-                    <CssTextField className="signup_input_box" size="small" variant="outlined" id="custom-css-outlined-input" maxRows={1} />
-
-                    {/* 이름 */}
-                    <span className="signup_text"> 이름 </span>
-                    <CssTextField className="signup_input_box" size="small" variant="outlined" id="custom-css-outlined-input" maxRows={1} />
-
-                    {/* 전화번호 */}
-                    <span className="signup_text"> 전화번호 </span>
-                    <CssTextField className="signup_input_box" size="small" variant="outlined" id="custom-css-outlined-input" maxRows={1} />
-
-                    {/* 소속 */}
-                    <span className="signup_text"> 소속 </span>
-                    <CssTextField className="signup_input_box" size="small" variant="outlined" id="custom-css-outlined-input" maxRows={1} />
-
+                    {
+                        signup_data.map((data, index) => {
+                            return (
+                                <>
+                                    <span key={index} className="signup_text"> {data.title} </span>
+                                    <CssTextField key={data.value} className="signup_input_box" size="small" variant="outlined" id="custom-css-outlined-input" maxRows={1}
+                                        name={data.id} value={data.value} onChange={handleInputChange} />
+                                </>)
+                        })
+                    }
                     {/* 선생님/학생 */}
                     <div className="check_box">
-                        <Checkbox {...label} checked={data[0].checked}
-                            value={data[0].value} onChange={onChange} />
-                        {/* <input type="checkbox" checked={data[0].checked}
-                            value={data[0].value} onChange={onChange} /> */}
-                        <span className="check_box_span">{data[0].value}</span>
-
-                        <Checkbox {...label} checked={data[1].checked}
-                            value={data[1].value} onChange={onChange} />
-                        {/* <input type="checkbox" checked={data[1].checked}
-                            value={data[1].value} onChange={onChange} /> */}
-                        <span>{data[1].value}</span>
+                        {
+                            data.map((data) => {
+                                return (
+                                    <>
+                                        <Checkbox {...label} key={data.id} checked={data.checked}
+                                            value={data.value} onChange={onChange} />
+                                        <span key={data.value} className="check_box_span">{data.value}</span>
+                                    </>
+                                )
+                            })
+                        }
                     </div>
 
                     <div className="signup_success_box">
-                        <CssButton variant="contained" color="secondary" onClick={() => { }} >SIGN UP</CssButton>
+                        <AlertDialog alertDialog_title="SIGN UP" textfield_state={signup_state} handleSignup={handleSignup} goLogin={goLogin} />
                     </div>
                 </div>
             </div>
