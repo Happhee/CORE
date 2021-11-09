@@ -32,6 +32,8 @@ function AlertDialog(props) {
                 )
                 setTextfield_state('입력되지 않은 정보가 있습니다!!! 모든 정보를 입력해주세요');
             }
+            setOpen(true);
+
         }
         else if (props.alertDialog_title === '삭제') {
             setButton(
@@ -41,9 +43,44 @@ function AlertDialog(props) {
                 </div>
             )
             setTextfield_state("문제를 정말로 삭제하시겠습니까??");
-        }
+            setOpen(true);
 
-        setOpen(true);
+        }
+        else if (props.alertDialog_title === 'LOGIN') {
+
+            if (!props.handleLogin()) {
+                setButton(
+                    <div>
+                        <Button onClick={handleClose}>확인</Button>
+                    </div>
+                )
+                setTextfield_state('입력되지 않은 정보가 있습니다!!! 모든 정보를 입력해주세요');
+            } else {
+                props.goClassroom();
+            }
+
+            setOpen(!props.handleLogin());
+        }
+        else if (props.alertDialog_title === 'SIGN UP') {
+            if (!props.handleSignup()) {
+                setButton(
+                    <div>
+                        <Button onClick={handleClose}>확인</Button>
+                    </div>
+                )
+                setTextfield_state('입력되지 않은 정보가 있습니다!!! 모든 정보를 입력해주세요');
+            } else {
+                setButton(
+                    <div>
+                        <Button onClick={handleClose}>로그인하기</Button>
+                    </div>
+                )
+                setTextfield_state('회원가입이 완료되었습니다❤️ 로그인을 해주세요❤️');
+
+            }
+
+            setOpen(true);
+        }
     };
 
     const handleClose = (event) => {
@@ -52,6 +89,9 @@ function AlertDialog(props) {
         }
         else if (event.target.innerText === '삭제') {
             props.handleRemoveClose(props.subunit);
+        }
+        else if (event.target.innerText === '로그인하기') {
+            props.goLogin();
         }
         setOpen(false);
     };

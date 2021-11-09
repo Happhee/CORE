@@ -17,27 +17,30 @@ body{
     text-align: center;
     padding: 5px;
 background-color: white;
+align-items: center;
+
     display: grid;
-    grid-template-columns: repeat(3, 1fr); 
+    grid-template-columns: 1fr 1.5fr 1fr;
+
     grid-template-rows: repeat(4, 1fr);
 }
 
+
+
 .login_text{
-    grid-column: 1/2;
+    grid-column: 1/2; 
     font-size: 25px;
     text-align: center;
     margin-top: 20px;
     margin-bottom: 20px;
+    text-align: center;
+
     
 }
-
 .login_input_box{
     
     grid-column: 2/3;
-    
     margin-top: 20px;
-    margin-bottom: 20px;
-    
     font-size: 25px;
     justify-content: left;
 

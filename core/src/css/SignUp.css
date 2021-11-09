@@ -8,7 +8,9 @@ body{
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    padding-bottom: 30%;
 }
+
 .signup_content{
     background-color: white;
     box-sizing: border-box;
@@ -17,7 +19,9 @@ body{
     text-align: justify;
     padding: 5px;
     display: grid;
-    grid-template-columns: repeat(3, 1fr); 
+    align-items: center;
+
+    grid-template-columns: 1fr 1.5fr 1fr;
     grid-template-rows: repeat(8, 1fr);
 }
 .title_box{
@@ -40,9 +44,10 @@ body{
 .signup_input_box{
     grid-column: 2/3;
     margin-top: 20px;
-    margin-bottom: 20px;
+   
     font-size: 20px;
     justify-content:left;
+
     
 }
 
@@ -54,6 +59,7 @@ body{
     margin-bottom: 20px;
     font-size: 20px;
     justify-content: left;
+    align-items: center;
 }
 
 .link_box{
@@ -69,7 +75,7 @@ body{
 
 .signup_success_box{
     display: grid;
-    grid-template-columns:25%;
+    grid-template-columns:50%;
     grid-column: 1/4;
     margin-top: 20px;
     margin-bottom: 20px;
