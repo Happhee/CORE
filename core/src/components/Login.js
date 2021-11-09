@@ -39,7 +39,6 @@ function Login() {
     ])
 
     let [login_state, setLogin_state] = useState();
-    let [alertdialog_state, setAlertdialog_state] = useState(false);
 
     //모드에 따른 분류
     function handleLogin() {
@@ -101,22 +100,20 @@ function Login() {
 
                 <div className="login_content">
 
-                    <div className="content_sub_div">
-                        <span className="login_text"> {login_data[0].title} </span>
-                        <CssTextField className="login_input_box" size="small" variant="outlined" id="custom-css-outlined-input" maxRows={1}
-                            name={login_data[0].id} value={login_data[0].value} onChange={handleInputChange} />
+                    <span className="login_text"> {login_data[0].title} </span>
+                    <CssTextField className="login_input_box" size="small" variant="outlined" id="custom-css-outlined-input" maxRows={1}
+                        name={login_data[0].id} value={login_data[0].value} onChange={handleInputChange} />
 
-                    </div>
 
-                    <div className="content_sub_div">
-                        <span className="login_text">{login_data[1].title}  </span>
-                        <CssTextField className="login_input_box" size="small" variant="outlined" id="custom-css-outlined-input" maxRows={1}
-                            name={login_data[1].id} value={login_data[1].value} onChange={handleInputChange} />
-                    </div>
+
+
+                    <span className="login_text">{login_data[1].title}  </span>
+                    <CssTextField className="login_input_box" size="small" variant="outlined" id="custom-css-outlined-input" maxRows={1}
+                        name={login_data[1].id} value={login_data[1].value} onChange={handleInputChange} />
+
 
 
                     <div className="check_box" >
-
                         <CssCheckbox type="checkbox" checked={data[0].checked}
                             value={data[0].value} onChange={onChange} />
                         <span>{data[0].value}</span>
