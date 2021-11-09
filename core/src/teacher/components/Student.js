@@ -7,19 +7,7 @@ import { Button, styled } from '@mui/material';
 import '../css/Student.css'
 import { RoundedCorner } from '@material-ui/icons';
 import { color, fontWeight } from '@mui/system';
-
-const CssButton1 = styled(Button)({
-    marginLeft: '0px',
-    textAlign:'center',
-    backgroundColor:'#E0BFE6',
-    borderRadius:'30px',
-    color:'#8154A0',
-    fontWeight:'bold',
-    '&:hover': {
-        background: "#8154A0",
-        color:"#FFF"
-     }
-});
+import DeleteModal from './DeleteModal';
 
 
 class Student extends Component {
@@ -53,11 +41,10 @@ class Student extends Component {
         ]
     }
 
-
+    //학생 초대 카카오 API
     componentDidMount() {
         if (!window.Kakao.isInitialized()) {
             window.Kakao.init('d1a90c494e1cdb68196c4145544ffac1');
-
         }
         window.Kakao.Link.createDefaultButton({
             container: '#kakao-link-btn',
@@ -125,28 +112,28 @@ class Student extends Component {
 
         return (
             <div className="main_div">
-                <h2 style={{width: '85%', margin: '20px auto', marginTop:'0px'}}>Student</h2>
-                <div style={{width: '85%', margin: '20px auto'}}>
-                <table border="1" >
-                    <tbody>
-                        <tr style={{fontFamily:'esamanru',fontWeight:'bold'}} align="center" >
-                            <td width="100">No</td>
-                            <td width="200">아이디</td>
-                            <td width="200">이름</td>
-                            <td width="400">전화번호</td>
-                            <td width="200">소속</td>
-                        </tr>
-                        {
-                            boards.map(row =>
-                                (<BoardItem key={row.brdno} row={row} onRemove={this.handleRemove} onSelectRow={this.handleSelectRow} />)
-                            )
-                        }
-                    </tbody>
-                </table >
+                <h2 style={{ width: '85%', margin: '20px auto', marginTop: '0px' }}>Student</h2>
+                <div style={{ width: '85%', margin: '20px auto' }}>
+                    <table border="1" >
+                        <tbody>
+                            <tr style={{ fontFamily: 'esamanru', fontWeight: 'bold',height:'50px' }} align="center" >
+                                <td width="100">No</td>
+                                <td width="200">아이디</td>
+                                <td width="200">이름</td>
+                                <td width="400">전화번호</td>
+                                <td width="200">소속</td>
+                            </tr>
+                            {
+                                boards.map(row =>
+                                    (<BoardItem key={row.brdno} row={row} onRemove={this.handleRemove} onSelectRow={this.handleSelectRow} />)
+                                )
+                            }
+                        </tbody>
+                    </table >
 
                 </div>
                 <div className="Kakao">
-                    <a id="kakao-link-btn" href="javascript:;"style={{ textDecoration: 'none' ,color:'white',fontWeight:'normal' }}>
+                    <a id="kakao-link-btn" href="javascript:;" style={{ textDecoration: 'none', color: 'white', fontWeight: 'normal' }}>
                         <p> 학생초대 </p>
                     </a>
                 </div>
@@ -163,13 +150,13 @@ class BoardItem extends React.Component {
     }
     render() {
         return (
-            <tr align="center">
+            <tr align="center" style={{height:'60px' }}>
                 <td>{this.props.row.brdno}</td>
                 <td>{this.props.row.id}</td>
                 <td>{this.props.row.name}</td>
                 <td>{this.props.row.phone}</td>
                 <td>{this.props.row.school}</td>
-                <td  align-items="center"><CssButton1 variant="contained" >삭제</CssButton1></td>
+                <td><DeleteModal></DeleteModal></td>
             </tr>
         );
     }
