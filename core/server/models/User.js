@@ -2,11 +2,12 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
-const userSchema = new Schema({
+const Account = new Schema({
     id: {
         type: String,
+        required: true
     },
-    password: {
+    pw: {
         type: String,
     },
     name: {
@@ -19,8 +20,9 @@ const userSchema = new Schema({
         type: Boolean,
     },
     class: {
-        type: String,
+        type: Array,
     }
 })
 
-module.exports = mongoose.model('user', userSchema);
+// 모델 생성, 스키마 이름, 스키마 객체 
+module.exports = mongoose.model('User', Account);

@@ -1,14 +1,27 @@
-const express = require('express');
-const cors = require('cors');
-const mongoose = require('mongoose'); //mongoDB 연결 위함
-
 require('dotenv').config();
-
+const mongoose = require('mongoose'); //mongoDB 연결 위함
+const express = require('express');
 const app = express();
-const api = require('./routes/index');
 const bodyParser = require('body-parser');
 
+// const cors = require('cors');
+
+
+// const api = require('./routes/index');
+
 const port = process.env.PORT || 5000; // .env파일에서 포트를 가져오거나 5000번을 사용
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+app.use(bodyParser.json());
+
+const User = require('./models/User');
+const router = require('./routes/User')(app, User);
+
+
+app.listen(port, () => {
+    console.log('Express is listening on port', port);
+});
 
 // app.use(cors()); // cors 미들웨어 사용
 // app.use(express.json());
@@ -28,15 +41,5 @@ connection.once('open', () => {
     console.log("MongoDB database connection established successfully");
 })
 
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
-
-app.use(bodyParser.json());
-app.use('/login', api);
-
-app.listen(port, () => {
-    console.log('Express is listening on port', port);
-});
 
 

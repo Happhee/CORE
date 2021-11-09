@@ -10,6 +10,7 @@ body{
     flex-direction: column;
     padding-bottom: 30%;
 }
+
 .signup_content{
     background-color: white;
     box-sizing: border-box;

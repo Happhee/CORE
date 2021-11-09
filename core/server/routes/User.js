@@ -1,34 +1,24 @@
-const express = require('express');
-const User = require('../models/User');
-const mongoose = require('mongoose');
+//CREATE
+module.exports = function (app, User) {
+    app.post('/login', (req, res) => {
 
-const router = express.Router();
+        const user = new User();
+        user.id = req.body.id;
+        user.pw = req.body.pw;
+        user.name = req.body.name;
+        user.phone = req.body.phone;
+        user.part = req.body.part;
+        user.class = req.body.class;
+        user.save(err => {
+            if (err) {
+                console.log(err);
+                res.json({ message: '생성실패' });
+                return;
 
-router.post('/', (req, res) => {
-    if (req.body.username === "") {
-        return res.status(400).json({
-            error: "EMPTY USERNAME",
-            code: 2
-        })
-    }
-    if (req.body.contents === "") {
-        return res.status(400).json({
-            error: "EMPTY CONTENTS",
-            code: 2
-        });
-    }
-    const user = new User({
-        name: req.body.username,
-        id: req.body.id
-    });
+            }
 
-    user.save(err => {
-        if (err)
-            throw err
-        return res.json({
-            success: true
+            res.json({ message: '생성완료' });
+
         });
     });
-});
-
-module.exports = router;
+}
