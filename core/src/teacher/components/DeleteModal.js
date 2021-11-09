@@ -7,12 +7,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import TextField from '@material-ui/core/TextField';
 import { withStyles } from '@material-ui/core/styles';
 
-import { makeStyles } from '@material-ui/core/styles';
-import KakaoShare from './KakaoShare';
 import { Button, styled } from '@mui/material';
-import { RoundedCorner } from '@material-ui/icons';
-import { color, fontWeight } from '@mui/system';
-
 
 const styles = theme => ({
     hidden: {

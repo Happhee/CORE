@@ -55,7 +55,7 @@ class WorkBook extends Component {
             </tbody>
           </table >
         </div>
-        <UnitAdd />
+        <UnitAdd/>
       </div>
     );
   }
