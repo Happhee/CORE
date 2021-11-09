@@ -6,7 +6,6 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import TextField from '@material-ui/core/TextField';
 import { withStyles } from '@material-ui/core/styles';
-import '../css/DeleteModal.css';
 
 import { makeStyles } from '@material-ui/core/styles';
 import KakaoShare from './KakaoShare';
@@ -39,7 +38,11 @@ const BasicBtn = styled(Button)({
     backgroundColor:'#8154A0',
     borderRadius:'30px',
     color:'#fff',
-    fontWeight:'bold'
+    fontWeight:'bold',
+    '&:hover': {
+        background: "#E0BFE6",
+        color:"#FFF"
+     }
 });
 class DeleteModal extends React.Component {
 
