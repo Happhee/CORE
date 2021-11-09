@@ -7,19 +7,7 @@ import { Button, styled } from '@mui/material';
 import '../css/Student.css'
 import { RoundedCorner } from '@material-ui/icons';
 import { color, fontWeight } from '@mui/system';
-
-const CssButton1 = styled(Button)({
-    marginLeft: '0px',
-    textAlign:'center',
-    backgroundColor:'#E0BFE6',
-    borderRadius:'30px',
-    color:'#8154A0',
-    fontWeight:'bold',
-    '&:hover': {
-        background: "#8154A0",
-        color:"#FFF"
-     }
-});
+import DeleteModal from './DeleteModal';
 
 
 class Student extends Component {
@@ -169,7 +157,7 @@ class BoardItem extends React.Component {
                 <td>{this.props.row.name}</td>
                 <td>{this.props.row.phone}</td>
                 <td>{this.props.row.school}</td>
-                <td  align-items="center"><CssButton1 variant="contained" >삭제</CssButton1></td>
+                <td><DeleteModal></DeleteModal></td>
             </tr>
         );
     }

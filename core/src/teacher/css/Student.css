@@ -46,3 +46,20 @@ table {
   .KakaoShare {
       background-color: #8154A0;
   }
+
+  .DeleteModal {
+      margin-left: '0px';
+      text-align:'center';
+      background-color:'#E0BFE6';
+      border-radius:'30px';
+      color:'#8154A0';
+      font-weight:'bold';
+    }
+    
+  .DeleteModal:hover{
+    background-color: #8154A0;
+        color:'#fff';
+  }
+
+
+  
