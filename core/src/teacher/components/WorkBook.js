@@ -71,7 +71,7 @@ class UnitItem extends React.Component {
       return (
         <tr align="center" style={{height:'60px' }}>
         <td>{this.props.row.no}</td>
-              <td onClick="window.open('');" style={{cursor:"pointer"}}>{this.props.row.name}</td>
+              <td className="goToUnit"  onClick="window.open('');" style={{cursor:"pointer" ,textDecorationLine:'underline'}}>{this.props.row.name}</td>
               <td>{this.props.row.count}</td>
           </tr>
       );
