@@ -16,7 +16,6 @@ const Toolbar = props => {
                 <img style={{ width: '30px',height:'28px',marginRight:'10px'}} src={require('../image/iconWorkbank.png').default} />
                 <Link to={data[0].link} className="text_style"> {data[0].title}</Link>
                 <img style={{ width: '30px',height:'28px',marginRight:'10px'}} src={require('../image/iconMy.png').default} />
-
             </div>
         </div>
     );
