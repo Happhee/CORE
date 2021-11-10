@@ -10,18 +10,18 @@ import { color, fontWeight } from '@mui/system';
 import DeleteModal from './DeleteModal';
 
 const AddStudent = styled(Button)({
-    marginLeft: '87%',
-    padding: '0.8%',
-    textAlign: 'center',
-    backgroundColor: '#692498',
-    borderRadius: '10px',
-    color: '#fff',
-    fontFamily: 'esamanruLight',
-    fontWeight: 'normal',
+    marginLeft:'87%',
+    padding:'0.8%',
+    textAlign:'center',
+    backgroundColor:'#692498',
+    borderRadius:'10px',
+    color:'#fff',
+    fontFamily:'esamanruLight' ,
+    fontWeight:'normal',
     '&:hover': {
         background: "#E0BFE6",
-        color: "#8154A0"
-    }
+        color:"#8154A0"
+     }
 });
 class Student extends Component {
     constructor(props) {
@@ -129,7 +129,7 @@ class Student extends Component {
                 <div style={{ width: '85%', margin: '20px auto' }}>
                     <table border="1" >
                         <tbody>
-                            <tr style={{ fontFamily: 'esamanru', fontWeight: 'bold', height: '50px' }} align="center" >
+                            <tr style={{ fontFamily: 'esamanru', fontWeight: 'bold',height:'50px' }} align="center" >
                                 <td width="100">No</td>
                                 <td width="200">아이디</td>
                                 <td width="200">이름</td>
@@ -138,7 +138,7 @@ class Student extends Component {
                             </tr>
                             {
                                 boards.map(row =>
-                                    (<StudentItem key={row.brdno} row={row} onRemove={this.handleRemove} onSelectRow={this.handleSelectRow} />)
+                                    (<BoardItem key={row.brdno} row={row} onRemove={this.handleRemove} onSelectRow={this.handleSelectRow} />)
                                 )
                             }
                         </tbody>
@@ -146,8 +146,8 @@ class Student extends Component {
 
                 </div>
                 <div className="Kakao">
-                    <a id="kakao-link-btn" href="javascript:;" style={{ textDecoration: 'none' }}>
-                        <AddStudent>학생 초대</AddStudent>
+                    <a id="kakao-link-btn" href="javascript:;" style={{textDecoration:'none'}}>
+                    <AddStudent>학생 초대</AddStudent>
                     </a>
                 </div>
             </div >
@@ -156,24 +156,23 @@ class Student extends Component {
 }
 export default Student;
 
-function StudentItem(props) {
-    let history = useHistory();
-
+class BoardItem extends React.Component {
     handleSelectRow = () => {
         const { row, onSelectRow } = this.props;
         onSelectRow(row);
     }
-    return (
-        <tr align="center" style={{ height: '60px' }}>
-            <td>{this.props.row.brdno}</td>
-            <td>{this.props.row.id}</td>
-            <td>{this.props.row.name}</td>
-            <td>{this.props.row.phone}</td>
-            <td>{this.props.row.school}</td>
-            <td><DeleteModal></DeleteModal></td>
-        </tr>
-    );
-
+    render() {
+        return (
+            <tr align="center" style={{height:'60px' }}>
+                <td>{this.props.row.brdno}</td>
+                <td>{this.props.row.id}</td>
+                <td>{this.props.row.name}</td>
+                <td>{this.props.row.phone}</td>
+                <td>{this.props.row.school}</td>
+                <td><DeleteModal></DeleteModal></td>
+            </tr>
+        );
+    }
 }
 
 const useStyles = makeStyles(() => ({
