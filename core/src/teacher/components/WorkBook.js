@@ -42,7 +42,7 @@ class WorkBook extends Component {
         <div style={{ width: '85%', margin: '20px auto' }}>
           <table border="1" >
             <tbody>
-            <tr style={{ fontFamily: 'esamanru', fontWeight: 'bold',height:'50px' }} align="center" >
+              <tr style={{ fontFamily: 'esamanru', fontWeight: 'bold', height: '50px' }} align="center" >
                 <td width="100">No</td>
                 <td width="700">단원명</td>
                 <td width="150">문항수</td>
@@ -55,25 +55,28 @@ class WorkBook extends Component {
             </tbody>
           </table >
         </div>
-        <UnitAdd/>
+        <UnitAdd />
       </div>
     );
   }
 }
 export default WorkBook;
 
-class UnitItem extends React.Component {
-  handleSelectRow = () => {
-      const { row, onSelectRow } = this.props;
-      onSelectRow(row);
-  }
-  render() {
-      return (
-        <tr align="center" style={{height:'60px' }}>
-        <td>{this.props.row.no}</td>
-              <td className="goToUnit"  onClick="window.open('');" style={{cursor:"pointer" ,textDecorationLine:'underline'}}>{this.props.row.name}</td>
-              <td>{this.props.row.count}</td>
-          </tr>
-      );
-  }
+function UnitItem(props) {
+
+
+  let history = useHistory();
+
+
+  return (
+    <tr align="center" style={{ height: '60px' }}>
+      <td>{props.no}</td>
+      <td className="goToUnit" onClick={() => {
+        history.push(`/mainpage/teacher/workbook/quizlist?mainunit=${props.no}`)
+      }}
+        style={{ cursor: "pointer", textDecorationLine: 'underline' }}>{props.name}</td>
+      <td>{props.count}</td>
+    </tr>
+  );
+
 }
