@@ -15,7 +15,7 @@ function FeedBackInfo(props) {
             <td key="quizNumber">{props.quizNumber}</td>
             <td key="set">{props.set}</td>
             <td key="score">
-                <Button marginleft="300px" variant="contained" color="secondary" id="problem_add"
+                <button marginleft="300px" style={{backgroundColor:"white" , border:"0",fontFamily: 'esamanru', fontWeight: 'normal', height: '50px', cursor: "pointer", textDecorationLine: 'underline'  }}
                     onClick={() => {
                         history.push({
                             pathname: "/mainpage/teacher/workbook/quizlist/problemmain?mainunit=" + props.unit + "&subunit=" + props.quizNumber,
@@ -26,7 +26,7 @@ function FeedBackInfo(props) {
                                 output_data: ProblemServer.getOutput_data("feedback")
                             }
                         })
-                    }}>{props.score}</Button>
+                    }}>{props.score}</button>
             </td>
         </tr>
     )

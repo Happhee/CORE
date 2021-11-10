@@ -14,14 +14,6 @@ import { fade } from '@material-ui/core/styles/colorManipulator';
 
 
 const styles = theme => ({
-    root: {
-        width: "100%",
-        marginTop: theme.spacing(3),
-        overflowX: "auto"
-    },
-    table: {
-        minWidth: 1080
-    },
     search: {
         position: 'relative',
         borderRadius: theme.shape.borderRadius,
@@ -36,7 +28,6 @@ const styles = theme => ({
             width: 'auto',
         },
     },
-
 
     searchIcon: {
         width: theme.spacing.unit * 9,
