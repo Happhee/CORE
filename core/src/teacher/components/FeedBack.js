@@ -2,12 +2,9 @@
 import React, { Component } from 'react';
 import '../css/FeedBack.css'
 import FeedBackInfo from './FeedBackInfo'
-import Paper from '@material-ui/core/Paper';
-import Table from '@material-ui/core/Table';
 import TableHead from '@material-ui/core/TableHead';
 import TableBody from '@material-ui/core/TableBody';
 import TableRow from '@material-ui/core/TableRow';
-import TableCell from '@material-ui/core/TableCell';
 import { withStyles } from '@material-ui/core/styles';
 import UnitAdd from '../../components/UnitAdd';
 import { Button } from '@material-ui/core';
@@ -120,9 +117,8 @@ class FeedBack extends Component {
         const { classes } = this.props;
         return (
             <div className="main_div">
-                <h1>FeedBack</h1>
-                <div className={classes.grow} />
-                <div className={classes.search}>
+                <h2 style={{ width: '85%', margin: '20px auto', marginTop: '0px' }}>FeedBack</h2>
+                <div style={{ width: '85%', margin: '20px auto' }}>
                     <div className={classes.searchIcon}>
                         <SearchIcon />
                     </div>
@@ -132,34 +128,31 @@ class FeedBack extends Component {
                             root: classes.inputRoot,
                             input: classes.inputInput,
                         }}
-
                     />
+
+                <table border="1" >
+                    <tbody>
+                        <tr style={{ fontFamily: 'esamanru', fontWeight: 'bold', height: '50px' }} align="center" >
+                            <td width="50">NO</td>
+                            <td width="100">아이디</td>
+                            <td width="100">이름</td>
+                            <td width="600">단원명</td>
+                            <td width="80">문항번호</td>
+                            <td width="200">진행상황</td>
+                            <td width="100">점수</td>
+                        </tr>
+                        {
+                            feedBack.map(row =>
+                                (<FeedBackInfo row={row} no={row.no} id={row.id} name={row.name} unit={row.unit} quizNumber={row.quizNumber} set={row.set} score={row.score} startpage="feedBack" key={row.id} />)
+                            )
+                        }
+                    </tbody>
+                </table>
                 </div>
-
-
-                <Paper className={classes.root}>
-                    <Table className={classes.table}>
-                        <TableHead>
-                            <TableRow>
-                                <TableCell>NO</TableCell>
-                                <TableCell>아이디</TableCell>
-                                <TableCell>이름</TableCell>
-                                <TableCell>단원명</TableCell>
-                                <TableCell>문항번호</TableCell>
-                                <TableCell>진행상황</TableCell>
-                                <TableCell>점수</TableCell>
-                            </TableRow>
-                        </TableHead>
-                        <TableBody>
-                            {feedBack.map(c => {
-                                return <FeedBackInfo no={c.no} id={c.id} name={c.name} unit={c.unit} quizNumber={c.quizNumber} set={c.set} score={c.score} startpage="feedBack" key={c.id} />
-                            })}
-                        </TableBody>
-                    </Table>
-                </Paper>
             </div>
         );
     }
 }
 
 export default withStyles(styles)(FeedBack);
+

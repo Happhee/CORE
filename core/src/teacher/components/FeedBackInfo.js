@@ -1,6 +1,4 @@
 import React from 'react';
-import TableRow from '@material-ui/core/TableRow';
-import TableCell from '@material-ui/core/TableCell';
 import { useHistory } from 'react-router-dom';
 import Button from '@mui/material/Button'
 import * as ProblemServer from '../server/ProblemServer'
@@ -9,14 +7,14 @@ import * as ProblemServer from '../server/ProblemServer'
 function FeedBackInfo(props) {
     let history = useHistory();
     return (
-        <TableRow>
-            <TableCell key="no">{props.no}</TableCell>
-            <TableCell key="id">{props.id}</TableCell>
-            <TableCell key="name">{props.name}</TableCell>
-            <TableCell key="unit">{props.unit}</TableCell>
-            <TableCell key="quizNumber">{props.quizNumber}</TableCell>
-            <TableCell key="set">{props.set}</TableCell>
-            <TableCell key="score">
+        <tr align="center" style={{ height: '60px' }}>
+        <td key="no">{props.no}</td>
+            <td key="id">{props.id}</td>
+            <td key="name">{props.name}</td>
+            <td key="unit">{props.unit}</td>
+            <td key="quizNumber">{props.quizNumber}</td>
+            <td key="set">{props.set}</td>
+            <td key="score">
                 <Button marginleft="300px" variant="contained" color="secondary" id="problem_add"
                     onClick={() => {
                         history.push({
@@ -29,12 +27,10 @@ function FeedBackInfo(props) {
                             }
                         })
                     }}>{props.score}</Button>
-            </TableCell>
-        </TableRow>
+            </td>
+        </tr>
     )
-
 }
-
 export default FeedBackInfo;
 
 
