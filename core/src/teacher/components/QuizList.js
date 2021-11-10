@@ -7,7 +7,7 @@ import { Button, styled } from '@mui/material';
 import queryString from 'query-string'
 import '../css/ProblemAdd.css'
 import * as ProblemServer from '../server/ProblemServer'
-import DeleteModal from './DeleteModal';
+import DeleteQuiz from './DeleteQuiz';
 import { makeStyles } from '@material-ui/core/styles';
 
 
@@ -29,15 +29,15 @@ const AddQuiz = styled(Button)({
 
 const EditBtn = styled(Button)({
     marginLeft: '0px',
-    textAlign:'center',
-    backgroundColor:'#E0BFE6',
-    borderRadius:'30px',
-    color:'#8154A0',
-    fontWeight:'bold',
+    textAlign: 'center',
+    backgroundColor: '#E0BFE6',
+    borderRadius: '30px',
+    color: '#8154A0',
+    fontWeight: 'bold',
     '&:hover': {
         background: "#8154A0",
-        color:"#FFF"
-     }
+        color: "#FFF"
+    }
 });
 
 class QuizList extends Component {
@@ -125,8 +125,8 @@ function BoardItem(props) {
             <td>{props.row.brdno}</td>
             <td>{props.row.brdtitle}</td>
             <td>{props.row.brdwriter}</td>
-            <td >
-                <EditBtn onClick={
+            <td>
+                <EditBtn  style={{marginLeft:"10%",marginRight:"0%",float:"left"}} onClick={
                     () => {
                         history.push({
                             pathname: "/mainpage/teacher/workbook/quizlist/problemmain?mainunit=" + mainunit + "&subunit=" + props.subunit,
@@ -138,7 +138,8 @@ function BoardItem(props) {
                             }
                         })
                     }}>수정</EditBtn>
-                <EditBtn>삭제</EditBtn></td>
+                <DeleteQuiz  style={{marginLeft:"0%",marginRight:"10%",float:"right"}}/>
+            </td>
         </tr>
     );
 
@@ -163,6 +164,6 @@ function ProblemAdd_Button(props) {
                         }
                     })
                 }}>문제등록</AddQuiz>
-        </div >
+        </div>
     )
 }
