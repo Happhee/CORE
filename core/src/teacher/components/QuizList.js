@@ -5,7 +5,6 @@ import React, { Component } from 'react';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import { Button, styled } from '@mui/material';
 import queryString from 'query-string'
-import '../css/ProblemAdd.css'
 import * as ProblemServer from '../server/ProblemServer'
 import DeleteQuiz from './DeleteQuiz';
 import { makeStyles } from '@material-ui/core/styles';
@@ -13,7 +12,8 @@ import { makeStyles } from '@material-ui/core/styles';
 
 
 const AddQuiz = styled(Button)({
-    marginLeft: '87%',
+    marginLeft: '93.8%',
+    marginTop:'1%',
     padding: '0.8%',
     textAlign: 'center',
     backgroundColor: '#692498',
@@ -95,9 +95,9 @@ class QuizList extends Component {
                         <tbody>
                             <tr style={{ fontFamily: 'esamanru', fontWeight: 'bold', height: '50px' }} align="center" >
                                 <td width="50">No</td>
-                                <td width="300">문제명</td>
-                                <td width="100">정답률</td>
-                                <td width="100">편집</td>
+                                <td width="400">문제명</td>
+                                <td width="60">정답률</td>
+                                <td width="80">편집</td>
                             </tr>
                             {
                                 boards.map(row =>
@@ -126,7 +126,7 @@ function BoardItem(props) {
             <td>{props.row.brdtitle}</td>
             <td>{props.row.brdwriter}</td>
             <td>
-                <EditBtn  style={{marginLeft:"10%",marginRight:"0%",float:"left"}} onClick={
+                <EditBtn style={{ marginLeft: "10%", marginRight: "0%", float: "left" }} onClick={
                     () => {
                         history.push({
                             pathname: "/mainpage/teacher/workbook/quizlist/problemmain?mainunit=" + mainunit + "&subunit=" + props.subunit,
@@ -138,7 +138,7 @@ function BoardItem(props) {
                             }
                         })
                     }}>수정</EditBtn>
-                <DeleteQuiz  style={{marginLeft:"0%",marginRight:"10%",float:"right"}}/>
+                <DeleteQuiz style={{ marginLeft: "0%", marginRight: "10%", float: "right" }} />
             </td>
         </tr>
     );
@@ -150,6 +150,8 @@ function ProblemAdd_Button(props) {
     let { search } = useLocation();
     const queryObj = queryString.parse(search);
     const { mainunit } = queryObj;
+
+
     return (
         <div>
             <AddQuiz
