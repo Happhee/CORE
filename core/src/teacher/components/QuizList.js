@@ -5,14 +5,45 @@ import React, { Component } from 'react';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import { Button, styled } from '@mui/material';
 import queryString from 'query-string'
-import '../css/ProblemAdd.css'
 import * as ProblemServer from '../server/ProblemServer'
+import DeleteQuiz from './DeleteQuiz';
+import { makeStyles } from '@material-ui/core/styles';
+
+
+
+const AddQuiz = styled(Button)({
+    marginLeft: '93.8%',
+    marginTop:'1%',
+    padding: '0.8%',
+    textAlign: 'center',
+    backgroundColor: '#692498',
+    borderRadius: '10px',
+    color: '#fff',
+    fontFamily: 'esamanruLight',
+    fontWeight: 'normal',
+    '&:hover': {
+        background: "#E0BFE6",
+        color: "#8154A0"
+    }
+});
+
+const EditBtn = styled(Button)({
+    marginLeft: '0px',
+    textAlign: 'center',
+    backgroundColor: '#E0BFE6',
+    borderRadius: '30px',
+    color: '#8154A0',
+    fontWeight: 'bold',
+    '&:hover': {
+        background: "#8154A0",
+        color: "#FFF"
+    }
+});
 
 class QuizList extends Component {
     constructor(props) {
         super(props);
         this.child = React.createRef();
-
     }
 
     state = {
@@ -58,35 +89,31 @@ class QuizList extends Component {
 
         return (
             <div className="main_div">
-                <h1>WorkBook - QuizList</h1>
-
-                <table border="1">
-                    <tbody>
-                        <tr align="center">
-                            <td width="50">No</td>
-                            <td width="300">문제명</td>
-                            <td width="100">정답률</td>
-                            <td width="100">편집</td>
-                        </tr>
-                        {
-                            boards.map(row =>
-                            (<BoardItem key={row.brdno} row={row} onRemove={this.handleRemove} onSelectRow={this.handleSelectRow}
-                                mainunit="1" />)
-                            )
-                        }
-                    </tbody>
-                </table>
-                <ProblemAdd_Button mainunit="1" subunit={boards.length + 1} />
+                <h2 style={{ width: '85%', margin: '20px auto', marginTop: '0px' }}>WorkBook - QuizList</h2>
+                <div style={{ width: '85%', margin: '20px auto' }}>
+                    <table border="1" >
+                        <tbody>
+                            <tr style={{ fontFamily: 'esamanru', fontWeight: 'bold', height: '50px' }} align="center" >
+                                <td width="50">No</td>
+                                <td width="400">문제명</td>
+                                <td width="60">정답률</td>
+                                <td width="80">편집</td>
+                            </tr>
+                            {
+                                boards.map(row =>
+                                (<BoardItem key={row.brdno} row={row} onRemove={this.handleRemove} onSelectRow={this.handleSelectRow}
+                                    mainunit="1" />)
+                                )
+                            }
+                        </tbody>
+                    </table>
+                    <ProblemAdd_Button mainunit="1" subunit={boards.length + 1} />
+                </div>
             </div>
         );
     }
 }
 export default QuizList;
-
-const CssButton = styled(Button)({
-    marginLeft: '10px'
-});
-
 function BoardItem(props) {
     let history = useHistory();
     let { search } = useLocation();
@@ -98,8 +125,8 @@ function BoardItem(props) {
             <td>{props.row.brdno}</td>
             <td>{props.row.brdtitle}</td>
             <td>{props.row.brdwriter}</td>
-            <td >
-                <CssButton variant="contained" color="secondary" onClick={
+            <td>
+                <EditBtn style={{ marginLeft: "10%", marginRight: "0%", float: "left" }} onClick={
                     () => {
                         history.push({
                             pathname: "/mainpage/teacher/workbook/quizlist/problemmain?mainunit=" + mainunit + "&subunit=" + props.subunit,
@@ -110,8 +137,9 @@ function BoardItem(props) {
                                 output_data: ProblemServer.getOutput_data("modify")
                             }
                         })
-                    }}>수정</CssButton>
-                <CssButton variant="contained" color="secondary" >삭제</CssButton></td>
+                    }}>수정</EditBtn>
+                <DeleteQuiz style={{ marginLeft: "0%", marginRight: "10%", float: "right" }} />
+            </td>
         </tr>
     );
 
@@ -122,9 +150,11 @@ function ProblemAdd_Button(props) {
     let { search } = useLocation();
     const queryObj = queryString.parse(search);
     const { mainunit } = queryObj;
+
+
     return (
-        <div className="problem_bottom_div">
-            <Button marginleft="300px" variant="contained" color="secondary" id="problem_add"
+        <div>
+            <AddQuiz
                 onClick={() => {
                     history.push({
                         pathname: "/mainpage/teacher/workbook/quizlist/problemmain?mainunit=" + mainunit + "&subunit=" + props.subunit,
@@ -135,7 +165,7 @@ function ProblemAdd_Button(props) {
                             output_data: ProblemServer.getOutput_data("register")
                         }
                     })
-                }}>문제등록</Button>
-        </div >
+                }}>문제등록</AddQuiz>
+        </div>
     )
 }

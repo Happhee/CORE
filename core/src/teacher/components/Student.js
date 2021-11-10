@@ -135,6 +135,8 @@ class Student extends Component {
                                 <td width="200">이름</td>
                                 <td width="400">전화번호</td>
                                 <td width="200">소속</td>
+                                <td width="50">삭제</td>
+
                             </tr>
                             {
                                 boards.map(row =>
