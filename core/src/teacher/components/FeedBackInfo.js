@@ -16,12 +16,7 @@ function FeedBackInfo(props) {
             <td key="set" style={{paddingLeft:"4%" , paddingRight:"4%",color:"white"}}>
                 {
                     (() => {
-                        /*if (props.set == '임시저장') {
-                            return <div key="set" style={{ border:"12px solid grey",borderColor:"grey" ,backgroundColor: "grey" ,borderRadius:"10px"}}>
-                                {props.set}
-                            </div>;
-                        }
-                        else*/ if (props.set == "답변완료") {
+                        if (props.set == "답변완료") {
                             return <div key="set" style={{ border:"12px solid #9A30AE",borderColor:"#9A30AE" ,backgroundColor: "#9A30AE",borderRadius:"20px" }}>
                                 {props.set}
                             </div>;

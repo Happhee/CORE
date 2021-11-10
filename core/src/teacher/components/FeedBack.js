@@ -16,11 +16,6 @@ import { fade } from '@material-ui/core/styles/colorManipulator';
 const styles = theme => ({
     search: {
         position: 'relative',
-        borderRadius: theme.shape.borderRadius,
-        backgroundColor: fade(theme.palette.common.white, 0.15),
-        '&:hover': {
-            backgroundColor: fade(theme.palette.common.white, 0.25),
-        },
         marginLeft: 0,
         width: '100%',
         [theme.breakpoints.up('sm')]: {
@@ -29,15 +24,6 @@ const styles = theme => ({
         },
     },
 
-    searchIcon: {
-        width: theme.spacing.unit * 9,
-        height: '100%',
-        position: 'absolute',
-        pointerEvents: 'none',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
     inputRoot: {
         color: 'inherit',
         width: '100%',
@@ -47,14 +33,7 @@ const styles = theme => ({
         paddingRight: theme.spacing.unit,
         paddingBottom: theme.spacing.unit,
         paddingLeft: theme.spacing.unit * 10,
-        transition: theme.transitions.create('width'),
-        width: '100%',
-        [theme.breakpoints.up('sm')]: {
-            width: 120,
-            '&:focus': {
-                width: 200,
-            },
-        },
+        width: '100%'
     }
 });
 
@@ -91,12 +70,7 @@ const feedBack = [
     }
 ]
 
-//function FeedBack(){
 
-//     return(
-
-//     )
-// }
 class FeedBack extends Component {
     handleValueChange(e) {
         let nextState = {};
@@ -108,37 +82,42 @@ class FeedBack extends Component {
         const { classes } = this.props;
         return (
             <div className="main_div">
-                <h2 style={{ width: '85%', margin: '20px auto', marginTop: '0px' }}>FeedBack</h2>
-                <div style={{ width: '85%', margin: '20px auto' }}>
-                    <div className={classes.searchIcon}>
-                        <SearchIcon />
-                    </div>
-                    <InputBase
-                        placeholder="검색하기"
+                <h2 style={{ width: '60%', margin: '20px auto', marginTop: '0px', float: "left", marginLeft: "7.5%" }}>FeedBack</h2>
+
+                <div style={{
+                    width: "18%", margin: '20px auto', marginRight: "7.5%", borderWidth: "content", borderWidth: "15%",
+                    border: "2px solid #9A30AE", fontFamily: 'esamanru', fontWeight: 'normal', float: "right"
+                }}>
+                    <InputBase style={{ width: "200px",float: "left" }}
+                        placeholder="학생 이름 검색"
                         classes={{
                             root: classes.inputRoot,
                             input: classes.inputInput,
                         }}
                     />
+                    <img style={{ width: "40px" ,float: "right"}} src={require('../../image/iconSearch.png').default} />
 
-                <table border="1" >
-                    <tbody>
-                        <tr style={{ fontFamily: 'esamanru', fontWeight: 'bold', height: '50px' }} align="center" >
-                            <td width="50">NO</td>
-                            <td width="100">아이디</td>
-                            <td width="100">이름</td>
-                            <td width="600">단원명</td>
-                            <td width="80">문항번호</td>
-                            <td width="200">진행상황</td>
-                            <td width="100">점수</td>
-                        </tr>
-                        {
-                            feedBack.map(row =>
-                                (<FeedBackInfo row={row} no={row.no} id={row.id} name={row.name} unit={row.unit} quizNumber={row.quizNumber} set={row.set} score={row.score} startpage="feedBack" key={row.id} />)
-                            )
-                        }
-                    </tbody>
-                </table>
+                </div>
+
+                <div style={{ width: '85%', margin: '20px auto' }}>
+                    <table border="1" >
+                        <tbody>
+                            <tr style={{ fontFamily: 'esamanru', fontWeight: 'bold', height: '50px' }} align="center" >
+                                <td width="50">NO</td>
+                                <td width="100">아이디</td>
+                                <td width="100">이름</td>
+                                <td width="600">단원명</td>
+                                <td width="80">문항번호</td>
+                                <td width="200">진행상황</td>
+                                <td width="100">점수</td>
+                            </tr>
+                            {
+                                feedBack.map(row =>
+                                    (<FeedBackInfo row={row} no={row.no} id={row.id} name={row.name} unit={row.unit} quizNumber={row.quizNumber} set={row.set} score={row.score} startpage="feedBack" key={row.id} />)
+                                )
+                            }
+                        </tbody>
+                    </table>
                 </div>
             </div>
         );
