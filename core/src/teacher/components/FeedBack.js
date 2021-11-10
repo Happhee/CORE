@@ -68,7 +68,7 @@ const feedBack = [
         'name': '김철수',
         'unit': '반복문 이용하기',
         'quizNumber': 1,
-        'set': '임시저장',
+        'set': '대기중',
         'score': 100
     },
     {
@@ -77,7 +77,7 @@ const feedBack = [
         'name': '김철수',
         'unit': '반복문 이용하기',
         'quizNumber': 1,
-        'set': '임시저장',
+        'set': '답변완료',
         'score': 100
     },
     {
@@ -86,7 +86,7 @@ const feedBack = [
         'name': '김철수',
         'unit': '반복문 이용하기',
         'quizNumber': 1,
-        'set': '임시저장',
+        'set': '답변완료',
         'score': 100
     }
 ]
