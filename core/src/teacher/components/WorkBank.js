@@ -64,11 +64,12 @@ function WorkBank() {
         <div >
             <Toolbar data={toolbar} />
             <div className="workbank_box">
-                <Core_Logo />
-                <div className="workbank_content">
+                <img style={{ width: "200px", marginTop: "3%", marginBottom: "-25px" }} src={require('../../image/icon_BigLogo.png').default} />
+                <div className="workbank_content" style={{ width: '85%', margin: '20px auto' }}>
                     {/*  */}
-                    <div className="title_workbank">
-                        <span>WorkBank</span>
+                    <div className="title_workbank" >
+                        <img src={require('../../image/iconWorkBook.png').default} style={{float:"left"}} />
+                        <div style={{float:"right"}}>WorkBank</div>
                     </div>
                     <Switch>
                         <Route exact path='/:mode/workbank' render={() => <WorkBank_MainList />} />
