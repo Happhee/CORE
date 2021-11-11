@@ -35,9 +35,11 @@ const BasicBtn = styled(Button)({
     borderRadius:'30px',
     color:'#fff',
     fontWeight:'bold',
+    border:"0px solid #692498",
     '&:hover': {
         background: "#E0BFE6",
-        color:"#FFF"
+        color:"#FFF",
+        border:"0px solid #692498"
      }
 });
 class UnitAdd extends React.Component {
