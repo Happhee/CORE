@@ -41,6 +41,7 @@ function WorkBank_QuizList(props) {
     console.log("등록강의실  -> " + listbox_datas[register_data].value);
     return (
         <div className="coretable_workbank">
+            <h2 style={{marginTop:"-5%",marginBottom:"30px",marginLeft:"0.5%"}}>Chap1) 반복문 이용하기</h2>
             <CoreTable table_cells={table_cells} unit={unit} editType="QuizList"
                 mainunit={mainunit}
                 handleFormSubmit={Server.handleFormSubmit} handleRemoveClose={Server.handleRemoveClose} />
