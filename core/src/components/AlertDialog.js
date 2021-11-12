@@ -1,12 +1,25 @@
 /*eslint-disable */
 
 import React, { useState } from 'react';
-import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import { Button, styled } from '@mui/material';
+
+const DeleteBtn = styled(Button)({
+    marginLeft: '0px',
+    textAlign:'center',
+    backgroundColor:'#E0BFE6',
+    borderRadius:'30px',
+    color:'#8154A0',
+    fontWeight:'bold',
+    '&:hover': {
+        background: "#8154A0",
+        color:"#FFF"
+     }
+});
 
 function AlertDialog(props) {
     const [open, setOpen] = useState(false);
@@ -98,9 +111,9 @@ function AlertDialog(props) {
 
     return (
         <>
-            <Button variant="contained" color="secondary" className="problem_button" onClick={handleClickOpen}>
+            <DeleteBtn variant="contained" onClick={handleClickOpen}>
                 {props.alertDialog_title}
-            </Button>
+            </DeleteBtn>
             <Dialog
                 open={open}
                 onClose={handleClose}

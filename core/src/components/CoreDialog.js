@@ -24,7 +24,18 @@ const styles = theme => ({
     }
 });
 
-
+const Btn = styled(Button)({
+    marginLeft: '0px',
+    textAlign:'center',
+    backgroundColor:'#E0BFE6',
+    borderRadius:'30px',
+    color:'#8154A0',
+    fontWeight:'bold',
+    '&:hover': {
+        background: "#8154A0",
+        color:"#FFF"
+     }
+});
 const CoreDialog = props => {
 
     //다이얼로그 데이터 
@@ -96,7 +107,7 @@ const CoreDialog = props => {
     return (
         <div className={props.button_box_div}>
             <div className={props.button_box}>
-                <Button variant="contained" color="secondary" className={props.button_type} onClick={handleClickOpen}>{props.button_value}</Button>
+                <Btn variant="contained" className={props.button_type} onClick={handleClickOpen}>{props.button_value}</Btn>
             </div>
             <Dialog open={dialog_data.open} onClose={handleClose}>
 

@@ -20,13 +20,10 @@
     margin-bottom: 0px;
 }
   .title_workbank{
-    display: grid;
-    grid-column: 1/7;
-    
+    grid-column: 1/7; 
     margin-top: 20px;
     padding-bottom: 20px;
     font-size: 30px;
-    border-bottom:  solid #692498 5px;
     justify-content: left;
   }
   .coretable_workbank{
@@ -35,7 +32,6 @@
     
     margin-top: 20px;
     padding-bottom: 20px;
-    font-size: 30px;
   }
 
   .add_problem_class_box{

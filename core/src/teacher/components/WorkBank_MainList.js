@@ -12,7 +12,7 @@ import '../../css/CoreListbox.css'
 function WorkBank_MainList() {
     console.log('워크뱅크렌더');
 
-    let table_cells = ['NO', '단원명', '문항수', '편집']
+    let table_cells = ['NO', '단원', '문항수', '편집']
 
     let unit = [
         {
@@ -48,8 +48,6 @@ function WorkBank_MainList() {
             <CoreTable table_cells={table_cells} unit={unit} editType="MainList"
                 handleFormSubmit={Server.handleFormSubmit} handleFormModify={Server.handleFormModify} handleRemoveClose={Server.handleRemoveClose} />
         </div>
-
-
     );
 
 }
