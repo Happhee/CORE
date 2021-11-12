@@ -1,3 +1,5 @@
+/*eslint-disable */
+
 import React from 'react'
 import { post } from 'axios';
 import Dialog from '@material-ui/core/Dialog';

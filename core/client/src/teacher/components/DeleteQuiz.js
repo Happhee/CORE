@@ -1,3 +1,5 @@
+/*eslint-disable */
+
 import React from 'react'
 import { post } from 'axios';
 import Dialog from '@material-ui/core/Dialog';
@@ -30,15 +32,15 @@ const DeleteBtn = styled(Button)({
 
 const BasicBtn = styled(Button)({
     marginLeft: '0px',
-    textAlign:'center',
-    backgroundColor:'#692498',
-    borderRadius:'30px',
-    color:'#fff',
-    fontWeight:'bold',
+    textAlign: 'center',
+    backgroundColor: '#692498',
+    borderRadius: '30px',
+    color: '#fff',
+    fontWeight: 'bold',
     '&:hover': {
         background: "#E0BFE6",
-        color:"#FFF"
-         }
+        color: "#FFF"
+    }
 });
 class DeleteQuiz extends React.Component {
 

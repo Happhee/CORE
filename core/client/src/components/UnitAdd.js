@@ -1,3 +1,5 @@
+/*eslint-disable */
+
 import React from 'react'
 import { post } from 'axios';
 import Dialog from '@material-ui/core/Dialog';
@@ -15,39 +17,39 @@ const styles = theme => ({
 });
 
 const AddBtn = styled(Button)({
-    marginLeft:'87%',
-    padding:'0.8%',
-    textAlign:'center',
-    backgroundColor:'#692498',
-    borderRadius:'10px',
-    color:'#fff',
-    fontFamily:'esamanruLight' ,
-    fontWeight:'normal',
+    marginLeft: '87%',
+    padding: '0.8%',
+    textAlign: 'center',
+    backgroundColor: '#692498',
+    borderRadius: '10px',
+    color: '#fff',
+    fontFamily: 'esamanruLight',
+    fontWeight: 'normal',
     '&:hover': {
         background: "#E0BFE6",
-        color:"#8154A0"
-     }
+        color: "#8154A0"
+    }
 });
 const BasicBtn = styled(Button)({
     marginLeft: '0px',
-    textAlign:'center',
-    backgroundColor:'#692498',
-    borderRadius:'30px',
-    color:'#fff',
-    fontWeight:'bold',
-    border:"0px solid #692498",
+    textAlign: 'center',
+    backgroundColor: '#692498',
+    borderRadius: '30px',
+    color: '#fff',
+    fontWeight: 'bold',
+    border: "0px solid #692498",
     '&:hover': {
         background: "#E0BFE6",
-        color:"#FFF",
-        border:"0px solid #692498"
-     }
+        color: "#FFF",
+        border: "0px solid #692498"
+    }
 });
 class UnitAdd extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            id:'',
+            id: '',
             userName: '',
             open: false
         }
@@ -66,7 +68,7 @@ class UnitAdd extends React.Component {
                 this.props.stateRefresh();
             })
         this.setState({
-            id:'',
+            id: '',
             userName: '',
             open: false
         })
@@ -100,7 +102,7 @@ class UnitAdd extends React.Component {
 
     handleClose() {
         this.setState({
-            id:'',
+            id: '',
             userName: '',
             count: '',
             open: false
@@ -111,7 +113,7 @@ class UnitAdd extends React.Component {
         const { classes } = this.props;
         return (
             <div>
-                <AddBtn  variant="contained"onClick={this.handleClickOpen}>
+                <AddBtn variant="contained" onClick={this.handleClickOpen}>
                     단원 추가
                 </AddBtn>
                 <Dialog open={this.state.open} onClose={this.handleClose}>

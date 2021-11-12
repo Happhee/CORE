@@ -1,3 +1,5 @@
+/*eslint-disable */
+
 export function checkTextfieldValue(textfield_data) {
 
     for (let index = 0; index < textfield_data.length; index++) {

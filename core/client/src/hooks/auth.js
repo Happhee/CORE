@@ -1,3 +1,5 @@
+/*eslint-disable */
+
 import React, { useEffect } from 'react';
 import Axios from "axios";
 import { useDispatch } from 'react-redux';

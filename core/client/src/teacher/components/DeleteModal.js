@@ -1,3 +1,5 @@
+/*eslint-disable */
+
 import React from 'react'
 import { post } from 'axios';
 import Dialog from '@material-ui/core/Dialog';
@@ -17,28 +19,28 @@ const styles = theme => ({
 });
 const DeleteBtn = styled(Button)({
     marginLeft: '0px',
-    textAlign:'center',
-    backgroundColor:'#E0BFE6',
-    borderRadius:'30px',
-    color:'#8154A0',
-    fontWeight:'bold',
+    textAlign: 'center',
+    backgroundColor: '#E0BFE6',
+    borderRadius: '30px',
+    color: '#8154A0',
+    fontWeight: 'bold',
     '&:hover': {
         background: "#8154A0",
-        color:"#FFF"
-     }
+        color: "#FFF"
+    }
 });
 
 const BasicBtn = styled(Button)({
     marginLeft: '0px',
-    textAlign:'center',
-    backgroundColor:'#692498',
-    borderRadius:'30px',
-    color:'#fff',
-    fontWeight:'bold',
+    textAlign: 'center',
+    backgroundColor: '#692498',
+    borderRadius: '30px',
+    color: '#fff',
+    fontWeight: 'bold',
     '&:hover': {
         background: "#E0BFE6",
-        color:"#FFF"
-         }
+        color: "#FFF"
+    }
 });
 class DeleteModal extends React.Component {
 
