@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 const cors = require("cors");
 const app = express();
 
-const port = process.env.PORT || 5000; // .env파일에서 포트 가져오거나 5000번을 사용
+const port = 5000; // .env파일에서 포트 가져오거나 5000번을 사용
 
 
 app.use(bodyParser.json());
