@@ -7,22 +7,7 @@ router.post('/user', UserCtrl.createUser);
 router.get('/users', UserCtrl.getUsers);
 
 module.exports = router;
-// router.post('/user', (req, res) => {
-//     const user = new UserModel({
-    // id = req.body.id,
-    // pw = req.body.pw,
-    // name = req.body.name,
-    // phone = req.body.phone,
-    // part = req.body.part,
-    // classs = req.body.classs
-//     });
-//     user.save({})
-//         .then(() => {
-//             console.log('회원저장')
-//             return res.json({ success: true })
-//         })
-//         .catch((err) => console.log(err));
-// })
+
 
 
 // //CREATE
