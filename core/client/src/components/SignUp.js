@@ -6,12 +6,22 @@ import Toolbar from './Toolbar';
 import CssTextField from '../css/CssTextField';
 import Checkbox from '@mui/material/Checkbox';
 import AlertDialog from './AlertDialog';
+import CssButton from '../css/CssButton';
+
+import { BrowserRouter as useHistory, withRouter } from 'react-router-dom';
+
+
 import *as InputVaildation from './InputValidation'
+
+import { useDispatch } from 'react-redux'
+import { registerUser } from '../_actions/user_action'
+
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
-function SignUp() {
-    console.log('회원가입렌더');
 
+function SignUp(props) {
+    console.log('회원가입렌더');
+    const dispatch = useDispatch();
     let toolbar = [
         { id: 1, title: 'Login', link: '/' },
         { id: 2, title: 'Sign Up', link: '/signup' }];
@@ -27,14 +37,30 @@ function SignUp() {
         { id: "5", title: "소속", value: "" }
     ])
     //모드에 따른 분류 
-    function handleSignup() {
-        return InputVaildation.checkTextfieldValue(signup_data) &&
-            InputVaildation.checkBoxChecked(data);
+    // function handleSignup() {
+    //     return InputVaildation.checkTextfieldValue(signup_data) &&
+    //         InputVaildation.checkBoxChecked(data);
 
-    }
-    function goLogin() {
+    // }
+    function handleSignup(event) {
         console.log("여기")
-        history.back();
+        let body = {
+            id: signup_data[0].value,
+            pw: signup_data[1].value,
+            name: signup_data[2].value,
+            phone: signup_data[3].value,
+            affiliation: signup_data[4].value,
+            part: true
+        }
+
+        dispatch(registerUser(body))
+            .then(res => {
+                if (res.payload.success) {
+                    props.history.back();
+                } else {
+                    alert("Failed to sign up")
+                }
+            })
     }
     const handleInputChange = (event) => {
         const { value, name } = event.target;
@@ -110,7 +136,8 @@ function SignUp() {
                     </div>
 
                     <div className="signup_success_box">
-                        <AlertDialog alertDialog_title="SIGN UP" textfield_state={signup_state} handleSignup={handleSignup} goLogin={goLogin} />
+                        {/* <AlertDialog alertDialog_title="SIGN UP" textfield_state={signup_state} handleSignup={handleSignup} goLogin={goLogin} /> */}
+                        <CssButton variant="contained" color="secondary" onClick={handleSignup} >SIGN UP</CssButton>
                     </div>
                 </div>
             </div>
@@ -119,4 +146,4 @@ function SignUp() {
 
 }
 
-export default SignUp;
+export default withRouter(SignUp);

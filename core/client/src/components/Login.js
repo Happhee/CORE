@@ -3,7 +3,7 @@ import React, { useReducer, useState, useEffect } from 'react';
 import '../css/Login.css';
 import { ReactComponent as Core_Logo } from '../css/Core.svg';
 
-import { BrowserRouter as Router, Route, Switch, Link, useHistory } from 'react-router-dom';
+import { BrowserRouter as useHistory, withRouter } from 'react-router-dom';
 import Toolbar from './Toolbar';
 import { Checkbox, styled } from '@mui/material';
 
@@ -11,7 +11,11 @@ import AlertDialog from './AlertDialog';
 import CssTextField from '../css/CssTextField';
 import CssButton from '../css/CssButton';
 import * as InputVaildation from './InputValidation'
-import * as User from '../server/User';
+
+// 서버 통신
+
+import { useDispatch } from 'react-redux'
+import { loginUser } from '../_actions/user_action'
 
 
 const CssCheckbox = styled(Checkbox)({
@@ -20,8 +24,9 @@ const CssCheckbox = styled(Checkbox)({
 });
 
 
-function Login() {
+function Login(props) {
     let history = useHistory();
+    const dispatch = useDispatch();
     let toolbar = [
         { id: 1, title: 'Login', link: '/' },
         { id: 2, title: 'Sign Up', link: '/signup' }];
@@ -39,9 +44,29 @@ function Login() {
     ])
 
     let [login_state, setLogin_state] = useState();
-
     //모드에 따른 분류
-    function handleLogin() {
+    function handleLogin(event) {
+        console.log(event)
+
+        event.preventDefault();
+        let body = {
+            id: login_data[0].value,
+            pw: login_data[1].value
+        }
+
+        dispatch(loginUser(body))
+            .then(res => {
+                if (res.payload.loginSuccess) {
+                    props.history.push(`/classroom/${mode}`);
+
+                } else {
+                    alert('Error');
+                }
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+
         return InputVaildation.checkTextfieldValue(login_data) &&
             InputVaildation.checkBoxChecked(data);
 
@@ -49,7 +74,6 @@ function Login() {
     function goClassroom() {
         console.log("여기")
 
-        history.push(`/classroom/${mode}`);
     }
     //회원가입 
     function SignUp_Click() {
@@ -79,18 +103,8 @@ function Login() {
 
         }
     }
+    useEffect(() => { }, []);
 
-    // let [user, setUser] = useState([])
-    // useEffect(() => {
-    //     axios.get('https://jsonplaceholder.typicode.com/users')
-    //         .then(response => {
-    //             setUser(response.data);
-    //         })
-    // }, [])
-
-    // useEffect(() => {
-    //     console.log(user);
-    // }, [user])
     return (
         <div>
             <Toolbar data={toolbar} />
@@ -124,7 +138,10 @@ function Login() {
                     </div>
 
                     <div className="link_box" >
-                        <AlertDialog alertDialog_title="LOGIN" textfield_state={login_state} handleLogin={handleLogin} goClassroom={goClassroom} />
+                        {/* <AlertDialog alertDialog_title="LOGIN" textfield_state={login_state} handleLogin={handleLogin} goClassroom={goClassroom} /> */}
+
+
+                        <CssButton variant="contained" color="secondary" onClick={handleLogin} >LOGIN</CssButton>
                         <CssButton variant="contained" color="secondary" onClick={SignUp_Click} >SIGN UP </CssButton>
 
                     </div>
@@ -135,4 +152,4 @@ function Login() {
 
 }
 
-export default Login;
+export default withRouter(Login);

@@ -25,6 +25,9 @@ const userSchema = new Schema({
     part: {
         type: Boolean,
     },
+    affiliation: {
+        type: String,
+    },
     classroom: {
         type: Array,
     },
@@ -76,6 +79,15 @@ userSchema.methods.generateToken = function (cb) {
         cb(null, user)
     })
 }
-
+//인증 시 토큰과 디비의 토큰을 복호화하여 비교
+userSchema.statics.findByToken = function (token, cb) {
+    var user = this;
+    jwt.verify(token, 'secretToken', function (err, decoded) {
+        user.findOne({ "_id": decoded, "token": token }, function (err, user) {
+            if (err) return cb(err)
+            cb(null, user)
+        })
+    })
+}
 // 모델 생성, 스키마 이름, 스키마 객체 
 module.exports = mongoose.model('User', userSchema);

@@ -22,9 +22,11 @@ createUser = (req, res) => {
     user.save()
         .then(() => {
             console.log('회원저장')
-            return res.json({ success: true })
+            return res.status(200).json({ success: true })
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+            return res.json({ success: false, err });
+        });
 
 
 }
@@ -57,34 +59,59 @@ getUsers = async (req, res) => {
 //로그인
 loginUser = (req, res) => {
     User.findOne({ id: req.body.id }, (err, user) => {
-        if (!user) {
+        if (!user || err) {
             return res.json({
                 loginSuccess: false,
                 message: "요청된 아이디에 해당하는 유저가 없습니다."
             })
         }
 
-        user.comparePw(req.body.pw, (err, isMatch) => {
-            if (!isMatch) {
-                return res.json({
-                    loginSuccess: false,
-                    message: "비밀번호가 틀렸습니다"
-                })
-            }
-            user.generateToken((err, user) => {
-                if (err) return res.status(400).send(err);
-                res.cookie("x_auth", user.token)
-                    .status(200)
-                    .json({
-                        loginSuccess: true,
-                        useId: user._id
+        user
+            .comparePw(req.body.pw)
+            .then((isMatch) => {
+                if (!isMatch) {
+                    return res.json({
+                        loginSuccess: false,
+                        message: "비밀번호가 틀렸습니다"
                     })
+                }
+                user
+                    .generateToken()
+                    .then((user) => {
+                        res.cookie("x_auth", user.token)
+                            .status(200)
+                            .json({
+                                loginSuccess: true,
+                                useId: user._id
+                            })
+                    })
+                    .catch((err) => {
+                        res.status(400).send(err)
+                    });
             })
-        })
+            .catch((err) => res.json({
+                loginSuccess: false, err
+            }))
     })
 }
+
+auth = (req, res) => {
+    res.status(200).json({
+        _id: req._id,
+        isAdmin: req.user.role === 09 ? false : true,
+        isAuth: true,
+        id: req.user.id,
+        name: req.user.name,
+        phone: req.user.phone,
+        part: req.user.part,
+        affiliation: req.user.affiliation,
+        classroom: req.user.classroom,
+    });
+}
+
 module.exports = {
     createUser,
     getUsers,
-    loginUser
+    loginUser,
+    auth
 }
