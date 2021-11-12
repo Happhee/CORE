@@ -63,7 +63,7 @@ function Customer(props) {
 
     if (props.editType === "MainList") {
 
-        edit = [<td align="center" key="edit">
+        edit = [<td width="300px" align="center" key="edit">
             <CoreDialog className="RegisterBtn" key="add" button_box_div="add_problem_class_box" button_box="add_problem_class_box" button_value="등록"
                 dialog_title="문제 등록하기" listbox_datas={listbox_datas} handleFormSubmit={props.handleFormSubmit} />
 
@@ -75,7 +75,7 @@ function Customer(props) {
                 subunit={props.id} />
         </td>];
 
-        link = [<Link key="link" to={`../../teacher/workbank_quizlist?mainunit=${props.id}`} >{props.name}</Link>]
+        link = [<Link style={{color:"#000"}} key="link" to={`../../teacher/workbank_quizlist?mainunit=${props.id}`} >{props.name}</Link>]
     }
     else if (props.editType === "QuizList") {
         edit = [
@@ -106,13 +106,12 @@ function Customer(props) {
         link = [<Link key="link" to={`../../mainpage/teacher/${props.startpage}/quizlist?mainunit=${props.id}`} >{props.name}</Link>]
     }
     return (
-        <tr style={{ fontFamily: 'esamanru', fontWeight: 'normal', height: '50px' }} align="center" >
-            <td align="center" key="id">{props.id}</td>
-            <td align="center" key="name">
+        <tr style={{ color:"#000",fontFamily: 'esamanru', fontWeight: 'normal', height: '50px' }} align="center" >
+            <td width="50px" align="center" key="id">{props.id}</td>
+            <td width="450px" align="center" key="name">
                 {link}
-
             </td>
-            <td align="center" key="count">{props.count}</td>
+            <td width="150px" align="center" key="count">{props.count}</td>
             {edit}
         </tr>
     )

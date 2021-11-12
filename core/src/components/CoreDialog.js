@@ -24,7 +24,7 @@ const styles = theme => ({
     }
 });
 
-const Btn = styled(Button)({
+const BasicBtn = styled(Button)({
     marginLeft: '0px',
     textAlign:'center',
     backgroundColor:'#E0BFE6',
@@ -107,7 +107,7 @@ const CoreDialog = props => {
     return (
         <div className={props.button_box_div}>
             <div className={props.button_box}>
-                <Btn variant="contained" className={props.button_type} onClick={handleClickOpen}>{props.button_value}</Btn>
+                <BasicBtn variant="contained" className={props.button_type} onClick={handleClickOpen}>{props.button_value}</BasicBtn>
             </div>
             <Dialog open={dialog_data.open} onClose={handleClose}>
 
@@ -123,7 +123,7 @@ const CoreDialog = props => {
 
                 <DialogActions>
 
-                    <Button variant="contained" color="primary" onClick={function (e) {
+                    <BasicBtn variant="contained" color="primary" onClick={function (e) {
 
                         if (props.button_value === '수정') {
                             props.handleFormModify(text_datas)
@@ -134,9 +134,9 @@ const CoreDialog = props => {
                             props.handleFormSubmit(select_class_id);
                         }
                         setDialog_data({ open: false })
-                    }} >{props.button_value}</Button>
+                    }} >{props.button_value}</BasicBtn>
 
-                    <Button variant="outlined" color="primary" onClick={handleClose}>닫기</Button>
+                    <BasicBtn variant="outlined" color="primary" onClick={handleClose}>닫기</BasicBtn>
 
                 </DialogActions>
 

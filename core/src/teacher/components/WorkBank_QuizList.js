@@ -13,23 +13,20 @@ function WorkBank_QuizList(props) {
     const { mainunit } = queryObj;
 
     console.log("워크뱅크 퀴즈리스트 렌더");
-    let table_cells = ['NO', '단원명', '정답률', '편집']
+    let table_cells = ['NO', '단원명', '편집']
 
     let unit = [
         {
             'id': 1,
-            'name': '별탑 쌓기',
-            'count': '80'
-        },
+            'name': '별탑 쌓기'
+                },
         {
             'id': 2,
-            'name': '1부터 100더하기',
-            'count': '30'
-        },
+            'name': '1부터 100더하기'
+                },
         {
             'id': 3,
-            'name': '모래시계 만들기',
-            'count': '20'
+            'name': '모래시계 만들기'
         }
     ]
     let listbox_datas = [
