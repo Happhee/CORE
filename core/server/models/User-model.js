@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
-
+const jwt = require('jsonwebtoken')
 
 const { Schema } = mongoose;
 
@@ -9,7 +9,8 @@ const userSchema = new Schema({
     id: {
         type: String,
         required: true,
-        maxlength: 100
+        maxlength: 100,
+        unique: 1
     },
     pw: {
         type: String,
@@ -24,7 +25,7 @@ const userSchema = new Schema({
     part: {
         type: Boolean,
     },
-    classs: {
+    classroom: {
         type: Array,
     },
     token: {
@@ -56,6 +57,25 @@ userSchema.pre('save', function (next) {
         next()
     }
 })
+//로그인 시 비밀번호를 암호화해서 디비에 저장된 비밀번호와 비교
+userSchema.methods.comparePw = function (plainPw, cb) {
+    bcrypt.compare(plainPw, this.pw, function (err, isMatch) {
+        if (err)
+            return cb(err)
+
+        cb(null, isMatch)
+    })
+}
+//로그인 시 토큰 생성
+userSchema.methods.generateToken = function (cb) {
+    var user = this;
+    var token = jwt.sign(user._id.toHexString(), 'secretToken')
+    user.token = token
+    user.save(function (err, user) {
+        if (err) return cb(err)
+        cb(null, user)
+    })
+}
 
 // 모델 생성, 스키마 이름, 스키마 객체 
 module.exports = mongoose.model('User', userSchema);
