@@ -2,6 +2,7 @@
 import './App.css';
 import React, { useState } from 'react';
 
+import RandingPage from './components/RandingPage';
 import Login from './components/Login';
 import SignUp from './components/SignUp'
 import ClassRoom from './components/ClassRoom';
@@ -15,18 +16,27 @@ import Auth from '../src/hooks/auth'
 import { BrowserRouter as Router, Route, Switch, Link, Redirect } from 'react-router-dom';
 
 
-
+{/* <Provider
+      store={createStoreWithMiddleware(Reducer,
+        window.__REDUX_DEVTOOLS_EXTENSION__ &&
+        window.__REDUX_DEVTOOLS_EXTENSION__()
+      )}
+    > */}
 function App(props) {
   //최상단 툴바 및 모드 설정 
-
-
   return (
     <Router>
       <div className="App">
         <Switch>
-          <Route exact={true} path='/' component={Auth(Login, false)} />
-          <Route exact path='/signup' component={Auth(SignUp, false)} />
-          <Route exact path='/classroom/:mode' component={Auth(ClassRoom, false)} />
+          {/* <Route exact={true} path='/' component={Auth(Login)} /> */}
+          {/* <Route exact path='/signup' component={Auth(SignUp, false)} />
+          <Route exact path='/classroom/:mode' component={Auth(ClassRoom, false)} /> */}
+          {/* <Route exact={true} path='/' component={Auth(Login, null)} /> */}
+
+          <Route exact={true} path='/' render={(props) => <Login {...props} />} />
+          <Route exact path='/signup' render={(props) => <SignUp {...props} />} />
+          <Route exact path='/classroom/:mode' render={(props) => <ClassRoom {...props} />} />
+
           <Route path='/mainpage/:mode/:page' render={(props) => <MainPage {...props} />} />
           <Route exact path='/:mode/my' render={(props) => <My {...props} />} />
           <Route exact path={['/:mode/:workbank', '/:mode/workbank_quizlist/:problemmodify']} render={(props) => <WorkBank {...props} />} />
