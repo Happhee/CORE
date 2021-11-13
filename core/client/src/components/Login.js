@@ -7,9 +7,12 @@ import { BrowserRouter as useHistory, withRouter } from 'react-router-dom';
 import Toolbar from './Toolbar';
 import { Checkbox, styled } from '@mui/material';
 
-import AlertDialog from './AlertDialog';
+import CssAlert from '../css/CssAlert';
 import CssTextField from '../css/CssTextField';
 import CssButton from '../css/CssButton';
+
+
+import { useAlert } from 'react-alert';
 import * as InputVaildation from './InputValidation'
 
 // 서버 통신
@@ -42,13 +45,13 @@ function Login(props) {
         { id: "1", title: "ID", value: "" },
         { id: "2", title: "PW", value: "" },
     ])
+    let [login_message, setLogin_message] = useState();
+    const [open, setOpen] = useState(false);
 
-    let [login_state, setLogin_state] = useState();
     //모드에 따른 분류
     function handleLogin(event) {
-        console.log(event)
-
         event.preventDefault();
+
         let body = {
             id: login_data[0].value,
             pw: login_data[1].value
@@ -60,21 +63,17 @@ function Login(props) {
                     props.history.push(`/classroom/${mode}`);
 
                 } else {
-                    alert('Error');
+                    alert(res.payload.message)
                 }
             })
             .catch((err) => {
                 console.log(err);
             });
 
-        return InputVaildation.checkTextfieldValue(login_data) &&
-            InputVaildation.checkBoxChecked(data);
+
 
     }
-    function goClassroom() {
-        console.log("여기")
 
-    }
     //회원가입 
     function SignUp_Click() {
         history.push(`/signup`);
@@ -105,6 +104,7 @@ function Login(props) {
     }
     useEffect(() => { }, []);
 
+
     return (
         <div>
             <Toolbar data={toolbar} />
@@ -122,7 +122,7 @@ function Login(props) {
 
 
                     <span className="login_text">{login_data[1].title}  </span>
-                    <CssTextField className="login_input_box" size="small" variant="outlined" id="custom-css-outlined-input" maxRows={1}
+                    <CssTextField className="login_input_box" type="password" size="small" variant="outlined" id="custom-css-outlined-input" maxRows={1}
                         name={login_data[1].id} value={login_data[1].value} onChange={handleInputChange} />
 
 
@@ -138,10 +138,8 @@ function Login(props) {
                     </div>
 
                     <div className="link_box" >
-                        {/* <AlertDialog alertDialog_title="LOGIN" textfield_state={login_state} handleLogin={handleLogin} goClassroom={goClassroom} /> */}
-
-
-                        <CssButton variant="contained" color="secondary" onClick={handleLogin} >LOGIN</CssButton>
+                        {/*   <AlertDialog alertDialog_title="LOGIN" textfield_state={login_state} handleLogin={handleLogin} /> */}
+                        <CssButton variant="contained" color="secondary" onClick={handleLogin} >LOGIN </CssButton>
                         <CssButton variant="contained" color="secondary" onClick={SignUp_Click} >SIGN UP </CssButton>
 
                     </div>
@@ -153,3 +151,7 @@ function Login(props) {
 }
 
 export default withRouter(Login);
+
+
+
+

@@ -48,18 +48,22 @@ function AlertDialog(props) {
         }
         else if (props.alertDialog_title === 'LOGIN') {
 
-            if (!props.handleLogin()) {
+            let loginState = props.handleLogin()
+            console.log(loginState);
+
+            if (!loginState.loginSuccess) {
                 setButton(
                     <div>
                         <Button onClick={handleClose}>확인</Button>
                     </div>
                 )
-                setTextfield_state('입력되지 않은 정보가 있습니다!!! 모든 정보를 입력해주세요');
+                setTextfield_state(loginState.message);
+                setOpen(true);
+
             } else {
-                props.goClassroom();
+                setOpen(false);
             }
 
-            setOpen(!props.handleLogin());
         }
         else if (props.alertDialog_title === 'SIGN UP') {
             if (!props.handleSignup()) {

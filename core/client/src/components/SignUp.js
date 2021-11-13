@@ -52,11 +52,12 @@ function SignUp(props) {
             affiliation: signup_data[4].value,
             part: true
         }
+        console.log(props.history);
 
         dispatch(registerUser(body))
             .then(res => {
                 if (res.payload.success) {
-                    props.history.back();
+                    props.history.goBack();
                 } else {
                     alert("Failed to sign up")
                 }
@@ -107,7 +108,7 @@ function SignUp(props) {
                         name={signup_data[0].id} value={signup_data[0].value} onChange={handleInputChange} />
 
                     <span className="signup_text"> {signup_data[1].title} </span>
-                    <CssTextField className="signup_input_box" size="small" variant="outlined" id="custom-css-outlined-input" maxRows={1}
+                    <CssTextField className="signup_input_box" type="password" size="small" variant="outlined" id="custom-css-outlined-input" maxRows={1}
                         name={signup_data[1].id} value={signup_data[1].value} onChange={handleInputChange} />
 
                     <span className="signup_text"> {signup_data[2].title} </span>
