@@ -40,7 +40,6 @@ function CoreTable(props) {
                             mainunit={props.mainunit}
                             handleFormSubmit={props.handleFormSubmit} handleFormModify={props.handleFormModify} handleRemoveClose={props.handleRemoveClose} />
                     })}
-                    
                 </tbody>
             </table>
         </div>

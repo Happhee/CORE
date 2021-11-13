@@ -68,8 +68,7 @@ function WorkBank() {
                 <div className="workbank_content" style={{ width: '85%', margin: '20px auto' }}>
                     {/*  */}
                     <div className="title_workbank">
-                        <img src={require('../../image/iconWorkBook.png').default} style={{float:"left",width:"50px",height:"40px"}} />
-                        <div style={{ width:"150px",float:"left",marginLeft:"0px",marginTop:"5px"}}>WorkBank</div>
+                         <div style={{ width:"150px",float:"left",marginLeft:"0px",marginTop:"5px"}}>WorkBank</div>
                     </div>
                     <Switch>
                         <Route exact path='/:mode/workbank' render={() => <WorkBank_MainList />} />
