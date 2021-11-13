@@ -36,30 +36,34 @@ function SignUp(props) {
         { id: "4", title: "전화번호", value: "" },
         { id: "5", title: "소속", value: "" }
     ])
-    //모드에 따른 분류 
-    // function handleSignup() {
-    //     return InputVaildation.checkTextfieldValue(signup_data) &&
-    //         InputVaildation.checkBoxChecked(data);
 
-    // }
+    function mode() {
+        if (data[0].value.checked === true)
+            return true;
+        else
+            return false;
+    }
     function handleSignup(event) {
         console.log("여기")
+        let partType = mode();
+
         let body = {
             id: signup_data[0].value,
             pw: signup_data[1].value,
             name: signup_data[2].value,
             phone: signup_data[3].value,
             affiliation: signup_data[4].value,
-            part: true
+            part: partType
         }
-        console.log(props.history);
 
         dispatch(registerUser(body))
             .then(res => {
                 if (res.payload.success) {
+                    alert('회원가입이 완료되었습니다!')
                     props.history.goBack();
                 } else {
-                    alert("Failed to sign up")
+                    console.log(res.payload);
+                    alert(res.payload)
                 }
             })
     }
@@ -104,23 +108,23 @@ function SignUp(props) {
                     </div>
 
                     <span className="signup_text"> {signup_data[0].title} </span>
-                    <CssTextField className="signup_input_box" size="small" variant="outlined" id="custom-css-outlined-input" maxRows={1}
+                    <CssTextField className="signup_input_box" size="small" variant="outlined" id="custom-css-outlined-input1" maxRows={1}
                         name={signup_data[0].id} value={signup_data[0].value} onChange={handleInputChange} />
 
                     <span className="signup_text"> {signup_data[1].title} </span>
-                    <CssTextField className="signup_input_box" type="password" size="small" variant="outlined" id="custom-css-outlined-input" maxRows={1}
+                    <CssTextField className="signup_input_box" type="password" size="small" variant="outlined" id="custom-css-outlined-input2" maxRows={1}
                         name={signup_data[1].id} value={signup_data[1].value} onChange={handleInputChange} />
 
                     <span className="signup_text"> {signup_data[2].title} </span>
-                    <CssTextField className="signup_input_box" size="small" variant="outlined" id="custom-css-outlined-input" maxRows={1}
+                    <CssTextField className="signup_input_box" size="small" variant="outlined" id="custom-css-outlined-input3" maxRows={1}
                         name={signup_data[2].id} value={signup_data[2].value} onChange={handleInputChange} />
 
                     <span className="signup_text"> {signup_data[3].title} </span>
-                    <CssTextField className="signup_input_box" size="small" variant="outlined" id="custom-css-outlined-input" maxRows={1}
+                    <CssTextField className="signup_input_box" size="small" variant="outlined" id="custom-css-outlined-input4" maxRows={1}
                         name={signup_data[3].id} value={signup_data[3].value} onChange={handleInputChange} />
 
                     <span className="signup_text"> {signup_data[4].title} </span>
-                    <CssTextField className="signup_input_box" size="small" variant="outlined" id="custom-css-outlined-input" maxRows={1}
+                    <CssTextField className="signup_input_box" size="small" variant="outlined" id="custom-css-outlined-input5" maxRows={1}
                         name={signup_data[4].id} value={signup_data[4].value} onChange={handleInputChange} />
 
                     {/* 선생님/학생 */}
