@@ -64,9 +64,9 @@ userSchema.pre('save', function (next) {
 userSchema.methods.comparePw = function (plainPw, cb) {
     bcrypt.compare(plainPw, this.pw, function (err, isMatch) {
         if (err)
-            return cb(err)
+            return cb(err);
 
-        cb(null, isMatch)
+        cb(null, isMatch);
     })
 }
 //로그인 시 토큰 생성
@@ -75,8 +75,8 @@ userSchema.methods.generateToken = function (cb) {
     var token = jwt.sign(user._id.toHexString(), 'secretToken')
     user.token = token
     user.save(function (err, user) {
-        if (err) return cb(err)
-        cb(null, user)
+        if (err) return cb(err);
+        cb(null, user);
     })
 }
 //인증 시 토큰과 디비의 토큰을 복호화하여 비교

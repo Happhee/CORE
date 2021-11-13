@@ -24,8 +24,8 @@ const CssCheckbox = styled(Checkbox)({
 });
 
 
-function Login() {
-    let history = useHistory();
+function Login(props) {
+
     const dispatch = useDispatch();
     let toolbar = [
         { id: 1, title: 'Login', link: '/' },
@@ -54,18 +54,18 @@ function Login() {
             pw: login_data[1].value
         }
 
-        // dispatch(loginUser(body))
-        //     .then(res => {
-        //         if (res.payload.loginSuccess) {
-        //             props.history.push(`/classroom/${mode}`);
+        dispatch(loginUser(body))
+            .then(res => {
+                if (res.payload.loginSuccess) {
+                    props.history.push(`/classroom/${mode}`);
 
-        //         } else {
-        //             alert('Error');
-        //         }
-        //     })
-        //     .catch((err) => {
-        //         console.log(err);
-        //     });
+                } else {
+                    alert('Error');
+                }
+            })
+            .catch((err) => {
+                console.log(err);
+            });
 
         return InputVaildation.checkTextfieldValue(login_data) &&
             InputVaildation.checkBoxChecked(data);
@@ -152,4 +152,4 @@ function Login() {
 
 }
 
-export default Login;
+export default withRouter(Login);

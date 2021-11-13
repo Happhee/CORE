@@ -65,34 +65,45 @@ loginUser = (req, res) => {
                 message: "요청된 아이디에 해당하는 유저가 없습니다."
             })
         }
-
-        user
-            .comparePw(req.body.pw)
-            .then((isMatch) => {
-                if (!isMatch) {
-                    return res.json({
-                        loginSuccess: false,
-                        message: "비밀번호가 틀렸습니다"
-                    })
-                }
-                user
-                    .generateToken()
-                    .then((user) => {
-                        res.cookie("x_auth", user.token)
-                            .status(200)
-                            .json({
-                                loginSuccess: true,
-                                useId: user._id
-                            })
-                    })
-                    .catch((err) => {
-                        res.status(400).send(err)
-                    });
+        //비밀번호가 맞는지 확인 후 
+        user.comparePw(req.body.pw, (err, isMatch) => {
+            if (!isMatch)
+                return res.json({ loginSuccess: false, message: "비밀번호가 틀렸습니다" })
+            //생성된 토큰을 쿠키에 저장
+            user.generateToken((err, user) => {
+                if (err) return res.status(400).send(err);
+                res.cookie("x_auth", user.token)
+                    .status(200)
+                    .json({ loginSuccess: true, useId: user._id })
             })
-            .catch((err) => res.json({
-                loginSuccess: false, err
-            }))
+        })
     })
+    // user
+    //     .comparePw(req.body.pw)
+    //     .then((isMatch) => {
+    //         if (!isMatch) {
+    //             return res.json({
+    //                 loginSuccess: false,
+    //                 message: "비밀번호가 틀렸습니다"
+    //             })
+    //         }
+    //         user
+    //             .generateToken()
+    //             .then((user) => {
+    //                 res.cookie("x_auth", user.token)
+    //                     .status(200)
+    //                     .json({
+    //                         loginSuccess: true,
+    //                         useId: user._id
+    //                     })
+    //             })
+    //             .catch((err) => res.json({
+    //                 loginSuccess: false, err
+    //             }));
+    //     })
+    //     .catch((err) => res.json({
+    //         loginSuccess: false, err
+    //     }))
 }
 
 auth = (req, res) => {
