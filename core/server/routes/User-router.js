@@ -4,9 +4,10 @@ const UserCtrl = require('../controllers/User-ctrl');
 const router = express.Router();
 const Auth = require('../middleware/auth')
 
-router.post('/user/register', UserCtrl.createUser);
-router.get('/users', UserCtrl.getUsers);
 router.post('/user/login', UserCtrl.loginUser);
+router.post('/user/register', UserCtrl.createUser);
+router.post('/user', UserCtrl.getUser);
+router.get('/users', UserCtrl.getUsers);
 // router.get('/user/auth', Auth, UserCtrl.auth);
 
 module.exports = router;

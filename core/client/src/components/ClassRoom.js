@@ -5,26 +5,51 @@ import '../css/ClassRoom.css';
 import { Link } from 'react-router-dom';
 import Toolbar from './Toolbar';
 import CoreDialog from './CoreDialog';
+import { useLocation } from 'react-router-dom';
+
 
 //로그인 성공 후 페이지 -> 서버로부터 강의실리스트를 가져와야함 
+import { useDispatch } from 'react-redux'
+import { getUser } from '../_actions/user_action';
+
 function ClassRoom({ match }) {
     let toolbar = [
         { id: 1, title: 'My', link: '/teacher/my' },
         { id: 2, title: 'WorkBank', link: '/teacher/workbank' }];
 
     const { mode } = match.params;
+    const location = useLocation();
+
+    console.log(location.state.login_id);
+
     let startpage = null;
     let add_button = null;
     let dialog = null;
-    let [classroom, setClassroom] = useState('');
-
     //서버로 부터 강의실 목록 가져오기 
-    let [classrooms, setClassrooms] = useState(
-        ['C프로그래밍 및 실습',
-            '자료구조 및 실습',
-            '컴퓨터구조',
-            '운영체제']
-    )
+
+    const dispatch = useDispatch();
+    let [classrooms, setClassrooms] = useState([])
+    useEffect(() => {
+        let body = {
+            id: location.state.login_id
+        }
+        dispatch(getUser(body))
+            .then(res => {
+                if (res.payload.getSuccess) {
+                    setClassrooms(res.payload.data.classroom)
+                }
+                else {
+                    console.log(res.payload)
+                }
+            })
+
+        // dispatch(getUsers())
+        //     .then(res => {
+        //         console.log(res);
+        //     })
+
+    }, [])
+
 
     let text_data = [
         { id: 1, label: "강의실명", name: "classroom", value: '' }

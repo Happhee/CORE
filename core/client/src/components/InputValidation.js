@@ -47,7 +47,6 @@ export function isRegex(textfield_data, helperText_data) {
             } else {
                 newHelperText_data[0] = "영문자,숫자 8-12자리"
             }
-
         }
 
         if (data.title === 'PW') {

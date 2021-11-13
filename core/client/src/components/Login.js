@@ -67,8 +67,13 @@ function Login(props) {
         dispatch(loginUser(body))
             .then(res => {
                 if (res.payload.loginSuccess) {
-                    props.history.push(`/classroom/${mode}`);
-
+                    // props.history.push(`/classroom/${mode}`);
+                    props.history.push({
+                        pathname: "/classroom/" + mode,
+                        state: {
+                            login_id: login_data[0].value
+                        }
+                    })
                 } else {
                     alert(res.payload.message)
                 }

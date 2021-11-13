@@ -75,7 +75,7 @@ getUsers = async (req, res) => {
 }
 
 //로그인
-loginUser = (req, res) => {
+loginUser = async (req, res) => {
     User.findOne({ id: req.body.id }, (err, user) => {
         if (!user || err) {
             return res.json({
@@ -96,34 +96,21 @@ loginUser = (req, res) => {
             })
         })
     })
-    // user
-    //     .comparePw(req.body.pw)
-    //     .then((isMatch) => {
-    //         if (!isMatch) {
-    //             return res.json({
-    //                 loginSuccess: false,
-    //                 message: "비밀번호가 틀렸습니다"
-    //             })
-    //         }
-    //         user
-    //             .generateToken()
-    //             .then((user) => {
-    //                 res.cookie("x_auth", user.token)
-    //                     .status(200)
-    //                     .json({
-    //                         loginSuccess: true,
-    //                         useId: user._id
-    //                     })
-    //             })
-    //             .catch((err) => res.json({
-    //                 loginSuccess: false, err
-    //             }));
-    //     })
-    //     .catch((err) => res.json({
-    //         loginSuccess: false, err
-    //     }))
 }
-
+getUser = (req, res) => {
+    User.findOne({ id: req.body.id }, (err, user) => {
+        if (!user || err) {
+            return res.json({
+                getSuccess: false,
+                message: "존재하지 않는 회원입니다",
+            })
+        }
+        return res.json({
+            getSuccess: true,
+            data: user
+        })
+    })
+}
 auth = (req, res) => {
     res.status(200).json({
         _id: req._id,
@@ -139,8 +126,9 @@ auth = (req, res) => {
 }
 
 module.exports = {
-    createUser,
-    getUsers,
     loginUser,
+    createUser,
+    getUser,
+    getUsers,
     auth
 }
