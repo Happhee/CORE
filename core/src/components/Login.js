@@ -100,7 +100,7 @@ function Login() {
             <Toolbar data={toolbar} />
 
             <div className="login_box">
-                <img style={{ width: "200px", marginTop: "3%", marginTop: "8%", marginBottom: "-2px" }} src={require('../image/icon_BigLogo.png').default} />
+                <img style={{ width: "200px", marginTop: "3%", marginTop: "8%", marginBottom: "0px" }} src={require('../image/icon_BigLogo.png').default} />
 
                 <div className="login_content">
 
