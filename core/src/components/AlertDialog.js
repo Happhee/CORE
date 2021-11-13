@@ -20,7 +20,18 @@ const DeleteBtn = styled(Button)({
         color:"#FFF"
      }
 });
-
+const LoginBtn = styled(Button)({
+    marginLeft: '0px',
+    textAlign:'center',
+    backgroundColor:'#E0BFE6',
+    borderRadius:'30px',
+    color:'#8154A0',
+    fontWeight:'bold',
+    '&:hover': {
+        background: "#8154A0",
+        color:"#FFF"
+     }
+});
 function AlertDialog(props) {
     const [open, setOpen] = useState(false);
     const [textfield_state, setTextfield_state] = useState(props.textfield_state);
@@ -110,10 +121,23 @@ function AlertDialog(props) {
     };
 
     return (
-        <>
-            <DeleteBtn variant="contained" onClick={handleClickOpen}>
-                {props.alertDialog_title}
-            </DeleteBtn>
+            < >
+            {
+                    (() => {
+
+                        if (props.alertDialog_title == 'LOGIN' ) {
+                            return <button style={{background:"white",marginBottom:"0px",border:"0px",  fontFamily: 'esamanruLight',fontSize:"30px"
+                            ,marginLeft:"110px"
+                            }}  onClick={handleClickOpen} key="set">
+                                {props.alertDialog_title}
+                            </button>;
+                        }
+                        else {
+                            return  <button onClick={handleClickOpen}>{props.alertDialog_title}</button>
+                        }
+                    }
+                    )()
+                }
             <Dialog
                 open={open}
                 onClose={handleClose}

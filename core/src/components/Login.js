@@ -9,14 +9,18 @@ import { Checkbox, styled } from '@mui/material';
 
 import AlertDialog from './AlertDialog';
 import CssTextField from '../css/CssTextField';
-import CssButton from '../css/CssButton';
 import * as InputVaildation from './InputValidation'
 import * as User from '../server/User';
+import { TextField } from '@material-ui/core';
+import { width } from '@mui/system';
 
 
 const CssCheckbox = styled(Checkbox)({
     marginLeft: '10px',
-    marginRight: '10px'
+    marginRight: '-20px',
+    background:"white",
+    color:"#692498",
+    
 });
 
 
@@ -96,36 +100,31 @@ function Login() {
             <Toolbar data={toolbar} />
 
             <div className="login_box">
-                <Core_Logo />
+                <img style={{ width: "200px", marginTop: "3%", marginTop: "8%", marginBottom: "-2px" }} src={require('../image/icon_BigLogo.png').default} />
 
                 <div className="login_content">
 
-                    <span className="login_text"> {login_data[0].title} </span>
-                    <CssTextField className="login_input_box" size="small" variant="outlined" id="custom-css-outlined-input" maxRows={1}
+                    
+                    <span style={{float:"left" ,marginLeft:"100px"}}className="login_text"> {login_data[0].title} </span>
+                    <textField  style={{float:"right",width:"120%"}} className="login_input_box"  variant="outlined" id="custom-css-outlined-input" maxRows={1}
                         name={login_data[0].id} value={login_data[0].value} onChange={handleInputChange} />
 
-
-
-
-                    <span className="login_text">{login_data[1].title}  </span>
-                    <CssTextField className="login_input_box" size="small" variant="outlined" id="custom-css-outlined-input" maxRows={1}
+                    <span style={{float:"left" ,marginLeft:"100px"}} className="login_text">{login_data[1].title}  </span>
+                    <textField className="login_input_box" style={{float:"right",width:"120%"}} variant="outlined" id="custom-css-outlined-input" maxRows={1}
                         name={login_data[1].id} value={login_data[1].value} onChange={handleInputChange} />
 
-
-
                     <div className="check_box" >
-                        <CssCheckbox type="checkbox" checked={data[0].checked}
+                        <input type="checkbox" style={{}} checked={data[0].checked}
                             value={data[0].value} onChange={onChange} />
-                        <span>{data[0].value}</span>
+                        <span  style={{marginLeft:"0px"}} >{data[0].value}</span>
 
-                        <CssCheckbox type="checkbox" checked={data[1].checked}
+                        <input type="checkbox" checked={data[1].checked}
                             value={data[1].value} onChange={onChange} />
-                        <span>{data[1].value}</span>
+                        <span  style={{marginLeft:"0px"}}>{data[1].value}</span>
                     </div>
-
-                    <div className="link_box" >
+                    <div className="link_box"  >
                         <AlertDialog alertDialog_title="LOGIN" textfield_state={login_state} handleLogin={handleLogin} goClassroom={goClassroom} />
-                        <CssButton variant="contained" color="secondary" onClick={SignUp_Click} >SIGN UP </CssButton>
+                        <button style={{background:"white",border:"0px",marginBottom:"0px"}} onClick={SignUp_Click} >SIGN UP </button>
 
                     </div>
                 </div>

@@ -13,20 +13,23 @@ function WorkBank_QuizList(props) {
     const { mainunit } = queryObj;
 
     console.log("워크뱅크 퀴즈리스트 렌더");
-    let table_cells = ['NO', '단원명', '편집']
+    let table_cells = ['NO', '단원명', '정답률', '편집']
 
     let unit = [
         {
             'id': 1,
-            'name': '별탑 쌓기'
-                },
+            'name': '별탑 쌓기',
+            'count': '80'
+        },
         {
             'id': 2,
-            'name': '1부터 100더하기'
-                },
+            'name': '1부터 100더하기',
+            'count': '30'
+        },
         {
             'id': 3,
-            'name': '모래시계 만들기'
+            'name': '모래시계 만들기',
+            'count': '20'
         }
     ]
     let listbox_datas = [
@@ -41,7 +44,6 @@ function WorkBank_QuizList(props) {
     console.log("등록강의실  -> " + listbox_datas[register_data].value);
     return (
         <div className="coretable_workbank">
-            <h2 style={{marginTop:"-5%",marginBottom:"30px",marginLeft:"0.5%"}}>Chap1) 반복문 이용하기</h2>
             <CoreTable table_cells={table_cells} unit={unit} editType="QuizList"
                 mainunit={mainunit}
                 handleFormSubmit={Server.handleFormSubmit} handleRemoveClose={Server.handleRemoveClose} />

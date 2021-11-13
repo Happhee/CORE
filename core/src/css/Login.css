@@ -9,6 +9,8 @@ body{
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    margin-left: 220px;
+    margin-right:220px;
 }
 .login_content{
     box-sizing: border-box;
@@ -16,8 +18,8 @@ body{
     border: solid #692498 5px;
     text-align: center;
     padding: 5px;
-background-color: white;
-align-items: center;
+    background-color: white;
+    align-items: center;
 
     display: grid;
     grid-template-columns: 1fr 1.5fr 1fr;
@@ -32,38 +34,43 @@ align-items: center;
     font-size: 25px;
     text-align: center;
     margin-top: 20px;
-    margin-bottom: 20px;
-    text-align: center;
+    margin-bottom: 20px;    
 
-    
 }
 .login_input_box{
+    height: 35px;
+    width: 280px;
     
-    grid-column: 2/3;
-    margin-top: 20px;
+    margin-top: 100px;
+    border-radius: 5px;
+    grid-column: 200px;
     font-size: 25px;
     justify-content: left;
+    border: #000 solid 2px;
 
+    font-size: 25px;
+    text-align: center;
+    margin-top: 0px;
+    margin-bottom: 0px;  
 
 }
 
 
 .check_box {
     display: grid;
-    grid-template-columns:10% 25% 10% 25%;
+    grid-template-columns:10% 45% 10% 45%;
     grid-column: 2/4;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 0px;
+    margin-bottom: 0px;
     font-size: 20px;
     justify-content: left;
 }
 
 .link_box{
     display: grid;
-    grid-template-columns:50% 50%;
-    
-    margin-top: 20px;
-    margin-bottom: 20px;
+    grid-template-columns:40% 40%;
+    margin-top: 10px;
+    margin-bottom: 0px;
     font-size: 20px;
     justify-content: center;
 }
