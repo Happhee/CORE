@@ -48,7 +48,7 @@ function Login(props) {
     let [mode, setMode] = useState('teacher');
     let [helperText_data, setHelperText_data] = useState([])
     function type() {
-        if (data[0].value.checked === true)
+        if (data[0].checked === true)
             return true;
         else
             return false;

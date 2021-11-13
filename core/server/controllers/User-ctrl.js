@@ -10,6 +10,7 @@ createUser = (req, res) => {
         name: req.body.name,
         phone: req.body.phone,
         part: req.body.part,
+        affiliation: req.body.affiliation,
         classroom: req.body.classroom
     });
 

@@ -38,14 +38,15 @@ function SignUp(props) {
     ])
     let [helperText_data, setHelperText_data] = useState([])
     function mode() {
-        if (data[0].value.checked === true)
+        if (data[0].checked === true)
             return true;
         else
             return false;
     }
     function handleSignup(event) {
-        console.log("여기")
         let partType = mode();
+        console.log(partType)
+
 
         let body = {
             id: signup_data[0].value,
