@@ -1,5 +1,5 @@
 /*eslint-disable */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ReactComponent as Core_Logo } from '../css/Core.svg';
 import '../css/SignUp.css';
 import Toolbar from './Toolbar';
@@ -36,7 +36,13 @@ function SignUp(props) {
         { id: "4", title: "전화번호", value: "" },
         { id: "5", title: "소속", value: "" }
     ])
-
+    let [helperText_data, setHelperText_data] = useState([
+        "영문자,숫자 8자리 이상",
+        "영문자,숫자 10자리 이상",
+        "한글 2-4자",
+        "0xx-xxxx-xxxx",
+        "한글,영어로만"
+    ])
     function mode() {
         if (data[0].value.checked === true)
             return true;
@@ -63,7 +69,7 @@ function SignUp(props) {
                     props.history.goBack();
                 } else {
                     console.log(res.payload);
-                    alert(res.payload)
+                    alert(res.payload.message)
                 }
             })
     }
@@ -90,6 +96,22 @@ function SignUp(props) {
         }
     }
 
+    useEffect(() => {
+
+        const idRegex = '';
+        const pwRegex = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{10,16}$/
+        //영대소문자, 숫자 10-16
+        const nameRegx = /^[가-힣]{2,4}$/
+        const phoneRegex = /^01(?:0|1|[6-9])-(?:\d{3}|\d{4})-\d{4}$/;
+        const isPhone = phoneRegex.test(signup_data[2].value)
+
+        const affiliationRegex = "";
+        console.log(isPhone);
+
+
+
+    }, [signup_data])
+
 
 
     return (
@@ -109,23 +131,28 @@ function SignUp(props) {
 
                     <span className="signup_text"> {signup_data[0].title} </span>
                     <CssTextField className="signup_input_box" size="small" variant="outlined" id="custom-css-outlined-input1" maxRows={1}
-                        name={signup_data[0].id} value={signup_data[0].value} onChange={handleInputChange} />
+                        name={signup_data[0].id} value={signup_data[0].value} onChange={handleInputChange}
+                        helperText={helperText_data[0]} />
 
                     <span className="signup_text"> {signup_data[1].title} </span>
                     <CssTextField className="signup_input_box" type="password" size="small" variant="outlined" id="custom-css-outlined-input2" maxRows={1}
-                        name={signup_data[1].id} value={signup_data[1].value} onChange={handleInputChange} />
+                        name={signup_data[1].id} value={signup_data[1].value} onChange={handleInputChange}
+                        helperText={helperText_data[1]} />
 
                     <span className="signup_text"> {signup_data[2].title} </span>
                     <CssTextField className="signup_input_box" size="small" variant="outlined" id="custom-css-outlined-input3" maxRows={1}
-                        name={signup_data[2].id} value={signup_data[2].value} onChange={handleInputChange} />
+                        name={signup_data[2].id} value={signup_data[2].value} onChange={handleInputChange}
+                        helperText={helperText_data[2]} />
 
                     <span className="signup_text"> {signup_data[3].title} </span>
                     <CssTextField className="signup_input_box" size="small" variant="outlined" id="custom-css-outlined-input4" maxRows={1}
-                        name={signup_data[3].id} value={signup_data[3].value} onChange={handleInputChange} />
+                        name={signup_data[3].id} value={signup_data[3].value} onChange={handleInputChange}
+                        helperText={helperText_data[3]} />
 
                     <span className="signup_text"> {signup_data[4].title} </span>
                     <CssTextField className="signup_input_box" size="small" variant="outlined" id="custom-css-outlined-input5" maxRows={1}
-                        name={signup_data[4].id} value={signup_data[4].value} onChange={handleInputChange} />
+                        name={signup_data[4].id} value={signup_data[4].value} onChange={handleInputChange}
+                        helperText={helperText_data[4]} />
 
                     {/* 선생님/학생 */}
                     <div className="check_box">

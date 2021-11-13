@@ -15,8 +15,22 @@ createUser = (req, res) => {
 
     if (!user) {
         return res.status(400).json({
-            success: false,
-            error: err
+            registerSuccess: false,
+            message: '이미 존재하는 아이디입니다'
+        })
+    }
+    User.findOne({ id: req.body.id }, (err, user) => {
+        if (user || err) {
+            return res.json({
+                registerSuccess: false,
+                message: "이미 존재하는 아이디입니다"
+            })
+        }
+    })
+    if (user.pw.length < 10) {
+        return res.json({
+            registerSuccess: false,
+            message: "비밀번호는 최소 10자리 입니다"
         })
     }
     user.save()
@@ -25,7 +39,10 @@ createUser = (req, res) => {
             return res.status(200).json({ success: true })
         })
         .catch((err) => {
-            return res.json({ success: false, err });
+            return res.json({
+                registerSuccess: false,
+                message: '입력되지 않은 정보가 있습니다'
+            });
         });
 
 

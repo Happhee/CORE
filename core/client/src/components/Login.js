@@ -45,9 +45,11 @@ function Login(props) {
         { id: "1", title: "ID", value: "" },
         { id: "2", title: "PW", value: "" },
     ])
-    let [login_message, setLogin_message] = useState();
-    const [open, setOpen] = useState(false);
 
+    let [helperText_data, setHelperText_data] = useState([
+        "영문자,숫자 8자리 이상",
+        "영문자,숫자 10자리 이상"
+    ])
     //모드에 따른 분류
     function handleLogin(event) {
         event.preventDefault();
@@ -76,7 +78,7 @@ function Login(props) {
 
     //회원가입 
     function SignUp_Click() {
-        history.push(`/signup`);
+        props.history.push(`/signup`);
     }
 
     const handleInputChange = (event) => {
@@ -116,14 +118,16 @@ function Login(props) {
 
                     <span className="login_text"> {login_data[0].title} </span>
                     <CssTextField className="login_input_box" size="small" variant="outlined" id="custom-css-outlined-input" maxRows={1}
-                        name={login_data[0].id} value={login_data[0].value} onChange={handleInputChange} />
+                        name={login_data[0].id} value={login_data[0].value} onChange={handleInputChange}
+                        helperText={helperText_data[0]} />
 
 
 
 
                     <span className="login_text">{login_data[1].title}  </span>
                     <CssTextField className="login_input_box" type="password" size="small" variant="outlined" id="custom-css-outlined-input" maxRows={1}
-                        name={login_data[1].id} value={login_data[1].value} onChange={handleInputChange} />
+                        name={login_data[1].id} value={login_data[1].value} onChange={handleInputChange}
+                        helperText={helperText_data[1]} />
 
 
 
@@ -138,7 +142,6 @@ function Login(props) {
                     </div>
 
                     <div className="link_box" >
-                        {/*   <AlertDialog alertDialog_title="LOGIN" textfield_state={login_state} handleLogin={handleLogin} /> */}
                         <CssButton variant="contained" color="secondary" onClick={handleLogin} >LOGIN </CssButton>
                         <CssButton variant="contained" color="secondary" onClick={SignUp_Click} >SIGN UP </CssButton>
 
