@@ -78,7 +78,7 @@ class Student extends Component {
             },
             buttons: [
                 {
-                    title: '웹으로 보기',
+                    title: '웹으로 보기!',
                     link: {
                         mobileWebUrl: 'https://cheonmro.github.io/',
                         webUrl: 'https://cheonmro.github.io/'
