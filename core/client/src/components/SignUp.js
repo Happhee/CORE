@@ -36,13 +36,7 @@ function SignUp(props) {
         { id: "4", title: "전화번호", value: "" },
         { id: "5", title: "소속", value: "" }
     ])
-    let [helperText_data, setHelperText_data] = useState([
-        "영문자,숫자 8자리 이상",
-        "영문자,숫자 10자리 이상",
-        "한글 2-4자",
-        "0xx-xxxx-xxxx",
-        "한글,영어로만"
-    ])
+    let [helperText_data, setHelperText_data] = useState([])
     function mode() {
         if (data[0].value.checked === true)
             return true;
@@ -87,8 +81,6 @@ function SignUp(props) {
             setData(newData);
 
         } else {
-
-
             newData[0].checked = false;
             newData[1].checked = true;
             setData(newData);
@@ -98,19 +90,8 @@ function SignUp(props) {
 
     useEffect(() => {
 
-        const idRegex = '';
-        const pwRegex = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{10,16}$/
-        //영대소문자, 숫자 10-16
-        const nameRegx = /^[가-힣]{2,4}$/
-        const phoneRegex = /^01(?:0|1|[6-9])-(?:\d{3}|\d{4})-\d{4}$/;
-        const isPhone = phoneRegex.test(signup_data[2].value)
-
-        const affiliationRegex = "";
-        console.log(isPhone);
-
-
-
-    }, [signup_data])
+        setHelperText_data(InputVaildation.isRegex(signup_data, helperText_data));
+    }, [signup_data], [])
 
 
 

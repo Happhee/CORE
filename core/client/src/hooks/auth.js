@@ -14,7 +14,6 @@ export default function (Component, option, adminRoute = null) {
         useEffect(() => {
             dispatch(auth()).then((res) => {
                 console.log(res);
-                console.log("HOC 테스트");
             });
         }, []);
 

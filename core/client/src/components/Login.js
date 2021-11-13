@@ -36,7 +36,6 @@ function Login(props) {
 
     console.log('로그인렌더');
 
-    let [mode, setMode] = useState('teacher');
 
     let [data, setData] = useState([
         { id: 1, value: "선생님", checked: false },
@@ -46,17 +45,23 @@ function Login(props) {
         { id: "2", title: "PW", value: "" },
     ])
 
-    let [helperText_data, setHelperText_data] = useState([
-        "영문자,숫자 8자리 이상",
-        "영문자,숫자 10자리 이상"
-    ])
+    let [mode, setMode] = useState('teacher');
+    let [helperText_data, setHelperText_data] = useState([])
+    function type() {
+        if (data[0].value.checked === true)
+            return true;
+        else
+            return false;
+    }
     //모드에 따른 분류
     function handleLogin(event) {
         event.preventDefault();
+        let partType = type();
 
         let body = {
             id: login_data[0].value,
-            pw: login_data[1].value
+            pw: login_data[1].value,
+            part: partType
         }
 
         dispatch(loginUser(body))
@@ -105,7 +110,14 @@ function Login(props) {
         }
     }
     useEffect(() => { }, []);
+    useEffect(() => {
 
+        setHelperText_data(InputVaildation.isRegex(login_data, helperText_data))
+
+
+
+
+    }, [login_data], [])
 
     return (
         <div>
@@ -117,7 +129,7 @@ function Login(props) {
                 <div className="login_content">
 
                     <span className="login_text"> {login_data[0].title} </span>
-                    <CssTextField className="login_input_box" size="small" variant="outlined" id="custom-css-outlined-input" maxRows={1}
+                    <CssTextField className="login_input_box" size="small" variant="outlined" id="custom-css-outlined-input1" maxRows={1}
                         name={login_data[0].id} value={login_data[0].value} onChange={handleInputChange}
                         helperText={helperText_data[0]} />
 
@@ -125,7 +137,7 @@ function Login(props) {
 
 
                     <span className="login_text">{login_data[1].title}  </span>
-                    <CssTextField className="login_input_box" type="password" size="small" variant="outlined" id="custom-css-outlined-input" maxRows={1}
+                    <CssTextField className="login_input_box" type="password" size="small" variant="outlined" id="custom-css-outlined-input2" maxRows={1}
                         name={login_data[1].id} value={login_data[1].value} onChange={handleInputChange}
                         helperText={helperText_data[1]} />
 
