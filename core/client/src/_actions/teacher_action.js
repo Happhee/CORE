@@ -6,7 +6,7 @@ import {
 const TEACHER_URL = "/api/teacher";
 
 //로그인
-export function loginUser(dataToSubmit) {
+export function updateClassroom(dataToSubmit) {
 
     const data = request("PUT", TEACHER_URL + "/classroom", dataToSubmit);
 

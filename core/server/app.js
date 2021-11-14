@@ -2,6 +2,7 @@ require('dotenv').config();
 
 const db = require('./database');
 const userRouter = require('./routes/User-router');
+const teacherRouter = require('./routes/Teacher-router');
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require("cors");
@@ -26,6 +27,7 @@ app.get("/", (req, res) => {
 });
 
 app.use('/api', userRouter);
+app.use('/api', teacherRouter);
 
 
 app.listen(port, () => {

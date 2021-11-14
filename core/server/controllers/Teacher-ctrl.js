@@ -4,34 +4,31 @@ const User = require('../models/User-model');
 updateClassroom = async (req, res) => {
     const body = req.body
 
-    if (!body) {
-        return res.status(400).json({
-            success: false,
-            error: 'You must provide a body to update',
-        })
-    }
-
-    User.findOne({ _id: req.params.id }, (err, user) => {
+    User.findOne({ id: body.id }, (err, user) => {
         if (err) {
             return res.status(404).json({
-                err,
-                message: 'Movie not found!',
+                updateSuccess: err,
+                message: '선생님을 찾을 수 없습니다',
             })
         }
-        User.classroom = body.classroom
-        User
+        let preClassroom = user.classroom
+        preClassroom.push(body.classroom);
+        console.log(preClassroom)
+        user.classroom = preClassroom
+        user
             .save()
             .then(() => {
                 return res.status(200).json({
-                    success: true,
+                    updateSuccess: true,
                     id: user._id,
-                    message: 'Movie updated!',
+                    data: user,
+                    message: '강의실이 추가되었습니다!',
                 })
             })
             .catch(error => {
                 return res.status(404).json({
-                    error,
-                    message: 'Movie not updated!',
+                    updateSuccess: error,
+                    message: '에러가 발생되었습니다!',
                 })
             })
     })

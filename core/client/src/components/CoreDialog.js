@@ -120,7 +120,6 @@ const CoreDialog = props => {
                         else {
 
                             props.handleFormSubmit(text_datas);
-                            props.handleFormSubmit(select_class_id);
                         }
                         setDialog_data({ open: false })
                     }} >{props.button_value}</Button>
