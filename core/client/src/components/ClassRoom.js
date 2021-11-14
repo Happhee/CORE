@@ -33,6 +33,7 @@ function ClassRoom({ match }) {
         let body = {
             id: location.state.login_id
         }
+        //클래스룸 가져오기
         dispatch(getUser(body))
             .then(res => {
                 if (res.payload.getSuccess) {
@@ -48,12 +49,28 @@ function ClassRoom({ match }) {
         //         console.log(res);
         //     })
 
-    }, [])
+    }, [classrooms])
 
+    function insertClassroom(value) {
+        let body = {
+            id: location.state.login_id
+        }
+        //클래스룸 가져오기
+        dispatch(getUser(body))
+            .then(res => {
+                if (res.payload.getSuccess) {
+                    setClassrooms(res.payload.data.classroom)
+                }
+                else {
+                    console.log(res.payload)
+                }
+            })
 
+    }
     let text_data = [
         { id: 1, label: "강의실명", name: "classroom", value: '' }
     ]
+
     if (mode == 'teacher') {
         startpage = 'student';
         add_button = [
@@ -61,7 +78,8 @@ function ClassRoom({ match }) {
                 <CoreDialog key="add" button_box="add_class_box" button_value="+"
                     dialog_title="강의실 추가하기" text_data={text_data} handleFormSubmit={function (classroom) {
                         console.log(classroom[0].value)
-                        setClassrooms([...classrooms, classroom[0].value]);
+                        insertClassroom(classroom[0].value);
+                        // setClassrooms([...classrooms, classroom[0].value]);
 
                     }} />
 
