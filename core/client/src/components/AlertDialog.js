@@ -32,6 +32,18 @@ const LoginBtn = styled(Button)({
         color:"#FFF"
      }
 });
+const BasicBtn = styled(Button)({
+    marginLeft: '0px',
+    textAlign: 'center',
+    backgroundColor: '#692498',
+    borderRadius: '30px',
+    color: '#fff',
+    fontWeight: 'bold',
+    '&:hover': {
+        background: "#E0BFE6",
+        color: "#FFF"
+    }
+});
 function AlertDialog(props) {
     const [open, setOpen] = useState(false);
     const [textfield_state, setTextfield_state] = useState(props.textfield_state);
@@ -62,8 +74,8 @@ function AlertDialog(props) {
         else if (props.alertDialog_title === '삭제') {
             setButton(
                 <div>
-                    <Button onClick={handleClose}>취소</Button>
-                    <Button onClick={handleClose} autoFocus>삭제</Button>
+                    <BasicBtn onClick={handleClose}>취소</BasicBtn>
+                    <BasicBtn onClick={handleClose} autoFocus>삭제</BasicBtn>
                 </div>
             )
             setTextfield_state("문제를 정말로 삭제하시겠습니까??");
@@ -132,10 +144,15 @@ function AlertDialog(props) {
                                 {props.alertDialog_title}
                             </button>;
                         }
-                        else {
+                        else if(props.alertDialog_title === '삭제'){
                             return <DeleteBtn  onClick={handleClickOpen} key="set">
                                 {props.alertDialog_title}
                             </DeleteBtn>;
+                        }
+                        else {
+                            return <button>
+                                {props.alertDialog_title}
+                                </button>
                         }
                     }
                     )()

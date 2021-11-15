@@ -18,9 +18,6 @@ const styles = theme => ({
         position: 'fixed',
         zIndex: '0 !important'
 
-    },
-    hidden: {
-        display: 'none'
     }
 });
 
