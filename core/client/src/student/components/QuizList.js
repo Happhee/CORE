@@ -5,15 +5,13 @@ import React, { Component } from 'react';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import { Button, styled } from '@mui/material';
 import queryString from 'query-string'
-import * as ProblemServer from '../server/ProblemServer'
-import DeleteQuiz from './DeleteQuiz';
 import { makeStyles } from '@material-ui/core/styles';
 
 
 
 const AddQuiz = styled(Button)({
     marginLeft: '93.8%',
-    marginTop:'1%',
+    marginTop: '1%',
     padding: '0.8%',
     textAlign: 'center',
     backgroundColor: '#692498',
@@ -107,7 +105,7 @@ class QuizList extends Component {
                             }
                         </tbody>
                     </table>
-                    <ProblemAdd_Button mainunit="1" subunit={boards.length + 1} />
+
                 </div>
             </div>
         );
@@ -129,4 +127,5 @@ function BoardItem(props) {
     );
 
 }
+
 
