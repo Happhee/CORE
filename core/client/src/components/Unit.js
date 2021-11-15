@@ -14,6 +14,30 @@ const CssButton = styled(Button)({
     marginLeft: '10px',
     marginRight: '10px'
 });
+const RegisterBtn = styled(Button)({
+    marginLeft: '0px',
+    textAlign:'center',
+    backgroundColor:'#E0BFE6',
+    borderRadius:'30px',
+    color:'#8154A0',
+    fontWeight:'bold',
+    '&:hover': {
+        background: "#8154A0",
+        color:"#FFF"
+     }
+});
+const EditBtn = styled(Button)({
+    marginLeft: '0px',
+    textAlign:'center',
+    backgroundColor:'#E0BFE6',
+    borderRadius:'30px',
+    color:'#8154A0',
+    fontWeight:'bold',
+    '&:hover': {
+        background: "#8154A0",
+        color:"#FFF"
+     }
+});
 
 function Customer(props) {
 
@@ -39,8 +63,8 @@ function Customer(props) {
 
     if (props.editType === "MainList") {
 
-        edit = [<TableCell align="center" key="edit">
-            <CoreDialog key="add" button_box_div="add_problem_class_box" button_box="add_problem_class_box" button_value="등록"
+        edit = [<td width="300px" align="center" key="edit">
+            <CoreDialog className="RegisterBtn" key="add" button_box_div="add_problem_class_box" button_box="add_problem_class_box" button_value="등록"
                 dialog_title="문제 등록하기" listbox_datas={listbox_datas} handleFormSubmit={props.handleFormSubmit} />
 
             <CoreDialog key="modify" button_box_div="add_problem_class_box" button_box="add_problem_class_box" button_value="수정"
@@ -49,17 +73,17 @@ function Customer(props) {
 
             <AlertDialog key="delete" alertDialog_title="삭제" textfield_state={textfield_state} handleRemoveClose={props.handleRemoveClose}
                 subunit={props.id} />
-        </TableCell>];
+        </td>];
 
-        link = [<Link key="link" to={`../../teacher/workbank_quizlist?mainunit=${props.id}`} >{props.name}</Link>]
+        link = [<Link style={{color:"#000"}} key="link" to={`../../teacher/workbank_quizlist?mainunit=${props.id}`} >{props.name}</Link>]
     }
     else if (props.editType === "QuizList") {
         edit = [
-            <TableCell align="center" key="edit">
+            <td align="center" key="edit">
                 <CoreDialog key="add" button_box_div="add_problem_class_box" button_box="add_problem_class_box" button_value="등록"
                     dialog_title="문제 등록하기" listbox_datas={listbox_datas} handleFormSubmit={props.handleFormSubmit} />
 
-                <CssButton key="modify" variant="contained" color="secondary" onClick={
+                <EditBtn key="modify" variant="contained" color="secondary" onClick={
                     () => {
                         history.push({
                             pathname: "/teacher/workbank_quizlist/problemmodify?mainunit=" + props.mainunit + "&subunit=" + props.subunit,
@@ -70,11 +94,11 @@ function Customer(props) {
                                 output_data: ProblemServer.getOutput_data("modify")
                             }
                         })
-                    }}>수정</CssButton>
+                    }}>수정</EditBtn>
 
                 <AlertDialog key="delete" alertDialog_title="삭제" textfield_state={textfield_state} handleRemoveClose={props.handleRemoveClose}
                     subunit={props.id} />
-            </TableCell>];
+            </td>];
         link = [<p key="p" >{props.name}</p>]
 
     }
@@ -82,15 +106,14 @@ function Customer(props) {
         link = [<Link key="link" to={`../../mainpage/teacher/${props.startpage}/quizlist?mainunit=${props.id}`} >{props.name}</Link>]
     }
     return (
-        <TableRow >
-            <TableCell align="center" key="id">{props.id}</TableCell>
-            <TableCell align="center" key="name">
+        <tr style={{ color:"#000",fontFamily: 'esamanru', fontWeight: 'normal', height: '50px' }} align="center" >
+            <td width="50px" align="center" key="id">{props.id}</td>
+            <td width="450px" align="center" key="name">
                 {link}
-
-            </TableCell>
-            <TableCell align="center" key="count">{props.count}</TableCell>
+            </td>
+            <td width="150px" align="center" key="count">{props.count}</td>
             {edit}
-        </TableRow>
+        </tr>
     )
 
 }
