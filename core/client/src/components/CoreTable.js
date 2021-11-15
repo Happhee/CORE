@@ -1,25 +1,24 @@
 /*eslint-disable */
 import React, { useState } from 'react';
-
 import Unit from '../components/Unit'
-import Paper from '@material-ui/core/Paper';
-import Table from '@material-ui/core/Table';
-import TableHead from '@material-ui/core/TableHead';
-import TableBody from '@material-ui/core/TableBody';
-import TableRow from '@material-ui/core/TableRow';
-import TableCell from '@material-ui/core/TableCell';
 import { withStyles } from '@material-ui/core/styles';
 
 
 
 const styles = theme => ({
-    root: {
-        width: "100%",
-        marginTop: theme.spacing(4),
-        overflowX: "auto"
-    },
     table: {
-        minWidth: 1080
+        marginLeft: '87%',
+        padding: '0.8%',
+        textAlign: 'center',
+        backgroundColor: '#692498',
+        borderRadius: '10px',
+        color: '#fff',
+        fontFamily: 'esamanruLight',
+        fontWeight: 'normal',
+        '&:hover': {
+            background: "#E0BFE6",
+            color: "#8154A0"
+        }
     }
 });
 function CoreTable(props) {
@@ -28,27 +27,22 @@ function CoreTable(props) {
 
     return (
         <div >
-            <Paper className={styles.root}>
-                <Table className={styles.table}>
-                    <TableHead>
-                        <TableRow>
-                            {table_cells.map((cell, index) => {
-                                return <TableCell align="center" key={index}>{cell}</TableCell>
-                            })}
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {unit.map(c => {
-                            return <Unit key={c.id} id={c.id} name={c.name} count={c.count} editType={props.editType}
-                                mainunit={props.mainunit}
-                                handleFormSubmit={props.handleFormSubmit} handleFormModify={props.handleFormModify} handleRemoveClose={props.handleRemoveClose} />
-                        })}
-                    </TableBody>
-                </Table>
-            </Paper>
+            <table border="1" >
+                <tr style={{  fontFamily: 'esamanru', fontWeight: 'bold', height: '50px' }} align="center" >
+                    {table_cells.map((cell, index) => {
+                        return <td key={index}>{cell}</td>
+                    })}
+                </tr>
+                <tbody style={{ olor:"#fff",fontFamily: 'esamanru', fontWeight: 'normal', height: '50px' }} align="center" >
+                    {unit.map(c => {
+                        return <Unit key={c.id} id={c.id} name={c.name} count={c.count} editType={props.editType}
+                            mainunit={props.mainunit}
+                            handleFormSubmit={props.handleFormSubmit} handleFormModify={props.handleFormModify} handleRemoveClose={props.handleRemoveClose} />
+                    })}
+                </tbody>
+            </table>
         </div>
     );
-
 }
 
 export default withStyles(styles)(CoreTable);
