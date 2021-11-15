@@ -5,7 +5,7 @@ import '../css/ClassRoom.css';
 import { Link } from 'react-router-dom';
 import Toolbar from './Toolbar';
 import CoreDialog from './CoreDialog';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useHistory } from 'react-router-dom';
 
 
 //로그인 성공 후 페이지 -> 서버로부터 강의실리스트를 가져와야함 
@@ -20,7 +20,7 @@ function ClassRoom({ match }) {
 
     const { mode } = match.params;
     const location = useLocation();
-
+    const history = useHistory();
     console.log(location.state.login_id);
 
     let startpage = null;
@@ -85,7 +85,6 @@ function ClassRoom({ match }) {
                     dialog_title="강의실 추가하기" text_data={text_data} handleFormSubmit={function (classroom) {
                         console.log(classroom[0].value)
                         insertClassroom(classroom[0].value);
-                        // setClassrooms([...classrooms, classroom[0].value]);
 
                     }} />
 
@@ -104,7 +103,16 @@ function ClassRoom({ match }) {
 
     const class_list = classrooms.map((classroom, index) =>
         <div className="click_box" key={index}>
-            <Link to={`../../mainpage/${mode}/${startpage}`} className="link" key={index}>{classroom}</Link>
+            <span className="link" key={index}
+                onClick={() => {
+                    history.push({
+                        pathname: "../../mainpage/" + mode + "/" + startpage,
+                        state: {
+                            classroom_title: classroom
+                        }
+                    })
+                }}
+            >{classroom}</span>
         </div>);
 
 

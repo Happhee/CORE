@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import Subject from './Subject';
 import Toolbar from './Toolbar';
+import { useLocation } from 'react-router-dom';
 
 function MainPage({ match }) {
     let toolbar = [
@@ -17,6 +18,9 @@ function MainPage({ match }) {
     ])
 
     const { mode } = match.params;
+    const location = useLocation();
+
+
     // 강의실 선택후 상단바 제목 설정
     let subject = [];
     if (mode == 'teacher') {
@@ -38,7 +42,7 @@ function MainPage({ match }) {
         <div>
             <Toolbar data={toolbar} />
             <div>
-                <Subject data={subject} mode={mode} />
+                <Subject data={subject} mode={mode} classroom_title={location.state.classroom_title} />
             </div>
         </div>
     );
