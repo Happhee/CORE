@@ -23,14 +23,16 @@ import { loginUser } from '../_actions/user_action'
 
 const CssCheckbox = styled(Checkbox)({
     marginLeft: '10px',
-    marginRight: '10px',
+    marginRight: '10px'
 });
 const DeleteBtn = styled(Button)({
     width:"content",
     backgroundColor: '#fff',
     borderRadius: '5px',
     color: '#000',
-    fontWeight: 'bold',
+    fontFamily:"esamanruLight",
+    fontsize:"50px",
+    fontWeight: 'normal',
     '&:hover': {
         background: "#8154A0",
         color: "#fff"
@@ -147,7 +149,7 @@ function Login(props) {
                     <CssTextField className="login_input_box" size="small" variant="outlined" id="custom-css-outlined-input1" maxRows={1}
                         name={login_data[0].id} value={login_data[0].value} onChange={handleInputChange}
                         helperText={helperText_data[0]} 
-                        style={{marginLeft:"5%",width: "280px"}}/>
+                        style={{color:"black", marginLeft:"5%",width: "280px"}}/>
 
                     <span className="login_text">{login_data[1].title}  </span>
                     <CssTextField className="login_input_box" type="password" size="small" variant="outlined" id="custom-css-outlined-input2" maxRows={1}
@@ -166,8 +168,8 @@ function Login(props) {
                     </div>
 
                     <div className="link_box" style={{marginTop:"0px",float:'right',width:"100%"}}>
-                        <DeleteBtn  style={{margintRight:"-100px"}} onClick={handleLogin} >LOGIN </DeleteBtn>
-                        <DeleteBtn  style={{margintLeft:"1%"}} onClick={SignUp_Click} >SIGN UP </DeleteBtn>
+                        <DeleteBtn  style={{borderTopRightRadius:"0px",borderBottomRightRadius:"0px", borderRight:'2px solid #000'}} onClick={handleLogin} >LOGIN </DeleteBtn>
+                        <DeleteBtn  style={{margintLeft:"1%",borderTopLeftRadius:"0px",borderBottomLeftRadius:"0px"}} onClick={SignUp_Click} >SIGN UP </DeleteBtn>
 
                     </div>
                 </div>

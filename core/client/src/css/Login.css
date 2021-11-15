@@ -15,12 +15,12 @@ body{
     width: 35%;
     border: solid #692498 5px;
     text-align: center;
-    padding: 2px;
+    padding: 0px;
     background-color: white;
     align-items: center;
     display: grid;
     grid-template-columns: 1fr 1.5fr 1fr;
-    grid-template-rows: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
 }
 
 
@@ -44,6 +44,7 @@ margin-left: 50%;
 
 
 .check_box {
+    margin-top: 5%;
     display: grid;
     grid-template-columns:5% 20% 5% 20%;
     grid-column: 2/4;
@@ -59,8 +60,7 @@ span{
 .link_box{
     display: grid;
     grid-template-columns:30% 30%;
-    margin-top: 10px;
+    margin-top: 0px;
     margin-bottom: 0px;
-    font-size: 20px;
     justify-content: center;
 }
