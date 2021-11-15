@@ -1,13 +1,37 @@
 /*eslint-disable */
 
 import React, { useState } from 'react';
-import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import { Button, styled } from '@mui/material';
 
+const DeleteBtn = styled(Button)({
+    marginLeft: '0px',
+    textAlign:'center',
+    backgroundColor:'#E0BFE6',
+    borderRadius:'30px',
+    color:'#8154A0',
+    fontWeight:'bold',
+    '&:hover': {
+        background: "#8154A0",
+        color:"#FFF"
+     }
+});
+const LoginBtn = styled(Button)({
+    marginLeft: '0px',
+    textAlign:'center',
+    backgroundColor:'#E0BFE6',
+    borderRadius:'30px',
+    color:'#8154A0',
+    fontWeight:'bold',
+    '&:hover': {
+        background: "#8154A0",
+        color:"#FFF"
+     }
+});
 function AlertDialog(props) {
     const [open, setOpen] = useState(false);
     const [textfield_state, setTextfield_state] = useState(props.textfield_state);
@@ -48,22 +72,18 @@ function AlertDialog(props) {
         }
         else if (props.alertDialog_title === 'LOGIN') {
 
-            let loginState = props.handleLogin()
-            console.log(loginState);
-
-            if (!loginState.loginSuccess) {
+            if (!props.handleLogin()) {
                 setButton(
                     <div>
                         <Button onClick={handleClose}>확인</Button>
                     </div>
                 )
-                setTextfield_state(loginState.message);
-                setOpen(true);
-
+                setTextfield_state('입력되지 않은 정보가 있습니다!!! 모든 정보를 입력해주세요');
             } else {
-                setOpen(false);
+                props.goClassroom();
             }
 
+            setOpen(!props.handleLogin());
         }
         else if (props.alertDialog_title === 'SIGN UP') {
             if (!props.handleSignup()) {
@@ -101,10 +121,25 @@ function AlertDialog(props) {
     };
 
     return (
-        <>
-            <Button variant="contained" color="secondary" className="problem_button" onClick={handleClickOpen}>
-                {props.alertDialog_title}
-            </Button>
+            < >
+            {
+                    (() => {
+
+                        if (props.alertDialog_title == 'LOGIN' ) {
+                            return <button style={{background:"white",marginBottom:"0px",border:"0px",  fontFamily: 'esamanruLight',fontSize:"30px"
+                            ,marginLeft:"110px"
+                            }}  onClick={handleClickOpen} key="set">
+                                {props.alertDialog_title}
+                            </button>;
+                        }
+                        else {
+                            return <DeleteBtn  onClick={handleClickOpen} key="set">
+                                {props.alertDialog_title}
+                            </DeleteBtn>;
+                        }
+                    }
+                    )()
+                }
             <Dialog
                 open={open}
                 onClose={handleClose}
