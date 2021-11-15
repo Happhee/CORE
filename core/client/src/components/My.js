@@ -34,11 +34,11 @@ function My({ match, history }) {
         <div>
             <Toolbar data={toolbar} />
             <div className="classroom_box">
-                <Core_Logo />
+            <img style={{ width: "200px", marginTop: "3%", marginBottom: "-2px", float: "left" }} src={require('../image/icon_BigLogo.png').default} />
                 <div className="content">
                     {/* 회원가입 타이틀  */}
                     <div className="title_box">
-                        <span>MY</span>
+                        <span style={{fontWeight:"bold"}}>MY</span>
                     </div>
                     <div className="click_box">
 
