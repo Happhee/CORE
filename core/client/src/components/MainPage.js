@@ -20,7 +20,6 @@ function MainPage({ match }) {
     const { mode } = match.params;
     const location = useLocation();
 
-
     // 강의실 선택후 상단바 제목 설정
     let subject = [];
     if (mode == 'teacher') {
@@ -35,14 +34,14 @@ function MainPage({ match }) {
     }
 
     console.log(mode);
-
     console.log('메인 렌더링');
-
     return (
         <div>
             <Toolbar data={toolbar} />
             <div>
-                <Subject data={subject} mode={mode} classroom_title={location.state.classroom_title} />
+                <Subject data={subject} mode={mode}
+                    classroom_title={location.state.classroom_title}
+                    id={location.state.id} />
             </div>
         </div>
     );

@@ -128,7 +128,8 @@ class Student extends Component {
     render() {
         const { boards } = this.state;
 
-        console.log(this.props.location.state.classroom_title)
+        console.log("강의실 이름 -> " + this.props.location.state.classroom_title)
+        console.log("로그인된 선생님 아이디 -> " + this.props.location.state.teacher_id)
 
         return (
             <div className="main_div">

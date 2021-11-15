@@ -108,7 +108,8 @@ function ClassRoom({ match }) {
                     history.push({
                         pathname: "../../mainpage/" + mode + "/" + startpage,
                         state: {
-                            classroom_title: classroom
+                            classroom_title: classroom,
+                            id: location.state.login_id
                         }
                     })
                 }}

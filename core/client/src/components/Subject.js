@@ -26,7 +26,6 @@ const Logo_Room = props => {
 }
 const Subject_Link = props => {
     const history = useHistory();
-    console.log(props.classroom_title)
     return (
         <div>
             <span className="subject_text"
@@ -34,7 +33,8 @@ const Subject_Link = props => {
                     history.push({
                         pathname: props.link,
                         state: {
-                            classroom_title: props.classroom_title
+                            classroom_title: props.classroom_title,
+                            teacher_id: props.teacher_id
                         }
                     })
                 }} > {props.title}</span>
@@ -54,11 +54,20 @@ const Subject = props => {
     if (data.length == 3) {
 
         list.push(<Subject_Link key={data[0].id} title={data[0].title}
-            link='/mainpage/teacher/student' classroom_title={props.classroom_title} />);
+            link='/mainpage/teacher/student'
+            classroom_title={props.classroom_title}
+            teacher_id={props.id}
+        />);
         list.push(<Subject_Link key={data[1].id} title={data[1].title}
-            link='/mainpage/teacher/workbook' classroom_title={props.classroom_title} />);
+            link='/mainpage/teacher/workbook'
+            classroom_title={props.classroom_title}
+            teacher_id={props.id}
+        />);
         list.push(<Subject_Link key={data[2].id} title={data[2].title}
-            link='/mainpage/teacher/feedback' classroom_title={props.classroom_title} />);
+            link='/mainpage/teacher/feedback'
+            classroom_title={props.classroom_title}
+            teacher_id={props.id}
+        />);
 
 
         //상단 라우트
