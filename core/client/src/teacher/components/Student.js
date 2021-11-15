@@ -56,7 +56,8 @@ class Student extends Component {
                 school: '세종초등학교'
             }
         ],
-        classroom_title: this.props.classroom_title
+        classroom_title: this.props.classroom_title,
+        class_id: this.props.class_id
     }
 
     //학생 초대 카카오 API

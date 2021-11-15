@@ -3,24 +3,29 @@ const User = require('../models/User-model');
 
 addClassroom = async (req, res) => {
     const body = req.body
+    try {
 
-    User.findOne({ id: body.id }, (err, user) => {
-        if (err) {
+        let user = await User.findOne({ id: body.id });
+
+        if (!user) {
             return res.status(404).json({
                 updateSuccess: err,
                 message: '선생님을 찾을 수 없습니다',
             })
         }
         let preClassroom = user.classroom
-        if (preClassroom.includes(body.classroom)) {
-            return res.status(200).json({
-                updateSuccess: false,
-                id: user._id,
-                message: '이미 생성된 강의실입니다',
-            })
+        for (let index = 0; index < preClassroom.length; index++) {
+            if (preClassroom[index].class_id(body.classroom.class_id)) {
+                return res.status(200).json({
+                    updateSuccess: false,
+                    id: user._id,
+                    message: '이미 생성된 강의실입니다',
+                })
+            }
         }
+        console.log("현재 " + preClassroom)
+
         preClassroom.push(body.classroom);
-        console.log(preClassroom)
         user.classroom = preClassroom
         user
             .save()
@@ -38,7 +43,11 @@ addClassroom = async (req, res) => {
                     message: '에러가 발생되었습니다!',
                 })
             })
-    }).clone().catch(err => { console.log(err) })
+
+    } catch (err) {
+
+    }
+    return;
 }
 
 module.exports = {
