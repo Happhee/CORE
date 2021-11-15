@@ -9,24 +9,28 @@ import { RoundedCorner } from '@material-ui/icons';
 import { color, fontWeight } from '@mui/system';
 import DeleteModal from './DeleteModal';
 
+import { withRouter } from "react-router";
+
 const AddStudent = styled(Button)({
-    marginLeft:'87%',
-    padding:'0.8%',
-    textAlign:'center',
-    backgroundColor:'#692498',
-    borderRadius:'10px',
-    color:'#fff',
-    fontFamily:'esamanruLight' ,
-    fontWeight:'normal',
+    marginLeft: '87%',
+    padding: '0.8%',
+    textAlign: 'center',
+    backgroundColor: '#692498',
+    borderRadius: '10px',
+    color: '#fff',
+    fontFamily: 'esamanruLight',
+    fontWeight: 'normal',
     '&:hover': {
         background: "#E0BFE6",
-        color:"#8154A0"
-     }
+        color: "#8154A0"
+    }
 });
+
 class Student extends Component {
     constructor(props) {
         super(props);
         this.child = React.createRef();
+
     }
     state = {
         boards: [
@@ -51,7 +55,9 @@ class Student extends Component {
                 phone: '010-3333-3333',
                 school: '세종초등학교'
             }
-        ]
+        ],
+        classroom_title: this.props.classroom_title,
+        class_id: this.props.class_id
     }
 
     //학생 초대 카카오 API
@@ -123,13 +129,16 @@ class Student extends Component {
     render() {
         const { boards } = this.state;
 
+        console.log("강의실 이름 -> " + this.props.location.state.classroom_title)
+        console.log("로그인된 선생님 아이디 -> " + this.props.location.state.teacher_id)
+
         return (
             <div className="main_div">
                 <h2 style={{ width: '85%', margin: '20px auto', marginTop: '0px' }}>Student</h2>
                 <div style={{ width: '85%', margin: '20px auto' }}>
                     <table border="1" >
                         <tbody>
-                            <tr style={{ fontFamily: 'esamanru', fontWeight: 'bold',height:'50px' }} align="center" >
+                            <tr style={{ fontFamily: 'esamanru', fontWeight: 'bold', height: '50px' }} align="center" >
                                 <td width="100">No</td>
                                 <td width="200">아이디</td>
                                 <td width="200">이름</td>
@@ -148,15 +157,15 @@ class Student extends Component {
 
                 </div>
                 <div className="Kakao">
-                    <a id="kakao-link-btn" href="javascript:;" style={{textDecoration:'none'}}>
-                    <AddStudent>학생 초대</AddStudent>
+                    <a id="kakao-link-btn" href="javascript:;" style={{ textDecoration: 'none' }}>
+                        <AddStudent>학생 초대</AddStudent>
                     </a>
                 </div>
             </div >
         );
     }
 }
-export default Student;
+export default withRouter(Student);
 
 class BoardItem extends React.Component {
     handleSelectRow = () => {
@@ -165,7 +174,7 @@ class BoardItem extends React.Component {
     }
     render() {
         return (
-            <tr align="center" style={{height:'60px' }}>
+            <tr align="center" style={{ height: '60px' }}>
                 <td>{this.props.row.brdno}</td>
                 <td>{this.props.row.id}</td>
                 <td>{this.props.row.name}</td>
@@ -186,3 +195,4 @@ const useStyles = makeStyles(() => ({
         paddingLeft: '20px'
     }
 }));
+

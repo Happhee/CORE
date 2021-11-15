@@ -24,11 +24,7 @@ function App(props) {
         <Switch>
           <Route exact={true} path='/' component={Auth(Login)} />
           <Route exact path='/signup' component={Auth(SignUp, null)} />
-          <Route exact path='/classroom/:mode' component={Auth(ClassRoom, false)} />
-          <Route exact={true} path='/' component={Auth(Login, null)} />
 
-          <Route exact={true} path='/' render={(props) => <Login {...props} />} />
-          <Route exact path='/signup' render={(props) => <SignUp {...props} />} />
           <Route exact path='/classroom/:mode' render={(props) => <ClassRoom {...props} />} />
 
           <Route path='/mainpage/:mode/:page' render={(props) => <MainPage {...props} />} />

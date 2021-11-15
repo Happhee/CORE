@@ -5,12 +5,13 @@ import '../css/ClassRoom.css';
 import { Link } from 'react-router-dom';
 import Toolbar from './Toolbar';
 import CoreDialog from './CoreDialog';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useHistory } from 'react-router-dom';
 
 
 //로그인 성공 후 페이지 -> 서버로부터 강의실리스트를 가져와야함 
 import { useDispatch } from 'react-redux'
 import { getUser } from '../_actions/user_action';
+import { addClassroom, createClassroom } from '../_actions/teacher_action'
 
 function ClassRoom({ match }) {
     let toolbar = [
@@ -19,7 +20,7 @@ function ClassRoom({ match }) {
 
     const { mode } = match.params;
     const location = useLocation();
-
+    const history = useHistory();
     console.log(location.state.login_id);
 
     let startpage = null;
@@ -29,10 +30,12 @@ function ClassRoom({ match }) {
 
     const dispatch = useDispatch();
     let [classrooms, setClassrooms] = useState([])
+    let [class_id, setClass_id] = useState([]);
     useEffect(() => {
         let body = {
             id: location.state.login_id
         }
+        //클래스룸 가져오기
         dispatch(getUser(body))
             .then(res => {
                 if (res.payload.getSuccess) {
@@ -42,18 +45,55 @@ function ClassRoom({ match }) {
                     console.log(res.payload)
                 }
             })
+    }, [classrooms])
 
-        // dispatch(getUsers())
-        //     .then(res => {
-        //         console.log(res);
-        //     })
+    function insertClassroom(value) {
+        let class_id = location.state.login_id + Date.now();
+        let body = {
+            id: location.state.login_id,
+            classroom: { title: value, class_id: class_id }
+        }
+        // 클래스룸 가져오기
+        dispatch(addClassroom(body))
+            .then(res => {
+                if (res.payload.updateSuccess) {
+                    console.log("업데이트 ")
+                    console.log(res.payload.data.classroom);
 
-    }, [])
+                    // setClassrooms(res.payload.data.classroom)
+                }
+                else {
+                    alert(res.payload.message)
+                }
+            })
+        let class_body = {
+            name: value,
+            classroom_master: location.state.login_id,
+            class_id: class_id
+        }
+
+        dispatch(createClassroom(class_body))
+            .then(res => {
+                console.log(res.payload.createClassroom)
+                if (res.payload.createClassroom) {
+                    setClass_id(class_body.class_id);
+                    console.log(res.payload.message);
+                }
+                else {
+                    console.log(res.payload.message)
+                }
+            }).catch((err) => {
+                console.log(err);
+            });
+    }
+
+
 
 
     let text_data = [
         { id: 1, label: "강의실명", name: "classroom", value: '' }
     ]
+
     if (mode == 'teacher') {
         startpage = 'student';
         add_button = [
@@ -61,7 +101,7 @@ function ClassRoom({ match }) {
                 <CoreDialog key="add" button_box="add_class_box" button_value="+"
                     dialog_title="강의실 추가하기" text_data={text_data} handleFormSubmit={function (classroom) {
                         console.log(classroom[0].value)
-                        setClassrooms([...classrooms, classroom[0].value]);
+                        insertClassroom(classroom[0].value);
 
                     }} />
 
@@ -80,7 +120,18 @@ function ClassRoom({ match }) {
 
     const class_list = classrooms.map((classroom, index) =>
         <div className="click_box" key={index}>
-            <Link to={`../../mainpage/${mode}/${startpage}`} className="link" key={index}>{classroom}</Link>
+            <span className="link" key={index}
+                onClick={() => {
+                    history.push({
+                        pathname: "../../mainpage/" + mode + "/" + startpage,
+                        state: {
+                            classroom_title: classroom,
+                            id: location.state.login_id,
+                            class_id: class_id
+                        }
+                    })
+                }}
+            >{classroom}</span>
         </div>);
 
 

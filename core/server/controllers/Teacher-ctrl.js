@@ -1,42 +1,55 @@
 const User = require('../models/User-model');
 
 
-updateClassroom = async (req, res) => {
+addClassroom = async (req, res) => {
     const body = req.body
+    try {
 
-    if (!body) {
-        return res.status(400).json({
-            success: false,
-            error: 'You must provide a body to update',
-        })
-    }
+        let user = await User.findOne({ id: body.id });
 
-    User.findOne({ _id: req.params.id }, (err, user) => {
-        if (err) {
+        if (!user) {
             return res.status(404).json({
-                err,
-                message: 'Movie not found!',
+                updateSuccess: err,
+                message: '선생님을 찾을 수 없습니다',
             })
         }
-        User.classroom = body.classroom
-        User
+        let preClassroom = user.classroom
+        for (let index = 0; index < preClassroom.length; index++) {
+            if (preClassroom[index].class_id(body.classroom.class_id)) {
+                return res.status(200).json({
+                    updateSuccess: false,
+                    id: user._id,
+                    message: '이미 생성된 강의실입니다',
+                })
+            }
+        }
+        console.log("현재 " + preClassroom)
+
+        preClassroom.push(body.classroom);
+        user.classroom = preClassroom
+        user
             .save()
             .then(() => {
                 return res.status(200).json({
-                    success: true,
+                    updateSuccess: true,
                     id: user._id,
-                    message: 'Movie updated!',
+                    data: user,
+                    message: '강의실이 추가되었습니다!',
                 })
             })
             .catch(error => {
                 return res.status(404).json({
-                    error,
-                    message: 'Movie not updated!',
+                    updateSuccess: error,
+                    message: '에러가 발생되었습니다!',
                 })
             })
-    })
+
+    } catch (err) {
+
+    }
+    return;
 }
 
 module.exports = {
-    updateClassroom
+    addClassroom
 }

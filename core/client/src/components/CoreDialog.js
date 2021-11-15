@@ -137,7 +137,6 @@ const CoreDialog = props => {
                         }
                         else if(props.button_value === '등록') {
                             props.handleFormSubmit(text_datas);
-                            props.handleFormSubmit(select_class_id);
                         }
                         setDialog_data({ open: false })
                     }} >{props.button_value}</BasicBtn2>

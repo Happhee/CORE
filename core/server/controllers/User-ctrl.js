@@ -37,7 +37,7 @@ createUser = (req, res) => {
     user.save()
         .then(() => {
             console.log('회원저장')
-            return res.status(200).json({ success: true })
+            return res.status(200).json({ registerSuccess: true })
         })
         .catch((err) => {
             return res.json({
@@ -97,8 +97,8 @@ loginUser = async (req, res) => {
         })
     })
 }
-getUser = (req, res) => {
-    User.findOne({ id: req.body.id }, (err, user) => {
+getUser = async (req, res) => {
+    await User.findOne({ id: req.body.id }, (err, user) => {
         if (!user || err) {
             return res.json({
                 getSuccess: false,
@@ -109,7 +109,7 @@ getUser = (req, res) => {
             getSuccess: true,
             data: user
         })
-    })
+    }).catch(err => console.log(err))
 }
 auth = (req, res) => {
     res.status(200).json({
