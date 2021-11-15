@@ -13,6 +13,7 @@ import QuizList from '../teacher/components/QuizList';
 import ProblemMain from '../teacher/components/ProblemMain'
 import FeedBack from '../teacher/components/FeedBack';
 import Student_WorkBook from '../student/components/WorkBook';
+import Student_QuizList from '../student/components/QuizList';
 import { SpaTwoTone } from '@material-ui/icons';
 
 const Logo_Room = props => {
@@ -78,11 +79,17 @@ const Subject = props => {
         //워크북 상세 라우트
         route.push(<Route exact path='/mainpage/teacher/workbook/quizlist' render={() => <QuizList />} key="quizlist" />);
         route.push(<Route path={['/mainpage/teacher/workbook/quizlist/:problemmain', '/mainpage/teacher/feedback/quizlist/:problemmain']} render={() => <ProblemMain />} key="problemadd" />);
+    
     }
     else {
         list.push(<Subject_Link key={data[0].id} title={data[0].title}
             link='/mainpage/student/workbook' />);
         route.push(<Route path='/mainpage/student/workbook' component={Student_WorkBook} exact={true} key={data[0].id} />)
+
+        //워크북 상세 라우트
+        route.push(<Route exact path='/mainpage/student/workbook/quizlist' render={() => <Student_QuizList />} key="quizlist" />);
+        route.push(<Route path={['/mainpage/student/workbook/quizlist/:problemmain', '/mainpage/student/feedback/quizlist/:problemmain']} render={() => <ProblemMain />} key="problemadd" />);
+    
 
     }
 
