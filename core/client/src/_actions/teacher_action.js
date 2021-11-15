@@ -1,7 +1,8 @@
 import { request } from '../utils/axios';
 import {
     CREATE_CLASSROOM,
-    ADD_CLASSROOM
+    ADD_CLASSROOM,
+    GET_STUDENT_LIST
 } from './types';
 
 const TEACHER_URL = "/api/teacher";
@@ -22,6 +23,15 @@ export function createClassroom(dataToSubmit) {
 
     return {
         type: CREATE_CLASSROOM,
+        payload: data,
+    }
+}
+
+export function getStudentlist(dataToSubmit, class_id) {
+    const data = request("GET", TEACHER_URL + "/studentlist/" + class_id, dataToSubmit);
+
+    return {
+        type: GET_STUDENT_LIST,
         payload: data,
     }
 }

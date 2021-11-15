@@ -67,7 +67,7 @@ function ClassRoom({ match }) {
                     // setClassrooms(res.payload.data.classroom)
                 }
                 else {
-                    console.log(res.payload.message)
+                    alert(res.payload.message)
                 }
             })
         let class_body = {

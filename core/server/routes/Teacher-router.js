@@ -6,4 +6,5 @@ const router = express.Router();
 
 router.put('/teacher/classroom', TeacherCtrl.addClassroom);
 router.post('/teacher/classroom', ClassroomCtrl.createClassroom);
+router.get('/teacher/studentlist/:class_id', ClassroomCtrl.getStudentlist);
 module.exports = router;
