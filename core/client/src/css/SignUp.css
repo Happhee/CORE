@@ -9,20 +9,20 @@ body{
     justify-content: center;
     flex-direction: column;
     padding-bottom: 30%;
+    
 }
 
 .signup_content{
-    background-color: white;
     box-sizing: border-box;
-    width: 50%;
+    width: 35%;
     border: solid #692498 5px;
-    text-align: justify;
-    padding: 5px;
-    display: grid;
+    text-align: center;
+    padding: 0px;
+    background-color: white;
     align-items: center;
-
+    display: grid;
     grid-template-columns: 1fr 1.5fr 1fr;
-    grid-template-rows: repeat(8, 1fr);
+    grid-template-rows: repeat(2, 1fr);
 }
 .title_box{
     display: grid;
@@ -34,11 +34,14 @@ body{
     justify-content: center;
 }
 .signup_text{
-    grid-column: 1/2;
-    font-size: 25px;
-    text-align: center;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    grid-column: 1/2; 
+    float:right;
+    font-size: 20px;
+    text-align: right;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 10%;
+    margin-left: 30%;
    
 }
 .signup_input_box{
@@ -54,7 +57,7 @@ body{
 
 .check_box {
     display: grid;
-    grid-template-columns:10% 25% 10% 25%;
+    grid-template-columns:10% 15% 10% 15%;
     margin-top: 20px;
     margin-bottom: 20px;
     font-size: 20px;

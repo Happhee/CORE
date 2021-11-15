@@ -25,14 +25,14 @@ const CssCheckbox = styled(Checkbox)({
     marginLeft: '10px',
     marginRight: '10px'
 });
-const DeleteBtn = styled(Button)({
+const CssBtn = styled(Button)({
     width:"content",
     backgroundColor: '#fff',
     borderRadius: '5px',
     color: '#000',
+    fontsize:"large",
+    fontWeight:"bold",
     fontFamily:"esamanruLight",
-    fontsize:"50px",
-    fontWeight: 'normal',
     '&:hover': {
         background: "#8154A0",
         color: "#fff"
@@ -168,8 +168,8 @@ function Login(props) {
                     </div>
 
                     <div className="link_box" style={{marginTop:"0px",float:'right',width:"100%"}}>
-                        <DeleteBtn  style={{borderTopRightRadius:"0px",borderBottomRightRadius:"0px", borderRight:'2px solid #000'}} onClick={handleLogin} >LOGIN </DeleteBtn>
-                        <DeleteBtn  style={{margintLeft:"1%",borderTopLeftRadius:"0px",borderBottomLeftRadius:"0px"}} onClick={SignUp_Click} >SIGN UP </DeleteBtn>
+                        <CssBtn  style={{borderTopRightRadius:"0px",borderBottomRightRadius:"0px", borderRight:'2px solid #000'}}  size="large"  onClick={handleLogin} >LOGIN </CssBtn>
+                        <CssBtn  style={{margintLeft:"1%",borderTopLeftRadius:"0px",borderBottomLeftRadius:"0px"}}  size="large"  onClick={SignUp_Click} >SIGN UP </CssBtn>
 
                     </div>
                 </div>

@@ -7,6 +7,7 @@ import CssTextField from '../css/CssTextField';
 import Checkbox from '@mui/material/Checkbox';
 import AlertDialog from './AlertDialog';
 import CssButton from '../css/CssButton';
+import { Button, styled } from '@mui/material';
 
 import { BrowserRouter as useHistory, withRouter } from 'react-router-dom';
 
@@ -18,7 +19,19 @@ import { registerUser } from '../_actions/user_action'
 
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
-
+const CssBtn = styled(Button)({
+    marginLeft: '0px',
+    marginTop:"-20px",
+    textAlign: 'center',
+    backgroundColor: '#692498',
+    borderRadius: '30px',
+    color: '#fff',
+    fontWeight: 'bold',
+    '&:hover': {
+        background: "#E0BFE6",
+        color: "#FFF"
+    }
+});
 function SignUp(props) {
     console.log('회원가입렌더');
     const dispatch = useDispatch();
@@ -101,7 +114,7 @@ function SignUp(props) {
             <Toolbar data={toolbar} />
 
             <div className="signup_box">
-                <Core_Logo />
+            <img style={{ width: "200px", marginTop: "3%", marginBottom: "-2px", float: "left" }} src={require('../image/icon_BigLogo.png').default} />
                 <div className="signup_content">
                     {/* 회원가입 타이틀  */}
                     {/* <div className="signup_sub_div">
@@ -151,7 +164,7 @@ function SignUp(props) {
 
                     <div className="signup_success_box">
                         {/* <AlertDialog alertDialog_title="SIGN UP" textfield_state={signup_state} handleSignup={handleSignup} goLogin={goLogin} /> */}
-                        <CssButton variant="contained" color="secondary" onClick={handleSignup} >SIGN UP</CssButton>
+                        <CssBtn variant="contained" color="secondary" onClick={handleSignup} >SIGN UP</CssBtn>
                     </div>
                 </div>
             </div>
