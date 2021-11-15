@@ -38,7 +38,18 @@ const EditBtn = styled(Button)({
         color:"#FFF"
      }
 });
-
+const BasicBtn = styled(Button)({
+    marginLeft: '0px',
+    textAlign: 'center',
+    backgroundColor: '#692498',
+    borderRadius: '30px',
+    color: '#fff',
+    fontWeight: 'bold',
+    '&:hover': {
+        background: "#E0BFE6",
+        color: "#FFF"
+    }
+});
 function Customer(props) {
 
 

@@ -23,15 +23,28 @@ const styles = theme => ({
 
 const BasicBtn = styled(Button)({
     marginLeft: '0px',
-    textAlign:'center',
-    backgroundColor:'#E0BFE6',
-    borderRadius:'30px',
-    color:'#8154A0',
-    fontWeight:'bold',
+    textAlign: 'center',
+    backgroundColor: '#E0BFE6',
+    borderRadius: '30px',
+    color: '#8154A0',
+    fontWeight: 'bold',
     '&:hover': {
         background: "#8154A0",
-        color:"#FFF"
-     }
+        color: "#FFF"
+    }
+});
+
+const BasicBtn2 = styled(Button)({
+    marginLeft: '0px',
+    textAlign: 'center',
+    backgroundColor: '#692498',
+    borderRadius: '30px',
+    color: '#fff',
+    fontWeight: 'bold',
+    '&:hover': {
+        background: "#E0BFE6",
+        color: "#FFF"
+    }
 });
 const CoreDialog = props => {
 
@@ -104,10 +117,9 @@ const CoreDialog = props => {
     return (
         <div className={props.button_box_div}>
             <div className={props.button_box}>
-                <BasicBtn variant="contained" className={props.button_type} onClick={handleClickOpen}>{props.button_value}</BasicBtn>
+                <BasicBtn className={props.button_type} onClick={handleClickOpen}>{props.button_value}</BasicBtn>
             </div>
             <Dialog open={dialog_data.open} onClose={handleClose}>
-
                 <DialogTitle >
                     {props.dialog_title}
                 </DialogTitle>
@@ -119,21 +131,18 @@ const CoreDialog = props => {
                 </DialogContent>
 
                 <DialogActions>
-
-                    <BasicBtn variant="contained" color="primary" onClick={function (e) {
-
+                    <BasicBtn2 onClick={function (e) {
                         if (props.button_value === '수정') {
                             props.handleFormModify(text_datas)
                         }
-                        else {
-
+                        else if(props.button_value === '등록') {
                             props.handleFormSubmit(text_datas);
                             props.handleFormSubmit(select_class_id);
                         }
                         setDialog_data({ open: false })
-                    }} >{props.button_value}</BasicBtn>
+                    }} >{props.button_value}</BasicBtn2>
 
-                    <BasicBtn variant="outlined" color="primary" onClick={handleClose}>닫기</BasicBtn>
+                    <BasicBtn2 onClick={handleClose}>닫기</BasicBtn2>
 
                 </DialogActions>
 
