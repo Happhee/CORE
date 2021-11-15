@@ -30,6 +30,7 @@ function ClassRoom({ match }) {
 
     const dispatch = useDispatch();
     let [classrooms, setClassrooms] = useState([])
+    let [class_id, setClass_id] = useState([]);
     useEffect(() => {
         let body = {
             id: location.state.login_id
@@ -44,18 +45,13 @@ function ClassRoom({ match }) {
                     console.log(res.payload)
                 }
             })
-
-        // dispatch(getUsers())
-        //     .then(res => {
-        //         console.log(res);
-        //     })
-
     }, [classrooms])
 
     function insertClassroom(value) {
+        let class_id = location.state.login_id + Date.now();
         let body = {
             id: location.state.login_id,
-            classroom: value
+            classroom: { title: value, class_id: class_id }
         }
         // 클래스룸 가져오기
         dispatch(addClassroom(body))
@@ -73,14 +69,14 @@ function ClassRoom({ match }) {
         let class_body = {
             name: value,
             classroom_master: location.state.login_id,
-            class_id: location.state.login_id + Date.now()
+            class_id: class_id
         }
 
         dispatch(createClassroom(class_body))
             .then(res => {
                 console.log(res.payload.createClassroom)
                 if (res.payload.createClassroom) {
-
+                    setClass_id(class_body.class_id);
                     console.log(res.payload.message);
                 }
                 else {
@@ -130,7 +126,8 @@ function ClassRoom({ match }) {
                         pathname: "../../mainpage/" + mode + "/" + startpage,
                         state: {
                             classroom_title: classroom,
-                            id: location.state.login_id
+                            id: location.state.login_id,
+                            class_id: class_id
                         }
                     })
                 }}

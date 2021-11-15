@@ -70,6 +70,29 @@ createClassroom = async (req, res) => {
 
 }
 
+getStudentlist = async (req, res) => {
+    const { class_id } = req.params;
+
+
+    try {
+        let classroom = await Classroom.findOne({ class_id: class_id })
+        return res.status(200).json({
+            getStudentlist: true,
+            message: "학생정보 불러오기 성공",
+            data: classroom.student_list,
+        })
+    } catch (e) {
+        return res.status(400).json({
+            getStudentlist: false,
+            message: '학생정보를 불러올수 없습니다'
+        });
+    }
+
+    return;
+
+}
+
 module.exports = {
-    createClassroom
+    createClassroom,
+    getStudentlist
 }

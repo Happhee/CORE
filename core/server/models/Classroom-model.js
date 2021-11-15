@@ -37,7 +37,7 @@ const classroomSchema = new Schema({
         }]
 
     }],
-    user_list: {
+    student_list: {
         type: Array,
     },
     request_student_list: {
