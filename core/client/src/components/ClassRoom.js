@@ -11,7 +11,7 @@ import { useLocation, useHistory } from 'react-router-dom';
 //로그인 성공 후 페이지 -> 서버로부터 강의실리스트를 가져와야함 
 import { useDispatch } from 'react-redux'
 import { getUser } from '../_actions/user_action';
-import { updateClassroom } from '../_actions/teacher_action'
+import { addClassroom, createClassroom } from '../_actions/teacher_action'
 
 function ClassRoom({ match }) {
     let toolbar = [
@@ -57,8 +57,8 @@ function ClassRoom({ match }) {
             id: location.state.login_id,
             classroom: value
         }
-        //클래스룸 가져오기
-        dispatch(updateClassroom(body))
+        // 클래스룸 가져오기
+        dispatch(addClassroom(body))
             .then(res => {
                 if (res.payload.updateSuccess) {
                     console.log("업데이트 ")
@@ -67,12 +67,33 @@ function ClassRoom({ match }) {
                     // setClassrooms(res.payload.data.classroom)
                 }
                 else {
-                    console.log(res.payload)
+                    console.log(res.payload.message)
                 }
             })
+        let class_body = {
+            name: value,
+            classroom_master: location.state.login_id,
+            class_id: location.state.login_id + Date.now()
+        }
 
+        dispatch(createClassroom(class_body))
+            .then(res => {
+                console.log(res.payload.createClassroom)
+                if (res.payload.createClassroom) {
 
+                    console.log(res.payload.message);
+                }
+                else {
+                    console.log(res.payload.message)
+                }
+            }).catch((err) => {
+                console.log(err);
+            });
     }
+
+
+
+
     let text_data = [
         { id: 1, label: "강의실명", name: "classroom", value: '' }
     ]

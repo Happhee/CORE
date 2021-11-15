@@ -59,14 +59,16 @@ function SignUp(props) {
 
         dispatch(registerUser(body))
             .then(res => {
-                if (res.payload.success) {
+                if (res.payload.registerSuccess) {
                     alert('회원가입이 완료되었습니다!')
                     props.history.goBack();
                 } else {
                     console.log(res.payload);
                     alert(res.payload.message)
                 }
-            })
+            }).catch((err) => {
+                console.log(err);
+            });
     }
     const handleInputChange = (event) => {
         const { value, name } = event.target;

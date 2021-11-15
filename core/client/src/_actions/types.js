@@ -4,5 +4,5 @@ export const GET_USER = "get_user";
 export const GET_USERS = "get_users";
 export const AUTH_USER = "auth_user";
 
-
-export const REGISTER_CLASSROOM = "register_classroom";
+export const CREATE_CLASSROOM = "create_classroom";
+export const ADD_CLASSROOM = "add_classroom";
