@@ -2,7 +2,15 @@ body{
     background-color: #E0BFE6;
 
 }
+span{
+    font-family: 'esamanruLight';
+    font-size: 15px;
+}
 
+.text{
+    margin-bottom: 0px;
+    margin-top: 8px;
+}
 .top_box{
     background-color: #E0BFE6;
     display: flex;
@@ -14,10 +22,11 @@ body{
 .information_content{
     background-color: white;
     box-sizing: border-box;
-    width: 50%;
+    width: 40%;
     border: solid #692498 5px;
     text-align: center;
     padding: 5px;
+    font-family: 'esamanruLight';
 
 
 }
@@ -29,6 +38,7 @@ body{
     margin-top: 20px;
     padding-bottom: 20px;
     font-size: 30px;
+    font-weight: bold;
     justify-content: center;
     border-bottom: solid #692498 5px;
     background-color: white;
@@ -40,27 +50,26 @@ body{
     font-size: 30px;
     justify-content: center;
     background-color: white;
-    border-bottom: solid #692498 5px;
 
 }
 
 .left_div{
     grid-column: 1/2;
     margin-top: 20px;
-    padding-bottom: 20px;
-    font-size: 30px;
+    padding-bottom: 40px;
+    font-size: 15px;
     text-align: start;
     justify-content: center;
-    margin-left: 10%;
-
+    margin-left: 5%;
 }
+
 .right_div{
     grid-column: 2/3;
     margin-top: 20px;
     padding-bottom: 20px;
-    font-size:30px;
+    font-size:15px;
     text-align: start;
-    margin-left: 10%;
+    margin-left:5%;
     justify-content: center;
 }
 
