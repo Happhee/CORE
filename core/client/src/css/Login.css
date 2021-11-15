@@ -12,17 +12,15 @@ body{
 }
 .login_content{
     box-sizing: border-box;
-    width: 50%;
+    width: 35%;
     border: solid #692498 5px;
     text-align: center;
-    padding: 5px;
-background-color: white;
-align-items: center;
-
+    padding: 0px;
+    background-color: white;
+    align-items: center;
     display: grid;
     grid-template-columns: 1fr 1.5fr 1fr;
-
-    grid-template-rows: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
 }
 
 
@@ -31,40 +29,38 @@ align-items: center;
     grid-column: 1/2; 
     font-size: 25px;
     text-align: center;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     text-align: center;
-
+margin-left: 50%;
     
 }
 .login_input_box{
-    
     grid-column: 2/3;
     margin-top: 20px;
     font-size: 25px;
     justify-content: left;
-
-
 }
 
 
 .check_box {
+    margin-top: 5%;
     display: grid;
-    grid-template-columns:10% 25% 10% 25%;
+    grid-template-columns:5% 20% 5% 20%;
     grid-column: 2/4;
-    margin-top: 20px;
-    margin-bottom: 20px;
     font-size: 20px;
     justify-content: left;
 }
 
-.link_box{
-    display: grid;
-    grid-template-columns:50% 50%;
-    
-    margin-top: 20px;
-    margin-bottom: 20px;
-    font-size: 20px;
-    justify-content: center;
+
+span{
+    font-family: 'esamanruLight';
 }
 
+.link_box{
+    display: grid;
+    grid-template-columns:30% 30%;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    justify-content: center;
+}

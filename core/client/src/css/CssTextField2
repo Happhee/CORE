@@ -4,9 +4,7 @@ import { styled } from '@mui/material/styles';
 
 
 //텍스트 필드 속성 적용
-const CssTextField = styled(TextField)({
-    marginTop: '10px',
-
+const CssTextField2 = styled(TextField)({
     '& label.Mui-focused': {
         color: 'green',
     },
@@ -26,4 +24,4 @@ const CssTextField = styled(TextField)({
     },
 });
 
-export default CssTextField;
+export default CssTextField2;

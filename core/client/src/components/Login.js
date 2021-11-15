@@ -1,16 +1,16 @@
 /*eslint-disable */
+
 import React, { useReducer, useState, useEffect } from 'react';
 import '../css/Login.css';
 import { ReactComponent as Core_Logo } from '../css/Core.svg';
 
 import { BrowserRouter as useHistory, withRouter } from 'react-router-dom';
 import Toolbar from './Toolbar';
-import { Checkbox, styled } from '@mui/material';
+import { Checkbox,Button, styled } from '@mui/material';
 
 import CssAlert from '../css/CssAlert';
 import CssTextField from '../css/CssTextField';
 import CssButton from '../css/CssButton';
-
 
 import { useAlert } from 'react-alert';
 import * as InputVaildation from './InputValidation'
@@ -25,7 +25,19 @@ const CssCheckbox = styled(Checkbox)({
     marginLeft: '10px',
     marginRight: '10px'
 });
-
+const CssBtn = styled(Button)({
+    width:"content",
+    backgroundColor: '#fff',
+    borderRadius: '5px',
+    color: '#000',
+    fontsize:"large",
+    fontWeight:"bold",
+    fontFamily:"esamanruLight",
+    '&:hover': {
+        background: "#8154A0",
+        color: "#fff"
+    }
+});
 
 function Login(props) {
 
@@ -129,26 +141,23 @@ function Login(props) {
             <Toolbar data={toolbar} />
 
             <div className="login_box">
-                <Core_Logo />
+            <img style={{ width: "200px", marginTop: "3%", marginBottom: "-2px", float: "left" }} src={require('../image/icon_BigLogo.png').default} />
 
-                <div className="login_content">
+                <div className="login_content" style={{padding:"10px"}}>
 
                     <span className="login_text"> {login_data[0].title} </span>
                     <CssTextField className="login_input_box" size="small" variant="outlined" id="custom-css-outlined-input1" maxRows={1}
                         name={login_data[0].id} value={login_data[0].value} onChange={handleInputChange}
-                        helperText={helperText_data[0]} />
-
-
-
+                        helperText={helperText_data[0]} 
+                        style={{color:"black", marginLeft:"5%",width: "280px"}}/>
 
                     <span className="login_text">{login_data[1].title}  </span>
                     <CssTextField className="login_input_box" type="password" size="small" variant="outlined" id="custom-css-outlined-input2" maxRows={1}
                         name={login_data[1].id} value={login_data[1].value} onChange={handleInputChange}
-                        helperText={helperText_data[1]} />
+                        helperText={helperText_data[1]} 
+                        style={{ marginLeft:"5%",width: "280px"}}/>
 
-
-
-                    <div className="check_box" >
+                    <div className="check_box" style={{marginTop:"0px"}} >
                         <CssCheckbox type="checkbox" checked={data[0].checked}
                             value={data[0].value} onChange={onChange} />
                         <span>{data[0].value}</span>
@@ -158,9 +167,9 @@ function Login(props) {
                         <span>{data[1].value}</span>
                     </div>
 
-                    <div className="link_box" >
-                        <CssButton variant="contained" color="secondary" onClick={handleLogin} >LOGIN </CssButton>
-                        <CssButton variant="contained" color="secondary" onClick={SignUp_Click} >SIGN UP </CssButton>
+                    <div className="link_box" style={{marginTop:"0px",float:'right',width:"100%"}}>
+                        <CssBtn  style={{borderTopRightRadius:"0px",borderBottomRightRadius:"0px", borderRight:'2px solid #000'}}  size="large"  onClick={handleLogin} >LOGIN </CssBtn>
+                        <CssBtn  style={{margintLeft:"1%",borderTopLeftRadius:"0px",borderBottomLeftRadius:"0px"}}  size="large"  onClick={SignUp_Click} >SIGN UP </CssBtn>
 
                     </div>
                 </div>
