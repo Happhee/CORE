@@ -135,8 +135,11 @@ const CoreDialog = props => {
                         if (props.button_value === '수정') {
                             props.handleFormModify(text_datas)
                         }
-                        else if(props.button_value === '등록') {
+                        else if (props.button_value === '등록') {
                             props.handleFormSubmit(text_datas);
+                        }
+                        else if (props.dialog_title == '강의실 추가하기') {
+                            props.handleFormSubmit(text_datas)
                         }
                         setDialog_data({ open: false })
                     }} >{props.button_value}</BasicBtn2>

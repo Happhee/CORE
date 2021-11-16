@@ -30,42 +30,45 @@ function ClassRoom({ match }) {
 
     const dispatch = useDispatch();
     let [classrooms, setClassrooms] = useState([])
+
+
     let [class_id, setClass_id] = useState([]);
     useEffect(() => {
-        let body = {
-            id: location.state.login_id
-        }
+
         //클래스룸 가져오기
-        dispatch(getUser(body))
+        dispatch(getUser(location.state.login_id))
             .then(res => {
                 if (res.payload.getSuccess) {
-                    setClassrooms(res.payload.data.classroom)
+                    setClassrooms(res.payload.data.belonged_classes)
                 }
                 else {
                     console.log(res.payload)
                 }
             })
-    }, [classrooms])
+    }, [])
 
     function insertClassroom(value) {
         let class_id = location.state.login_id + Date.now();
         let body = {
-            id: location.state.login_id,
-            classroom: { title: value, class_id: class_id }
+            nick: location.state.login_id,
+            belonged_classes: value
         }
-        // 클래스룸 가져오기
+
         dispatch(addClassroom(body))
             .then(res => {
-                if (res.payload.updateSuccess) {
-                    console.log("업데이트 ")
-                    console.log(res.payload.data.classroom);
+                console.log("업데이트 ->")
 
-                    // setClassrooms(res.payload.data.classroom)
+                console.log(res.payload);
+                if (res.payload.updateSuccess) {
+                    setClassrooms(res.payload.data.belonged_classes);
                 }
                 else {
                     alert(res.payload.message)
                 }
+            }).catch(err => {
+                console.log(err)
             })
+
         let class_body = {
             name: value,
             classroom_master: location.state.login_id,
@@ -74,7 +77,8 @@ function ClassRoom({ match }) {
 
         dispatch(createClassroom(class_body))
             .then(res => {
-                console.log(res.payload.createClassroom)
+                console.log("강의실 ->")
+                console.log(res.payload);
                 if (res.payload.createClassroom) {
                     setClass_id(class_body.class_id);
                     console.log(res.payload.message);
@@ -85,6 +89,7 @@ function ClassRoom({ match }) {
             }).catch((err) => {
                 console.log(err);
             });
+
     }
 
 
