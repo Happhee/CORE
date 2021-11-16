@@ -3,12 +3,12 @@ import {
     LOGIN_USER, REGISTER_USER, GET_USER, GET_USERS, AUTH_USER
 } from './types';
 
-const USER_URL = "/api/user";
+const USER_URL = "/user";
 
 //로그인
 export function loginUser(dataToSubmit) {
 
-    const data = request("post", USER_URL + "/login", dataToSubmit);
+    const data = request("GET", USER_URL + "/login", dataToSubmit);
 
     return {
         type: LOGIN_USER,
@@ -27,7 +27,7 @@ export function registerUser(dataToSubmit) {
 }
 //강의실 불러오기 
 export function getUser(dataToSubmit) {
-    const data = request("POST", USER_URL, dataToSubmit)
+    const data = request("GET", USER_URL, dataToSubmit)
 
     return {
         type: GET_USER,
@@ -39,14 +39,5 @@ export function getUsers() {
     return {
         type: GET_USERS,
         payload: data,
-    }
-}
-export function auth() {
-
-    const data = request("post", USER_URL + "/auth");
-
-    return {
-        type: AUTH_USER,
-        payload: data
     }
 }
