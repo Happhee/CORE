@@ -5,12 +5,11 @@ import {
     GET_STUDENT_LIST
 } from './types';
 
-const TEACHER_URL = "/api/teacher";
-
+const TEACHER_URL = "/teacher";
 
 export function addClassroom(dataToSubmit) {
 
-    const data = request("PUT", TEACHER_URL + "/classroom", dataToSubmit);
+    const data = request("POST", TEACHER_URL + "/classroom", dataToSubmit);
 
     return {
         type: ADD_CLASSROOM,
@@ -19,7 +18,7 @@ export function addClassroom(dataToSubmit) {
 }
 
 export function createClassroom(dataToSubmit) {
-    const data = request("POST", TEACHER_URL + "/classroom", dataToSubmit);
+    const data = request("POST", TEACHER_URL + "/class", dataToSubmit);
 
     return {
         type: CREATE_CLASSROOM,

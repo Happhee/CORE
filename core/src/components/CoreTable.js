@@ -1,6 +1,6 @@
 /*eslint-disable */
 import React, { useState } from 'react';
-import Unit from '../components/Unit'
+import Unit from './Unit'
 import { withStyles } from '@material-ui/core/styles';
 
 
@@ -28,12 +28,12 @@ function CoreTable(props) {
     return (
         <div >
             <table border="1" >
-                <tr style={{  fontFamily: 'esamanru', fontWeight: 'bold', height: '50px' }} align="center" >
+                <tr style={{ fontFamily: 'esamanru', fontWeight: 'bold', height: '50px' }} align="center" >
                     {table_cells.map((cell, index) => {
                         return <td key={index}>{cell}</td>
                     })}
                 </tr>
-                <tbody style={{ olor:"#fff",fontFamily: 'esamanru', fontWeight: 'normal', height: '50px' }} align="center" >
+                <tbody style={{ olor: "#fff", fontFamily: 'esamanru', fontWeight: 'normal', height: '50px' }} align="center" >
                     {unit.map(c => {
                         return <Unit key={c.id} id={c.id} name={c.name} count={c.count} editType={props.editType}
                             mainunit={props.mainunit}
