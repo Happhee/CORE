@@ -1,0 +1,32 @@
+
+.main_div{
+    background-color:  white;
+    width: 100%;
+    height: 100vh;
+}
+h2{
+    padding-top: 2%;
+}
+table {
+    width: 100%;
+    height: auto;
+    border: 0.5px solid #8154A0;
+    border-top: 4px solid rgb(87, 87, 87);
+    border-bottom: 1px solid rgb(87, 87, 87);
+    border-left: 1px solid rgb(255, 255, 255);
+    border-right: 1px solid rgb(255, 255, 255);
+    border-collapse: collapse;
+    align-items:center;
+    align-content:center;
+  }
+  th, td {
+    height: auto;
+    font-family: 'esamanruLight';
+    border: 0.5px solid #8154A0;
+    padding: 10px;
+    align-items:center;
+    align-content: center;
+  }
+  
+
+  

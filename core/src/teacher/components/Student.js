@@ -129,8 +129,8 @@ class Student extends Component {
     render() {
         const { boards } = this.state;
 
-        console.log("강의실 이름 -> " + this.props.location.state.classroom_title)
-        console.log("로그인된 선생님 아이디 -> " + this.props.location.state.teacher_id)
+        //console.log("강의실 이름 -> " + this.props.location.state.classroom_title)
+        //console.log("로그인된 선생님 아이디 -> " + this.props.location.state.teacher_id)
 
         return (
             <div className="main_div">
@@ -145,7 +145,6 @@ class Student extends Component {
                                 <td width="400">전화번호</td>
                                 <td width="200">소속</td>
                                 <td width="50">삭제</td>
-
                             </tr>
                             {
                                 boards.map(row =>
