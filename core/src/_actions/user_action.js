@@ -11,7 +11,7 @@ export async function loginUser(dataToSubmit) {
         const data = await request("GET", USER_URL + "/login"
             + "?nick=" + dataToSubmit.nick
             + "&password=" + dataToSubmit.password
-            + "&part=" + dataToSubmit.part
+            + "&role=" + dataToSubmit.role
         );
         return {
             type: LOGIN_USER,
@@ -33,9 +33,10 @@ export function registerUser(dataToSubmit) {
         payload: data,
     }
 }
-//강의실 불러오기 
+
+//유저 한명 불러오기 
 export function getUser(dataToSubmit) {
-    const data = request("GET", USER_URL, dataToSubmit)
+    const data = request("GET", USER_URL + "?nick=" + dataToSubmit)
 
     return {
         type: GET_USER,

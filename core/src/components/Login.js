@@ -73,7 +73,7 @@ function Login(props) {
         let body = {
             nick: login_data[0].value,
             password: login_data[1].value,
-            part: partType
+            role: partType
         }
 
         // let res = login(body);
