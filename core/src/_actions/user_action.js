@@ -41,3 +41,12 @@ export function getUsers() {
         payload: data,
     }
 }
+export function auth() {
+
+    const data = request("post", USER_URL + "/auth");
+
+    return {
+        type: AUTH_USER,
+        payload: data
+    }
+}
