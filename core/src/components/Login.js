@@ -76,6 +76,8 @@ function Login(props) {
             part: partType
         }
 
+        // let res = login(body);
+        // console.log(res)
         dispatch(loginUser(body))
             .then(res => {
                 if (res.payload.loginSuccess) {

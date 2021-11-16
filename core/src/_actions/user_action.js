@@ -6,14 +6,22 @@ import {
 const USER_URL = "/user";
 
 //로그인
-export function loginUser(dataToSubmit) {
-
-    const data = request("GET", USER_URL + "/login", dataToSubmit);
-
-    return {
-        type: LOGIN_USER,
-        payload: data,
+export async function loginUser(dataToSubmit) {
+    try {
+        const data = await request("GET", USER_URL + "/login"
+            + "?nick=" + dataToSubmit.nick
+            + "&password=" + dataToSubmit.password
+            + "&part=" + dataToSubmit.part
+        );
+        return {
+            type: LOGIN_USER,
+            payload: data,
+        }
+    } catch (e) {
+        return
     }
+
+
 }
 //회원가입
 export function registerUser(dataToSubmit) {
