@@ -4,12 +4,27 @@ import '../css/ProblemAdd.css'
 import React, { useEffect, useState } from 'react';
 import ProblemGrid from '../../components/ProblemGrid';
 import { useHistory, withRouter, useParams, useLocation } from 'react-router-dom';
-import { Button, useThemeProps } from '@mui/material';
+import { Button, styled } from '@mui/material';
 import Box from '@mui/material/Box'
 import * as InputValidation from '../../components/InputValidation';
 import AlertDialog from '../../components/AlertDialog';
 import queryString from 'query-string'
 
+const Back = styled(Button)({
+    marginLeft: '87%',
+    height: '40px',
+    paddingBottom:"3%",
+    textAlign: 'center',
+    backgroundColor: '#692498',
+    borderRadius: '10px',
+    color: '#fff',
+    fontFamily: 'esamanruLight',
+    fontWeight: 'normal',
+    '&:hover': {
+        background: "#E0BFE6",
+        color: "#8154A0"
+    }
+});
 
 function ProblemAdd() {
 
@@ -48,12 +63,12 @@ function ProblemAdd() {
         <div className="main_problem_div">
             <div className="sub_div">
                 <div className="problem_top_div">
-                    <span className="problem_title">{grid_data[0].title}</span>
+                    <h5 className="problem_top_div">{grid_data[0].title}</h5>
                     <Box sx={{ '& button': { m: 0.5 } }}>
-
                         <div>
-                            <Button variant="contained" color="secondary" onClick={goList}>목록으로</Button>
-                        </div>                    </Box>
+                            <Back onClick={goList}><h4>목록으로</h4></Back>
+                        </div>                    
+                    </Box>
 
 
                 </div>

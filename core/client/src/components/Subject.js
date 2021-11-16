@@ -30,7 +30,7 @@ const Subject_Link = props => {
     return (
         <div>
             <span className="subject_text"
-            style={{  cursor: "pointer"}}
+            style={{  cursor: "pointer",fontWeight:"bold"}}
                 onClick={() => {
                     history.push({
                         pathname: props.link,
