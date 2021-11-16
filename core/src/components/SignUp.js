@@ -21,7 +21,7 @@ const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
 const CssBtn = styled(Button)({
     marginLeft: '0px',
-    marginTop:"-20px",
+    marginTop: "-20px",
     textAlign: 'center',
     backgroundColor: '#692498',
     borderRadius: '30px',
@@ -62,12 +62,12 @@ function SignUp(props) {
 
 
         let body = {
-            id: signup_data[0].value,
-            pw: signup_data[1].value,
+            nick: signup_data[0].value,
+            password: signup_data[1].value,
             name: signup_data[2].value,
             phone: signup_data[3].value,
             affiliation: signup_data[4].value,
-            part: partType
+            role: partType
         }
 
         dispatch(registerUser(body))
@@ -116,7 +116,7 @@ function SignUp(props) {
             <Toolbar data={toolbar} />
 
             <div className="signup_box">
-            <img style={{ width: "200px", marginTop: "3%", marginBottom: "-2px", float: "left" }} src={require('../image/icon_BigLogo.png').default} />
+                <img style={{ width: "200px", marginTop: "3%", marginBottom: "-2px", float: "left" }} src={require('../image/icon_BigLogo.png').default} />
                 <div className="signup_content">
                     {/* 회원가입 타이틀  */}
                     {/* <div className="signup_sub_div">
