@@ -44,6 +44,19 @@ const BasicBtn = styled(Button)({
         color: "#FFF"
     }
 });
+const BasicBtn2 = styled(Button)({
+marginLeft: '0px',
+    textAlign: 'center',
+    backgroundColor: '#E0BFE6',
+    borderRadius: '30px',
+    color: '#8154A0',
+    fontWeight: 'bold',
+    '&:hover': {
+        background: "#8154A0",
+        color: "#FFF"
+    }
+});
+
 function AlertDialog(props) {
     const [open, setOpen] = useState(false);
     const [textfield_state, setTextfield_state] = useState(props.textfield_state);
@@ -148,6 +161,11 @@ function AlertDialog(props) {
                             return <DeleteBtn  onClick={handleClickOpen} key="set">
                                 {props.alertDialog_title}
                             </DeleteBtn>;
+                        }
+                        else if(props.alertDialog_title === '답변하기'){
+                            return <BasicBtn  onClick={handleClickOpen} key="set">
+                            {props.alertDialog_title}
+                        </BasicBtn>;
                         }
                         else {
                             return <button>

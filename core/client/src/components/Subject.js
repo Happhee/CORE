@@ -30,6 +30,7 @@ const Subject_Link = props => {
     return (
         <div>
             <span className="subject_text"
+            style={{  cursor: "pointer",fontWeight:"bold"}}
                 onClick={() => {
                     history.push({
                         pathname: props.link,
@@ -54,17 +55,17 @@ const Subject = props => {
 
     if (data.length == 3) {
 
-        list.push(<Subject_Link key={data[0].id} title={data[0].title}
+        list.push(<Subject_Link key={data[0].id} title={data[0].title } style={{  cursor: "pointer"}}
             link='/mainpage/teacher/student'
             classroom_title={props.classroom_title}
             teacher_id={props.id}
         />);
-        list.push(<Subject_Link key={data[1].id} title={data[1].title}
+        list.push(<Subject_Link key={data[1].id} title={data[1].title} style={{  cursor: "pointer"}}
             link='/mainpage/teacher/workbook'
             classroom_title={props.classroom_title}
             teacher_id={props.id}
         />);
-        list.push(<Subject_Link key={data[2].id} title={data[2].title}
+        list.push(<Subject_Link key={data[2].id} title={data[2].title} style={{  cursor: "pointer"}}
             link='/mainpage/teacher/feedback'
             classroom_title={props.classroom_title}
             teacher_id={props.id}
@@ -83,7 +84,9 @@ const Subject = props => {
     }
     else {
         list.push(<Subject_Link key={data[0].id} title={data[0].title}
-            link='/mainpage/student/workbook' />);
+            link='/mainpage/student/workbook'
+            classroom_title={props.classroom_title}
+            />);
         route.push(<Route path='/mainpage/student/workbook' component={Student_WorkBook} exact={true} key={data[0].id} />)
 
         //워크북 상세 라우트
@@ -99,7 +102,7 @@ const Subject = props => {
     return (
         <div>
             <div className={mode + "_subject"}>
-                <div style={{ textAlign: 'center', alignContent: 'center', alignItems: 'center' }}>
+                <div style={{  textAlign: 'center', alignContent: 'center', alignItems: 'center' }}>
                     <img style={{ marginTop: '5px', width: '80px' }} src={require('../image/iconBiglogo.png').default} />
                     <p style={{ marginTop: 0, marginBottom: '5px', textAlign: 'center', fontFamily: 'esamanruLight' }}>{props.classroom_title}</p>
                 </div>
