@@ -73,7 +73,6 @@ function FeedBank() {
                     </div>
                     <Switch>
                         <Route exact path='/:mode/feedbank_mainlist' render={() => <FeedBank_MainList />} />
-
                     </Switch>
                 </div>
             </div>

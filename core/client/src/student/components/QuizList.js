@@ -117,12 +117,12 @@ function BoardItem(props) {
                             </div>;
                         }
                         else if(props.row.set == "미제출"){
-                            return <div key="set" style={{ border: "12px solid grey", borderColor: "grey", backgroundColor: "grey", borderRadius: "20px" }}>
+                            return <div key="set" style={{ cursor: "pointer",border: "12px solid grey", borderColor: "grey", backgroundColor: "grey", borderRadius: "20px" }}>
                                 {props.row.set}
                             </div>;
                         }
                         else if(props.row.set == "첨삭대기중"){
-                            return <div key="set" style={{ border: "12px solid grey", borderColor: "pink", backgroundColor: "pink", borderRadius: "20px" }}>
+                            return <div key="set" style={{ cursor: "pointer",border: "12px solid grey", borderColor: "#FF6E8D", backgroundColor: "#FF6E8D", borderRadius: "20px" }}>
                                 {props.row.set}
                             </div>;
                         }
