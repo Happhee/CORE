@@ -7,7 +7,6 @@ import {
 
 const TEACHER_URL = "/teacher";
 
-
 export function addClassroom(dataToSubmit) {
 
     const data = request("POST", TEACHER_URL + "/classroom", dataToSubmit);
