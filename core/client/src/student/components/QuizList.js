@@ -122,7 +122,7 @@ function BoardItem(props) {
                             </div>;
                         }
                         else if(props.row.set == "첨삭대기중"){
-                            return <div key="set" style={{ cursor: "pointer",border: "12px solid grey", borderColor: "#FF6E8D", backgroundColor: "#FF6E8D", borderRadius: "20px" }}>
+                            return <div key="set" style={{ cursor: "pointer",border: "12px solid #FF6E8D", borderColor: "#FF6E8D", backgroundColor: "#FF6E8D", borderRadius: "20px" }}>
                                 {props.row.set}
                             </div>;
                         }
