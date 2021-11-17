@@ -16,7 +16,7 @@ const Back = styled(Button)({
     paddingBottom:"3%",
     textAlign: 'center',
     backgroundColor: '#692498',
-    borderRadius: '10px',
+    borderRadius: '30px',
     color: '#fff',
     fontFamily: 'esamanruLight',
     fontWeight: 'normal',
