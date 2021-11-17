@@ -193,6 +193,8 @@ const AddStudent = styled(Button)({
 
 function Student(props) {
     const dispatch = useDispatch();
+    const [userlist, setUserlist] = useState([]);
+    const board = [];
     const [boards, setBoards] = useState([
         {
             brdno: 1,
@@ -220,12 +222,31 @@ function Student(props) {
     class_id = props.class_id
 
     useEffect(() => {
+        //강의실에서 아이디 가져오고
         dispatch(getStudentlist(class_id))
             .then(res => {
                 if (res.payload.getUserSucess) {
-                    setBoards(res.payload.data);
+                    setUserlist(res.payload.data);
                 }
             })
+        //아이디별 유저들 가져오기
+
+        userlist.map((user, index) => {
+            dispatch(getUser(user))
+                .then(res => {
+                    if (res.payload.getSuccess) {
+                        board.push({
+                            brdno: index,
+                            id: res.payload.data.nick,
+                            name: res.payload.data.name,
+                            phone: res.payload.data.phone,
+                            affiliation: res.payload.data.affiliation
+                        })
+                    }
+                })
+        })
+
+        setBoards(board);
 
 
     }, [boards])
@@ -321,7 +342,7 @@ class BoardItem extends React.Component {
                 <td>{this.props.row.id}</td>
                 <td>{this.props.row.name}</td>
                 <td>{this.props.row.phone}</td>
-                <td>{this.props.row.school}</td>
+                <td>{this.props.row.affiliation}</td>
                 <td><DeleteModal></DeleteModal></td>
             </tr>
         );
