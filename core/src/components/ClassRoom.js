@@ -66,7 +66,7 @@ function ClassRoom({ match }) {
 
                 console.log(res.payload);
                 if (res.payload.updateSuccess) {
-                    setClassrooms(preClassrooms => [...preClassrooms, body.belonged_classes]);
+                    setClassrooms(preClassrooms => [...preClassrooms, body.belonged_classes[0]]);
                 }
                 else {
                     alert(res.payload.message)
