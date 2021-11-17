@@ -52,9 +52,9 @@ function SignUp(props) {
     let [helperText_data, setHelperText_data] = useState([])
     function mode() {
         if (data[0].checked === true)
-            return true;
+            return 0;
         else
-            return false;
+            return 1;
     }
     function handleSignup(event) {
         let partType = mode();
@@ -70,6 +70,7 @@ function SignUp(props) {
             role: partType
         }
 
+        console.log(body);
         dispatch(registerUser(body))
             .then(res => {
                 if (res.payload.registerSuccess) {

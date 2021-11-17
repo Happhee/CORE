@@ -39,6 +39,7 @@ function ClassRoom({ match }) {
         dispatch(getUser(location.state.login_id))
             .then(res => {
                 if (res.payload.getSuccess) {
+
                     setClassrooms(res.payload.data.belonged_classes)
                 }
                 else {
@@ -51,7 +52,7 @@ function ClassRoom({ match }) {
         let class_id = location.state.login_id + Date.now();
         let body = {
             nick: location.state.login_id,
-            belonged_classes: value
+            belonged_classes: [{ title: value, class_id: class_id }]
         }
 
         dispatch(addClassroom(body))
@@ -130,13 +131,13 @@ function ClassRoom({ match }) {
                     history.push({
                         pathname: "../../mainpage/" + mode + "/" + startpage,
                         state: {
-                            classroom_title: classroom,
+                            classroom_title: classroom[0],
                             id: location.state.login_id,
-                            class_id: class_id
+                            class_id: classroom[1]
                         }
                     })
                 }}
-            >{classroom}</span>
+            >{classroom[0]}</span>
         </div>);
 
 
