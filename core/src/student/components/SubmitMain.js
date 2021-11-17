@@ -1,6 +1,5 @@
 /*eslint-disable */
 
-import '../css/ProblemAdd.css'
 import React, { useEffect, useState } from 'react';
 import ProblemGrid from '../../components/ProblemGrid';
 import { useHistory, withRouter, useParams, useLocation } from 'react-router-dom';
