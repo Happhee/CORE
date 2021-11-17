@@ -11,7 +11,7 @@ import My from './components/My';
 import WorkBank from './teacher/components/WorkBank';
 import FeedBank from './student/components/FeedBank';
 import Information from './components/Information';
-import Auth from '../src/hooks/auth'
+import Auth from './hooks/auth'
 
 import { BrowserRouter as Router, Route, Switch, Link, Redirect } from 'react-router-dom';
 

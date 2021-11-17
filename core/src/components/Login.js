@@ -6,7 +6,7 @@ import { ReactComponent as Core_Logo } from '../css/Core.svg';
 
 import { BrowserRouter as useHistory, withRouter } from 'react-router-dom';
 import Toolbar from './Toolbar';
-import { Checkbox,Button, styled } from '@mui/material';
+import { Checkbox, Button, styled } from '@mui/material';
 
 import CssAlert from '../css/CssAlert';
 import CssTextField from '../css/CssTextField';
@@ -26,13 +26,13 @@ const CssCheckbox = styled(Checkbox)({
     marginRight: '10px'
 });
 const CssBtn = styled(Button)({
-    width:"content",
+    width: "content",
     backgroundColor: '#fff',
     borderRadius: '5px',
     color: '#000',
-    fontsize:"large",
-    fontWeight:"bold",
-    fontFamily:"esamanruLight",
+    fontsize: "large",
+    fontWeight: "bold",
+    fontFamily: "esamanruLight",
     '&:hover': {
         background: "#8154A0",
         color: "#fff"
@@ -61,9 +61,9 @@ function Login(props) {
     let [helperText_data, setHelperText_data] = useState([])
     function type() {
         if (data[0].checked === true)
-            return true;
+            return 0;
         else
-            return false;
+            return 1;
     }
     //모드에 따른 분류
     function handleLogin(event) {
@@ -71,9 +71,9 @@ function Login(props) {
         let partType = type();
 
         let body = {
-            id: login_data[0].value,
-            pw: login_data[1].value,
-            part: partType
+            nick: login_data[0].value,
+            password: login_data[1].value,
+            role: partType
         }
 
         dispatch(loginUser(body))
@@ -141,23 +141,23 @@ function Login(props) {
             <Toolbar data={toolbar} />
 
             <div className="login_box">
-            <img style={{ width: "200px", marginTop: "3%", marginBottom: "-2px", float: "left" }} src={require('../image/icon_BigLogo.png').default} />
+                <img style={{ width: "200px", marginTop: "3%", marginBottom: "-2px", float: "left" }} src={require('../image/icon_BigLogo.png').default} />
 
-                <div className="login_content" style={{padding:"10px"}}>
+                <div className="login_content" style={{ padding: "10px" }}>
 
                     <span className="login_text"> {login_data[0].title} </span>
                     <CssTextField className="login_input_box" size="small" variant="outlined" id="custom-css-outlined-input1" maxRows={1}
                         name={login_data[0].id} value={login_data[0].value} onChange={handleInputChange}
-                        helperText={helperText_data[0]} 
-                        style={{color:"black", marginLeft:"5%",width: "280px"}}/>
+                        helperText={helperText_data[0]}
+                        style={{ color: "black", marginLeft: "5%", width: "280px" }} />
 
                     <span className="login_text">{login_data[1].title}  </span>
                     <CssTextField className="login_input_box" type="password" size="small" variant="outlined" id="custom-css-outlined-input2" maxRows={1}
                         name={login_data[1].id} value={login_data[1].value} onChange={handleInputChange}
-                        helperText={helperText_data[1]} 
-                        style={{ marginLeft:"5%",width: "280px"}}/>
+                        helperText={helperText_data[1]}
+                        style={{ marginLeft: "5%", width: "280px" }} />
 
-                    <div className="check_box" style={{marginTop:"0px"}} >
+                    <div className="check_box" style={{ marginTop: "0px" }} >
                         <CssCheckbox type="checkbox" checked={data[0].checked}
                             value={data[0].value} onChange={onChange} />
                         <span>{data[0].value}</span>
@@ -167,9 +167,9 @@ function Login(props) {
                         <span>{data[1].value}</span>
                     </div>
 
-                    <div className="link_box" style={{marginTop:"0px",float:'right',width:"100%"}}>
-                        <CssBtn  style={{borderTopRightRadius:"0px",borderBottomRightRadius:"0px", borderRight:'2px solid #000'}}  size="large"  onClick={handleLogin} >LOGIN </CssBtn>
-                        <CssBtn  style={{margintLeft:"1%",borderTopLeftRadius:"0px",borderBottomLeftRadius:"0px"}}  size="large"  onClick={SignUp_Click} >SIGN UP </CssBtn>
+                    <div className="link_box" style={{ marginTop: "0px", float: 'right', width: "100%" }}>
+                        <CssBtn style={{ borderTopRightRadius: "0px", borderBottomRightRadius: "0px", borderRight: '2px solid #000' }} size="large" onClick={handleLogin} >LOGIN </CssBtn>
+                        <CssBtn style={{ margintLeft: "1%", borderTopLeftRadius: "0px", borderBottomLeftRadius: "0px" }} size="large" onClick={SignUp_Click} >SIGN UP </CssBtn>
 
                     </div>
                 </div>
