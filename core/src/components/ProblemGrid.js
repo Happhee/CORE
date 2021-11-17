@@ -59,6 +59,7 @@ function ProblemGrid(props) {
     let [input_data, setInput_data] = useState(props.input_data)
     let [output_data, setOutput_data] = useState(props.output_data)
 
+    console.log(input_data)
     if (input_data.length == 2) {
         question_title = input_data[1][1].title;
         input_title = input_data[0][1].title;
@@ -166,45 +167,7 @@ function ProblemGrid(props) {
             </Grid>
         )
     }
-    else if (grid_data[0].value === "student - submit") {
-        input_data[0].map((input, index) => {
-            console.log(input);
-            input_list.push(
-                <Item key={index}>
-                    <p key={input.title} className="grid_data">{input.input}</p>
-                </Item>
-            )
-        })
-
-        output_data.map((output, index) => {
-            output_list.push(
-                <Item key={index}>
-                    <p key={output.input} className="grid_data">{output.input}</p>
-                </Item>
-            )
-        })
-        code_list.push(
-            <Grid key={grid_data[5].id} item xs={12} >
-                <Item key={grid_data[5].title}>
-                    <p key={grid_data[5].input} className="grid_data_title">{grid_data[5].title}</p>
-                    <p key={grid_data[5].value} className="grid_data">{grid_data[5].value}</p>
-                </Item>
-            </Grid>)
-
-
-        input_data[1].map((input, index) => {
-
-            question_list.push(
-
-                <Item key={index}>
-                    <CssTextField key={input.input} fullWidth label={input.input} variant="outlined" id="custom-css-outlined-input" maxRows={1}
-                        name={input.id} value={input.value} onChange={handleOutputChange} />
-                </Item>
-
-            )
-        })
-
-
+    else {
         for (let index = 3; index < 5; index++) {
             sub_list.push(
                 <Grid key={grid_data[index].id} item xs={12} >
@@ -215,7 +178,113 @@ function ProblemGrid(props) {
                 </Grid>)
         }
 
-        console.log(input_data[0])
+        input_data[0].map((input, index) => {
+            console.log(input);
+            input_list.push(
+                <Item key={index}>
+                    <p key={input.title} className="grid_data">{input.input}</p>
+                </Item>
+            )
+        })
+
+        //학생 코드 및 질문 제출
+
+        if (grid_data[0].value === "student - submit") {
+            output_data.map((output, index) => {
+                output_list.push(
+                    <Item key={index}>
+                        <p key={output.input} className="grid_data">{output.input}</p>
+                    </Item>
+                )
+            })
+
+            input_data[1].map((input, index) => {
+                question_list.push(
+
+                    <Item key={index}>
+                        <CssTextField key={input.input} fullWidth label={input.input} variant="outlined" id="custom-css-outlined-input" maxRows={1}
+                            name={input.id} value={input.value} onChange={handleOutputChange} />
+                    </Item>
+
+                )
+            })
+            code_list.push(
+                <Grid key={grid_data[5].id} item xs={12} >
+                    <Item key={grid_data[5].title}>
+                        <p key={grid_data[5].input} className="grid_data_title">{grid_data[5].title}</p>
+                        <CssTextField key={grid_data[5].input} fullWidth label={grid_data[5].input} variant="outlined" id="custom-css-outlined-input" maxRows={1}
+                            name={grid_data[5].id} value={grid_data[5].value} onChange={handleOutputChange} />
+                    </Item>
+                </Grid>)
+
+        }
+        //학생 피드백 완료
+        else if (grid_data[0].value === "student - feedback_success") {
+
+
+            output_data[0].map((output, index) => {
+                output_list.push(
+                    <Item key={index}>
+                        <p key={output.input} className="grid_data">{output.input}</p>
+                    </Item>
+                )
+            })
+
+            output_data[1].map((output, index) => {
+                answer_list.push(
+                    <Item key={index}>
+                        <p key={output.input} className="grid_data">{output.input}</p>
+                    </Item>
+                )
+            })
+            code_list.push(
+                <Grid key={grid_data[5].id} item xs={12} >
+                    <Item key={grid_data[5].title}>
+                        <p key={grid_data[5].input} className="grid_data_title">{grid_data[5].title}</p>
+                        <p key={grid_data[5].value} className="grid_data">{grid_data[5].value}</p>
+                    </Item>
+                </Grid>)
+        }
+        //힉셍 코드 보기 
+        else if (grid_data[0].value === "student - viewsubmit") {
+            output_data.map((output, index) => {
+                output_list.push(
+                    <Item key={index}>
+                        <p key={output.input} className="grid_data">{output.input}</p>
+                    </Item>
+                )
+            })
+            input_data[1].map((input, index) => {
+                question_list.push(
+                    <Item key={index}>
+                        <CssTextField key={input.input} fullWidth label={input.input} variant="outlined" id="custom-css-outlined-input" maxRows={1}
+                            name={input.id} value={input.value} onChange={handleOutputChange} />
+                    </Item>
+
+                )
+            })
+            code_list.push(
+                <Grid key={grid_data[5].id} item xs={12} >
+                    <Item key={grid_data[5].title}>
+                        <p key={grid_data[5].input} className="grid_data_title">{grid_data[5].title}</p>
+                        <p key={grid_data[5].value} className="grid_data">{grid_data[5].value}</p>
+                    </Item>
+                </Grid>)
+        }
+
+        input_data[1].map((input, index) => {
+            question_list.push(
+
+                <Item key={index}>
+                    <p key={input.title} className="grid_data">{input.input}</p>
+                </Item>
+
+            )
+
+
+
+
+        })
     }
 
 

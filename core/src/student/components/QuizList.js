@@ -104,6 +104,7 @@ function BoardItem(props) {
                         if (props.row.set == "첨삭완료") {
                             return <div key="set" style={{ cursor: "pointer", border: "12px solid #9A30AE", borderColor: "#9A30AE", backgroundColor: "#9A30AE", borderRadius: "20px" }}
                                 onClick={() => {
+
                                     history.push({
                                         pathname: "/mainpage/student/workbook/quizlist/submitmain?mainunit=" + props.unit + "&subunit=" + props.quizNumber,
                                         state: {

@@ -60,37 +60,13 @@ export function getGrid_data(type) {
 }
 
 export function getInput_data(type) {
-    if (type === 'submit')
-        return [
-            // 실제로는 서버로부터 가져와야함!!!!!!!!!!!!!!!!!!!!!
-            // 실제로는 서버로부터 가져와야함!!!!!!!!!!!!!!!!!!!!!
-            // 실제로는 서버로부터 가져와야함!!!!!!!!!!!!!!!!!!!!!
-            // 실제로는 서버로부터 가져와야함!!!!!!!!!!!!!!!!!!!!!
-            // 실제로는 서버로부터 가져와야함!!!!!!!!!!!!!!!!!!!!!
-            [{ id: "input1", value: '', title: "Input", input: "입력값" },
-            { id: "input2", value: '', title: "Input", input: "입력값" },
-            { id: "input3", value: '', title: "Input", input: "입력값" },
-            { id: "input4", value: '', title: "Input", input: "입력값" },
-            { id: "input5", value: '', title: "Input", input: "입력값" },
-            { id: "input6", value: '', title: "Input", input: "입력값" },
-            { id: "input7", value: '', title: "Input", input: "입력값" },
-            { id: "input8", value: '', title: "Input", input: "입력값" },
-            { id: "input9", value: '', title: "Input", input: "입력값" },
-            { id: "input10", value: '', title: "Input", input: "입력값" }],
-            [
-                { id: "My Question1", value: '', title: "My Question", input: "질문" },
-                { id: "My Question2", value: '', title: "My Question", input: "질문" },
-                { id: "My Question3", value: '', title: "My Question", input: "질문" },
-                { id: "My Question4", value: '', title: "My Question", input: "질문" },
-                { id: "My Question5", value: '', title: "My Question", input: "질문" },
-                { id: "My Question6", value: '', title: "My Question", input: "질문" },
-                { id: "My Question7", value: '', title: "My Question", input: "질문" },
-                { id: "My Question8", value: '', title: "My Question", input: "질문" },
-                { id: "My Question9", value: '', title: "My Question", input: "질문" },
-                { id: "My Question10", value: '', title: "My Question", input: "질문" }
-            ]]
-    //둘다 서버에서 가져와야함
-    else {
+
+    return [
+        // 실제로는 서버로부터 가져와야함!!!!!!!!!!!!!!!!!!!!!
+        // 실제로는 서버로부터 가져와야함!!!!!!!!!!!!!!!!!!!!!
+        // 실제로는 서버로부터 가져와야함!!!!!!!!!!!!!!!!!!!!!
+        // 실제로는 서버로부터 가져와야함!!!!!!!!!!!!!!!!!!!!!
+        // 실제로는 서버로부터 가져와야함!!!!!!!!!!!!!!!!!!!!!
         [{ id: "input1", value: '', title: "Input", input: "입력값" },
         { id: "input2", value: '', title: "Input", input: "입력값" },
         { id: "input3", value: '', title: "Input", input: "입력값" },
@@ -101,19 +77,19 @@ export function getInput_data(type) {
         { id: "input8", value: '', title: "Input", input: "입력값" },
         { id: "input9", value: '', title: "Input", input: "입력값" },
         { id: "input10", value: '', title: "Input", input: "입력값" }],
-            [
-                { id: "My Question1", value: '', title: "My Question", input: "질문" },
-                { id: "My Question2", value: '', title: "My Question", input: "질문" },
-                { id: "My Question3", value: '', title: "My Question", input: "질문" },
-                { id: "My Question4", value: '', title: "My Question", input: "질문" },
-                { id: "My Question5", value: '', title: "My Question", input: "질문" },
-                { id: "My Question6", value: '', title: "My Question", input: "질문" },
-                { id: "My Question7", value: '', title: "My Question", input: "질문" },
-                { id: "My Question8", value: '', title: "My Question", input: "질문" },
-                { id: "My Question9", value: '', title: "My Question", input: "질문" },
-                { id: "My Question10", value: '', title: "My Question", input: "질문" }
-            ]
-    }
+        [
+            { id: "My Question1", value: '', title: "My Question", input: "질문" },
+            { id: "My Question2", value: '', title: "My Question", input: "질문" },
+            { id: "My Question3", value: '', title: "My Question", input: "질문" },
+            { id: "My Question4", value: '', title: "My Question", input: "질문" },
+            { id: "My Question5", value: '', title: "My Question", input: "질문" },
+            { id: "My Question6", value: '', title: "My Question", input: "질문" },
+            { id: "My Question7", value: '', title: "My Question", input: "질문" },
+            { id: "My Question8", value: '', title: "My Question", input: "질문" },
+            { id: "My Question9", value: '', title: "My Question", input: "질문" },
+            { id: "My Question10", value: '', title: "My Question", input: "질문" }
+        ]]
+
 
 
 }
