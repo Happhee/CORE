@@ -48,8 +48,32 @@ function ProblemGrid(props) {
     // 입력값, 출력값 초기세팅 
     let input_list = [];
     let output_list = [];
+    let code_list = [];
+    let answer_list = [];
+    let question_list = [];
+    let input_title = "";
+    let output_title = "";
+    let question_title = "";
+    let answer_title = "";
+
     let [input_data, setInput_data] = useState(props.input_data)
     let [output_data, setOutput_data] = useState(props.output_data)
+
+    if (input_data.length == 2) {
+        question_title = input_data[1][1].title;
+        input_title = input_data[0][1].title;
+    }
+    else {
+        input_title = input_data[0].title
+    }
+    if (output_data.length == 2) {
+        answer_title = output_data[1][1].title;
+        output_title = output_data[0][1].title;
+
+    }
+    else {
+        output_title = output_data[0].title;
+    }
     //피드백 세팅
     let feedback_textfield = [];
 
@@ -142,6 +166,57 @@ function ProblemGrid(props) {
             </Grid>
         )
     }
+    else if (grid_data[0].value === "student - submit") {
+        input_data[0].map((input, index) => {
+            console.log(input);
+            input_list.push(
+                <Item key={index}>
+                    <p key={input.title} className="grid_data">{input.input}</p>
+                </Item>
+            )
+        })
+
+        output_data.map((output, index) => {
+            output_list.push(
+                <Item key={index}>
+                    <p key={output.input} className="grid_data">{output.input}</p>
+                </Item>
+            )
+        })
+        code_list.push(
+            <Grid key={grid_data[5].id} item xs={12} >
+                <Item key={grid_data[5].title}>
+                    <p key={grid_data[5].input} className="grid_data_title">{grid_data[5].title}</p>
+                    <p key={grid_data[5].value} className="grid_data">{grid_data[5].value}</p>
+                </Item>
+            </Grid>)
+
+
+        input_data[1].map((input, index) => {
+
+            question_list.push(
+
+                <Item key={index}>
+                    <CssTextField key={input.input} fullWidth label={input.input} variant="outlined" id="custom-css-outlined-input" maxRows={1}
+                        name={input.id} value={input.value} onChange={handleOutputChange} />
+                </Item>
+
+            )
+        })
+
+
+        for (let index = 3; index < 5; index++) {
+            sub_list.push(
+                <Grid key={grid_data[index].id} item xs={12} >
+                    <Item key={grid_data[index].title}>
+                        <p key={grid_data[index].input} className="grid_data_title">{grid_data[index].title}</p>
+                        <p key={grid_data[index].value} className="grid_data">{grid_data[index].value}</p>
+                    </Item>
+                </Grid>)
+        }
+
+        console.log(input_data[0])
+    }
 
 
     return (
@@ -171,17 +246,31 @@ function ProblemGrid(props) {
                 {sub_list}
                 <Grid item xs={6} md={6}>
                     <Item>
-                        <p className="grid_data_title">{input_data[0].title}</p>
+                        <p className="grid_data_title">{input_title}</p>
                     </Item>
                     {input_list}
                 </Grid>
                 <Grid item xs={6} md={6}>
                     <Item>
-                        <p className="grid_data_title">{output_data[0].title}</p>
+                        <p className="grid_data_title">{output_title}</p>
                     </Item>
                     {output_list}
                 </Grid>
                 {feedback_textfield}
+
+                {code_list}
+                <Grid item xs={6} md={6}>
+                    <Item>
+                        <p className="grid_data_title">{question_title}</p>
+                    </Item>
+                    {question_list}
+                </Grid>
+                <Grid item xs={6} md={6}>
+                    <Item>
+                        <p className="grid_data_title">{answer_title}</p>
+                    </Item>
+                    {answer_list}
+                </Grid>
             </Grid>
 
         </Box>
