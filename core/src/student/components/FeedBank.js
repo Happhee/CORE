@@ -72,7 +72,7 @@ function FeedBank() {
                         <div style={{ width: "150px", float: "left", marginLeft: "0px", marginTop: "10px" }}>FeedBank</div>
                     </div>
                     <Switch>
-                        <Route exact path='/:mode/feedbank_mainlist' render={() => <FeedBank_MainList />} />
+                        <Route exact path='/:mode/feedbank' render={() => <FeedBank_MainList />} />
                     </Switch>
                 </div>
             </div>
