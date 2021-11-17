@@ -1,6 +1,6 @@
 /*eslint-disable */
 
-import { CREATE_CLASSROOM, ADD_CLASSROOM } from '../_actions/types'
+import { CREATE_CLASSROOM, ADD_CLASSROOM, GET_STUDENT_LIST } from '../_actions/types'
 
 export default function (state = {}, action) {
 
@@ -16,6 +16,11 @@ export default function (state = {}, action) {
         case ADD_CLASSROOM:
             return { ...state, register: action.payload }
             break;
+
+        case GET_STUDENT_LIST:
+            return { ...state, getStudentlist: action.payload }
+            break;
+
         default:
             return state;
     }

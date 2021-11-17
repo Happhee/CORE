@@ -26,8 +26,8 @@ export function createClassroom(dataToSubmit) {
     }
 }
 
-export function getStudentlist(dataToSubmit, class_id) {
-    const data = request("GET", TEACHER_URL + "/studentlist/" + class_id, dataToSubmit);
+export function getStudentlist(class_id) {
+    const data = request("GET", "/class?class_id=" + class_id);
 
     return {
         type: GET_STUDENT_LIST,
