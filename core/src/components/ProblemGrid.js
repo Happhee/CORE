@@ -167,7 +167,18 @@ function ProblemGrid(props) {
             </Grid>
         )
     }
+    //학생 문제 제출쪽
+    //학생 문제 제출쪽
+    //학생 문제 제출쪽
+    //학생 문제 제출쪽
+    //학생 문제 제출쪽
+    //학생 문제 제출쪽
+    //학생 문제 제출쪽
+    //학생 문제 제출쪽
+    //학생 문제 제출쪽
+    //학생 문제 제출쪽
     else {
+        //문제목록 p 여기는 서버에서 받아오는곳
         for (let index = 3; index < 5; index++) {
             sub_list.push(
                 <Grid key={grid_data[index].id} item xs={12} >
@@ -178,6 +189,7 @@ function ProblemGrid(props) {
                 </Grid>)
         }
 
+        //인풋값 서버에서 
         input_data[0].map((input, index) => {
             console.log(input);
             input_list.push(
@@ -187,9 +199,11 @@ function ProblemGrid(props) {
             )
         })
 
-        //학생 코드 및 질문 제출
-
+        //학생 코드 및 질문 제출 (처음 문제 제출할때!!!!!!!!!!1)
+        //학생 코드 및 질문 제출 (처음 문제 제출할때!!!!!!!!!!1)
+        //학생 코드 및 질문 제출 (처음 문제 제출할때!!!!!!!!!!1)
         if (grid_data[0].value === "student - submit") {
+            //출력값 서버에서 
             output_data.map((output, index) => {
                 output_list.push(
                     <Item key={index}>
@@ -198,6 +212,7 @@ function ProblemGrid(props) {
                 )
             })
 
+            //질문 입력 하는 곳
             input_data[1].map((input, index) => {
                 question_list.push(
 
@@ -208,6 +223,7 @@ function ProblemGrid(props) {
 
                 )
             })
+            //코드 입력
             code_list.push(
                 <Grid key={grid_data[5].id} item xs={12} >
                     <Item key={grid_data[5].title}>
@@ -229,7 +245,7 @@ function ProblemGrid(props) {
                     </Item>
                 )
             })
-
+            //질문 확인
             output_data[1].map((output, index) => {
                 answer_list.push(
                     <Item key={index}>
@@ -237,6 +253,7 @@ function ProblemGrid(props) {
                     </Item>
                 )
             })
+            //코드 입력보기 
             code_list.push(
                 <Grid key={grid_data[5].id} item xs={12} >
                     <Item key={grid_data[5].title}>
@@ -254,6 +271,7 @@ function ProblemGrid(props) {
                     </Item>
                 )
             })
+            //질문 수정?????
             input_data[1].map((input, index) => {
                 question_list.push(
                     <Item key={index}>
@@ -263,6 +281,7 @@ function ProblemGrid(props) {
 
                 )
             })
+            //코드 입력보기 
             code_list.push(
                 <Grid key={grid_data[5].id} item xs={12} >
                     <Item key={grid_data[5].title}>
