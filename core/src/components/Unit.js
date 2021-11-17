@@ -6,7 +6,6 @@ import TableCell from '@material-ui/core/TableCell';
 import { Button, styled } from '@mui/material';
 import { Link, useHistory } from 'react-router-dom';
 import AlertDialog from './AlertDialog';
-import '../css/Unit.css'
 
 import CoreDialog from './CoreDialog';
 import * as ProblemServer from '../teacher/server/ProblemServer';
@@ -120,7 +119,7 @@ function Customer(props) {
     return (
         <tr style={{ color:"#000",fontFamily: 'esamanru', fontWeight: 'normal', height: '50px' }} align="center" >
             <td width="50px" align="center" key="id">{props.id}</td>
-            <td className="goToUnit" width="450px" align="center" key="name">
+            <td width="450px" align="center" key="name">
                 {link}
             </td>
             <td width="150px" align="center" key="count">{props.count}</td>
