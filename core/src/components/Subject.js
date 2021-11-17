@@ -14,6 +14,7 @@ import ProblemMain from '../teacher/components/ProblemMain'
 import FeedBack from '../teacher/components/FeedBack';
 import Student_WorkBook from '../student/components/WorkBook';
 import Student_QuizList from '../student/components/QuizList';
+import SubmitMain from '../student/components/SubmitMain'
 import { SpaTwoTone } from '@material-ui/icons';
 
 const Logo_Room = props => {
@@ -30,7 +31,7 @@ const Subject_Link = props => {
     return (
         <div>
             <span className="subject_text"
-            style={{  cursor: "pointer",fontWeight:"bold"}}
+                style={{ cursor: "pointer", fontWeight: "bold" }}
                 onClick={() => {
                     history.push({
                         pathname: props.link,
@@ -55,17 +56,17 @@ const Subject = props => {
 
     if (data.length == 3) {
 
-        list.push(<Subject_Link key={data[0].id} title={data[0].title } style={{  cursor: "pointer"}}
+        list.push(<Subject_Link key={data[0].id} title={data[0].title} style={{ cursor: "pointer" }}
             link='/mainpage/teacher/student'
             classroom_title={props.classroom_title}
             teacher_id={props.id}
         />);
-        list.push(<Subject_Link key={data[1].id} title={data[1].title} style={{  cursor: "pointer"}}
+        list.push(<Subject_Link key={data[1].id} title={data[1].title} style={{ cursor: "pointer" }}
             link='/mainpage/teacher/workbook'
             classroom_title={props.classroom_title}
             teacher_id={props.id}
         />);
-        list.push(<Subject_Link key={data[2].id} title={data[2].title} style={{  cursor: "pointer"}}
+        list.push(<Subject_Link key={data[2].id} title={data[2].title} style={{ cursor: "pointer" }}
             link='/mainpage/teacher/feedback'
             classroom_title={props.classroom_title}
             teacher_id={props.id}
@@ -80,19 +81,19 @@ const Subject = props => {
         //워크북 상세 라우트
         route.push(<Route exact path='/mainpage/teacher/workbook/quizlist' render={() => <QuizList />} key="quizlist" />);
         route.push(<Route path={['/mainpage/teacher/workbook/quizlist/:problemmain', '/mainpage/teacher/feedback/quizlist/:problemmain']} render={() => <ProblemMain />} key="problemadd" />);
-    
+
     }
     else {
         list.push(<Subject_Link key={data[0].id} title={data[0].title}
             link='/mainpage/student/workbook'
             classroom_title={props.classroom_title}
-            />);
+        />);
         route.push(<Route path='/mainpage/student/workbook' component={Student_WorkBook} exact={true} key={data[0].id} />)
 
         //워크북 상세 라우트
         route.push(<Route exact path='/mainpage/student/workbook/quizlist' render={() => <Student_QuizList />} key="quizlist" />);
-        route.push(<Route path={['/mainpage/student/workbook/quizlist/:problemmain', '/mainpage/student/feedback/quizlist/:problemmain']} render={() => <ProblemMain />} key="problemadd" />);
-    
+        route.push(<Route path={['/mainpage/student/workbook/quizlist/:submitmain', '/mainpage/student/feedback/quizlist/:submitmain']} render={() => <SubmitMain />} key="problem_newsubmit" />);
+
 
     }
 
@@ -102,7 +103,7 @@ const Subject = props => {
     return (
         <div>
             <div className={mode + "_subject"}>
-                <div style={{  textAlign: 'center', alignContent: 'center', alignItems: 'center' }}>
+                <div style={{ textAlign: 'center', alignContent: 'center', alignItems: 'center' }}>
                     <img style={{ marginTop: '5px', width: '80px' }} src={require('../image/iconBiglogo.png').default} />
                     <p style={{ marginTop: 0, marginBottom: '5px', textAlign: 'center', fontFamily: 'esamanruLight' }}>{props.classroom_title}</p>
                 </div>

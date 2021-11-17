@@ -67,8 +67,8 @@ function AlertDialog(props) {
             if (props.checkRegisterProblem()) {
                 setButton(
                     <div>
-                        <Button onClick={handleClose}>취소</Button>
-                        <Button onClick={handleClose} autoFocus>등록</Button>
+                        <BasicBtn onClick={handleClose}>취소</BasicBtn>
+                        <BasicBtn onClick={handleClose} autoFocus>등록</BasicBtn>
                     </div>
                 )
                 setTextfield_state("문제를 등록하시겠습니까??");
@@ -76,7 +76,7 @@ function AlertDialog(props) {
             else {
                 setButton(
                     <div>
-                        <Button onClick={handleClose}>취소</Button>
+                        <BasicBtn onClick={handleClose}>취소</BasicBtn>
                     </div>
                 )
                 setTextfield_state('입력되지 않은 정보가 있습니다!!! 모든 정보를 입력해주세요');
@@ -100,7 +100,7 @@ function AlertDialog(props) {
             if (!props.handleLogin()) {
                 setButton(
                     <div>
-                        <Button onClick={handleClose}>확인</Button>
+                        <BasicBtn onClick={handleClose}>확인</BasicBtn>
                     </div>
                 )
                 setTextfield_state('입력되지 않은 정보가 있습니다!!! 모든 정보를 입력해주세요');
@@ -114,14 +114,14 @@ function AlertDialog(props) {
             if (!props.handleSignup()) {
                 setButton(
                     <div>
-                        <Button onClick={handleClose}>확인</Button>
+                        <BasicBtn onClick={handleClose}>확인</BasicBtn>
                     </div>
                 )
                 setTextfield_state('입력되지 않은 정보가 있습니다!!! 모든 정보를 입력해주세요');
             } else {
                 setButton(
                     <div>
-                        <Button onClick={handleClose}>로그인하기</Button>
+                        <BasicBtn onClick={handleClose}>로그인하기</BasicBtn>
                     </div>
                 )
                 setTextfield_state('회원가입이 완료되었습니다❤️ 로그인을 해주세요❤️');
@@ -163,6 +163,11 @@ function AlertDialog(props) {
                             </DeleteBtn>;
                         }
                         else if(props.alertDialog_title === '답변하기'){
+                            return <BasicBtn  onClick={handleClickOpen} key="set">
+                            {props.alertDialog_title}
+                        </BasicBtn>;
+                        }
+                        else if(props.alertDialog_title === '문제등록' ||props.alertDialog_title === '수정하기'){
                             return <BasicBtn  onClick={handleClickOpen} key="set">
                             {props.alertDialog_title}
                         </BasicBtn>;

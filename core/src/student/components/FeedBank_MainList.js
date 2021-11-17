@@ -1,30 +1,35 @@
+
 /*eslint-disable */
+
 import React, { useState } from 'react';
-import { ReactComponent as Core_Logo } from '../../css/Core.svg'
 import CoreTable from '../../components/CoreTable';
+import { useLocation } from 'react-router';
+import queryString from 'query-string'
+import * as Server from '../server/Server';
 
-import '../../css/CoreListbox.css'
+function FeedBank_MainList(props) {
+    let { search } = useLocation();
+    const queryObj = queryString.parse(search);
+    const { mainunit } = queryObj;
 
-function FeedBank_MainList() {
-    console.log('워크뱅크렌더');
-
-    let table_cells = ['NO', '단원명', '문항수', '편집']
+    console.log("워크뱅크 퀴즈리스트 렌더");
+    let table_cells = ['NO', '단원명', '정답률', '편집']
 
     let unit = [
         {
             'id': 1,
-            'name': '조건문 활용하기',
-            'count': 10
+            'name': '별탑 쌓기',
+            'count': '80'
         },
         {
             'id': 2,
-            'name': '포인터와 구조체',
-            'count': 15
+            'name': '1부터 100더하기',
+            'count': '30'
         },
         {
             'id': 3,
-            'name': '반복문 사용하기',
-            'count': 20
+            'name': '모래시계 만들기',
+            'count': '20'
         }
     ]
     let listbox_datas = [
@@ -35,19 +40,15 @@ function FeedBank_MainList() {
     ]
     //선택된 과목 아이디!!!!!!!!!!!!!!!1
     let [register_data, setRegister_data] = useState(listbox_datas[0].id);
+
     console.log("등록강의실  -> " + listbox_datas[register_data].value);
-
-
-
     return (
         <div className="coretable_workbank">
-            <CoreTable table_cells={table_cells} unit={unit} editType="MainList"
-                handleFormSubmit={Server.handleFormSubmit} handleFormModify={Server.handleFormModify} handleRemoveClose={Server.handleRemoveClose} />
+            <CoreTable table_cells={table_cells} unit={unit} editType="QuizList"
+                mainunit={mainunit}
+                handleFormSubmit={Server.handleFormSubmit} handleRemoveClose={Server.handleRemoveClose} />
         </div>
 
-
-    );
-
+    )
 }
-
 export default FeedBank_MainList;
