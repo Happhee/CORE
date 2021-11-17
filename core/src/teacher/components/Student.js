@@ -9,7 +9,7 @@ import { RoundedCorner } from '@material-ui/icons';
 import { color, fontWeight } from '@mui/system';
 import DeleteModal from './DeleteModal';
 
-import { withRouter } from "react-router";
+import { useLocation, withRouter } from "react-router";
 import { getStudentlist } from '../../_actions/teacher_action';
 import { getUser } from '../../_actions/user_action';
 import { useDispatch } from 'react-redux';
@@ -29,197 +29,32 @@ const AddStudent = styled(Button)({
     }
 });
 
-// class Student extends Component {
-//     constructor(props) {
-//         super(props);
-//         this.child = React.createRef();
 
-//     }
-//     state = {
-//         boards: [
-//             {
-//                 brdno: 1,
-//                 id: 'aaa',
-//                 name: '김기기',
-//                 phone: '010-1111-1111',
-//                 school: '세종초등학교'
-//             },
-//             {
-//                 brdno: 2,
-//                 id: 'bbb',
-//                 name: '김니니',
-//                 phone: '010-2222-2222',
-//                 school: '세종초등학교'
-//             },
-//             {
-//                 brdno: 3,
-//                 id: 'ccc',
-//                 name: '김디디',
-//                 phone: '010-3333-3333',
-//                 school: '세종초등학교'
-//             }
-//         ],
-//         classroom_title: this.props.classroom_title,
-//         class_id: this.props.class_id
-//     }
-//     componentDidMount() {
+function BoardItem(props) {
+    console.log(props.row);
 
-//     }
-//     //학생 초대 카카오 API
-//     componentDidMount() {
-//         if (!window.Kakao.isInitialized()) {
-//             window.Kakao.init('d1a90c494e1cdb68196c4145544ffac1');
-//         }
-//         window.Kakao.Link.createDefaultButton({
-//             container: '#kakao-link-btn',
-//             objectType: 'feed',
-//             content: {
-//                 title: '학생 초대',
-//                 description: '여기 링크~!~!',
-//                 imageUrl: 'http://mud-kage.kakao.co.kr/dn/Q2iNx/btqgeRgV54P/VLdBs9cvyn8BJXB3o7N8UK/kakaolink40_original.png',
-//                 link: {
-//                     mobileWebUrl: 'https://cheonmro.github.io/',
-//                     webUrl: 'https://cheonmro.github.io/'
-//                 }
-//             },
-//             social: {
-//                 likeCount: 286,
-//                 commentCount: 45,
-//                 sharedCount: 845
-//             },
-//             buttons: [
-//                 {
-//                     title: '웹으로 보기',
-//                     link: {
-//                         mobileWebUrl: 'https://cheonmro.github.io/',
-//                         webUrl: 'https://cheonmro.github.io/'
-//                     }
-//                 },
-//                 {
-//                     title: '앱으로 보기',
-//                     link: {
-//                         mobileWebUrl: 'https://cheonmro.github.io/',
-//                         webUrl: 'https://cheonmro.github.io/'
-//                     }
-//                 }
-//             ]
-//         });
-//     }
-//     handleRemove = (brdno) => {
-//         this.setState({
-//             boards: this.state.boards.filter(row => row.brdno !== brdno)
-//         })
-//     }
-//     handleEdit = (brdno) => {
-//         this.setState({
-//             boards: this.state.boards.filter(row => row.brdno !== brdno)
-//         })
-//     }
-//     handleSaveData = (data) => {
-//         let boards = this.state.boards;
-//         if (data.brdno === null || data.brdno === '' || data.brdno === undefined) {    // new : Insert
-//             this.setState({
-//                 maxNo: this.state.maxNo + 1,
-//                 boards: boards.concat({ brdno: this.state.maxNo, brdwriter: data.brdwriter, brdtitle: data.brdtitle })
-//             });
-//         } else {                                                        // Update
-//             this.setState({
-//                 boards: boards.map(row => data.brdno === row.brdno ? { ...data } : row)
-//             })
-//         }
-//     }
-//     handleSelectRow = (row) => {
-//         this.child.current.handleSelectRow(row);
-//     }
-//     render() {
-//         const { boards } = this.state;
+    return (
+        <tr align="center" style={{ height: '60px' }}>
+            <td>{props.row.brdno}</td>
+            <td>{props.row.id}</td>
+            <td>{props.row.name}</td>
+            <td>{props.row.phone}</td>
+            <td>{props.row.affiliation}</td>
+            <td><DeleteModal></DeleteModal></td>
+        </tr>
+    );
 
-
-//         return (
-//             <div className="main_div">
-//                 <h2 style={{ width: '85%', margin: '20px auto', marginTop: '0px' }}>Student</h2>
-//                 <div style={{ width: '85%', margin: '20px auto' }}>
-//                     <table border="1" >
-//                         <tbody>
-//                             <tr style={{ fontFamily: 'esamanru', fontWeight: 'bold', height: '50px' }} align="center" >
-//                                 <td width="100">No</td>
-//                                 <td width="200">아이디</td>
-//                                 <td width="200">이름</td>
-//                                 <td width="400">전화번호</td>
-//                                 <td width="200">소속</td>
-//                                 <td width="50">삭제</td>
-//                             </tr>
-//                             {
-//                                 boards.map(row =>
-//                                     (<BoardItem key={row.brdno} row={row} onRemove={this.handleRemove} onSelectRow={this.handleSelectRow} />)
-//                                 )
-//                             }
-//                         </tbody>
-//                     </table >
-
-//                 </div>
-//                 <div className="Kakao">
-//                     <a id="kakao-link-btn" href="javascript:;" style={{ textDecoration: 'none' }}>
-//                         <AddStudent>학생 초대</AddStudent>
-//                     </a>
-//                 </div>
-//             </div >
-//         );
-//     }
-// }
-
-// export default withRouter(Student);
-
-// class BoardItem extends React.Component {
-//     handleSelectRow = () => {
-//         const { row, onSelectRow } = this.props;
-//         onSelectRow(row);
-//     }
-//     render() {
-//         return (
-//             <tr align="center" style={{ height: '60px' }}>
-//                 <td>{this.props.row.brdno}</td>
-//                 <td>{this.props.row.id}</td>
-//                 <td>{this.props.row.name}</td>
-//                 <td>{this.props.row.phone}</td>
-//                 <td>{this.props.row.school}</td>
-//                 <td><DeleteModal></DeleteModal></td>
-//             </tr>
-//         );
-//     }
-// }
-
-
-
+}
 function Student(props) {
     const dispatch = useDispatch();
+    const location = useLocation();
     const [userlist, setUserlist] = useState([]);
-    const board = [];
-    const [boards, setBoards] = useState([
-        {
-            brdno: 1,
-            id: 'aaa',
-            name: '김기기',
-            phone: '010-1111-1111',
-            school: '세종초등학교'
-        },
-        {
-            brdno: 2,
-            id: 'bbb',
-            name: '김니니',
-            phone: '010-2222-2222',
-            school: '세종초등학교'
-        },
-        {
-            brdno: 3,
-            id: 'ccc',
-            name: '김디디',
-            phone: '010-3333-3333',
-            school: '세종초등학교'
-        }
-    ])
-    classroom_title = props.classroom_title;
-    class_id = props.class_id
+    const [board, setBoard] = useState([]);
+    const [boards, setBoards] = useState([]);
+
+    const classroom_title = location.state.classroom_title;
+    const class_id = location.state.class_id
+
 
     useEffect(() => {
         //강의실에서 아이디 가져오고
@@ -229,27 +64,33 @@ function Student(props) {
                     setUserlist(res.payload.data);
                 }
             })
-        //아이디별 유저들 가져오기
+    }, [])
 
+    useEffect(() => {
         userlist.map((user, index) => {
             dispatch(getUser(user))
                 .then(res => {
                     if (res.payload.getSuccess) {
-                        board.push({
-                            brdno: index,
-                            id: res.payload.data.nick,
-                            name: res.payload.data.name,
-                            phone: res.payload.data.phone,
-                            affiliation: res.payload.data.affiliation
-                        })
-                    }
-                })
-        })
+                        board.push(
+                            <tr align="center" style={{ height: '60px' }}>
+                                <td>{index}</td>
+                                <td>{res.payload.data[0].nick}</td>
+                                <td>{res.payload.data[0].name}</td>
+                                <td>{res.payload.data[0].phone}</td>
+                                <td>{res.payload.data[0].affiliation}</td>
+                                <td><DeleteModal></DeleteModal></td>
+                            </tr>
 
+                        )
+                    }
+
+                })
+
+        })
         setBoards(board);
 
+    }, [userlist])
 
-    }, [boards])
 
     //학생 초대 카카오 API
     useEffect(() => {
@@ -290,8 +131,7 @@ function Student(props) {
                 }
             ]
         });
-    }, [])
-
+    }, [boards])
 
 
 
@@ -310,9 +150,7 @@ function Student(props) {
                             <td width="50">삭제</td>
                         </tr>
                         {
-                            boards.map(row =>
-                                (<BoardItem key={row.brdno} row={row} onRemove={handleRemove} onSelectRow={handleSelectRow} />)
-                            )
+                            boards
                         }
                     </tbody>
                 </table >
@@ -328,23 +166,5 @@ function Student(props) {
 
 }
 
-export default withRouter(Student);
 
-class BoardItem extends React.Component {
-    handleSelectRow = () => {
-        const { row, onSelectRow } = props;
-        onSelectRow(row);
-    }
-    render() {
-        return (
-            <tr align="center" style={{ height: '60px' }}>
-                <td>{this.props.row.brdno}</td>
-                <td>{this.props.row.id}</td>
-                <td>{this.props.row.name}</td>
-                <td>{this.props.row.phone}</td>
-                <td>{this.props.row.affiliation}</td>
-                <td><DeleteModal></DeleteModal></td>
-            </tr>
-        );
-    }
-}
+export default withRouter(Student);

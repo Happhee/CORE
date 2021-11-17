@@ -39,8 +39,7 @@ function ClassRoom({ match }) {
         dispatch(getUser(location.state.login_id))
             .then(res => {
                 if (res.payload.getSuccess) {
-
-                    res.payload.data.belonged_classes.map((data) => {
+                    res.payload.data[0].belonged_classes.map((data) => {
                         objectClassroom.push({ title: data.title, class_id: data.class_id })
                     })
 

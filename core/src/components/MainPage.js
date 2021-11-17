@@ -34,6 +34,7 @@ function MainPage({ match }) {
     }
 
     console.log(mode);
+
     console.log('메인 렌더링');
     return (
         <div>

@@ -26,8 +26,10 @@ const Logo_Room = props => {
     );
 
 }
+
 const Subject_Link = props => {
     const history = useHistory();
+    console.log(props.classroom_title);
     return (
         <div>
             <span className="subject_text"
@@ -45,6 +47,7 @@ const Subject_Link = props => {
     );
 
 }
+
 const Subject = props => {
     console.log('서브젝트렌더');
 
