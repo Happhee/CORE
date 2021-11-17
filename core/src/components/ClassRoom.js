@@ -30,7 +30,7 @@ function ClassRoom({ match }) {
 
     const dispatch = useDispatch();
     let [classrooms, setClassrooms] = useState([])
-
+    let objectClassroom = []
 
     let [class_id, setClass_id] = useState([]);
     useEffect(() => {
@@ -40,13 +40,18 @@ function ClassRoom({ match }) {
             .then(res => {
                 if (res.payload.getSuccess) {
 
-                    setClassrooms(res.payload.data.belonged_classes)
+                    res.payload.data.belonged_classes.map((data) => {
+                        objectClassroom.push({ title: data.title, class_id: data.class_id })
+                    })
+
+                    setClassrooms(objectClassroom)
                 }
                 else {
                     console.log(res.payload)
                 }
             })
     }, [])
+    console.log(classrooms);
 
     function insertClassroom(value) {
         let class_id = location.state.login_id + Date.now();
@@ -61,7 +66,7 @@ function ClassRoom({ match }) {
 
                 console.log(res.payload);
                 if (res.payload.updateSuccess) {
-                    setClassrooms(res.payload.data.belonged_classes);
+                    setClassrooms(preClassrooms => [...preClassrooms, body.belonged_classes]);
                 }
                 else {
                     alert(res.payload.message)
@@ -106,7 +111,6 @@ function ClassRoom({ match }) {
             <div className="add_class_box" key="add">
                 <CoreDialog key="add" button_box="add_class_box" button_value="+"
                     dialog_title="강의실 추가하기" text_data={text_data} handleFormSubmit={function (classroom) {
-                        console.log(classroom[0].value)
                         insertClassroom(classroom[0].value);
 
                     }} />
@@ -131,13 +135,13 @@ function ClassRoom({ match }) {
                     history.push({
                         pathname: "../../mainpage/" + mode + "/" + startpage,
                         state: {
-                            classroom_title: classroom[0],
+                            classroom_title: classroom.title,
                             id: location.state.login_id,
-                            class_id: classroom[1]
+                            class_id: classroom.class_id
                         }
                     })
                 }}
-            >{classroom[0]}</span>
+            >{classroom.title}</span>
         </div>);
 
 

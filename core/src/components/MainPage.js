@@ -40,9 +40,9 @@ function MainPage({ match }) {
             <Toolbar data={toolbar} />
             <div>
                 <Subject data={subject} mode={mode}
-                    //classroom_title={location.state.classroom_title}
-                    //id={location.state.id} 
-                    />
+                    classroom_title={location.state.classroom_title}
+                    id={location.state.id}
+                />
             </div>
         </div>
     );
