@@ -1,6 +1,7 @@
 /*eslint-disable */
 
 import React, { Component } from 'react';
+import '../css/QuizList.css'
 
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import { Button, styled } from '@mui/material';
@@ -8,36 +9,6 @@ import queryString from 'query-string'
 import * as SubmitServer from '../server/SubmitServer'
 import { makeStyles } from '@material-ui/core/styles';
 
-
-
-const AddQuiz = styled(Button)({
-    marginLeft: '93.8%',
-    marginTop: '1%',
-    padding: '0.8%',
-    textAlign: 'center',
-    backgroundColor: '#692498',
-    borderRadius: '10px',
-    color: '#fff',
-    fontFamily: 'esamanruLight',
-    fontWeight: 'normal',
-    '&:hover': {
-        background: "#E0BFE6",
-        color: "#8154A0"
-    }
-});
-
-const EditBtn = styled(Button)({
-    marginLeft: '0px',
-    textAlign: 'center',
-    backgroundColor: '#E0BFE6',
-    borderRadius: '30px',
-    color: '#8154A0',
-    fontWeight: 'bold',
-    '&:hover': {
-        background: "#8154A0",
-        color: "#FFF"
-    }
-});
 
 class QuizList extends Component {
     constructor(props) {
@@ -50,36 +21,31 @@ class QuizList extends Component {
             {
                 brdno: 1,
                 brdtitle: '별탑 쌓기',
-                brdwriter: '80'
+                submitCount: 2,
+                score: '100',
+                set: '미제출',
+                startDate: '2021.10.20',
+                endDate: '2021.10.22'
             },
             {
                 brdno: 2,
-                brdtitle: '1부터 100더하기',
-                brdwriter: '30'
+                brdtitle: '숫자 더하기',
+                submitCount: 3,
+                score: '70',
+                set: '첨삭완료',
+                startDate: '2021.10.20',
+                endDate: '2021.10.22'
             },
             {
                 brdno: 3,
-                brdtitle: '모래시계 만들기',
-                brdwriter: '20'
+                brdtitle: '369게임 만들기',
+                submitCount: 17,
+                score: '20',
+                set: '첨삭대기중',
+                startDate: '2021.10.20',
+                endDate: '2021.10.22'
             }
         ]
-    }
-
-    handleSaveData = (data) => {
-        let boards = this.state.boards;
-        if (data.brdno === null || data.brdno === '' || data.brdno === undefined) {    // new : Insert
-            this.setState({
-                maxNo: this.state.maxNo + 1,
-                boards: boards.concat({ brdno: this.state.maxNo, brdwriter: data.brdwriter, brdtitle: data.brdtitle })
-            });
-        } else {                                                        // Update
-            this.setState({
-                boards: boards.map(row => data.brdno === row.brdno ? { ...data } : row)
-            })
-        }
-    }
-    handleSelectRow = (row) => {
-        this.child.current.handleSelectRow(row);
     }
 
     render() {
@@ -89,18 +55,22 @@ class QuizList extends Component {
         return (
             <div className="main_div">
                 <h2 style={{ width: '85%', margin: '20px auto', marginTop: '0px' }}>WorkBook - QuizList</h2>
+                <h1 style={{ width: '85%', margin: '20px auto', marginTop: '0px' }}>Chap1)반복문 이용하기</h1>
                 <div style={{ width: '85%', margin: '20px auto' }}>
                     <table border="1" >
                         <tbody>
                             <tr style={{ fontFamily: 'esamanru', fontWeight: 'bold', height: '50px' }} align="center" >
                                 <td width="50">No</td>
                                 <td width="400">문제명</td>
-                                <td width="60">정답률</td>
-                                <td width="80">편집</td>
+                                <td width="100">제출횟수</td>
+                                <td width="80">점수</td>
+                                <td width="200">진행현황</td>
+                                <td width="200">기간</td>
+
                             </tr>
                             {
                                 boards.map(row =>
-                                (<BoardItem key={row.brdno} row={row} onRemove={this.handleRemove} onSelectRow={this.handleSelectRow}
+                                (<BoardItem key={row.brdno} row={row}
                                     mainunit="1" />)
                                 )
                             }
@@ -186,10 +156,8 @@ function BoardItem(props) {
                 }
             </td>
             <td>{props.row.startDate} - {props.row.endDate}</td>
-
         </tr>
     );
 
 }
-
 
