@@ -51,7 +51,7 @@ function Student({ match }) {
     const dispatch = useDispatch();
 
     const [userlist, setUserlist] = useState([]);
-    const [board, setBoard] = useState([]);
+    const board = [];
     const [boards, setBoards] = useState([]);
     const { mode } = match.params;
 
@@ -93,7 +93,7 @@ function Student({ match }) {
         })
         setBoards(board);
 
-    })
+    }, [userlist])
 
 
     //학생 초대 카카오 API
