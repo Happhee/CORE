@@ -90,7 +90,7 @@ function Subject(props) {
 
         //워크북 상세 라우트
         route.push(<Route exact path='/mainpage/teacher/workbook/:userId/:classId/:title/:quizlist' render={() => <QuizList />} key="quizlist" />);
-        route.push(<Route path={['/mainpage/teacher/workbook/quizlist/:problemmain', '/mainpage/teacher/feedback/quizlist/:problemmain']} render={() => <ProblemMain />} key="problemadd" />);
+        route.push(<Route path={['/mainpage/teacher/workbook/:userId/:classId/:title/quizlist/:problemmain', '/mainpage/teacher/feedback/:userId/:classId/:title/quizlist/problemmain']} render={() => <ProblemMain />} key="problemadd" />);
 
     }
     else {

@@ -28,16 +28,18 @@ const Back = styled(Button)({
 
 function ProblemAdd() {
 
-    const { search } = useLocation();
+
     const location = useLocation();
-    const queryObj = queryString.parse(search);
-    const { mainunit, subunit } = queryObj;
+
     let history = useHistory();
 
+    let mainunit = location.state.mainunit;
+    let subunit = location.state.subunit;
     let problem_bottom_title = location.state.problem_bottom_title;
     let [grid_data, setGrid_data] = useState(location.state.grid_data);
     let [input_data, setInput_data] = useState(location.state.input_data);
     let [output_data, setOutput_data] = useState(location.state.output_data);
+
 
     let [textfield_state, setTextfield_state] = useState('');
 
