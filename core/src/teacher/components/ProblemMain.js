@@ -54,10 +54,18 @@ function ProblemAdd() {
     }
 
 
-    function handleRegisterClose() {
+    function handleRegisterClose(grid_data, input_data, output_data) {
+        if (problem_bottom_title === "문제등록") {
+            console.log(grid_data);
+            console.log(input_data);
+            console.log(output_data);
+
+            alert('등록이완료되었습니다!!')
+            goList();
+        }
         console.log("등록해주세요")
         // 서버로 값 보내줘야함!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        goList();
+
     }
 
     console.log("문제추가렌더링")
@@ -77,15 +85,17 @@ function ProblemAdd() {
                 <hr />
                 <ProblemGrid
                     mainunit={mainunit} subunit={subunit}
-                    grid_data={grid_data} input_data={input_data} output_data={output_data} />
-                <hr />
-                <div className="problem_bottom_div">
+                    grid_data={grid_data} input_data={input_data} output_data={output_data}
+                    alertDialog_title={problem_bottom_title} textfield_state={textfield_state} checkRegisterProblem={checkRegisterProblem}
+                    handleRegisterClose={handleRegisterClose} />
+
+                {/* <div className="problem_bottom_div">
                     <Box sx={{ '& button': { m: 0.5 } }}>
                         <AlertDialog alertDialog_title={problem_bottom_title} textfield_state={textfield_state} checkRegisterProblem={checkRegisterProblem}
                             handleRegisterClose={handleRegisterClose} />
                     </Box>
 
-                </div>
+                </div> */}
 
             </div>
 

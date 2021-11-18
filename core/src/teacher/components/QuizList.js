@@ -154,9 +154,7 @@ function BoardItem(props) {
 
 function ProblemAdd_Button(props) {
     let history = useHistory();
-    let { search } = useLocation();
-    const queryObj = queryString.parse(search);
-    const { mainunit } = queryObj;
+
 
 
     return (
@@ -174,7 +172,7 @@ function ProblemAdd_Button(props) {
                             grid_data: ProblemServer.getGrid_data("register"),
                             input_data: ProblemServer.getInput_data("register"),
                             output_data: ProblemServer.getOutput_data("register"),
-                            mainunit: mainunit,
+                            mainunit: props.mainunit,
                             subunit: props.subunit
                         }
                     })

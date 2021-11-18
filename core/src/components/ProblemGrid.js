@@ -7,6 +7,7 @@ import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
 import '../css/ProblemGrid.css';
+import AlertDialog from '../components/AlertDialog';
 
 import * as InputVaildtion from './InputValidation'
 //그리드 박스 스타일 속성 적용
@@ -59,7 +60,6 @@ function ProblemGrid(props) {
     let [input_data, setInput_data] = useState(props.input_data)
     let [output_data, setOutput_data] = useState(props.output_data)
 
-    console.log(input_data)
     if (input_data.length == 2) {
         question_title = input_data[1][1].title;
         input_title = input_data[0][1].title;
@@ -81,8 +81,6 @@ function ProblemGrid(props) {
     // 텍스트 필드 값 바꾸기 
     const handleGridChange = (event) => {
         const { value, name } = event.target;
-        console.log(value);
-        console.log(name);
         setGrid_data(InputVaildtion.newTextfieldValue(grid_data, value, name));
     }
     const handleInputChange = (event) => {
@@ -306,7 +304,7 @@ function ProblemGrid(props) {
         })
     }
 
-    console.log(input_list);
+
     return (
         <Box component="form"
             noValidate
@@ -360,8 +358,21 @@ function ProblemGrid(props) {
                     {answer_list}
                 </Grid>
             </Grid>
+            <hr />
+            <div className="problem_bottom_div">
+                <Box sx={{ '& button': { m: 0.5 } }}>
+                    <AlertDialog alertDialog_title={props.alertDialog_title} textfield_state={props.textfield_state} checkRegisterProblem={props.checkRegisterProblem}
+                        handleRegisterClose={() => {
+                            if (props.alertDialog_title === "문제등록") {
+                                props.handleRegisterClose(grid_data, input_data, output_data);
+                            }
+                        }
+                        } />
+                </Box>
 
+            </div>
         </Box>
+
 
 
     )
