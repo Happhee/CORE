@@ -62,7 +62,6 @@ class WorkBook extends Component {
   }
 }
 export default WorkBook;
-import queryString from 'query-string'
 
 function UnitItem(props) {
 
