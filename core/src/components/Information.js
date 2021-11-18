@@ -22,11 +22,14 @@ const CssBtn = styled(Button)({
 });
 //로그인 성공 후 페이지 -> 서버로부터 강의실리스트를 가져와야함 
 function My({ match }) {
-    let toolbar = [
-        { id: 1, title: 'My', link: '/teacher/my' },
-        { id: 2, title: 'WorkBank', link: '/teacher/workbank' }];
+    const { mode, userId, classId, title } = match.params;
 
-    const { mode } = match.params;
+    let toolbar = [
+        { id: 1, title: 'My', link: '/teacher/' + userId + '/my' },
+        { id: 2, title: 'WorkBank', link: '/teacher/' + userId + '/workbank' }];
+
+
+
     let startpage = null;
     let [data, setData] = useState([
         { id: 1, value: "선생님", checked: false },
@@ -40,8 +43,8 @@ function My({ match }) {
     else if (mode == 'student') {
         startpage = 'workbook';
         toolbar[1].title = 'FeedBank';
-        toolbar[0].link = '/student/my';
-        toolbar[1].link = '/student/feedbank';
+        toolbar[0].link = '/student/' + userId + '/my';
+        toolbar[1].link = '/student/' + userId + '/feedbank';
 
     }
     console.log('내정보 렌더링 ');

@@ -10,11 +10,13 @@ import ProblemMain from './ProblemMain';
 import '../../css/CoreListbox.css'
 import { Route, Switch } from 'react-router-dom';
 
-function WorkBank() {
+function WorkBank({ match }) {
     console.log('워크뱅크렌더');
+    const { mode, userId, classId, title } = match.params;
+
     let toolbar = [
-        { id: 1, title: 'My', link: '/teacher/my' },
-        { id: 2, title: 'WorkBank', link: '/teacher/workbank' }];
+        { id: 1, title: 'My', link: '/teacher/' + userId + '/my' },
+        { id: 2, title: 'WorkBank', link: '/teacher/' + userId + '/workbank' }];
 
 
     let table_cells = ['NO', '단원명', '문항수', '편집']

@@ -32,33 +32,13 @@ const AddStudent = styled(Button)({
 });
 
 
-function BoardItem(props) {
-    console.log(props.row);
-
-    return (
-        <tr align="center" style={{ height: '60px' }}>
-            <td>{props.row.brdno}</td>
-            <td>{props.row.id}</td>
-            <td>{props.row.name}</td>
-            <td>{props.row.phone}</td>
-            <td>{props.row.affiliation}</td>
-            <td><DeleteModal></DeleteModal></td>
-        </tr>
-    );
-
-}
 function Student({ match }) {
     const dispatch = useDispatch();
 
     const [userlist, setUserlist] = useState([]);
-    const board = [];
     const [boards, setBoards] = useState([]);
-    const { mode } = match.params;
+    const { mode, userId, classId, title } = match.params;
 
-
-    let { search, location } = useLocation();
-    const queryObj = queryString.parse(search);
-    const { userId, classId } = queryObj;;
 
     useEffect(() => {
         //강의실에서 아이디 가져오고
@@ -68,30 +48,39 @@ function Student({ match }) {
                     setUserlist(res.payload.data);
                 }
             })
+        console.log("학생리스트 가져오기");
+
     }, [])
+    const board_list = [];
 
     useEffect(() => {
+        const board = [];
+
+        console.log(userlist);
+
         userlist.map((user, index) => {
-            dispatch(getUser(userId))
+            dispatch(getUser(user))
                 .then(res => {
                     if (res.payload.getSuccess) {
                         board.push(
-                            <tr align="center" style={{ height: '60px' }}>
-                                <td>{index}</td>
-                                <td>{res.payload.data.nick}</td>
-                                <td>{res.payload.data.name}</td>
-                                <td>{res.payload.data.phone}</td>
-                                <td>{res.payload.data.affiliation}</td>
-                                <td><DeleteModal></DeleteModal></td>
-                            </tr>
-
+                            {
+                                brdno: index,
+                                nick: res.payload.data.nick,
+                                name: res.payload.data.name,
+                                phone: res.payload.data.phone,
+                                affiliation: res.payload.data.affiliation
+                            }
                         )
                     }
+                    setBoards([...boards, board]);
 
                 })
 
+
         })
-        setBoards(board);
+
+
+
 
     }, [userlist])
 
@@ -136,8 +125,12 @@ function Student({ match }) {
             ]
         });
     }, [])
-    console.log("학생리스트 업데이트");
-    console.log(boards)
+
+    if (boards.length == 1) {
+        board_list.push(boards[0].map(row =>
+            (<BoardItem key={row.brdno} row={row} />)))
+    }
+
 
     return (
         <div className="main_div">
@@ -153,7 +146,7 @@ function Student({ match }) {
                             <td width="200">소속</td>
                             <td width="50">삭제</td>
                         </tr>
-                        {boards}
+                        {board_list}
                     </tbody>
                 </table >
 
@@ -170,3 +163,19 @@ function Student({ match }) {
 
 
 export default withRouter(Student);
+
+function BoardItem(props) {
+
+
+    return (
+        <tr align="center" style={{ height: '60px' }}>
+            <td>{props.row.brdno}</td>
+            <td>{props.row.nick}</td>
+            <td>{props.row.name}</td>
+            <td>{props.row.phone}</td>
+            <td>{props.row.affiliation}</td>
+            <td><DeleteModal></DeleteModal></td>
+        </tr>
+    );
+
+}

@@ -25,13 +25,13 @@ function App(props) {
           <Route exact={true} path='/' component={Auth(Login)} />
           <Route exact path='/signup' component={Auth(SignUp, null)} />
 
-          <Route exact path='/classroom/:mode' render={(props) => <ClassRoom {...props} />} />
+          <Route exact path='/classroom/:mode/:userId' render={(props) => <ClassRoom {...props} />} />
 
-          <Route path='/mainpage/:mode/:page' render={(props) => <MainPage {...props} />} />
-          <Route exact path='/:mode/my' render={(props) => <My {...props} />} />
-          <Route exact path={['/:mode/workbank', '/:mode/workbank_quizlist/:problemmodify']} render={(props) => <WorkBank {...props} />} />
-          <Route exact path='/:mode/feedbank' render={(props) => <FeedBank {...props} />} />
-          <Route exact path='/:mode/my/information' render={(props) => <Information {...props} />} />
+          <Route path='/mainpage/:mode/:page/:userId/:classId/:title' render={(props) => <MainPage {...props} />} />
+          <Route exact path='/:mode/:userId/my' render={(props) => <My {...props} />} />
+          <Route path={['/:mode/:userId/workbank', '/:mode/:userId/workbank_quizlist/:problemmodify']} render={(props) => <WorkBank {...props} />} />
+          <Route exact path='/:mode/:userId/feedbank' render={(props) => <FeedBank {...props} />} />
+          <Route exact path='/:mode/:userId/my/information' render={(props) => <Information {...props} />} />
         </Switch>
       </div>
     </Router>

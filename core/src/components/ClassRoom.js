@@ -19,12 +19,11 @@ function ClassRoom({ match }) {
         { id: 1, title: 'My', link: '/teacher/my' },
         { id: 2, title: 'WorkBank', link: '/teacher/workbank' }];
 
-    const { mode } = match.params;
+    const { mode, userId } = match.params;
 
-    const { location, search } = useLocation();
+    const { location } = useLocation();
 
-    const queryObj = queryString.parse(search);
-    const { userId } = queryObj;
+
     const history = useHistory();
 
 
@@ -139,9 +138,9 @@ function ClassRoom({ match }) {
                 onClick={() => {
                     history.push({
                         pathname: "../../mainpage/" + mode + "/" + startpage
-                            + "?userId=" + userId
-                            + "&classId=" + classroom.class_id
-                            + "&title=" + classroom.title
+                            + "/" + userId
+                            + "/" + classroom.class_id
+                            + "/" + classroom.title
                     })
                 }}
             >{classroom.title}</span>

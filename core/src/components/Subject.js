@@ -39,13 +39,9 @@ const Subject_Link = props => {
                 onClick={() => {
                     history.push({
                         pathname: props.link
-                            + "?userId=" + props.teacher_id
-                            + "&classId=" + props.classId
-                            + "&title=" + props.classroom_title,
-                        state: {
-                            classroom_title: props.classroom_title,
-                            teacher_id: props.teacher_id
-                        }
+                            + "/" + props.teacher_id
+                            + "/" + props.classId
+                            + "/" + props.classroom_title
                     })
                 }} > {props.title}</span>
         </div>
@@ -55,11 +51,7 @@ const Subject_Link = props => {
 
 function Subject(props) {
     console.log('서브젝트렌더');
-
-    const { search, location } = useLocation();
-    const queryObj = queryString.parse(search);
-    const { userId, classId, title } = queryObj;
-    console.log(search);
+    console.log(props.userId + props.classId + props.title);
 
     let data = props.data;
     let mode = props.mode;
@@ -71,33 +63,33 @@ function Subject(props) {
 
         list.push(<Subject_Link key={data[0].id} title={data[0].title} style={{ cursor: "pointer" }}
             link='/mainpage/teacher/student'
-            classroom_title={title}
-            teacher_id={userId}
-            classId={classId}
+            classroom_title={props.title}
+            teacher_id={props.userId}
+            classId={props.classId}
         />);
         list.push(<Subject_Link key={data[1].id} title={data[1].title} style={{ cursor: "pointer" }}
             link='/mainpage/teacher/workbook'
-            classroom_title={title}
-            teacher_id={userId}
-            classId={classId}
+            classroom_title={props.title}
+            teacher_id={props.userId}
+            classId={props.classId}
 
         />);
         list.push(<Subject_Link key={data[2].id} title={data[2].title} style={{ cursor: "pointer" }}
             link='/mainpage/teacher/feedback'
-            classroom_title={props.classroom_title}
-            teacher_id={userId}
-            classId={classId}
+            classroom_title={props.title}
+            teacher_id={props.userId}
+            classId={props.classId}
 
         />);
 
 
         //상단 라우트
-        route.push(<Route exact path='/mainpage/teacher/student' render={() => <Student />} key={data[0].id} />)
-        route.push(<Route exact path='/mainpage/teacher/workbook' render={() => <Teacher_WorkBook />} key={data[1].id} />)
-        route.push(<Route exact path='/mainpage/teacher/feedback' render={() => <FeedBack />} key={data[2].id} />);
+        route.push(<Route exact path='/mainpage/teacher/student/:userId/:classId/:title' render={() => <Student />} key={data[0].id} />)
+        route.push(<Route exact path='/mainpage/teacher/workbook/:userId/:classId/:title' render={() => <Teacher_WorkBook />} key={data[1].id} />)
+        route.push(<Route exact path='/mainpage/teacher/feedback/:userId/:classId/:title' render={() => <FeedBack />} key={data[2].id} />);
 
         //워크북 상세 라우트
-        route.push(<Route exact path='/mainpage/teacher/workbook/:quizlist' render={() => <QuizList />} key="quizlist" />);
+        route.push(<Route exact path='/mainpage/teacher/workbook/:userId/:classId/:title/:quizlist' render={() => <QuizList />} key="quizlist" />);
         route.push(<Route path={['/mainpage/teacher/workbook/quizlist/:problemmain', '/mainpage/teacher/feedback/quizlist/:problemmain']} render={() => <ProblemMain />} key="problemadd" />);
 
     }
@@ -125,7 +117,7 @@ function Subject(props) {
             <div className={mode + "_subject"}>
                 <div style={{ textAlign: 'center', alignContent: 'center', alignItems: 'center' }}>
                     <img style={{ marginTop: '5px', width: '80px' }} src={require('../image/iconBiglogo.png').default} />
-                    <p style={{ marginTop: 0, marginBottom: '5px', textAlign: 'center', fontFamily: 'esamanruLight' }}>{title}</p>
+                    <p style={{ marginTop: 0, marginBottom: '5px', textAlign: 'center', fontFamily: 'esamanruLight' }}>{props.title}</p>
                 </div>
                 {list}
             </div>
