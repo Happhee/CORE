@@ -10,27 +10,27 @@ import { Button, styled } from '@mui/material';
 
 const DeleteBtn = styled(Button)({
     marginLeft: '0px',
-    textAlign:'center',
-    backgroundColor:'#E0BFE6',
-    borderRadius:'30px',
-    color:'#8154A0',
-    fontWeight:'bold',
+    textAlign: 'center',
+    backgroundColor: '#E0BFE6',
+    borderRadius: '30px',
+    color: '#8154A0',
+    fontWeight: 'bold',
     '&:hover': {
         background: "#8154A0",
-        color:"#FFF"
-     }
+        color: "#FFF"
+    }
 });
 const LoginBtn = styled(Button)({
     marginLeft: '0px',
-    textAlign:'center',
-    backgroundColor:'#E0BFE6',
-    borderRadius:'30px',
-    color:'#8154A0',
-    fontWeight:'bold',
+    textAlign: 'center',
+    backgroundColor: '#E0BFE6',
+    borderRadius: '30px',
+    color: '#8154A0',
+    fontWeight: 'bold',
     '&:hover': {
         background: "#8154A0",
-        color:"#FFF"
-     }
+        color: "#FFF"
+    }
 });
 const BasicBtn = styled(Button)({
     marginLeft: '0px',
@@ -45,7 +45,7 @@ const BasicBtn = styled(Button)({
     }
 });
 const BasicBtn2 = styled(Button)({
-marginLeft: '0px',
+    marginLeft: '0px',
     textAlign: 'center',
     backgroundColor: '#E0BFE6',
     borderRadius: '30px',
@@ -146,40 +146,41 @@ function AlertDialog(props) {
     };
 
     return (
-            < >
+        < >
             {
-                    (() => {
+                (() => {
 
-                        if (props.alertDialog_title == 'LOGIN' ) {
-                            return <button style={{background:"white",marginBottom:"0px",border:"0px",  fontFamily: 'esamanruLight',fontSize:"30px"
-                            ,marginLeft:"110px"
-                            }}  onClick={handleClickOpen} key="set">
-                                {props.alertDialog_title}
-                            </button>;
-                        }
-                        else if(props.alertDialog_title === '삭제'){
-                            return <DeleteBtn  onClick={handleClickOpen} key="set">
-                                {props.alertDialog_title}
-                            </DeleteBtn>;
-                        }
-                        else if(props.alertDialog_title === '답변하기'){
-                            return <BasicBtn  onClick={handleClickOpen} key="set">
+                    if (props.alertDialog_title == 'LOGIN') {
+                        return <button style={{
+                            background: "white", marginBottom: "0px", border: "0px", fontFamily: 'esamanruLight', fontSize: "30px"
+                            , marginLeft: "110px"
+                        }} onClick={handleClickOpen} key="set">
                             {props.alertDialog_title}
-                        </BasicBtn>;
-                        }
-                        else if(props.alertDialog_title === '문제등록' ||props.alertDialog_title === '수정하기'){
-                            return <BasicBtn  onClick={handleClickOpen} key="set">
-                            {props.alertDialog_title}
-                        </BasicBtn>;
-                        }
-                        else {
-                            return <button>
-                                {props.alertDialog_title}
-                                </button>
-                        }
+                        </button>;
                     }
-                    )()
+                    else if (props.alertDialog_title === '삭제') {
+                        return <DeleteBtn onClick={handleClickOpen} key="set">
+                            {props.alertDialog_title}
+                        </DeleteBtn>;
+                    }
+                    else if (props.alertDialog_title === '답변하기') {
+                        return <BasicBtn onClick={handleClickOpen} key="set">
+                            {props.alertDialog_title}
+                        </BasicBtn>;
+                    }
+                    else if (props.alertDialog_title === '문제등록' || props.alertDialog_title === '수정하기') {
+                        return <BasicBtn onClick={handleClickOpen} key="set">
+                            {props.alertDialog_title}
+                        </BasicBtn>;
+                    }
+                    else {
+                        return <button>
+                            {props.alertDialog_title}
+                        </button>
+                    }
                 }
+                )()
+            }
             <Dialog
                 open={open}
                 onClose={handleClose}
