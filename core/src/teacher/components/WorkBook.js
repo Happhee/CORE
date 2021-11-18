@@ -5,8 +5,9 @@ import Unit from '../../components/Unit'
 import { withStyles } from '@material-ui/core/styles';
 import UnitAdd from '../../components/UnitAdd';
 import { Button } from '@material-ui/core';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 
+import queryString from 'query-string'
 
 
 class WorkBook extends Component {
@@ -61,19 +62,34 @@ class WorkBook extends Component {
   }
 }
 export default WorkBook;
+import queryString from 'query-string'
 
 function UnitItem(props) {
 
 
+  let { search, location } = useLocation();
+  const queryObj = queryString.parse(search);
+  const { userId, classId, title } = queryObj;;
   let history = useHistory();
 
 
   return (
     <tr align="center" style={{ height: '60px' }}>
       <td>{props.no}</td>
-      <td className="goToUnit" onClick={() => {
-        history.push(`/mainpage/teacher/workbook/quizlist?mainunit=${props.no}`)
-      }}
+      <td className="goToUnit"
+        onClick={() => {
+          history.push({
+            pathname: "/mainpage/teacher/workbook/quizlist?mainunit=" + props.no
+              + "&userId=" + userId
+              + "&classId=" + classId
+              + "&title=" + title,
+            state: {
+              classroom_title: location.state.classroom_title,
+              teacher_id: location.state.teacher_id
+            }
+          })
+        }}
+
         style={{ cursor: "pointer", textDecorationLine: 'underline' }}>{props.name}</td>
       <td>{props.count}</td>
     </tr>

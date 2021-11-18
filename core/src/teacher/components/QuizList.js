@@ -13,7 +13,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const AddQuiz = styled(Button)({
     marginLeft: '93.8%',
-    marginTop:'1%',
+    marginTop: '1%',
     padding: '0.8%',
     textAlign: 'center',
     backgroundColor: '#692498',
@@ -118,7 +118,7 @@ function BoardItem(props) {
     let history = useHistory();
     let { search } = useLocation();
     const queryObj = queryString.parse(search);
-    const { mainunit } = queryObj;
+    const { mainunit, userId, classId, title } = queryObj;
 
     return (
         <tr align="center">

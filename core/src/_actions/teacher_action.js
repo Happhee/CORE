@@ -5,7 +5,7 @@ import {
     GET_STUDENT_LIST
 } from './types';
 
-const TEACHER_URL = "/teacher";
+const TEACHER_URL = "/api//teacher";
 
 export function addClassroom(dataToSubmit) {
 
@@ -27,7 +27,7 @@ export function createClassroom(dataToSubmit) {
 }
 
 export function getStudentlist(class_id) {
-    const data = request("GET", "/class?class_id=" + class_id);
+    const data = request("GET", "/api/class?class_id=" + class_id);
 
     return {
         type: GET_STUDENT_LIST,

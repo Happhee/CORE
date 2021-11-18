@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import Subject from './Subject';
 import Toolbar from './Toolbar';
+import queryString from 'query-string'
 import { useLocation } from 'react-router-dom';
 
 function MainPage({ match }) {
@@ -16,9 +17,14 @@ function MainPage({ match }) {
     let [student_subject, setStudent] = useState([
         { id: 1, title: 'WorkBook' }
     ])
-
     const { mode } = match.params;
-    const location = useLocation();
+    let { search } = useLocation();
+    const queryObj = queryString.parse(search);
+
+    console.log(match.params);
+    console.log(search);
+    const { userId, classId, title } = queryObj;
+
 
     // 강의실 선택후 상단바 제목 설정
     let subject = [];
@@ -34,15 +40,16 @@ function MainPage({ match }) {
     }
 
     console.log(mode);
+    console.log("메인페이지 로딩-> " + userId + "/ " + classId + "/ " + title)
 
-    console.log('메인 렌더링');
     return (
         <div>
             <Toolbar data={toolbar} />
             <div>
                 <Subject data={subject} mode={mode}
-                    classroom_title={location.state.classroom_title}
-                    id={location.state.id}
+                    classroom_title={title}
+                    id={userId}
+                    classId={classId}
                 />
             </div>
         </div>

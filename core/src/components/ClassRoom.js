@@ -7,6 +7,7 @@ import Toolbar from './Toolbar';
 import CoreDialog from './CoreDialog';
 import { useLocation, useHistory } from 'react-router-dom';
 
+import queryString from 'query-string'
 
 //로그인 성공 후 페이지 -> 서버로부터 강의실리스트를 가져와야함 
 import { useDispatch } from 'react-redux'
@@ -19,9 +20,14 @@ function ClassRoom({ match }) {
         { id: 2, title: 'WorkBank', link: '/teacher/workbank' }];
 
     const { mode } = match.params;
-    const location = useLocation();
+
+    const { location, search } = useLocation();
+
+    const queryObj = queryString.parse(search);
+    const { userId } = queryObj;
     const history = useHistory();
-    console.log(location.state.login_id);
+
+
 
     let startpage = null;
     let add_button = null;
@@ -36,10 +42,10 @@ function ClassRoom({ match }) {
     useEffect(() => {
 
         //클래스룸 가져오기
-        dispatch(getUser(location.state.login_id))
+        dispatch(getUser(userId))
             .then(res => {
                 if (res.payload.getSuccess) {
-                    res.payload.data[0].belonged_classes.map((data) => {
+                    res.payload.data.belonged_classes.map((data) => {
                         objectClassroom.push({ title: data.title, class_id: data.class_id })
                     })
 
@@ -132,12 +138,10 @@ function ClassRoom({ match }) {
             <span className="link" key={index}
                 onClick={() => {
                     history.push({
-                        pathname: "../../mainpage/" + mode + "/" + startpage,
-                        state: {
-                            classroom_title: classroom.title,
-                            id: location.state.login_id,
-                            class_id: classroom.class_id
-                        }
+                        pathname: "../../mainpage/" + mode + "/" + startpage
+                            + "?userId=" + userId
+                            + "&classId=" + classroom.class_id
+                            + "&title=" + classroom.title
                     })
                 }}
             >{classroom.title}</span>

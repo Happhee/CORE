@@ -9,10 +9,12 @@ import { RoundedCorner } from '@material-ui/icons';
 import { color, fontWeight } from '@mui/system';
 import DeleteModal from './DeleteModal';
 
-import { useLocation, withRouter } from "react-router";
+import { withRouter } from "react-router";
 import { getStudentlist } from '../../_actions/teacher_action';
 import { getUser } from '../../_actions/user_action';
 import { useDispatch } from 'react-redux';
+import queryString from 'query-string'
+import { useLocation } from 'react-router-dom';
 
 const AddStudent = styled(Button)({
     marginLeft: '87%',
@@ -45,20 +47,22 @@ function BoardItem(props) {
     );
 
 }
-function Student(props) {
+function Student({ match }) {
     const dispatch = useDispatch();
-    const location = useLocation();
+
     const [userlist, setUserlist] = useState([]);
     const [board, setBoard] = useState([]);
     const [boards, setBoards] = useState([]);
+    const { mode } = match.params;
 
-    const classroom_title = location.state.classroom_title;
-    const class_id = location.state.class_id
 
+    let { search, location } = useLocation();
+    const queryObj = queryString.parse(search);
+    const { userId, classId } = queryObj;;
 
     useEffect(() => {
         //강의실에서 아이디 가져오고
-        dispatch(getStudentlist(class_id))
+        dispatch(getStudentlist(classId))
             .then(res => {
                 if (res.payload.getUserSucess) {
                     setUserlist(res.payload.data);
@@ -68,16 +72,16 @@ function Student(props) {
 
     useEffect(() => {
         userlist.map((user, index) => {
-            dispatch(getUser(user))
+            dispatch(getUser(userId))
                 .then(res => {
                     if (res.payload.getSuccess) {
                         board.push(
                             <tr align="center" style={{ height: '60px' }}>
                                 <td>{index}</td>
-                                <td>{res.payload.data[0].nick}</td>
-                                <td>{res.payload.data[0].name}</td>
-                                <td>{res.payload.data[0].phone}</td>
-                                <td>{res.payload.data[0].affiliation}</td>
+                                <td>{res.payload.data.nick}</td>
+                                <td>{res.payload.data.name}</td>
+                                <td>{res.payload.data.phone}</td>
+                                <td>{res.payload.data.affiliation}</td>
                                 <td><DeleteModal></DeleteModal></td>
                             </tr>
 
@@ -89,7 +93,7 @@ function Student(props) {
         })
         setBoards(board);
 
-    }, [userlist])
+    })
 
 
     //학생 초대 카카오 API
@@ -131,9 +135,9 @@ function Student(props) {
                 }
             ]
         });
-    }, [boards])
-
-
+    }, [])
+    console.log("학생리스트 업데이트");
+    console.log(boards)
 
     return (
         <div className="main_div">
@@ -149,9 +153,7 @@ function Student(props) {
                             <td width="200">소속</td>
                             <td width="50">삭제</td>
                         </tr>
-                        {
-                            boards
-                        }
+                        {boards}
                     </tbody>
                 </table >
 

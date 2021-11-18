@@ -306,7 +306,7 @@ function ProblemGrid(props) {
         })
     }
 
-
+    console.log(input_list);
     return (
         <Box component="form"
             noValidate
