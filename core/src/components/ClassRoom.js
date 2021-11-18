@@ -15,16 +15,16 @@ import { getUser } from '../_actions/user_action';
 import { addClassroom, createClassroom } from '../_actions/teacher_action'
 
 function ClassRoom({ match }) {
-    let toolbar = [
-        { id: 1, title: 'My', link: '/teacher/my' },
-        { id: 2, title: 'WorkBank', link: '/teacher/workbank' }];
 
     const { mode, userId } = match.params;
-
     const { location } = useLocation();
-
-
     const history = useHistory();
+
+
+    let toolbar = [
+        { id: 1, title: 'My', link: '/teacher/' + userId + '/my' },
+        { id: 2, title: 'WorkBank', link: '/teacher/' + userId + '/workbank' }];
+
 
 
 
@@ -127,8 +127,8 @@ function ClassRoom({ match }) {
     else if (mode == 'student') {
         startpage = 'workbook';
         toolbar[1].title = 'FeedBank';
-        toolbar[0].link = '/student/my';
-        toolbar[1].link = '/student/feedbank';
+        toolbar[0].link = '/student/' + userId + '/my';
+        toolbar[1].link = '/student/' + userId + '/feedbank';
 
     }
 

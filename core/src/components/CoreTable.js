@@ -36,7 +36,7 @@ function CoreTable(props) {
                 <tbody style={{ olor: "#fff", fontFamily: 'esamanru', fontWeight: 'normal', height: '50px' }} align="center" >
                     {unit.map(c => {
                         return <Unit key={c.id} id={c.id} name={c.name} count={c.count} editType={props.editType}
-                            mainunit={props.mainunit}
+                            mainunit={props.mainunit} userId={props.userId} mode={props.mode}
                             handleFormSubmit={props.handleFormSubmit} handleFormModify={props.handleFormModify} handleRemoveClose={props.handleRemoveClose} />
                     })}
                 </tbody>

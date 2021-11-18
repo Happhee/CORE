@@ -10,6 +10,9 @@ import * as InputValidation from '../../components/InputValidation';
 import AlertDialog from '../../components/AlertDialog';
 import queryString from 'query-string'
 
+//로그인 성공 후 페이지 -> 서버로부터 강의실리스트를 가져와야함 
+import { useDispatch } from 'react-redux'
+import { addProblem } from '../../_actions/teacher_action'
 const Back = styled(Button)({
     marginLeft: '87%',
     height: '40px',
@@ -28,6 +31,7 @@ const Back = styled(Button)({
 
 function ProblemAdd() {
 
+    const dispatch = useDispatch();
 
     const location = useLocation();
 
@@ -60,6 +64,7 @@ function ProblemAdd() {
             console.log(input_data);
             console.log(output_data);
 
+            dispatch(addProblem())
             alert('등록이완료되었습니다!!')
             goList();
         }

@@ -39,7 +39,7 @@ const Subject_Link = props => {
                 onClick={() => {
                     history.push({
                         pathname: props.link
-                            + "/" + props.teacher_id
+                            + "/" + props.userId
                             + "/" + props.classId
                             + "/" + props.classroom_title
                     })
@@ -64,20 +64,20 @@ function Subject(props) {
         list.push(<Subject_Link key={data[0].id} title={data[0].title} style={{ cursor: "pointer" }}
             link='/mainpage/teacher/student'
             classroom_title={props.title}
-            teacher_id={props.userId}
+            userId={props.userId}
             classId={props.classId}
         />);
         list.push(<Subject_Link key={data[1].id} title={data[1].title} style={{ cursor: "pointer" }}
             link='/mainpage/teacher/workbook'
             classroom_title={props.title}
-            teacher_id={props.userId}
+            userId={props.userId}
             classId={props.classId}
 
         />);
         list.push(<Subject_Link key={data[2].id} title={data[2].title} style={{ cursor: "pointer" }}
             link='/mainpage/teacher/feedback'
             classroom_title={props.title}
-            teacher_id={props.userId}
+            userId={props.userId}
             classId={props.classId}
 
         />);
@@ -96,14 +96,16 @@ function Subject(props) {
     else {
         list.push(<Subject_Link key={data[0].id} title={data[0].title}
             link='/mainpage/student/workbook'
-            classroom_title={props.classroom_title}
+            classroom_title={props.title}
+            userId={props.userId}
+            classId={props.classId}
         />);
-        route.push(<Route path='/mainpage/student/workbook' component={Student_WorkBook} exact={true} key={data[0].id}
+        route.push(<Route path='/mainpage/student/workbook/:userId/:classId/:title' component={Student_WorkBook} exact={true} key={data[0].id}
         />)
 
         //워크북 상세 라우트
-        route.push(<Route exact path='/mainpage/student/workbook/quizlist' render={() => <Student_QuizList />} key="quizlist" />);
-        route.push(<Route path={['/mainpage/student/workbook/quizlist/:submitmain', '/mainpage/student/feedback/quizlist/:submitmain']} render={() => <SubmitMain />} key="problem_newsubmit" />);
+        route.push(<Route exact path='/mainpage/student/workbook/:userId/:classId/:title/quizlist' render={() => <Student_QuizList />} key="quizlist" />);
+        route.push(<Route path={['/mainpage/student/workbook/:userId/:classId/:title/quizlist/:submitmain', '/mainpage/student/feedback/:userId/:classId/:title/quizlist/:submitmain']} render={() => <SubmitMain />} key="problem_newsubmit" />);
 
 
     }

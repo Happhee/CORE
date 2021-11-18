@@ -8,6 +8,7 @@ import { Button, styled } from '@mui/material';
 import queryString from 'query-string'
 import * as SubmitServer from '../server/SubmitServer'
 import { makeStyles } from '@material-ui/core/styles';
+import { withRouter } from "react-router";
 
 
 class QuizList extends Component {
@@ -15,6 +16,7 @@ class QuizList extends Component {
         super(props);
         this.child = React.createRef();
     }
+
 
     state = {
         boards: [
@@ -51,6 +53,7 @@ class QuizList extends Component {
     render() {
         const { boards } = this.state;
         console.log('퀴즈렌더링');
+        const { userId, classId, title } = this.props.match.params;
 
         return (
             <div className="main_div">
@@ -71,7 +74,8 @@ class QuizList extends Component {
                             {
                                 boards.map(row =>
                                 (<BoardItem key={row.brdno} row={row}
-                                    mainunit="1" />)
+                                    mainunit="1"
+                                    userId={userId} classId={classId} title={title} />)
                                 )
                             }
                         </tbody>
@@ -82,7 +86,10 @@ class QuizList extends Component {
         );
     }
 }
-export default QuizList;
+export default withRouter(QuizList);
+
+
+
 function BoardItem(props) {
     let history = useHistory();
     let { search } = useLocation();
@@ -106,12 +113,18 @@ function BoardItem(props) {
                                 onClick={() => {
 
                                     history.push({
-                                        pathname: "/mainpage/student/workbook/quizlist/submitmain?mainunit=" + props.unit + "&subunit=" + props.quizNumber,
+                                        pathname: "/mainpage/student/workbook/"
+                                            + props.userId + "/"
+                                            + props.classId + "/"
+                                            + props.title + "/"
+                                            + "quizlist/submitmain",
                                         state: {
                                             problem_bottom_title: "",
                                             grid_data: SubmitServer.getGrid_data("feedback_success"),
                                             input_data: SubmitServer.getInput_data("feedback_success"),
-                                            output_data: SubmitServer.getOutput_data("feedback_success")
+                                            output_data: SubmitServer.getOutput_data("feedback_success"),
+                                            mainunit: props.mainunit,
+                                            subunit: props.quizNumber
                                         }
                                     })
                                 }}>
@@ -122,12 +135,18 @@ function BoardItem(props) {
                             return <div key="set" style={{ cursor: "pointer", border: "12px solid grey", borderColor: "grey", backgroundColor: "grey", borderRadius: "20px" }}
                                 onClick={() => {
                                     history.push({
-                                        pathname: "/mainpage/student/workbook/quizlist/submitmain?mainunit=" + props.unit + "&subunit=" + props.quizNumber,
+                                        pathname: "/mainpage/student/workbook/"
+                                            + props.userId + "/"
+                                            + props.classId + "/"
+                                            + props.title + "/"
+                                            + "quizlist/submitmain",
                                         state: {
                                             problem_bottom_title: "저장하기",
                                             grid_data: SubmitServer.getGrid_data("submit"),
                                             input_data: SubmitServer.getInput_data("submit"),
-                                            output_data: SubmitServer.getOutput_data("submit")
+                                            output_data: SubmitServer.getOutput_data("submit"),
+                                            mainunit: props.mainunit,
+                                            subunit: props.quizNumber
                                         }
                                     })
                                 }}>
@@ -138,12 +157,18 @@ function BoardItem(props) {
                             return <div key="set" style={{ cursor: "pointer", border: "12px solid #FF6E8D", borderColor: "#FF6E8D", backgroundColor: "#FF6E8D", borderRadius: "20px" }}
                                 onClick={() => {
                                     history.push({
-                                        pathname: "/mainpage/student/workbook/quizlist/submitmain?mainunit=" + props.unit + "&subunit=" + props.quizNumber,
+                                        pathname: "/mainpage/student/workbook/"
+                                            + props.userId + "/"
+                                            + props.classId + "/"
+                                            + props.title + "/"
+                                            + "quizlist/submitmain",
                                         state: {
                                             problem_bottom_title: "",
                                             grid_data: SubmitServer.getGrid_data("viewSubmit"),
                                             input_data: SubmitServer.getInput_data("viewSubmit"),
-                                            output_data: SubmitServer.getOutput_data("viewSubmit")
+                                            output_data: SubmitServer.getOutput_data("viewSubmit"),
+                                            mainunit: props.mainunit,
+                                            subunit: props.quizNumber
 
                                         }
                                     })

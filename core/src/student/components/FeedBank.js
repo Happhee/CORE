@@ -10,11 +10,13 @@ import FeedBank_MainList from './FeedBank_MainList';
 import '../../css/CoreListbox.css'
 import { Route, Switch } from 'react-router-dom';
 
-function FeedBank() {
-    console.log('워크뱅크렌더');
+function FeedBank({ match }) {
+    console.log('피드뱅크렌더');
+    const { mode, userId, classId, title } = match.params;
+
     let toolbar = [
-        { id: 1, title: 'My', link: '/student/my' },
-        { id: 2, title: 'FeedBank', link: '/student/FeedBank' }];
+        { id: 1, title: 'My', link: '/student/' + userId + '/my' },
+        { id: 2, title: 'FeedBank', link: '/student/' + userId + '/FeedBank' }];
 
 
     let table_cells = ['NO', '단원명', '문항수', '편집']
@@ -72,7 +74,7 @@ function FeedBank() {
                         <div style={{ width: "150px", float: "left", marginLeft: "0px", marginTop: "10px" }}>FeedBank</div>
                     </div>
                     <Switch>
-                        <Route exact path='/:mode/feedbank' render={() => <FeedBank_MainList />} />
+                        <Route exact path='/:mode/:userId/feedbank' render={() => <FeedBank_MainList />} />
                     </Switch>
                 </div>
             </div>

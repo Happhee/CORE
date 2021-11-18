@@ -75,17 +75,13 @@ function ProblemAdd() {
                 </div>
                 <hr />
                 <ProblemGrid
-                    mainunit={mainunit} subunit={subunit}
+                    mainunit={mainunit} subunit={subunit} alertDialog_title={problem_bottom_title}
                     grid_data={grid_data} input_data={input_data} output_data={output_data}
-                    question_data={question_data} answer_data={answer_data} />
-                <hr />
-                <div className="problem_bottom_div">
-                    <Box sx={{ '& button': { m: 0.5 } }}>
-                        <AlertDialog alertDialog_title={problem_bottom_title} textfield_state={textfield_state} checkRegisterProblem={checkRegisterProblem}
-                            handleRegisterClose={handleRegisterClose} />
-                    </Box>
+                    question_data={question_data} answer_data={answer_data} textfield_state={textfield_state} checkRegisterProblem={checkRegisterProblem}
+                    handleRegisterClose={handleRegisterClose} />
 
-                </div>
+
+
 
             </div>
 
