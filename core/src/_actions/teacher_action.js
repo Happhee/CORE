@@ -37,7 +37,7 @@ export function getStudentlist(class_id) {
 }
 
 export function addProblem(dataToSubmit) {
-    const data = request("POST", "api/problem/addProblem", dataToSubmit);
+    const data = request("POST", "/api/problem/addProblem", dataToSubmit);
     return {
         type: ADD_PROBLEM,
         payload: data

@@ -29,8 +29,9 @@ const Back = styled(Button)({
     }
 });
 
-function ProblemAdd() {
+function ProblemAdd({ match }) {
 
+    const { userId } = match.params
     const dispatch = useDispatch();
 
     const location = useLocation();
@@ -63,10 +64,47 @@ function ProblemAdd() {
             console.log(grid_data);
             console.log(input_data);
             console.log(output_data);
+            let input_data_value = []
+            let output_data_value = []
 
-            dispatch(addProblem())
-            alert('등록이완료되었습니다!!')
-            goList();
+            input_data.map(input => {
+                input_data_value.push(input.value);
+            })
+
+            output_data.map(output => {
+                output_data_value.push(output.value)
+            })
+            let body = {
+                name: grid_data[3].value,
+                owner: userId,
+                problem_description: grid_data[4].value,
+                sample_input: input_data[0].value,
+                sample_output: output_data[0].value,
+                input_description: "정수",
+                output_description: "정수",
+                input_list: input_data_value,
+                output_list: output_data_value,
+                solution: grid_data[5].value,
+                difficulty: 2,
+                memory_limit: 12345678,
+                time_limit: 12345678
+            }
+
+            dispatch(addProblem(body))
+                .then(res => {
+                    if (res.payload.addSuceess) {
+                        alert('등록이완료되었습니다!!')
+
+                        goList();
+                    } else {
+                        alert(res.payload.message)
+                    }
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+
+
         }
         console.log("등록해주세요")
         // 서버로 값 보내줘야함!!!!!!!!!!!!!!!!!!!!!!!!!!!
