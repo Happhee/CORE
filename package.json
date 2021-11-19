@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/seohee0112/CORE#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "node": "^17.0.1"
   }
 }
