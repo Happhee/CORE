@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/seohee0112/CORE/issues"
   },
-  "homepage": "https://github.com/seohee0112/CORE#readme"
+  "homepage": "https://github.com/seohee0112/CORE#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
