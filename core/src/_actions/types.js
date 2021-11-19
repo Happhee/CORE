@@ -7,3 +7,4 @@ export const AUTH_USER = "auth_user";
 export const CREATE_CLASSROOM = "create_classroom";
 export const ADD_CLASSROOM = "add_classroom";
 export const GET_STUDENT_LIST = "get_student_list";
+export const ADD_PROBLEM = "add_problem";

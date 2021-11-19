@@ -7,6 +7,7 @@ import Toolbar from './Toolbar';
 import CoreDialog from './CoreDialog';
 import { useLocation, useHistory } from 'react-router-dom';
 
+import queryString from 'query-string'
 
 //로그인 성공 후 페이지 -> 서버로부터 강의실리스트를 가져와야함 
 import { useDispatch } from 'react-redux'
@@ -14,14 +15,18 @@ import { getUser } from '../_actions/user_action';
 import { addClassroom, createClassroom } from '../_actions/teacher_action'
 
 function ClassRoom({ match }) {
-    let toolbar = [
-        { id: 1, title: 'My', link: '/teacher/my' },
-        { id: 2, title: 'WorkBank', link: '/teacher/workbank' }];
 
-    const { mode } = match.params;
-    const location = useLocation();
+    const { mode, userId } = match.params;
+    const { location } = useLocation();
     const history = useHistory();
-    console.log(location.state.login_id);
+
+
+    let toolbar = [
+        { id: 1, title: 'My', link: '/teacher/' + userId + '/my' },
+        { id: 2, title: 'WorkBank', link: '/teacher/' + userId + '/workbank' }];
+
+
+
 
     let startpage = null;
     let add_button = null;
@@ -36,10 +41,9 @@ function ClassRoom({ match }) {
     useEffect(() => {
 
         //클래스룸 가져오기
-        dispatch(getUser(location.state.login_id))
+        dispatch(getUser(userId))
             .then(res => {
                 if (res.payload.getSuccess) {
-
                     res.payload.data.belonged_classes.map((data) => {
                         objectClassroom.push({ title: data.title, class_id: data.class_id })
                     })
@@ -123,8 +127,8 @@ function ClassRoom({ match }) {
     else if (mode == 'student') {
         startpage = 'workbook';
         toolbar[1].title = 'FeedBank';
-        toolbar[0].link = '/student/my';
-        toolbar[1].link = '/student/feedbank';
+        toolbar[0].link = '/student/' + userId + '/my';
+        toolbar[1].link = '/student/' + userId + '/feedbank';
 
     }
 
@@ -133,12 +137,10 @@ function ClassRoom({ match }) {
             <span className="link" key={index}
                 onClick={() => {
                     history.push({
-                        pathname: "../../mainpage/" + mode + "/" + startpage,
-                        state: {
-                            classroom_title: classroom.title,
-                            id: location.state.login_id,
-                            class_id: classroom.class_id
-                        }
+                        pathname: "../../mainpage/" + mode + "/" + startpage
+                            + "/" + userId
+                            + "/" + classroom.class_id
+                            + "/" + classroom.title
                     })
                 }}
             >{classroom.title}</span>

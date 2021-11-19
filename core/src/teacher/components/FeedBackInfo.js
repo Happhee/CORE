@@ -1,13 +1,14 @@
 /*eslint-disable */
 
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, withRouter } from 'react-router-dom';
 import Button from '@mui/material/Button'
 import * as ProblemServer from '../server/ProblemServer'
 
 
 function FeedBackInfo(props) {
     let history = useHistory();
+
     return (
         <tr align="center" style={{ height: '60px' }}>
             <td key="no">{props.no}</td>
@@ -36,12 +37,18 @@ function FeedBackInfo(props) {
                 <button marginleft="300px" style={{ backgroundColor: "white", border: "0", fontFamily: 'esamanru', fontWeight: 'normal', height: '50px', cursor: "pointer", textDecorationLine: 'underline' }}
                     onClick={() => {
                         history.push({
-                            pathname: "/mainpage/teacher/workbook/quizlist/problemmain?mainunit=" + props.unit + "&subunit=" + props.quizNumber,
+                            pathname: "/mainpage/teacher/workbook/"
+                                + props.userId + "/"
+                                + props.classId + "/"
+                                + props.title + "/"
+                                + "quizlist/problemmain",
                             state: {
                                 problem_bottom_title: "답변하기",
                                 grid_data: ProblemServer.getGrid_data("feedback"),
                                 input_data: ProblemServer.getInput_data("feedback"),
-                                output_data: ProblemServer.getOutput_data("feedback")
+                                output_data: ProblemServer.getOutput_data("feedback"),
+                                mainunit: props.unit,
+                                subunit: props.quizNumber
                             }
                         })
                     }}>{props.score}</button>
@@ -49,6 +56,6 @@ function FeedBackInfo(props) {
         </tr>
     )
 }
-export default FeedBackInfo;
+export default withRouter(FeedBackInfo);
 
 

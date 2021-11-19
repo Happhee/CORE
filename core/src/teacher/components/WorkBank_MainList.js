@@ -41,7 +41,7 @@ function WorkBank_MainList() {
     let [register_data, setRegister_data] = useState(listbox_datas[0].id);
     console.log("등록강의실  -> " + listbox_datas[register_data].value);
 
-
+    console.log()
 
     return (
         <div className="coretable_workbank">

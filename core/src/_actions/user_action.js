@@ -3,7 +3,7 @@ import {
     LOGIN_USER, REGISTER_USER, GET_USER, GET_USERS, AUTH_USER
 } from './types';
 
-const USER_URL = "/user";
+const USER_URL = "/api/user";
 
 //로그인
 export async function loginUser(dataToSubmit) {

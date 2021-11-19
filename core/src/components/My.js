@@ -7,13 +7,15 @@ import Toolbar from './Toolbar';
 
 //로그인 성공 후 페이지 -> 서버로부터 강의실리스트를 가져와야함 
 function My({ match, history }) {
+    const { mode, userId, classId, title } = match.params;
+
     let toolbar = [
-        { id: 1, title: 'My', link: '/teacher/my' },
-        { id: 2, title: 'WorkBank', link: '/teacher/workbank' }];
+        { id: 1, title: 'My', link: '/teacher/' + userId + '/my' },
+        { id: 2, title: 'WorkBank', link: '/teacher/' + userId + '/workbank' }];
 
-    const { mode } = match.params;
+
+
     let startpage = null;
-
 
 
     if (mode == 'teacher') {
@@ -23,8 +25,9 @@ function My({ match, history }) {
     else if (mode == 'student') {
         startpage = 'workbook';
         toolbar[1].title = 'FeedBank';
-        toolbar[0].link = '/student/my';
-        toolbar[1].link = '/student/feedbank';
+        toolbar[0].link = '/student/' + userId + '/my';
+        toolbar[1].link = '/student/' + userId + '/feedbank';
+
 
     }
     console.log('내정보 렌더링 ');
@@ -34,19 +37,19 @@ function My({ match, history }) {
         <div>
             <Toolbar data={toolbar} />
             <div className="classroom_box">
-            <img style={{ width: "200px", marginTop: "3%", marginBottom: "-2px", float: "left" }} src={require('../image/icon_BigLogo.png').default} />
+                <img style={{ width: "200px", marginTop: "3%", marginBottom: "-2px", float: "left" }} src={require('../image/icon_BigLogo.png').default} />
                 <div className="content">
                     {/* 회원가입 타이틀  */}
-                    <div className="title_box" style={{fontWeight:"bold"}}>
+                    <div className="title_box" style={{ fontWeight: "bold" }}>
                         MY
                     </div>
                     <div className="click_box">
 
-                        <Link to={`../../${mode}/my/information`} className="link">내 정보</Link>
+                        <Link to={`../../${mode}/${userId}/my/information`} className="link">내 정보</Link>
                     </div>
                     <div className="click_box">
 
-                        <Link to={`../../classroom/${mode}`} className="link">내 강의실</Link>
+                        <Link to={`../../classroom/${mode}/${userId}`} className="link">내 강의실</Link>
                     </div>
                     <div className="click_box">
 

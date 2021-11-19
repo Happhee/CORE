@@ -16,27 +16,27 @@ const CssButton = styled(Button)({
 });
 const RegisterBtn = styled(Button)({
     marginLeft: '0px',
-    textAlign:'center',
-    backgroundColor:'#E0BFE6',
-    borderRadius:'30px',
-    color:'#8154A0',
-    fontWeight:'bold',
+    textAlign: 'center',
+    backgroundColor: '#E0BFE6',
+    borderRadius: '30px',
+    color: '#8154A0',
+    fontWeight: 'bold',
     '&:hover': {
         background: "#8154A0",
-        color:"#FFF"
-     }
+        color: "#FFF"
+    }
 });
 const EditBtn = styled(Button)({
     marginLeft: '0px',
-    textAlign:'center',
-    backgroundColor:'#E0BFE6',
-    borderRadius:'30px',
-    color:'#8154A0',
-    fontWeight:'bold',
+    textAlign: 'center',
+    backgroundColor: '#E0BFE6',
+    borderRadius: '30px',
+    color: '#8154A0',
+    fontWeight: 'bold',
     '&:hover': {
         background: "#8154A0",
-        color:"#FFF"
-     }
+        color: "#FFF"
+    }
 });
 const BasicBtn = styled(Button)({
     marginLeft: '0px',
@@ -86,7 +86,7 @@ function Customer(props) {
                 subunit={props.id} />
         </td>];
 
-        link = [<Link style={{color:"#000"}} key="link" to={`../../teacher/workbank_quizlist?mainunit=${props.id}`} >{props.name}</Link>]
+        link = [<Link style={{ color: "#000" }} key="link" to={`../../teacher/workbank_quizlist?mainunit=${props.id}`} >{props.name}</Link>]
     }
     else if (props.editType === "QuizList") {
         edit = [
@@ -97,12 +97,16 @@ function Customer(props) {
                 <EditBtn key="modify" variant="contained" color="secondary" onClick={
                     () => {
                         history.push({
-                            pathname: "/teacher/workbank_quizlist/problemmodify?mainunit=" + props.mainunit + "&subunit=" + props.subunit,
+                            pathname: "/teacher/"
+                                + props.userId + "/"
+                                + "workbank_quizlist/problemmodify",
                             state: {
                                 problem_bottom_title: "수정하기",
                                 grid_data: ProblemServer.getGrid_data("modify"),
                                 input_data: ProblemServer.getInput_data("modify"),
-                                output_data: ProblemServer.getOutput_data("modify")
+                                output_data: ProblemServer.getOutput_data("modify"),
+                                mainunit: props.mainunit,
+                                subunit: props.subunit
                             }
                         })
                     }}>수정</EditBtn>
@@ -113,11 +117,40 @@ function Customer(props) {
         link = [<p key="p" >{props.name}</p>]
 
     }
+    //학생 피드뱅크 
+    else if (props.editType === 'FeedBankList') {
+        edit = [
+            <td align="center" key="edit">
+                <CoreDialog key="add" button_box_div="add_problem_class_box" button_box="add_problem_class_box" button_value="등록"
+                    dialog_title="문제 등록하기" listbox_datas={listbox_datas} handleFormSubmit={props.handleFormSubmit} />
+
+                <EditBtn key="modify" variant="contained" color="secondary" onClick={
+                    () => {
+                        history.push({
+                            pathname: "/student/"
+                                + props.userId + "/"
+                                + "workbank_quizlist/problemmodify",
+                            state: {
+                                problem_bottom_title: "수정하기",
+                                grid_data: ProblemServer.getGrid_data("modify"),
+                                input_data: ProblemServer.getInput_data("modify"),
+                                output_data: ProblemServer.getOutput_data("modify"),
+                                mainunit: props.mainunit,
+                                subunit: props.subunit
+                            }
+                        })
+                    }}>수정</EditBtn>
+
+                <AlertDialog key="delete" alertDialog_title="삭제" textfield_state={textfield_state} handleRemoveClose={props.handleRemoveClose}
+                    subunit={props.id} />
+            </td>];
+        link = [<p key="p" >{props.name}</p>]
+    }
     else {
         link = [<Link key="link" to={`../../mainpage/teacher/${props.startpage}/quizlist?mainunit=${props.id}`} >{props.name}</Link>]
     }
     return (
-        <tr style={{ color:"#000",fontFamily: 'esamanru', fontWeight: 'normal', height: '50px' }} align="center" >
+        <tr style={{ color: "#000", fontFamily: 'esamanru', fontWeight: 'normal', height: '50px' }} align="center" >
             <td width="50px" align="center" key="id">{props.id}</td>
             <td width="450px" align="center" key="name">
                 {link}

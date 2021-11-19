@@ -11,7 +11,8 @@ import { Button } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
 import { fade } from '@material-ui/core/styles/colorManipulator';
-
+import { withRouter } from 'react-router';
+import { connect } from 'react-redux';
 
 const styles = theme => ({
     search: {
@@ -80,6 +81,8 @@ class FeedBack extends Component {
 
     render() {
         const { classes } = this.props;
+        const { userId, classId, title } = this.props.match.params;
+
         return (
             <div className="main_div">
                 <h2 style={{ width: '60%', margin: '20px auto', marginTop: '0px', float: "left", marginLeft: "7.5%" }}>FeedBack</h2>
@@ -88,14 +91,14 @@ class FeedBack extends Component {
                     width: "18%", margin: '20px auto', marginRight: "7.5%", borderWidth: "content", borderWidth: "15%",
                     border: "2px solid #9A30AE", fontFamily: 'esamanru', fontWeight: 'normal', float: "right"
                 }}>
-                    <InputBase style={{ width: "200px",float: "left" }}
+                    <InputBase style={{ width: "200px", float: "left" }}
                         placeholder="학생 이름 검색"
                         classes={{
                             root: classes.inputRoot,
                             input: classes.inputInput,
                         }}
                     />
-                    <img style={{ width: "40px" ,float: "right"}} src={require('../../image/iconSearch.png').default} />
+                    <img style={{ width: "40px", float: "right" }} src={require('../../image/iconSearch.png').default} />
 
                 </div>
 
@@ -113,7 +116,8 @@ class FeedBack extends Component {
                             </tr>
                             {
                                 feedBack.map(row =>
-                                    (<FeedBackInfo row={row} no={row.no} id={row.id} name={row.name} unit={row.unit} quizNumber={row.quizNumber} set={row.set} score={row.score} startpage="feedBack" key={row.id} />)
+                                (<FeedBackInfo row={row} no={row.no} id={row.id} name={row.name} unit={row.unit} quizNumber={row.quizNumber} set={row.set} score={row.score} startpage="feedBack" key={row.id}
+                                    userId={userId} classId={classId} title={title} />)
                                 )
                             }
                         </tbody>
@@ -124,5 +128,5 @@ class FeedBack extends Component {
     }
 }
 
-export default withStyles(styles)(FeedBack);
+export default withRouter(withStyles(styles)(FeedBack));
 

@@ -6,11 +6,11 @@ import CoreTable from '../../components/CoreTable';
 import { useLocation } from 'react-router';
 import queryString from 'query-string'
 import * as Server from '../server/Server';
+import { withRouter } from 'react-router-dom'
 
-function FeedBank_MainList(props) {
-    let { search } = useLocation();
-    const queryObj = queryString.parse(search);
-    const { mainunit } = queryObj;
+function FeedBank_MainList({ match }) {
+
+    const { mode, userId, classId, title } = match.params;
 
     console.log("워크뱅크 퀴즈리스트 렌더");
     let table_cells = ['NO', '단원명', '정답률', '편집']
@@ -44,11 +44,11 @@ function FeedBank_MainList(props) {
     console.log("등록강의실  -> " + listbox_datas[register_data].value);
     return (
         <div className="coretable_workbank">
-            <CoreTable table_cells={table_cells} unit={unit} editType="QuizList"
-                mainunit={mainunit}
+            <CoreTable table_cells={table_cells} unit={unit} editType="FeedBankList"
+                mode={mode} userId={userId}
                 handleFormSubmit={Server.handleFormSubmit} handleRemoveClose={Server.handleRemoveClose} />
         </div>
 
     )
 }
-export default FeedBank_MainList;
+export default withRouter(FeedBank_MainList);
