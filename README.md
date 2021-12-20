@@ -20,13 +20,34 @@
 ![이미지-10](https://user-images.githubusercontent.com/79238676/146730329-a3513260-00ea-4004-988a-503d345c429c.jpg)
 
 회원가입 -> ID, PW, 이름, 전화번호, 소속, 선생님/학생 으로 진행
-선생님 로그인 -> 강의실 추가 / Student, WorkBook, FeedBack 카테고리로 분류됨
+선생님 로그인 -> 강의실 추가 / Student, WorkBook, FeedBack / WorkBank 카테고리로 분류됨
 
 ### Student
 > 학생 목록 조회 및 초대기능
 
+![이미지-11](https://user-images.githubusercontent.com/79238676/146730848-723bc525-2c75-4bab-b402-cc34e021e427.jpg)
+
+### WorkBook
+> 해당 강의실 단원 및 단원별 상세 문항 조회/추가 
+
+![이미지-12](https://user-images.githubusercontent.com/79238676/146730970-784967f3-ff83-4fad-bb8a-50521a60c689.jpg)
+
+### FeedBack
+> 학생별 제출 문항 확인 
+
+### WorkBank
+> 모든 강의실에 등록된 문항들 조회 
 
 # 🖥 학생 기능 
 - 1)즉각적으로 결과 확인이 가능한 컴파일러 기능
 - 2)간단하고 빠르게 남길 수 있는 질의응답 기능
 - 3)받은 피드백을 한눈에 확인 가능
+
+![이미지-13](https://user-images.githubusercontent.com/79238676/146731129-b38a1589-3135-4f13-9b4a-5e7208ec010a.jpg)
+
+학생 로그인 -> 강의실 조회 / WorkBook / FeedBank 카테고리로 분류
+### WorkBook
+> 선택 강의실 단원 / 단원별 상세 문항 조회 및 코드 제출 
+
+# 🖥 학생 기능 ㄹㅗ그인
+# 🖥 학생 기능 
