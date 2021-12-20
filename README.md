@@ -9,20 +9,20 @@
 이미 완료된 환경설정으로 학생들의 어려움을 완화시켜주고 그만큼 높아진 접근성을 통해 선생님에게 더 많은 학생들을 가르칠 수 있는 교육툴을 통해, 
 많은 사람들이 코딩이 무엇인가를 깨달을 수 있기를 바라며 ‘CORE’라는 프로젝트를 진행하였다.
 
-# 🖥 개발 환경 구성도
+# 📍 개발 환경 구성도
 ![image](https://user-images.githubusercontent.com/79238676/146731461-039a5aec-86dd-46b9-9f65-46e29fbef057.png)
 
-### 📍 공통 사항
+### ✅ 공통 사항
 - 개발 툴: Visual Studio Code, Git
 - 빌드, 배포 툴 및 서비스: Paas-ta, AWS EC2
  
-### 📍  서버 환경
+### ✅  서버 환경
 - OS: Windows 10, MAC OS, LINUX
 - DBMS: MongoDB
 - 개발 플랫폼: Node.js
 - 라이브러리 및 프레임워크: Express.js
  
-### 📍  클라이언트 환경
+### ✅ 클라이언트 환경
 - 프레임워크: React.js
 - 개발 언어: Javascript
 
