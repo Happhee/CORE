@@ -23,7 +23,7 @@
 - 라이브러리 및 프레임워크: Express.js
  
 ### ✅ 클라이언트 환경
-- 프레임워크: React.js
+- 라이브러리 : React.js
 - 개발 언어: Javascript
 
 
